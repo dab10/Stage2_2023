@@ -1,14 +1,18 @@
+//Abstract
+@import "abstract/constants";
+@import "abstract/mixins";
+@import "abstract/placeholders";
+
 //Base
 @import "base/normalize";
 @import "base/base";
 @import "base/typography";
 
 
-//Abstract
-@import "abstract/constants";
-@import "abstract/mixins";
-@import "abstract/placeholders";
+
 
 //Layouts
+@import "layouts/wrapper";
+
 
 // Components
