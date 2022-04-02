@@ -1,9 +1,9 @@
-.button, .navigation__list, .navigation__link {
+.button, .button-circle, .navigation__list, .navigation__link, .pets {
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
 
-body, h1, h2, h3, h4, h5, .button {
+body, h1, h2, h3, h4, h5, .button, .button-circle, .pets__name {
   font-family: 'Georgia', serif;
 }
 
@@ -75,7 +75,7 @@ h5 {
 }
 
 .button_bordered {
-  background: #FFFFFF;
+  background: inherit;
   border: 2px solid #F1CDB3;
   color: #292929;
 }
@@ -92,6 +92,40 @@ h5 {
 }
 
 .button_colored:hover {
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
+.button-circle {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.06em;
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.button-circle_bordered {
+  background-color: inherit;
+  border: 2px solid #F1CDB3;
+  color: #292929;
+}
+
+.button-circle_bordered:hover {
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
+.button-circle_colored {
+  background: #F1CDB3;
+  color: #292929;
+  border: 2px solid #F1CDB3;
+}
+
+.button-circle_colored:hover {
   background: #FDDCC4;
   border-color: #FDDCC4;
 }
@@ -499,7 +533,7 @@ template {
   line-height: 1.495rem;
   letter-spacing: 0.1em;
   color: #FFFFFF;
-  padding-top: 11px;
+  padding-top: 10px;
   padding-left: 4px;
 }
 
@@ -521,7 +555,6 @@ template {
 .navigation__list {
   list-style: none;
   padding-left: 36px;
-  padding-top: 1px;
   cursor: pointer;
   color: #FAFAFA;
 }
@@ -608,7 +641,7 @@ template {
   max-width: 370px;
   margin: 0;
   padding-top: 15px;
-  color: #4C4C4C;
+  color: #545454;
 }
 
 .about__text {
@@ -618,6 +651,81 @@ template {
   line-height: 2.4rem;
   color: #4C4C4C;
   max-width: 430px;
-  padding-top: 10px;
+  padding-top: 25px;
+  margin: 0;
+}
+
+.our-friends {
+  background-color: #F6F6F6;
+}
+
+.friends__title {
+  max-width: 400px;
+  color: #545454;
+  text-align: center;
+  margin: auto;
+  padding-top: 80px;
+}
+
+.friends__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 60px;
+}
+
+.pets__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 53px;
+}
+
+.pets {
+  background-color: #FAFAFA;
+  height: 435px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.pets:hover {
+  background: #FFFFFF;
+}
+
+.pets:hover > div.pets__button > button {
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
+.pets__name {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.272rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding-top: 22px;
+}
+
+.pets__button {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.friends__button {
+  text-align: center;
+  padding: 60px 0 100px;
 }
 /*# sourceMappingURL=style.css.map */

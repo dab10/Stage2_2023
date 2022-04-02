@@ -1,0 +1,60 @@
+.our-friends {
+ background-color: $color-background;
+}
+
+.friends__title {
+    max-width: 400px;
+    color: $color-dark-title;
+    text-align: center;
+    margin: auto;
+    padding-top: 80px;
+}
+
+.friends__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.pets__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0 53px;
+}
+
+.pets {
+    background-color: $color-light-hovered;
+    height: 435px;
+    border-radius: 9px;
+    cursor: pointer;
+    @extend %transition;
+    &:hover {
+        background: $color-light;
+    }
+    &:hover > div.pets__button > button { 
+        background: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+}
+
+.pets__name {
+    @extend %font-prim;
+    @include font($size: 2.0rem, $height: 2.272rem);
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding-top: 22px;
+    
+}
+
+.pets__button {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.friends__button {
+
+    text-align: center;
+    padding: 60px 0 100px;
+}
