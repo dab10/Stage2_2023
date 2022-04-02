@@ -1,4 +1,4 @@
-.button {
+.button, .navigation__list, .navigation__link {
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
@@ -7,7 +7,7 @@ body, h1, h2, h3, h4, h5, .button {
   font-family: 'Georgia', serif;
 }
 
-.not-only__text {
+.logo__subtitle, .navigation, .not-only__text {
   font-family: 'Arial', sans-serif;
   font-style: normal;
 }
@@ -473,7 +473,74 @@ template {
 
 .header {
   position: absolute;
-  left: 50px;
+  top: 60.5px;
+  width: 100%;
+}
+
+.header__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.logo__link {
+  text-decoration: none;
+}
+
+.logo__title {
+  color: #F1CDB3;
+  margin: 0;
+}
+
+.logo__subtitle {
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.495rem;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-left: 4px;
+}
+
+.header__navigation {
+  margin-left: auto;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.4rem;
+  color: #CDCDCD;
+}
+
+.navigation__list {
+  list-style: none;
+  padding-left: 36px;
+  cursor: pointer;
+}
+
+.navigation__list:hover {
+  color: #FAFAFA;
+}
+
+.navigation__list:first-child::after {
+  content: '';
+  display: block;
+  border-bottom: 3px solid #F1CDB3;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+
+.navigation__link:hover {
+  color: #FAFAFA;
 }
 
 .not-only {

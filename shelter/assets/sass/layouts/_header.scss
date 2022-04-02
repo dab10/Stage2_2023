@@ -1,5 +1,67 @@
 .header {
     position: absolute;
-    left: 50px;
+    top: 60.5px;
+    width: 100%;
 }
 
+.header__wrapper {
+    display: flex;
+    
+}
+
+.logo__link {
+    text-decoration: none;
+}
+
+.logo__title {
+    color: $color-primary;
+    margin: 0;
+}
+
+.logo__subtitle {
+    @extend %font-add-normal;
+    @include font($size: 1.3rem, $height: 1.495rem);
+    letter-spacing: 0.1em;
+    color: $color-light;
+    padding-top: 10px;
+    padding-left: 4px;
+}
+
+.header__navigation {
+    margin-left: auto;
+}
+
+.navigation {
+    display: flex;
+    @extend %font-add-normal;
+    @include font($size: 1.5rem, $height: 2.4rem);
+    color: $color-light-gray;
+
+        
+}
+
+.navigation__list {
+    list-style: none;
+    padding-left: 36px;
+    cursor: pointer;
+    @extend %transition;
+    &:hover {
+        color: $color-light-hovered;
+    }
+    &:first-child::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid $color-primary;
+    
+    }
+}
+
+.navigation__link {
+    text-decoration: none;
+    color: $color-light-gray;
+    
+    @extend %transition;
+    &:hover {
+        color: $color-light-hovered;
+    }
+}
