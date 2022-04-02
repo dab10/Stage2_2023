@@ -22,7 +22,7 @@ h2 {
 
 h3 {
     @extend %font-prim;
-    @include font($size: 3.5rem, $height: 4.55rem);
+    @include font($size: 3.5rem, $height: 4.5rem);
     letter-spacing: 0.06em;
 }
 

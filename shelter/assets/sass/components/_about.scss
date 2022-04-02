@@ -1,0 +1,29 @@
+.about__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 175px 100px;
+    
+}
+
+.about__image {
+    height: 408px;
+}
+
+.about_content {
+    
+}
+
+.about__title {
+    max-width: 370px;
+    margin: 0;
+    padding-top: 15px;
+    color: $color-dark-add;
+}
+
+.about__text {
+    @extend %font-add-normal;
+    @include font($size: 1.5rem, $height: 2.4rem);
+    color: $color-dark-add;
+    max-width: 430px;
+    padding-top: 10px;
+}

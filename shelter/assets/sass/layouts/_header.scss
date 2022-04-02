@@ -23,7 +23,7 @@
     @include font($size: 1.3rem, $height: 1.495rem);
     letter-spacing: 0.1em;
     color: $color-light;
-    padding-top: 10px;
+    padding-top: 11px;
     padding-left: 4px;
 }
 
@@ -43,7 +43,9 @@
 .navigation__list {
     list-style: none;
     padding-left: 36px;
+    padding-top: 1px;
     cursor: pointer;
+    color: $color-light-hovered;
     @extend %transition;
     &:hover {
         color: $color-light-hovered;
