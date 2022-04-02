@@ -1,0 +1,74 @@
+.donation {
+    background-color: $color-background;
+}
+
+.donation__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 142px 100px 143px;
+}
+
+.donation__image {
+    height: 261px;
+}
+
+.donation__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+
+.donation__title {
+    max-width: 300px;
+    margin: 0;
+    color: $color-dark-title;
+}
+
+.donation__second-title {
+    max-width: 308px;
+    margin: 0;
+    padding-top: 21px;
+    color: $color-dark-title;
+}
+
+.donation__link {
+    display: inline-block;
+    background: $color-primary;
+    color: $color-dark-title;
+    max-width: 350px;
+    margin-top: 18px;
+    padding: 9.25px 15px;
+    border-radius: 9px;
+    text-decoration: none;
+    @extend %transition;
+    &:hover{
+        background: $color-primary-light;
+    }
+    
+}
+
+.card-img {
+    display: inline-block;
+    width: 30px;    
+    height: 23px;
+    background-image: url(/shelter/assets/icons/credit-card.svg);
+    background-size: 30px 23px;
+    vertical-align: middle;
+}
+
+.donation__link-text {
+    display: inline-block;
+    margin: 0;
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+.donation__text {
+    @extend %font-add-italic;
+    @include font($size: 1.2rem, $height: 1.8rem, $style: italic);
+    color: $color-italic;
+    max-width: 380px;
+    padding-top: 20px;
+}
+
