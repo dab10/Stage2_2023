@@ -1,24 +1,24 @@
-.header {
+.header-main {
     position: absolute;
     top: 60.5px;
     width: 100%;
 }
 
-.header__wrapper {
+.header-main__wrapper {
     display: flex;
     
 }
 
-.logo__link {
+.logo-main__link {
     text-decoration: none;
 }
 
-.logo__title {
+.logo-main__title {
     color: $color-primary;
     margin: 0;
 }
 
-.logo__subtitle {
+.logo-main__subtitle {
     @extend %font-add-normal;
     @include font($size: 1.3rem, $height: 1.495rem);
     letter-spacing: 0.1em;
@@ -27,11 +27,11 @@
     padding-left: 4px;
 }
 
-.header__navigation {
+.header-main__navigation {
     margin-left: auto;
 }
 
-.navigation {
+.navigation-main {
     display: flex;
     @extend %font-add-normal;
     @include font($size: 1.5rem, $height: 2.4rem);
@@ -40,7 +40,7 @@
         
 }
 
-.navigation__list {
+.navigation-main__list {
     list-style: none;
     padding-left: 36px;
     cursor: pointer;
@@ -57,7 +57,7 @@
     }
 }
 
-.navigation__link {
+.navigation-main__link {
     text-decoration: none;
     color: $color-light-gray;
     
