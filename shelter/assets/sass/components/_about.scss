@@ -16,7 +16,16 @@
     color: $color-dark-title;
 }
 
-.about__text {
+.about__first-text {
+    @extend %font-add-normal;
+    @include font($size: 1.5rem, $height: 2.4rem);
+    color: $color-dark-add;
+    max-width: 430px;
+    padding-top: 24px;
+    margin: 0;
+}
+
+.about__second-text {
     @extend %font-add-normal;
     @include font($size: 1.5rem, $height: 2.4rem);
     color: $color-dark-add;

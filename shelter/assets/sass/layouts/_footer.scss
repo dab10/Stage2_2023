@@ -1,0 +1,155 @@
+.footer {
+    background: url(/shelter/assets/images/noise_transparent@2x.png),   
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211F20; /*, linear-gradient(0deg, #211f20, #211f20);*/
+}
+
+.footer__first-title {
+    color: $color-light;
+    max-width: 279px;
+    margin: 0;
+    padding-top: 57px;
+}
+
+.footer__second-title {
+    color: $color-light;
+    max-width: 270px;
+    margin: 0;
+    padding-top: 57px;
+    margin-right: 28px;
+}
+
+.footer__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__mail {
+    padding-top: 13px;
+}
+
+.footer__tel {
+    margin: 0;
+    padding-top: 13px;
+}
+
+.footer__map-boston {
+    margin: 0;
+    padding-top: 33px;
+    margin-right: 4px;
+
+}
+
+.footer__map-london {
+    margin: 0;
+    padding-top: 8px;
+}
+
+
+
+.ico {
+    display: inline-block;
+    vertical-align: middle;
+    @extend %transition;
+    &:hover {
+        background-color: $color-light-hovered;
+    }
+}
+
+.ico_letter {
+    width: 40px;    
+    height: 26px;
+    background-color: $color-primary;
+    mask-image: url(/shelter/assets/icons/mail.svg);
+    background-size: 40px 26px;
+    margin-bottom: 3px;
+}
+
+.ico_phone {
+    width: 40px;    
+    height: 32px;
+    background-color: $color-primary;
+    mask-image: url(/shelter/assets/icons/phone.svg);
+    background-size: 40px 32px;
+    vertical-align: top;
+}
+
+.ico_map-boston {
+    width: 22px;    
+    height: 32px;
+    background-color: $color-primary;
+    mask-image: url(/shelter/assets/icons/pin.svg);
+    background-size: 22px 32px;
+    vertical-align: middle;
+    margin-bottom: 28px;
+    
+}
+
+.ico_map-london {
+    width: 22px;    
+    height: 32px;
+    background-color: $color-primary;
+    mask-image: url(/shelter/assets/icons/pin.svg);
+    background-size: 22px 32px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+.footer__link-mail {
+    display: inline-block;
+    color: $color-primary;
+    max-width: 263px;
+    padding-left: 14px;
+    margin-top: 4px;
+    text-decoration: none;
+    @extend %transition;
+    &:hover{
+        color: $color-light-hovered;
+    }
+    
+}
+
+.footer__link-tel {
+    display: inline-block;
+    color: $color-primary;
+    max-width: 263px;
+    padding-left: 14px;
+    margin-top: 5px;
+    text-decoration: none;
+    @extend %transition;
+    &:hover{
+        color: $color-light-hovered;
+    }
+    
+}
+
+.footer__link-map-boston {
+    display: inline-block;
+    color: $color-primary;
+    max-width: 270px;
+    padding-left: 13px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    @extend %transition;
+    &:hover{
+        color: $color-light-hovered;
+    }
+    
+}
+
+.footer__link-map-london {
+    display: inline-block;
+    color: $color-primary;
+    max-width: 270px;
+    padding-left: 13px;
+    padding-top: 9px;
+    text-decoration: none;
+    @extend %transition;
+    &:hover{
+        color: $color-light-hovered;
+    }
+    
+}
+
+.footer__image {
+    padding-top: 40px;
+}
