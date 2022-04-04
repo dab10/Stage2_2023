@@ -17,7 +17,8 @@
         "components/_about.scss",
         "components/_friends.scss",
         "components/_help.scss",
-        "components/_additional.scss"
+        "components/_additional.scss",
+        "pages/_header-pets.scss"
     ],
     "names": [],
     "file": "style.css"
