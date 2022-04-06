@@ -36,11 +36,16 @@
     @extend %transition;
     &:hover {
         background: $color-light;
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     }
     &:hover > div.pets__button > button { 
         background: $color-primary-light;
         border-color: $color-primary-light;
     }
+}
+
+.pets__image {
+    border-radius: 9px 9px 0px 0px;
 }
 
 .pets__name {
