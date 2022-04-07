@@ -1,0 +1,75 @@
+.header-pets {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 120px;
+    background-color: $color-light;
+}
+
+.header-pets__wrapper {
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo-pets {
+    height: 120px;
+}
+
+.logo-pets__link {
+    text-decoration: none;
+}
+
+.logo-pets__title {
+    color: $color-dark-title;
+    margin: 0;
+    margin-top: 30px;
+}
+
+.logo-pets__subtitle {
+    @extend %font-add-normal;
+    @include font($size: 1.3rem, $height: 1.495rem);
+    letter-spacing: 0.1em;
+    color: $color-dark;
+    padding-top: 10px;
+    padding-left: 4px;
+}
+
+.header-pets__navigation {
+    margin-left: auto;
+    //margin-bottom: 1px;
+}
+
+.navigation-pets {
+    display: flex;
+    @extend %font-add-normal;
+    @include font($size: 1.5rem, $height: 2.4rem);
+    color: $color-dark-title;
+}
+
+.navigation-pets__list {
+    list-style: none;
+    padding-left: 36px;
+    cursor: pointer;
+    color: $color-dark;
+    @extend %transition;
+    &:hover {
+        color: $color-dark;
+    }
+    &:nth-child(2)::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid $color-primary;
+    
+    }
+}
+
+.navigation-pets__link {
+    text-decoration: none;
+    color: $color-dark-title;
+    
+    @extend %transition;
+    &:hover {
+        color: $color-dark;
+    }
+}

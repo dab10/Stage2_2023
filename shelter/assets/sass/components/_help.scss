@@ -1,0 +1,97 @@
+.help__title {
+    max-width: 310px;
+    color: $color-dark-title;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 81px;
+
+}
+
+.help__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 55px 120px;
+    padding-top: 59px;
+    padding-bottom: 100px;
+}
+
+.help__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-position: center top;
+}
+
+.help__text {
+    margin: 0;
+    padding-top: 30px;
+    color: $color-dark-title;
+}
+
+.food-image {
+    width: 48px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-pet-food.svg);
+    background-size: 48px 60px;
+}
+
+.transport-image {
+    width: 61px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-transportation.svg);
+    background-size: 61px 60px;
+}
+
+.toys-image {
+    width: 60px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-toys.svg);
+    background-size: 60px 60px;
+}
+
+.cups-image {
+    width: 60px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-bowls-and-cups.svg);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+}
+
+.shamp-image {
+    width: 32px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-shampoos.svg);
+    background-size: 32px 60px;
+}
+
+.vita-image {
+    width: 60px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-vitamins.svg);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+}
+
+.med-image {
+    width: 60px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-medicines.svg);
+    background-size: 60px 60px;
+}
+
+.collars-image {
+    width: 60px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-collars-leashes.svg);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+}
+
+.sleep-image {
+    width: 57px;    
+    height: 60px;
+    background-image: url(/shelter/assets/icons/icon-sleeping-area.svg);
+    background-size: 57px 60px;
+}

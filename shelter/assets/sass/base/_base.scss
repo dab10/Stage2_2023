@@ -1,0 +1,39 @@
+html {
+    font-size: 10px;
+    scroll-behavior: smooth; 
+}
+
+body {
+    @extend %font-prim;
+    @include font($size: 1.6rem, $height: 2.6rem, $weight: normal);
+    
+}
+
+h1 {
+    @extend %font-prim;
+    @include font($size: 3.2rem, $height: 3.52rem);
+    letter-spacing: 0.06em;
+}
+
+h2 {
+    @extend %font-prim;
+    @include font($size: 4.4rem, $height: 5.72rem);
+}
+
+h3 {
+    @extend %font-prim;
+    @include font($size: 3.5rem, $height: 4.5rem);
+    letter-spacing: 0.06em;
+}
+
+h4 {
+    @extend %font-prim;
+    @include font($size: 2.0rem, $height: 2.3rem);
+    letter-spacing: 0.06em;
+}
+
+h5 {
+    @extend %font-prim;
+    @include font($size: 1.5rem, $height: 1.65rem);
+    letter-spacing: 0.06em;
+}

@@ -1,0 +1,74 @@
+.button {
+    @extend %font-prim;
+    @include font($size: 1.7rem, $height: 2.21rem);
+    letter-spacing: 0.06em;
+    border-radius: 100px;
+    padding: 13px 43px;
+    cursor: pointer;
+    @extend %transition;
+    &_bordered {
+        background: inherit;
+        border: 2px solid $color-primary;
+        color: $color-dark;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+    &_colored {
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+
+}
+
+
+
+.button-circle {
+    @extend %font-prim;
+    @include font($size: 1.5rem, $height: 1.5rem);
+    letter-spacing: 0.06em;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    cursor: pointer;
+    @extend %transition;
+    &_bordered {
+        background-color: inherit;
+        border: 2px solid $color-primary;
+        color: $color-dark;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+    &_colored {
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+    &_colored-numb {
+       
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        cursor: auto;
+
+        
+    }
+
+
+}
+
+.no-cursor {
+    cursor: auto;
+}
