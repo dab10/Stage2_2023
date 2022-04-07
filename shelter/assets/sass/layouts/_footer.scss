@@ -1,5 +1,5 @@
 .footer {
-    background: url(../../images/noise_transparent@2x.png),   
+    background: url(../../assets/images/noise_transparent@2x.png),   
     radial-gradient(110.67% 538.64% at 5.73% 0%, #513D2F 0%, #1A1A1C 69%), #211F20;
 }
 
@@ -58,7 +58,7 @@
     width: 40px;    
     height: 26px;
     background-color: $color-primary;
-    mask-image: url(../../icons/mail.svg);
+    mask-image: url(../../assets/icons/mail.svg);
     background-size: 40px 26px;
     margin-bottom: 3px;
 }
@@ -67,7 +67,7 @@
     width: 40px;    
     height: 32px;
     background-color: $color-primary;
-    mask-image: url(../../icons/phone.svg);
+    mask-image: url(../../assets/icons/phone.svg);
     background-size: 40px 32px;
     vertical-align: top;
 }
@@ -76,7 +76,7 @@
     width: 22px;    
     height: 32px;
     background-color: $color-primary;
-    mask-image: url(../../icons/pin.svg);
+    mask-image: url(../../assets/icons/pin.svg);
     background-size: 22px 32px;
     vertical-align: middle;
     margin-bottom: 28px;
@@ -89,7 +89,7 @@
     width: 22px;    
     height: 32px;
     background-color: $color-primary;
-    mask-image: url(../../icons/pin.svg);
+    mask-image: url(../../assets/icons/pin.svg);
     background-size: 22px 32px;
     vertical-align: middle;
     margin-bottom: 5px;

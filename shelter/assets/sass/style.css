@@ -496,21 +496,21 @@ template {
 
 @font-face {
   font-family: 'Georgia';
-  src: url("../../fonts/georgia/georgia-regular.ttf");
+  src: url("../../assets/fonts/georgia/georgia-regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arial';
-  src: url("../../fonts/arial/arial-regular.ttf");
+  src: url("../../assets/fonts/arial/arial-regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arial';
-  src: url("../../fonts/arial/arial-italic.ttf");
+  src: url("../../assets/fonts/arial/arial-italic.ttf");
   font-weight: 400;
   font-style: italic;
 }
@@ -595,7 +595,7 @@ template {
 }
 
 .footer {
-  background: url(../../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 0%, #513D2F 0%, #1A1A1C 69%), #211F20;
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 0%, #513D2F 0%, #1A1A1C 69%), #211F20;
 }
 
 .footer__first-title {
@@ -654,8 +654,8 @@ template {
   width: 40px;
   height: 26px;
   background-color: #F1CDB3;
-  -webkit-mask-image: url(../../icons/mail.svg);
-          mask-image: url(../../icons/mail.svg);
+  -webkit-mask-image: url(../../assets/icons/mail.svg);
+          mask-image: url(../../assets/icons/mail.svg);
   background-size: 40px 26px;
   margin-bottom: 3px;
 }
@@ -664,8 +664,8 @@ template {
   width: 40px;
   height: 32px;
   background-color: #F1CDB3;
-  -webkit-mask-image: url(../../icons/phone.svg);
-          mask-image: url(../../icons/phone.svg);
+  -webkit-mask-image: url(../../assets/icons/phone.svg);
+          mask-image: url(../../assets/icons/phone.svg);
   background-size: 40px 32px;
   vertical-align: top;
 }
@@ -674,8 +674,8 @@ template {
   width: 22px;
   height: 32px;
   background-color: #F1CDB3;
-  -webkit-mask-image: url(../../icons/pin.svg);
-          mask-image: url(../../icons/pin.svg);
+  -webkit-mask-image: url(../../assets/icons/pin.svg);
+          mask-image: url(../../assets/icons/pin.svg);
   background-size: 22px 32px;
   vertical-align: middle;
   margin-bottom: 28px;
@@ -685,8 +685,8 @@ template {
   width: 22px;
   height: 32px;
   background-color: #F1CDB3;
-  -webkit-mask-image: url(../../icons/pin.svg);
-          mask-image: url(../../icons/pin.svg);
+  -webkit-mask-image: url(../../assets/icons/pin.svg);
+          mask-image: url(../../assets/icons/pin.svg);
   background-size: 22px 32px;
   vertical-align: middle;
   margin-bottom: 5px;
@@ -749,7 +749,7 @@ template {
 }
 
 .not-only {
-  background: url(../../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 69%), #211F20;
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 69%), #211F20;
   /*, linear-gradient(0deg, #211f20, #211f20);*/
 }
 
@@ -965,28 +965,28 @@ template {
 .food-image {
   width: 48px;
   height: 60px;
-  background-image: url(../../icons/icon-pet-food.svg);
+  background-image: url(../../assets/icons/icon-pet-food.svg);
   background-size: 48px 60px;
 }
 
 .transport-image {
   width: 61px;
   height: 60px;
-  background-image: url(../../icons/icon-transportation.svg);
+  background-image: url(../../assets/icons/icon-transportation.svg);
   background-size: 61px 60px;
 }
 
 .toys-image {
   width: 60px;
   height: 60px;
-  background-image: url(../../icons/icon-toys.svg);
+  background-image: url(../../assets/icons/icon-toys.svg);
   background-size: 60px 60px;
 }
 
 .cups-image {
   width: 60px;
   height: 60px;
-  background-image: url(../../icons/icon-bowls-and-cups.svg);
+  background-image: url(../../assets/icons/icon-bowls-and-cups.svg);
   background-size: 60px 60px;
   background-repeat: no-repeat;
 }
@@ -994,14 +994,14 @@ template {
 .shamp-image {
   width: 32px;
   height: 60px;
-  background-image: url(../../icons/icon-shampoos.svg);
+  background-image: url(../../assets/icons/icon-shampoos.svg);
   background-size: 32px 60px;
 }
 
 .vita-image {
   width: 60px;
   height: 60px;
-  background-image: url(../../icons/icon-vitamins.svg);
+  background-image: url(../../assets/icons/icon-vitamins.svg);
   background-size: 60px 60px;
   background-repeat: no-repeat;
 }
@@ -1009,14 +1009,14 @@ template {
 .med-image {
   width: 60px;
   height: 60px;
-  background-image: url(../../icons/icon-medicines.svg);
+  background-image: url(../../assets/icons/icon-medicines.svg);
   background-size: 60px 60px;
 }
 
 .collars-image {
   width: 60px;
   height: 60px;
-  background-image: url(../../icons/icon-collars-leashes.svg);
+  background-image: url(../../assets/icons/icon-collars-leashes.svg);
   background-size: 60px 60px;
   background-repeat: no-repeat;
 }
@@ -1024,7 +1024,7 @@ template {
 .sleep-image {
   width: 57px;
   height: 60px;
-  background-image: url(../../icons/icon-sleeping-area.svg);
+  background-image: url(../../assets/icons/icon-sleeping-area.svg);
   background-size: 57px 60px;
 }
 
