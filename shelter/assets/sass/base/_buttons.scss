@@ -56,5 +56,19 @@
             border-color: $color-primary-light;
         }
     }
+    &_colored-numb {
+       
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        cursor: auto;
 
+        
+    }
+
+
+}
+
+.no-cursor {
+    cursor: auto;
 }
