@@ -965,7 +965,7 @@ template {
 .food-image {
   width: 48px;
   height: 60px;
-  background-image: url(/shelter/assets/icons/icon-pet-food.svg);
+  background-image: url(../../icons/icon-pet-food.svg);
   background-size: 48px 60px;
 }
 
