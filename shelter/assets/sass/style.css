@@ -1178,11 +1178,11 @@ template {
   list-style: none;
   padding-left: 36px;
   cursor: pointer;
-  color: #292929;
+  color: #545454;
 }
 
 .navigation-pets__list:hover {
-  color: #292929;
+  color: #545454;
 }
 
 .navigation-pets__list:nth-child(2)::after {
