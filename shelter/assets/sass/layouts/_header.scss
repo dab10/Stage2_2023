@@ -12,6 +12,9 @@
 
 .header-main__wrapper {
     display: flex;
+    @include media-mobile {
+        padding-right: 53px;
+    }
     
 }
 
