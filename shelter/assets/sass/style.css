@@ -515,16 +515,91 @@ template {
   font-style: italic;
 }
 
+.hamburger {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 22px;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    display: inline-block;
+    margin-left: auto;
+    margin-top: 18px;
+    margin-right: 43px;
+  }
+}
+
+.hamburger:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: #F1CDB3;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+.hamburger:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: #F1CDB3;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+}
+
+.hamburger__line {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: #F1CDB3;
+  width: 100%;
+  height: 2px;
+  top: calc( 50% - 1px);
+  left: 0;
+  margin: 0;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 0;
 }
 
+@media (max-width: 1279px) {
+  .wrapper {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 0 10px;
+  }
+}
+
 .header-main {
   position: absolute;
   top: 61px;
   width: 100%;
+}
+
+@media (max-width: 1279px) {
+  .header-main {
+    top: 31px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-main {
+    top: 31px;
+  }
 }
 
 .header-main__wrapper {
@@ -555,6 +630,12 @@ template {
 
 .header-main__navigation {
   margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .header-main__navigation {
+    display: none;
+  }
 }
 
 .navigation-main {

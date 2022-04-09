@@ -2,6 +2,12 @@
     position: absolute;
     top: 61px;
     width: 100%;
+    @include media-tablet {
+        top: 31px;
+    }
+    @include media-mobile {
+        top: 31px;
+    }
 }
 
 .header-main__wrapper {
@@ -16,6 +22,7 @@
 .logo-main__title {
     color: $color-primary;
     margin: 0;
+
 }
 
 .logo-main__subtitle {
@@ -29,6 +36,9 @@
 
 .header-main__navigation {
     margin-left: auto;
+    @include media-mobile {
+        display: none;
+    }
 }
 
 .navigation-main {
