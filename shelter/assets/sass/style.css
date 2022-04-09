@@ -970,8 +970,65 @@ template {
   padding: 80px 175px 100px;
 }
 
+@media (max-width: 1279px) {
+  .about__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 81px 169px 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 10px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+}
+
 .about__image {
+  background-image: url(../../assets/images/about-pets.png);
+  background-repeat: no-repeat;
+  width: 300px;
   height: 408px;
+}
+
+@media (max-width: 1279px) {
+  .about__image {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    max-width: 300px;
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__image {
+    background-image: url(../../assets/images/about-pets-mobile.png);
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 354px;
+    margin-top: 41px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .about__content {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin: auto;
+  }
 }
 
 .about__title {
@@ -979,6 +1036,25 @@ template {
   margin: 0;
   padding-top: 15px;
   color: #545454;
+}
+
+@media (max-width: 1279px) {
+  .about__title {
+    padding-top: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__title {
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
+    margin: auto;
+    text-align: center;
+    max-width: 260px;
+  }
 }
 
 .about__first-text {
@@ -992,6 +1068,21 @@ template {
   margin: 0;
 }
 
+@media (max-width: 1279px) {
+  .about__first-text {
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__first-text {
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: justify;
+  }
+}
+
 .about__second-text {
   font-size: 1.5rem;
   font-style: normal;
@@ -1001,6 +1092,21 @@ template {
   max-width: 430px;
   padding-top: 25px;
   margin: 0;
+}
+
+@media (max-width: 1279px) {
+  .about__second-text {
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__second-text {
+    padding-top: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: justify;
+  }
 }
 
 .our-friends {
