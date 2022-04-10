@@ -31,7 +31,7 @@
 
 .button-circle {
     @extend %font-prim;
-    @include font($size: 1.5rem, $height: 1.5rem);
+    @include font($size: 1.5rem, $height: 0rem);
     letter-spacing: 0.06em;
     width: 52px;
     height: 52px;
@@ -62,10 +62,11 @@
         color: $color-dark;
         border: 2px solid $color-primary;
         cursor: auto;
-
-        
     }
-
+    @include media-tablet {
+        @include font($size: 1.5rem, $height: 0rem);
+        letter-spacing: 0.06em;
+    }
 
 }
 
