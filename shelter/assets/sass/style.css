@@ -1528,8 +1528,64 @@ template {
   padding: 80px 142px 100px 143px;
 }
 
+@media (max-width: 1279px) {
+  .donation__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    padding: 80px 132px 100px 131px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation__wrapper {
+    padding: 0 10px 41px 10px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation__card {
+    text-align: center;
+  }
+}
+
 .donation__image {
+  background-image: url(../../assets/images/donation-dog.png);
+  background-repeat: no-repeat;
+  width: 505px;
   height: 261px;
+}
+
+@media (max-width: 1279px) {
+  .donation__image {
+    margin: auto;
+    margin-top: 60px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 505px;
+    height: 261px;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation__image {
+    background-image: url(../../assets/images/donation-dog-mobile.png);
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 136px;
+    margin: auto;
+    margin-top: 42px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
 }
 
 .donation__content {
@@ -1543,6 +1599,15 @@ template {
   max-width: 380px;
 }
 
+@media (max-width: 1279px) {
+  .donation__content {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin: auto;
+  }
+}
+
 .donation__title {
   max-width: 300px;
   margin: 0;
@@ -1550,11 +1615,40 @@ template {
   color: #545454;
 }
 
+@media (max-width: 767px) {
+  .donation__title {
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
+    padding-top: 42px;
+    margin: auto;
+    text-align: center;
+    max-width: 220px;
+  }
+}
+
 .donation__second-title {
   max-width: 308px;
   margin: 0;
   padding-top: 20px;
   color: #545454;
+}
+
+@media (max-width: 767px) {
+  .donation__second-title {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.4rem;
+    letter-spacing: 0em;
+    padding-top: 20px;
+    padding-right: 1px;
+    margin: auto;
+    text-align: center;
+    max-width: 300px;
+  }
 }
 
 .donation__link {
@@ -1570,6 +1664,22 @@ template {
 
 .donation__link:hover {
   background: #FDDCC4;
+}
+
+@media (max-width: 1279px) {
+  .donation__link {
+    margin-top: 19px;
+    padding: 7px 15px 11.5px;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation__link {
+    max-width: 281px;
+    padding: 7.5px 15px 9.5px 14px;
+    max-width: 281px;
+    margin-top: 20px;
+  }
 }
 
 .card-img {
@@ -1588,6 +1698,19 @@ template {
   vertical-align: middle;
 }
 
+@media (max-width: 767px) {
+  .donation__link-text {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.7rem;
+    letter-spacing: 0.06em;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+  }
+}
+
 .donation__text {
   font-size: 1.2rem;
   font-style: italic;
@@ -1596,6 +1719,19 @@ template {
   color: #B2B2B2;
   max-width: 380px;
   padding-top: 20px;
+}
+
+@media (max-width: 1279px) {
+  .donation__text {
+    padding-top: 19px;
+  }
+}
+
+@media (max-width: 767px) {
+  .donation__text {
+    padding: 20px 10px 0 10px;
+    text-align: justify;
+  }
 }
 
 .header-pets {
