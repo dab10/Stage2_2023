@@ -8,6 +8,16 @@
     max-width: 279px;
     margin: 0;
     padding-top: 57px;
+    @include media-tablet {
+        padding-top: 31px;
+    }
+    @include media-mobile {
+        @include font($size: 2.5rem, $height: 3.2rem);
+        letter-spacing: 0.06em;
+        margin: auto;
+        text-align: center;
+        padding-top: 30px;
+    }
 }
 
 .footer__second-title {
@@ -15,32 +25,68 @@
     max-width: 270px;
     margin: 0;
     padding-top: 57px;
+    margin-right: 1px;
+    @include media-tablet {
+        padding-top: 31px;
+    }
+    @include media-mobile {
+        @include font($size: 2.5rem, $height: 3.2rem);
+        letter-spacing: 0.06em;
+        margin: auto;
+        text-align: center;
+        max-width: 270px;
+        padding-top: 40px;
+
+    }
 }
 
 .footer__wrapper {
     display: flex;
     justify-content: space-between;
+    @include media-tablet {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 60px 60px;
+    }
+    @include media-mobile {
+        max-width: 320px;
+        gap: 0px 0px;
+    }
 }
 
 .footer__mail {
     padding-top: 13px;
+    @include media-mobile {
+        padding-top: 14px;
+        text-align: center;
+    }
 }
 
 .footer__tel {
     margin: 0;
     padding-top: 13px;
+    @include media-mobile {
+        text-align: center;
+    }
 }
 
 .footer__map-boston {
     margin: 0;
     padding-top: 33px;
     margin-right: 4px;
-
+    @include media-mobile {
+        padding-top: 40px;
+        margin-right: 0px;
+    }
 }
 
 .footer__map-london {
     margin: 0;
     padding-top: 8px;
+    @include media-mobile {
+        padding-top: 15px;
+       
+    }
 }
 
 
@@ -80,7 +126,10 @@
     background-size: 22px 32px;
     vertical-align: middle;
     margin-bottom: 28px;
-    
+    @include media-mobile {
+        margin-bottom: 26px;
+       margin-right: 1px;
+    }
     
     
 }
@@ -93,6 +142,10 @@
     background-size: 22px 32px;
     vertical-align: middle;
     margin-bottom: 5px;
+    @include media-mobile {
+        margin-bottom: 2px;
+       
+    }
     
 }
 
@@ -135,7 +188,9 @@
     &:hover{
         color: $color-light-hovered;
     }
-    
+    @include media-mobile {
+        padding-left: 12px;
+    }
 }
 
 .footer__link-map-london {
@@ -149,9 +204,27 @@
     &:hover{
         color: $color-light-hovered;
     }
-    
+
 }
 
 .footer__image {
-    padding-top: 40px;
+    background-image: url(../../assets/images/footer-puppy.png);
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 310px;
+    
+    margin-top: 40px;
+    
+    @include media-tablet {
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+    @include media-mobile {
+        background-image: url(../../assets/images/footer-puppy-mobile.png);
+        background-repeat: no-repeat;
+        width: 260px;
+        height: 269px;
+        margin: auto;
+        margin-top: 38px;
+    }
 }

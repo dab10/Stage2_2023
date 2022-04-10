@@ -31,7 +31,7 @@
 
 .button-circle {
     @extend %font-prim;
-    @include font($size: 1.5rem, $height: 0rem);
+    @include font($size: 1.5rem, $height: 1.5rem);
     letter-spacing: 0.06em;
     width: 52px;
     height: 52px;
