@@ -1277,6 +1277,18 @@ template {
   padding-top: 81px;
 }
 
+@media (max-width: 767px) {
+  .help__title {
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
+    max-width: 222px;
+    padding-top: 42px;
+  }
+}
+
 .help__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1289,6 +1301,22 @@ template {
   gap: 55px 120px;
   padding-top: 59px;
   padding-bottom: 100px;
+}
+
+@media (max-width: 1279px) {
+  .help__wrapper {
+    gap: 55px 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .help__wrapper {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 30px 30px;
+    padding: 42px 5px 42px;
+  }
 }
 
 .help__items {
@@ -1305,10 +1333,35 @@ template {
   background-position: center top;
 }
 
+@media (max-width: 1279px) {
+  .help__items {
+    width: 170px;
+    height: 113px;
+  }
+}
+
+@media (max-width: 767px) {
+  .help__items {
+    width: 130px;
+    height: 87px;
+  }
+}
+
 .help__text {
   margin: 0;
   padding-top: 30px;
   color: #545454;
+}
+
+@media (max-width: 767px) {
+  .help__text {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.65rem;
+    letter-spacing: 0.06em;
+    padding-top: 21px;
+  }
 }
 
 .food-image {
@@ -1318,6 +1371,15 @@ template {
   background-size: 48px 60px;
 }
 
+@media (max-width: 767px) {
+  .food-image {
+    width: 40px;
+    height: 50px;
+    background-image: url(../../assets/icons/food-mobile.svg);
+    background-size: 40px 50px;
+  }
+}
+
 .transport-image {
   width: 61px;
   height: 60px;
@@ -1325,11 +1387,29 @@ template {
   background-size: 61px 60px;
 }
 
+@media (max-width: 767px) {
+  .transport-image {
+    width: 51px;
+    height: 50px;
+    background-image: url(../../assets/icons/transportation-mobile.svg);
+    background-size: 51px 50px;
+  }
+}
+
 .toys-image {
   width: 60px;
   height: 60px;
   background-image: url(../../assets/icons/icon-toys.svg);
   background-size: 60px 60px;
+}
+
+@media (max-width: 767px) {
+  .toys-image {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/icons/toys-mobile.svg);
+    background-size: 50px 50px;
+  }
 }
 
 .cups-image {
@@ -1340,11 +1420,29 @@ template {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px) {
+  .cups-image {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/icons/bowls-and-cups-mobile.svg);
+    background-size: 50px 50px;
+  }
+}
+
 .shamp-image {
   width: 32px;
   height: 60px;
   background-image: url(../../assets/icons/icon-shampoos.svg);
   background-size: 32px 60px;
+}
+
+@media (max-width: 767px) {
+  .shamp-image {
+    width: 27px;
+    height: 50px;
+    background-image: url(../../assets/icons/shampoos-mobile.svg);
+    background-size: 27px 50px;
+  }
 }
 
 .vita-image {
@@ -1355,11 +1453,29 @@ template {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px) {
+  .vita-image {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/icons/vitamins-mobile.svg);
+    background-size: 50px 50px;
+  }
+}
+
 .med-image {
   width: 60px;
   height: 60px;
   background-image: url(../../assets/icons/icon-medicines.svg);
   background-size: 60px 60px;
+}
+
+@media (max-width: 767px) {
+  .med-image {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/icons/medicines-mobile.svg);
+    background-size: 50px 50px;
+  }
 }
 
 .collars-image {
@@ -1370,11 +1486,29 @@ template {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px) {
+  .collars-image {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/icons/collars-or-leashes-mobile.svg);
+    background-size: 50px 50px;
+  }
+}
+
 .sleep-image {
   width: 57px;
   height: 60px;
   background-image: url(../../assets/icons/icon-sleeping-area.svg);
   background-size: 57px 60px;
+}
+
+@media (max-width: 767px) {
+  .sleep-image {
+    width: 48px;
+    height: 50px;
+    background-image: url(../../assets/icons/sleeping-area-mobile.svg);
+    background-size: 48px 50px;
+  }
 }
 
 .donation {
