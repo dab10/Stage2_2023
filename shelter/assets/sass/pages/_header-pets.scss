@@ -9,6 +9,9 @@
 .header-pets__wrapper {
     display: flex;
     align-items: center;
+    @include media-mobile {
+        padding-right: 53px;
+    }
     
 }
 
@@ -38,6 +41,9 @@
 .header-pets__navigation {
     margin-left: auto;
     margin-bottom: 1px;
+    @include media-mobile {
+        display: none;
+    }
 }
 
 .navigation-pets {
