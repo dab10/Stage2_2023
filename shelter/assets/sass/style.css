@@ -2015,6 +2015,41 @@ template {
   color: #292929;
 }
 
+.friends-pets__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 59px;
+}
+
+@media (max-width: 1279px) {
+  .friends-pets__wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: auto;
+    padding-top: 29px;
+  }
+}
+
+@media (max-width: 767px) {
+  .friends-pets__wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 42px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 20px 80px;
+  }
+}
+
 .pets-pets__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2025,6 +2060,15 @@ template {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   row-gap: 30px;
+}
+
+@media (max-width: 1279px) {
+  .pets-pets__wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 30px 40px;
+  }
 }
 
 .buttons__wrapper {
@@ -2040,8 +2084,54 @@ template {
   padding-bottom: 100px;
 }
 
+@media (max-width: 1279px) {
+  .buttons__wrapper {
+    padding-top: 40px;
+    padding-bottom: 76px;
+  }
+}
+
+@media (max-width: 767px) {
+  .buttons__wrapper {
+    -webkit-column-gap: 10px;
+            column-gap: 10px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+}
+
 .button-numb__text {
   margin: auto;
   margin-bottom: 1px;
+}
+
+@media (max-width: 1279px) {
+  .scarlett {
+    display: none;
+  }
+}
+
+@media (max-width: 1279px) {
+  .freddie {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .sophia {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .timmy {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .charly {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
