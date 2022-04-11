@@ -146,6 +146,7 @@ button:disabled,
 button[disabled] {
   border: 2px solid #CDCDCD;
   color: #CDCDCD;
+  background-color: #F6F6F6;
 }
 
 .no-cursor {
