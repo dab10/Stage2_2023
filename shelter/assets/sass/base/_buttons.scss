@@ -68,6 +68,14 @@
     }
 
 
+
+}
+
+button:disabled,
+button[disabled]{
+  border: 2px solid $color-light-gray;
+  color: $color-light-gray;
+
 }
 
 .no-cursor {
