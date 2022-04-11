@@ -3,7 +3,7 @@
   transition: all .3s ease-out;
 }
 
-body, h1, h2, h3, h4, h5, .button, .button-circle, .pets__name {
+body, h1, h2, h3, h4, h5, .button, .button-circle, .pets__name, .button-numb__text {
   font-family: 'Georgia', serif;
 }
 
@@ -2107,6 +2107,11 @@ template {
 }
 
 .button-numb__text {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.3rem;
+  letter-spacing: 0.06em;
   margin: auto;
   margin-bottom: 1px;
 }
