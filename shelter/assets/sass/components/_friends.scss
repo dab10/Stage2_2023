@@ -46,10 +46,10 @@
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 0 53px;
+    max-width: 990px;
     @include media-tablet {
         
-        padding: 0 12px;
+        max-width: 580px;
         
         
     }

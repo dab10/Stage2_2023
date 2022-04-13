@@ -15,6 +15,7 @@
         padding-top: 42px;
         flex-wrap: wrap;
         gap: 20px 80px;
+        max-width: 300px;
 
     }
 }
@@ -27,6 +28,7 @@
     @include media-tablet {
         justify-content: center;
         gap: 30px 40px;
+        max-width: 708px;
     }
 
 }

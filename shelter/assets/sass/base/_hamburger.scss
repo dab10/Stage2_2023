@@ -4,6 +4,7 @@
     width: 30px;
     height: 22px;
     margin: 0;
+    cursor: pointer;
     @include media-mobile {
         display: inline-block;
         margin-left: auto;
@@ -52,6 +53,7 @@
     width: 30px;
     height: 22px;
     margin: 0;
+    cursor: pointer;
     @include media-mobile {
         display: inline-block;
 

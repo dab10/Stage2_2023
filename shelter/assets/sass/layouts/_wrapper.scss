@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 0 0;
     @include media-tablet {
+        max-width: 1279px;
         padding: 0 30px;
     }
     @include media-mobile {

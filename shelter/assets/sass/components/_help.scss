@@ -21,12 +21,28 @@
     padding-top: 59px;
     padding-bottom: 100px;
     @include media-tablet {
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // grid-template-rows: repeat(3, 1fr);
+        // gap: 55px 0px;
+        // justify-items: center;
+        // margin-left: 10px;
+        // margin-right: 9px;
         gap: 55px 60px;
+        max-width: 708px;
+        margin: 0 auto;
     }
     @include media-mobile {
-        justify-content: space-between;
-        gap: 30px 30px;
-        padding: 42px 5px 42px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 30px 20px;
+        justify-items: center;
+        padding-top: 42px;
+        padding-bottom: 42px;
+        //justify-content: space-between;
+        //gap: 30px 30px;
+        //padding: 42px 5px 42px;
     }
 }
 
@@ -40,7 +56,7 @@
         height: 113px;
     }
     @include media-mobile {
-        width: 130px;
+        width: 128px;
         height: 87px;
     }
 }
