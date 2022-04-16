@@ -13,12 +13,17 @@
         flex-direction: column;
         padding-top: 151px;
         justify-items: center;
+        max-width: 708px;
+        padding-left: 0px;
+        padding-right: 0px;
         //height: 1165px;
     }    
     @include media-mobile {
 
         padding-top: 150px;
-
+        max-width: 300px;
+        padding-left: 0px;
+        padding-right: 0px;
     }    
     
 }

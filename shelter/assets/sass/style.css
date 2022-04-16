@@ -1230,12 +1230,18 @@ template {
             flex-direction: column;
     padding-top: 151px;
     justify-items: center;
+    max-width: 708px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
 @media (max-width: 767px) {
   .not-only__wrapper {
     padding-top: 150px;
+    max-width: 300px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
@@ -1356,7 +1362,8 @@ template {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: 0 10px;
+    max-width: 300px;
+    padding: 0;
     padding-top: 42px;
     padding-bottom: 42px;
   }
