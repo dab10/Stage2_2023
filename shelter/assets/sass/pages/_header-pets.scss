@@ -1,5 +1,6 @@
 .header-pets {
     position: sticky;
+    z-index: 1;
     top: 0;
     width: 100%;
     height: 120px;
@@ -18,6 +19,7 @@
 .logo-pets {
     height: 120px;
 }
+
 
 .logo-pets__link {
     text-decoration: none;
@@ -42,7 +44,18 @@
     margin-left: auto;
     margin-bottom: 1px;
     @include media-mobile {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        z-index: 4;
+        top: 0px;
+        right: -320px;
+        width: 320px;
+        height: 823px;
+        background-color: $color-dark;
+        overflow-x: hidden;
+        transition: 0.5s;
+
     }
 }
 
@@ -51,7 +64,24 @@
     @extend %font-add-normal;
     @include font($size: 1.5rem, $height: 2.4rem);
     color: $color-dark-title;
+    @include media-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include font($size: 3.2rem, $height: 5.1rem);
+        padding-left: 0px;
+        padding-top: 249px;
+        margin: 0;
+        row-gap: 40px;
+    }
 }
+
+.open-pets {
+    @include media-mobile {
+        right: 0px;
+    } 
+}
+
 
 .navigation-pets__list {
     list-style: none;
@@ -68,6 +98,9 @@
         border-bottom: 3px solid $color-primary;
     
     }
+    @include media-mobile {
+        padding-left: 0px;
+    }
 }
 
 .navigation-pets__link {
@@ -77,5 +110,29 @@
     @extend %transition;
     &:hover {
         color: $color-dark;
+    }
+    @include media-mobile {
+        &.is-active-menu {
+            color: $color-light-gray;
+        }
+        &.is-active-menu:hover {
+            color: $color-light-hovered;
+        }
+    }
+
+}
+
+.link-pets-light {
+    color: $color-dark-title;
+    &:hover {
+        color: $color-dark-title;
+    }
+    @include media-mobile {
+        &.is-active-menu {
+            color: $color-light-hovered;
+        }
+        &.is-active-menu:hover {
+            color: $color-light-hovered;
+        }
     }
 }
