@@ -63,10 +63,19 @@
         color: $color-dark;
         border: 2px solid $color-primary;
         cursor: auto;
-
-        
+    }
+    @include media-tablet {
+        @include font($size: 1.5rem, $height: 0rem);
+        letter-spacing: 0.06em;
     }
 
+}
+
+button:disabled,
+button[disabled]{
+  border: 2px solid $color-light-gray;
+  color: $color-light-gray;
+  background-color: $color-background;
 
 
 }

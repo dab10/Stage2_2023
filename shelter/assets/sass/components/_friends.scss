@@ -8,6 +8,14 @@
     text-align: center;
     margin: auto;
     padding-top: 81px;
+    @include media-mobile {
+        @include font($size: 2.5rem, $height: 3.2rem);
+        letter-spacing: 0.06em;
+        margin: auto;
+        text-align: center;
+        padding-top: 42px;
+        max-width: 300px;
+    }
 }
 
 .empty {
@@ -19,13 +27,37 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 59px;
+    @include media-tablet {
+        margin: auto;
+        max-width: 708px;
+        
+        
+    }
+    @include media-mobile {
+        justify-content: center;
+        padding-top: 42px;
+        flex-wrap: wrap;
+        gap: 20px 80px;
+
+    }
 }
 
 .pets__wrapper {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 0 53px;
+    max-width: 990px;
+    @include media-tablet {
+        
+        max-width: 580px;
+        
+        
+    }
+    @include media-mobile {
+        justify-content: center;
+        order: -1;
+        flex-basis: 100%;
+    }
 }
 
 .pets {
@@ -42,6 +74,13 @@
         background: $color-primary-light;
         border-color: $color-primary-light;
     }
+    @include media-tablet {
+        
+      //  flex-shrink: 1;
+       
+        
+    }
+
 }
 
 .pets__image {
@@ -66,4 +105,23 @@
 
     text-align: center;
     padding: 60px 0 100px;
+    @include media-tablet {
+        padding: 60px 0 99.93px;
+    }
+    @include media-mobile {
+        padding: 42px 0 42px;
+    }
+
+}
+
+.woody { 
+    @include media-tablet {
+        display: none;
+    }
+}
+
+.jennifer {
+    @include media-mobile {
+        display: none;
+    }
 }

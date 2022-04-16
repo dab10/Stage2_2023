@@ -2,11 +2,45 @@
     position: absolute;
     top: 61px;
     width: 100%;
+    @include media-tablet {
+        top: 31px;
+    }
+    @include media-mobile {
+        top: 31px;
+    }
 }
 
 .header-main__wrapper {
     display: flex;
+    @include media-mobile {
+        padding-right: 53px;
+    }
     
+}
+
+
+.logo-main-double {
+    display: none;
+    @include media-mobile {
+        display: block;
+        position: fixed;
+        z-index: 4;
+        top: 31px;
+        right: -320px;
+        transition: 0.5s;
+    }
+}
+
+.logo-pets-double {
+    display: none;
+    @include media-mobile {
+        display: block;
+        position: fixed;
+        z-index: 4;
+        top: 31px;
+        right: -320px;
+        transition: 0.5s;
+    }
 }
 
 .logo-main__link {
@@ -16,6 +50,15 @@
 .logo-main__title {
     color: $color-primary;
     margin: 0;
+}
+
+.logo-main__title-double {
+    @include media-mobile {
+        @include font($size: 3.2rem, $height: 3.52rem);
+        letter-spacing: 0.06em;
+        color: $color-primary;
+        margin: 0;
+    }
 }
 
 .logo-main__subtitle {
@@ -29,6 +72,20 @@
 
 .header-main__navigation {
     margin-left: auto;
+    @include media-mobile {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        z-index: 4;
+        top: 0px;
+        right: -320px;
+        width: 320px;
+        height: 823px;
+        background-color: $color-dark;
+        overflow-x: hidden;
+        transition: 0.5s;
+
+    }
 }
 
 .navigation-main {
@@ -36,24 +93,47 @@
     @extend %font-add-normal;
     @include font($size: 1.5rem, $height: 2.4rem);
     color: $color-light-gray;
-
+    @include media-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include font($size: 3.2rem, $height: 5.1rem);
+        padding-left: 0px;
+        padding-top: 249px;
+        margin: 0;
+        row-gap: 40px;
+    }
         
+}
+
+
+.open {
+    @include media-mobile {
+        right: 0px;
+    } 
+}
+
+
+.open-logo {
+    @include media-mobile {
+        right: 124px;
+    } 
 }
 
 .navigation-main__list {
     list-style: none;
     padding-left: 36px;
     cursor: pointer;
-    color: $color-light-hovered;
     @extend %transition;
-    &:hover {
-        color: $color-light-hovered;
-    }
     &:first-child::after {
         content: '';
         display: block;
         border-bottom: 3px solid $color-primary;
     
+    }
+
+    @include media-mobile {
+        padding-left: 0px;
     }
 }
 
@@ -65,4 +145,8 @@
     &:hover {
         color: $color-light-hovered;
     }
+}
+
+.link-light {
+    color: $color-light-hovered;
 }
