@@ -8,11 +8,11 @@ const backgroundGrey = document.querySelector('.grey-pets');
 const navLinkPets = document.querySelector('.navigation-pets');
 const navLogo = document.querySelector('.logo-pets-double')
 
-navLinks.forEach((el) => el.classList.toggle('is-active-menu'));
+navLinks.forEach((el) => el.classList.toggle('is-active-menu'));  //change text color menu burger
 
 function toggleMenu() {
-    hamburgerPets.classList.toggle('is-active');
-    hamburgerCenterLine.classList.toggle('is-active-center-line');
+    hamburgerPets.classList.toggle('is-active');                    //rotate burger
+    hamburgerCenterLine.classList.toggle('is-active-center-line'); //change color center line menu burger
     navPets.classList.toggle('open-pets');
     navLogo.classList.toggle('open-logo');
     backgroundGrey.classList.toggle('overplay-pets');
