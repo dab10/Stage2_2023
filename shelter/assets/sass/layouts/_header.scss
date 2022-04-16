@@ -40,7 +40,19 @@
 .header-main__navigation {
     margin-left: auto;
     @include media-mobile {
-        display: none;
+        //display: none;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        z-index: 2;
+        top: 0px;
+        right: -320px;
+        width: 320px;
+        height: 823px;
+        background-color: $color-dark;
+        overflow-x: hidden;
+        transition: 0.5s;
+
     }
 }
 
@@ -50,23 +62,39 @@
     @include font($size: 1.5rem, $height: 2.4rem);
     color: $color-light-gray;
 
+    @include media-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include font($size: 3.2rem, $height: 5.1rem);
+        padding-left: 0px;
+        padding-top: 248px;
+        margin: 0;
+        row-gap: 40px;
+    }
         
+}
+
+@media (max-width: 768px) {
+    .open {
+        right: 0px;
+    }
 }
 
 .navigation-main__list {
     list-style: none;
     padding-left: 36px;
     cursor: pointer;
-    color: $color-light-hovered;
     @extend %transition;
-    &:hover {
-        color: $color-light-hovered;
-    }
     &:first-child::after {
         content: '';
         display: block;
         border-bottom: 3px solid $color-primary;
     
+    }
+
+    @include media-mobile {
+        padding-left: 0px;
     }
 }
 
@@ -78,4 +106,8 @@
     &:hover {
         color: $color-light-hovered;
     }
+}
+
+.link-light {
+    color: $color-light-hovered;
 }
