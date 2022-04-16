@@ -10,7 +10,7 @@
         margin-left: auto;
         margin-top: 18px;
         position: relative;
-        z-index: 3;
+        z-index: 4;
         transition: all 0.3s ease-in-out;
     }
     &:before {
@@ -33,32 +33,12 @@
         bottom: 0;
         right: 0;
     }
-    // &.is-active:after {
-    //     position: absolute;
-    //     transform: rotate(90deg);
-    //     transition: all 0.3s ease-in-out;
-
-    // }
-    // &.is-active:before {
-        
-    //     position: absolute;
-    //     transform: rotate(90deg);
-        
-    //     transition: all 0.3s ease-in-out;
-
-    // }
     &.is-active {
-        
         position: fixed;
         left: calc( 100% - 83px );
         transform: rotate(90deg);
-
     }
-
-
 }
-
-
 
 .hamburger__line {
     content: "";
@@ -70,13 +50,6 @@
     top: calc( 50% - 1px );
     left: 0;
     margin: 0;
-
-    // &.is-active {
-    //     position: absolute;
-    //     transform: rotate(90deg);
-    //     transition: all 0.3s ease-in-out;
-    // }
-
 }
 
 .hamburger-pets {
@@ -128,13 +101,11 @@
 
 }
 
-
-
 .overplay {
     @include media-mobile {
     content: '';
     position: fixed; 
-    z-index: 1;
+    z-index: 2;
     left: 0; right: 0; top: 0; bottom: 0; /* Занимает всё пространство */
     background: rgba(41, 41, 41, 0.6);
     transition: 0.5s;

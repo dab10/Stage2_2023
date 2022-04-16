@@ -18,6 +18,19 @@
     
 }
 
+
+.logo-main-double {
+    display: none;
+    @include media-mobile {
+        display: block;
+        position: fixed;
+        z-index: 3;
+        top: 31px;
+        right: -320px;
+        transition: 0.5s;
+    }
+}
+
 .logo-main__link {
     text-decoration: none;
 }
@@ -25,7 +38,15 @@
 .logo-main__title {
     color: $color-primary;
     margin: 0;
+}
 
+.logo-main__title-double {
+    @include media-mobile {
+        @include font($size: 3.2rem, $height: 3.52rem);
+        letter-spacing: 0.06em;
+        color: $color-primary;
+        margin: 0;
+    }
 }
 
 .logo-main__subtitle {
@@ -40,11 +61,10 @@
 .header-main__navigation {
     margin-left: auto;
     @include media-mobile {
-        //display: none;
         display: flex;
         flex-direction: column;
         position: fixed;
-        z-index: 2;
+        z-index: 3;
         top: 0px;
         right: -320px;
         width: 320px;
@@ -61,24 +81,31 @@
     @extend %font-add-normal;
     @include font($size: 1.5rem, $height: 2.4rem);
     color: $color-light-gray;
-
     @include media-mobile {
         display: flex;
         flex-direction: column;
         align-items: center;
         @include font($size: 3.2rem, $height: 5.1rem);
         padding-left: 0px;
-        padding-top: 248px;
+        padding-top: 249px;
         margin: 0;
         row-gap: 40px;
     }
         
 }
 
-@media (max-width: 768px) {
-    .open {
+
+.open {
+    @include media-mobile {
         right: 0px;
-    }
+    } 
+}
+
+
+.open-logo {
+    @include media-mobile {
+        right: 124px;
+    } 
 }
 
 .navigation-main__list {
