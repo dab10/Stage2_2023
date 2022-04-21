@@ -30,6 +30,18 @@ body {
   line-height: 2.6rem;
 }
 
+@media (max-width: 767px) {
+  .hidden {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-pets {
+    overflow: hidden;
+  }
+}
+
 h1 {
   font-size: 3.2rem;
   font-style: normal;
@@ -839,9 +851,9 @@ template {
     top: 0px;
     right: -320px;
     width: 320px;
-    height: 823px;
+    height: 100vh;
     background-color: #292929;
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -2196,9 +2208,9 @@ template {
     top: 0px;
     right: -320px;
     width: 320px;
-    height: 823px;
+    height: 100vh;
     background-color: #292929;
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }

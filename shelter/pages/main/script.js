@@ -11,6 +11,7 @@ function toggleMenu() {
     nav.classList.toggle('open');
     navLogo.classList.toggle('open-logo');
     backgroundGrey.classList.toggle('overplay');
+    document.body.classList.toggle('hidden');
 }
 
 hamburger.addEventListener('click', toggleMenu);
@@ -22,8 +23,11 @@ function closeMenu(event) {
         nav.classList.remove('open');
         navLogo.classList.remove('open-logo');
         backgroundGrey.classList.remove('overplay');
+        document.body.classList.remove('hidden');
     }    
 }
 
 navLink.addEventListener('click', closeMenu);
 backgroundGrey.addEventListener('click', closeMenu);
+
+

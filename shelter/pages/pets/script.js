@@ -16,6 +16,7 @@ function toggleMenu() {
     navPets.classList.toggle('open-pets');
     navLogo.classList.toggle('open-logo');
     backgroundGrey.classList.toggle('overplay-pets');
+    document.body.classList.toggle('hidden-pets');
 }
 
 hamburgerPets.addEventListener('click', toggleMenu);
@@ -28,6 +29,7 @@ function closeMenu(event) {
         navPets.classList.remove('open-pets');
         navLogo.classList.remove('open-logo');
         backgroundGrey.classList.remove('overplay-pets');
+        document.body.classList.close('hidden-pets');
     }    
 }
 
