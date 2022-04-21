@@ -31,6 +31,16 @@
     margin-top: 31px;
 }
 
+.logo-pets__title-double {
+    @include media-mobile {
+        @include font($size: 3.2rem, $height: 3.52rem);
+        letter-spacing: 0.06em;
+        color: $color-dark-title;
+        margin: 0;
+    }
+}
+
+
 .logo-pets__subtitle {
     @extend %font-add-normal;
     @include font($size: 1.3rem, $height: 1.495rem);
@@ -52,7 +62,7 @@
         right: -320px;
         width: 320px;
         height: 100vh; //823px;
-        background-color: $color-dark;
+        background-color: $color-light;
         overflow: hidden;
         transition: 0.5s;
 

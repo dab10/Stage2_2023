@@ -18,6 +18,56 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .pets__name, .button-numb__te
   font-style: italic;
 }
 
+@-webkit-keyframes move-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
+  }
+}
+
+@keyframes move-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
+  }
+}
+
+.transition-right {
+  -webkit-animation-name: move-right;
+          animation-name: move-right;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@-webkit-keyframes move-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes move-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.transition-left {
+  -webkit-animation-name: move-left;
+          animation-name: move-left;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -663,11 +713,11 @@ template {
 }
 
 .hamburger-pets.is-active:before {
-  background-color: #F1CDB3;
+  background-color: #000000;
 }
 
 .hamburger-pets.is-active:after {
-  background-color: #F1CDB3;
+  background-color: #000000;
 }
 
 .hamburger-pets__line {
@@ -685,7 +735,7 @@ template {
 }
 
 .hamburger-pets__line.is-active-center-line {
-  background-color: #F1CDB3;
+  background-color: #000000;
 }
 
 @media (max-width: 767px) {
@@ -1528,6 +1578,11 @@ template {
   display: block;
 }
 
+.carousel-wrapper {
+  width: 990px;
+  overflow: hidden;
+}
+
 .friends__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1560,6 +1615,13 @@ template {
   }
 }
 
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 90px;
+}
+
 .pets__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1571,6 +1633,8 @@ template {
       -ms-flex-positive: 1;
           flex-grow: 1;
   max-width: 990px;
+  position: relative;
+  left: -990px;
 }
 
 @media (max-width: 1279px) {
@@ -1593,7 +1657,15 @@ template {
 }
 
 .pets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #FAFAFA;
+  width: 270px;
   height: 435px;
   border-radius: 9px;
   cursor: pointer;
@@ -1605,7 +1677,7 @@ template {
           box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 
-.pets:hover > div.pets__button > button {
+.pets:hover > button.pets__button {
   background: #FDDCC4;
   border-color: #FDDCC4;
 }
@@ -1625,8 +1697,9 @@ template {
 }
 
 .pets__button {
-  text-align: center;
-  padding-top: 30px;
+  margin: 0 auto;
+  max-width: 188px;
+  margin-top: 30px;
 }
 
 .friends__button {
@@ -2178,6 +2251,18 @@ template {
   margin-top: 31px;
 }
 
+@media (max-width: 767px) {
+  .logo-pets__title-double {
+    font-size: 3.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.52rem;
+    letter-spacing: 0.06em;
+    color: #545454;
+    margin: 0;
+  }
+}
+
 .logo-pets__subtitle {
   font-size: 1.3rem;
   font-style: normal;
@@ -2209,7 +2294,7 @@ template {
     right: -320px;
     width: 320px;
     height: 100vh;
-    background-color: #292929;
+    background-color: #FFFFFF;
     overflow: hidden;
     -webkit-transition: 0.5s;
     transition: 0.5s;

@@ -22,6 +22,12 @@
     display: block;
 }
 
+.carousel-wrapper {
+    width: 990px;
+    
+    overflow: hidden;
+  }
+
 .friends__wrapper {
     display: flex;
     justify-content: space-between;
@@ -42,11 +48,18 @@
     }
 }
 
+.item {
+    display: flex;
+    gap: 90px
+}
+
 .pets__wrapper {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
     max-width: 990px;
+    position: relative;
+    left: -990px;
     @include media-tablet {
         
         max-width: 580px;
@@ -61,7 +74,10 @@
 }
 
 .pets {
+    display: flex;
+    flex-direction: column;
     background-color: $color-light-hovered;
+    width: 270px;
     height: 435px;
     border-radius: 9px;
     cursor: pointer;
@@ -70,13 +86,13 @@
         background: $color-light;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     }
-    &:hover > div.pets__button > button { 
+    &:hover > button.pets__button { 
         background: $color-primary-light;
         border-color: $color-primary-light;
     }
     @include media-tablet {
         
-      //  flex-shrink: 1;
+      //  flex-shrink: 1; #item-active > div:nth-child(1) > button
        
         
     }
@@ -97,8 +113,9 @@
 }
 
 .pets__button {
-    text-align: center;
-    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 188px;
+    margin-top: 30px;
 }
 
 .friends__button {
@@ -125,3 +142,7 @@
         display: none;
     }
 }
+
+// .woody, .jennifer, .sophia, .timmy, .charly, .scarlett, .freddie {
+//     display: none;
+// }
