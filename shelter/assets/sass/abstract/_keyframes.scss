@@ -2,6 +2,20 @@
     from {left: -990px;}
     to {left: -1980px;}
   }
+
+  @include media-tablet {
+    @keyframes move-right {
+      from {left: -580px;}
+      to {left: -1160px;}
+    }
+  }
+
+  @include media-mobile {
+    @keyframes move-right {
+      from {left: -270px;}
+      to {left: -540px;}
+    }
+  }
   
   .transition-right {
     animation-name: move-right;
@@ -11,6 +25,20 @@
   @keyframes move-left {
     from {left: -990px;}
     to {left: 0px;}
+  }
+
+  @include media-tablet {
+    @keyframes move-left {
+      from {left: -580px;}
+      to {left: 0px;}
+    }
+  }
+
+  @include media-mobile {
+    @keyframes move-left {
+      from {left: -270px;}
+      to {left: 0px;}
+    }
   }
   
   .transition-left {
