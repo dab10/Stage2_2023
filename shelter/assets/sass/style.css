@@ -979,7 +979,7 @@ template {
     width: 320px;
     height: 100vh;
     background-color: #292929;
-    overflow: hidden;
+    overflow: scroll;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -2413,7 +2413,7 @@ template {
     width: 320px;
     height: 100vh;
     background-color: #FFFFFF;
-    overflow: hidden;
+    overflow: scroll;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
