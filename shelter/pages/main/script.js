@@ -50,7 +50,7 @@ function randomIntegerArr(countNum) {
 
 let arrRandom = randomIntegerArr((petsArr.length));
 
-//CAROUSEL
+//CAROUSEL 1280px
 
 if (document.documentElement.clientWidth > 1279) {
 
@@ -101,6 +101,7 @@ const createCardTemplate = (i) => {
 
   const card = document.createElement('div');
   card.classList.add('pets');
+  card.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
   const img = document.createElement('img');
   img.classList.add('pets__image');
   img.src = `../../assets/images/pets-${namePets}.png`;
@@ -114,6 +115,7 @@ const createCardTemplate = (i) => {
 
   const petsBtn = document.createElement('button');
   petsBtn.classList.add('button', 'button_bordered', 'pets__button');
+  petsBtn.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
   petsBtn.innerHTML = 'Learn more';
   card.append(petsBtn);
   return card;
@@ -185,7 +187,7 @@ CAROUSEL.addEventListener("animationend", (animationEvent) => {
 }
 
 
-
+//CAROUSEL 768px
 
 
 if ((document.documentElement.clientWidth > 767) && (document.documentElement.clientWidth < 1280)) {
@@ -235,6 +237,7 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
   
     const card = document.createElement('div');
     card.classList.add('pets');
+    card.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
     const img = document.createElement('img');
     img.classList.add('pets__image');
     img.src = `../../assets/images/pets-${namePets}.png`;
@@ -248,6 +251,7 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
   
     const petsBtn = document.createElement('button');
     petsBtn.classList.add('button', 'button_bordered', 'pets__button');
+    petsBtn.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
     petsBtn.innerHTML = 'Learn more';
     card.append(petsBtn);
     return card;
@@ -318,7 +322,7 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
   }
 
 
-
+//CAROUSEL 320px
 
   if (document.documentElement.clientWidth < 768) {
 
@@ -366,6 +370,7 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
     
       const card = document.createElement('div');
       card.classList.add('pets');
+      card.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
       const img = document.createElement('img');
       img.classList.add('pets__image');
       img.src = `../../assets/images/pets-${namePets}.png`;
@@ -379,6 +384,7 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
     
       const petsBtn = document.createElement('button');
       petsBtn.classList.add('button', 'button_bordered', 'pets__button');
+      petsBtn.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
       petsBtn.innerHTML = 'Learn more';
       card.append(petsBtn);
       return card;
@@ -445,3 +451,83 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
     })
     
     }
+
+//POPUP
+
+const ITEM = document.getElementById("item-active");
+
+ITEM.addEventListener('click', petsNumb)
+
+function petsNumb(event) {
+    console.log(event.target)
+      if (event.target.classList.contains('pets__image')) {
+        for (let i = 0; i < data.length; i++) {
+          if (event.target.alt === data[i].name) {
+            res = i;
+          
+          }
+        }
+      }
+
+      if (event.target.classList.contains('pets__name')) {
+        for (let i = 0; i < data.length; i++) {
+          if (event.target.innerHTML === data[i].name) {
+            res = i;
+          
+          }
+        }
+      }
+
+      if (event.target.classList.contains('pets__button')) {
+        for (let i = 0; i < data.length; i++) {
+          if (event.target.id === data[i].name) {
+            res = i;
+          
+          }
+        }
+      }
+
+      if (event.target.classList.contains('pets')) {
+        for (let i = 0; i < data.length; i++) {
+          if (event.target.id === data[i].name) {
+            res = i;
+          }
+        }
+      }
+      createCardPopup(res);
+}
+
+
+
+
+
+
+  const createCardPopup = (i) => {
+      console.log(i);
+    let namePets = petsArr[i];
+  
+    const card = document.createElement('div');
+    card.classList.add('pets');
+    card.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
+    const img = document.createElement('img');
+    img.classList.add('pets__image');
+    img.src = `../../assets/images/pets-${namePets}.png`;
+    img.alt = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
+    card.append(img);
+  
+    const petsName = document.createElement('div');
+    petsName.classList.add('pets__name');
+    petsName.innerHTML = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
+    card.append(petsName);
+  
+    const petsBtn = document.createElement('button');
+    petsBtn.classList.add('button', 'button_bordered', 'pets__button');
+    petsBtn.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
+    petsBtn.innerHTML = 'Learn more';
+    card.append(petsBtn);
+    return card;
+  }
+
+  
+    
+    
