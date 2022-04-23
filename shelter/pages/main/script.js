@@ -455,6 +455,8 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
 //POPUP
 
 const ITEM = document.getElementById("item-active");
+const ITEM_PETS_RIGHT = document.getElementById("item-right");
+const ITEM_PETS_LEFT = document.getElementById("item-left");
 const popupBtn = document.querySelector('.button-popup')
 const backgroundGreyPopup = document.querySelector('.grey-popup')
 const popupTable = document.querySelector('.popup-wrapper')
@@ -469,10 +471,16 @@ const popupPetsParasites = document.querySelector('.popup__subtitle-parasites')
 
 
 ITEM.addEventListener('click', petsNumb)
+ITEM_PETS_RIGHT.addEventListener('click', petsNumb)
+ITEM_PETS_LEFT.addEventListener('click', petsNumb)
 backgroundGreyPopup.addEventListener('click', closePopup)
 
 function petsNumb(event) {
-    
+    console.log(event.target)
+      if (event.target.classList.contains('item')) {
+        return;
+      }
+
       if (event.target.classList.contains('pets__image')) {
         for (let i = 0; i < data.length; i++) {
           if (event.target.alt === data[i].name) {
@@ -516,6 +524,7 @@ function closePopup(event) {
     backgroundGreyPopup.classList.remove('overlay-popup');
     popupTable.classList.remove('open-popup')
     popupBtn.style.display = 'none';
+    document.body.classList.remove('hidden');
   }    
 }
 
@@ -524,6 +533,7 @@ function closePopup(event) {
 
   const createCardPopup = (i) => {
       backgroundGreyPopup.classList.add('overlay-popup');
+      document.body.classList.add('hidden');
       popupTable.classList.add('open-popup');
       popupBtn.style.display = 'flex';
       popupImage.src = `../../assets/images/${data[i].name.toLowerCase()}.png`;

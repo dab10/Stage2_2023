@@ -36,75 +36,82 @@
         </div>
     </header>
     <section class="our-friends">
+        <div class="grey-popup">
+            <div class="conteiner-popup">         
+                <div class="popup-wrapper">
+                    <img class="popup__image" src="../../assets/images/jennifer.png" alt="jennifer">
+                    <div class="popup__content">
+                        <h3 class="popup__name">Jennifer</h3>
+                        <h4 class="popup__type">Dog - Labrador</h4>
+                        <h5 class="popup__description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</h5>
+                        <ul class="popup__items">
+                            <li class="popup__age"><h5 class="popup__title">Age:</h5><a class="popup__subtitle-age">months</a></li>
+                            <li class="popup__inoculations"><h5 class="popup__title">Inoculations:</h5><a class="popup__subtitle-inoculations">none</a></li>
+                            <li class="popup__diseases"><h5 class="popup__title">Diseases:</h5><a class="popup__subtitle-diseases">none</a></li>
+                            <li class="popup__parasites"><h5 class="popup__title">Parasites:</h5><a class="popup__subtitle-parasites">none</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="button-circleX button-circleX_bordered button-popup">+</button></div>
+            </div> 
         <div class="wrapper">
             <h3 class="friends__title">Our friends who<span class="empty"></span>are looking for a house</h3>
-            <div class="friends-pets__wrapper">
-
-                <div class="pets-pets__wrapper">
-                    <div class="pets">
-                        <img class="pets__image" src="../../assets/images/pets-katrine.png" alt="pets-katrine">
-                        <div class="pets__name">Katrine</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
+            <div class="friends-pets__wrapper" id="carousel-wrapper">
+                <div class="pets-pets__wrapper" id="carousel">
+                    <div class="item-pets" id="item-left">
+                    </div>
+                    <div class="item-pets" id="item-active">  
+                        <div class="pets">
+                            <img class="pets__image" src="../../assets/images/pets-katrine.png" alt="pets-katrine">
+                            <div class="pets__name">Katrine</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets">
+                            <img class="pets__image" src="../../assets/images/pets-jennifer.png" alt="pets-jennifer">
+                            <div class="pets__name">Jennifer</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets">
+                            <img class="pets__image" src="../../assets/images/pets-woody.png" alt="pets-woody">
+                            <div class="pets__name">Woody</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets sophia">
+                            <img class="pets__image" src="../../assets/images/pets-sophia.png" alt="pets-sophia">
+                            <div class="pets__name">Sophia</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets timmy">
+                            <img class="pets__image" src="../../assets/images/pets-timmy.png" alt="pets-timmy">
+                            <div class="pets__name">Timmy</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets charly">
+                            <img class="pets__image" src="../../assets/images/pets-charly.png" alt="pets-charly">
+                            <div class="pets__name">Charly</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets scarlett">
+                            <img class="pets__image" src="../../assets/images/pets-scarlett.png" alt="pets-scarlet">
+                            <div class="pets__name">Scarlett</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
+                        </div>
+                        <div class="pets freddie">
+                            <img class="pets__image" src="../../assets/images/pets-freddie.png" alt="pets-freddie">
+                            <div class="pets__name">Freddie</div>
+                            <button class="button button_bordered pets__button">Learn more</button>
                         </div>
                     </div>
-                    <div class="pets">
-                        <img class="pets__image" src="../../assets/images/pets-jennifer.png" alt="pets-jennifer">
-                        <div class="pets__name">Jennifer</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets">
-                        <img class="pets__image" src="../../assets/images/pets-woody.png" alt="pets-woody">
-                        <div class="pets__name">Woody</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets sophia">
-                        <img class="pets__image" src="../../assets/images/pets-sophia.png" alt="pets-sophia">
-                        <div class="pets__name">Sophia</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets timmy">
-                        <img class="pets__image" src="../../assets/images/pets-timmy.png" alt="pets-timmy">
-                        <div class="pets__name">Timmy</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets charly">
-                        <img class="pets__image" src="../../assets/images/pets-charly.png" alt="pets-charly">
-                        <div class="pets__name">Charly</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets scarlett">
-                        <img class="pets__image" src="../../assets/images/pets-scarlet.png" alt="pets-scarlet">
-                        <div class="pets__name">Scarlett</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
-                    </div>
-                    <div class="pets freddie">
-                        <img class="pets__image" src="../../assets/images/pets-freddie.png" alt="pets-freddie">
-                        <div class="pets__name">Freddie</div>
-                        <div class="pets__button">
-                            <button class="button button_bordered">Learn more</button>
-                        </div>
+                    <div class="item-pets" id="item-right"> 
                     </div>
                 </div>
             </div>
             <div class="buttons__wrapper">
-                <button class="button-circle no-cursor" disabled><span class="button-numb__text">&#60;&#60;</span></button>
-                <button class="button-circle no-cursor" disabled><span class="button-numb__text">&#60;</span></button>
-                <button class="button-circle button-circle_colored-numb"><span class="button-numb__text">1</span></button>
-                <button class="button-circle button-circle_bordered"><span class="button-numb__text">></span></button>
-                <button class="button-circle button-circle_bordered"><span class="button-numb__text">>></span></button>
+                <button class="button-circle no-cursor" id="btn-left-end" disabled="disabled"><span class="button-numb__text">&#60;&#60;</span></button>
+                <button class="button-circle no-cursor" id="btn-left" disabled="disabled"><span class="button-numb__text">&#60;</span></button>
+                <button class="button-circle button-circle_colored-numb"><span class="button-numb__text current-page">1</span></button>
+                <button class="button-circle button-circle_bordered" id="btn-right"><span class="button-numb__text">></span></button>
+                <button class="button-circle button-circle_bordered" id="btn-right-end"><span class="button-numb__text">>></span></button>
             </div>
         </div>
     </section>
@@ -135,6 +142,7 @@
             <img class="footer__image" src="../../assets/images/footer-puppy.png" alt="footer-puppy">
         </div>
     </footer>
-    <script type="module" src="./script.js" async></script>
+    <script src="../main/pets.json"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

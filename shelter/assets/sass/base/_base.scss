@@ -10,6 +10,7 @@ body {
 
 
 .hidden {
+    overflow: hidden;
     @include media-mobile {
         overflow: hidden;
     }

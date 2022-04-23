@@ -3,6 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 59px;
+    margin-top: 30px;
+    overflow: hidden;
+    height: 900px;
     @include media-tablet {
         justify-content: center;
         margin: auto;
@@ -25,6 +28,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 30px;
+    max-width: 1200px;
     @include media-tablet {
         justify-content: center;
         gap: 30px 40px;
@@ -33,11 +37,19 @@
 
 }
 
+.item-pets {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    max-width: 1200px;
+}
+
 .buttons__wrapper {
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    padding-top: 60px;
+    padding-top: 90px;
     padding-bottom: 100px;
     @include media-tablet {
         padding-top: 40px;

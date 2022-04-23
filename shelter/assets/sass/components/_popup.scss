@@ -22,26 +22,64 @@
         background-color: $color-light-hovered;
         z-index: 4;
         cursor: auto;
+        @include media-tablet {
+            width: 630px;
+            height: 350px;
+        }
+        @include media-mobile {
+            width: 240px;
+            --main-bg-color: 100%;
+            height: var(--main-bg-color);
+            grid-column: 1/5;
+            grid-row: 2/3;
+
+        }
     }
 
     .popup__content {
         padding-top: 51px;
         padding-left: 30px;
+        @include media-tablet {
+            padding-top: 11px;
+            padding-left: 11px;
+        }
+        @include media-mobile {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+
     }
 
     .popup__image {
         width: 500px;
         height: 500px;
         border-radius: 9px 0px 0px 9px;
+        @include media-tablet {
+            width: 350px;
+            height: 350px;
+        }
+        @include media-mobile {
+            display: none;
+        }
     }
 
     .popup__name {
         margin: 0;
+        @include media-mobile {
+            text-align: center;
+        }
     }
 
     .popup__type {
         margin: 0;
         padding-top: 8px;
+        @include media-tablet {
+            padding-top: 10px;
+        }
+        @include media-mobile {
+            text-align: center;
+        }
 
     }
 
@@ -49,6 +87,16 @@
         padding-top: 16px;
         max-width: 350px;
         line-height: 17px;
+        @include media-tablet {
+            @include font($size: 1.3rem, $height: 1.43rem);
+            letter-spacing: 0.06em;
+            max-width: 261px;
+            margin: 0;
+            padding-top: 20px;
+        }
+        @include media-mobile {
+            text-align: justify;
+        }
     }
     
     .popup__items {
@@ -57,8 +105,17 @@
         padding-left: 0px;
         margin-left: 15px;
         //list-style: none;
-        
-        
+        @include media-tablet {
+            margin: 0;
+            padding-top: 13px;
+            margin-left: 14px;
+        }
+        @include media-tablet {
+            
+            padding-top: 17px;
+            
+        }
+               
     }
 
     .popup__subtitle-age  {
@@ -81,17 +138,43 @@
         letter-spacing: 0.06em;
     }
 
-
+.popup__age {
+    @include media-tablet {
+        padding-top: 4px;
+        margin: 0;
+        height: 17px;
+        line-height: 17px;
+        }
+}
     .popup__inoculations {
         padding-top: 2px;
+        @include media-tablet {
+            padding-top: 10px;
+            margin: 0;
+   
+            line-height: 17px;
+            }
     }
 
     .popup__diseases {
         padding-top: 2px;
+        @include media-tablet {
+            padding-top: 5px;
+            padding-right: 9px;
+            margin: 0;
+
+            line-height: 17px;
+            }
     }
 
     .popup__parasites {
         padding-top: 2px;
+        @include media-tablet {
+            padding-top: 6px;
+            margin: 0;
+
+            line-height: 17px;
+            }
     }
 
 
@@ -100,6 +183,9 @@
         @extend %font-prim-bold;
         @include font($size: 1.5rem, $height: 1.65rem, $weight: 700);
         letter-spacing: 0.06em;
+        @include media-tablet {
+        margin: 0;
+        }
     }
 
 
@@ -107,6 +193,9 @@
     li::marker {
       color: $color-primary;
       font-size: 1rem;
+      @include media-tablet {
+        line-height: 17px;
+    }
     }
 
     .open-popup {
@@ -128,6 +217,10 @@
         font-size: 3rem;
         transform: rotate(45deg);
         z-index: 4;
+        @include media-mobile {
+            grid-column: 3/6;
+            grid-row: 1/2;
+        }
     }
 
     .conteiner-popup {
@@ -136,5 +229,16 @@
         grid-template-rows: repeat(2, auto);
         position: fixed;
         left: calc( 50% - 452px);
-        top: calc( 50% - 250px);
+        top: calc( 50% - 302px);
+        @include media-tablet {
+            grid-template-columns: auto 9px auto;
+            left: calc( 50% - 316px);
+            top: calc( 50% - 227px);
+        }
+        @include media-mobile {
+            grid-template-columns: 10px auto 12px 10px 30px;
+            left: calc( 50% - 120px);
+            top: calc( 50% - 251px);
+
+        }
     }
