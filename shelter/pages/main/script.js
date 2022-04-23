@@ -455,11 +455,24 @@ if ((document.documentElement.clientWidth > 767) && (document.documentElement.cl
 //POPUP
 
 const ITEM = document.getElementById("item-active");
+const popupBtn = document.querySelector('.button-popup')
+const backgroundGreyPopup = document.querySelector('.grey-popup')
+const popupTable = document.querySelector('.popup-wrapper')
+const popupImage = document.querySelector('.popup__image')
+const popupPetsName = document.querySelector('.popup__name')
+const popupPetsType = document.querySelector('.popup__type')
+const popupPetsDescription = document.querySelector('.popup__description')
+const popupPetsAge = document.querySelector('.popup__subtitle-age')
+const popupPetsInoculations = document.querySelector('.popup__subtitle-inoculations')
+const popupPetsDiseases = document.querySelector('.popup__subtitle-diseases')
+const popupPetsParasites = document.querySelector('.popup__subtitle-parasites')
+
 
 ITEM.addEventListener('click', petsNumb)
+backgroundGreyPopup.addEventListener('click', closePopup)
 
 function petsNumb(event) {
-    console.log(event.target)
+    
       if (event.target.classList.contains('pets__image')) {
         for (let i = 0; i < data.length; i++) {
           if (event.target.alt === data[i].name) {
@@ -497,35 +510,30 @@ function petsNumb(event) {
       createCardPopup(res);
 }
 
-
+function closePopup(event) {
+  console.log(event.target)
+  if (event.target.classList.contains('overlay-popup') || event.target.classList.contains('button-popup')) {
+    backgroundGreyPopup.classList.remove('overlay-popup');
+    popupTable.classList.remove('open-popup')
+    popupBtn.style.display = 'none';
+  }    
+}
 
 
 
 
   const createCardPopup = (i) => {
-      console.log(i);
-    let namePets = petsArr[i];
-  
-    const card = document.createElement('div');
-    card.classList.add('pets');
-    card.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
-    const img = document.createElement('img');
-    img.classList.add('pets__image');
-    img.src = `../../assets/images/pets-${namePets}.png`;
-    img.alt = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
-    card.append(img);
-  
-    const petsName = document.createElement('div');
-    petsName.classList.add('pets__name');
-    petsName.innerHTML = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
-    card.append(petsName);
-  
-    const petsBtn = document.createElement('button');
-    petsBtn.classList.add('button', 'button_bordered', 'pets__button');
-    petsBtn.id = `${namePets[0].toUpperCase() + namePets.slice(1)}`;
-    petsBtn.innerHTML = 'Learn more';
-    card.append(petsBtn);
-    return card;
+      backgroundGreyPopup.classList.add('overlay-popup');
+      popupTable.classList.add('open-popup');
+      popupBtn.style.display = 'flex';
+      popupImage.src = `../../assets/images/${data[i].name.toLowerCase()}.png`;
+      popupPetsName.innerHTML = data[i].name;
+      popupPetsType.innerHTML = `${data[i].type} - ${data[i].breed}`;
+      popupPetsDescription.innerHTML = data[i].description;
+      popupPetsAge.innerHTML = ` ${data[i].age}`;
+      popupPetsInoculations.innerHTML = ` ${data[i].inoculations}`;
+      popupPetsDiseases.innerHTML = ` ${data[i].diseases}`;
+      popupPetsParasites.innerHTML = ` ${data[i].parasites}`;
   }
 
   
