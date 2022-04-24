@@ -96,10 +96,10 @@
         transform: rotate(90deg);
     }
     &.is-active:before {
-        background-color: $color-primary;
+        background-color: $color-dark-hamburger;
     }
     &.is-active:after {
-        background-color: $color-primary;
+        background-color: $color-dark-hamburger;
     }
 }
 
@@ -115,7 +115,7 @@
     margin: 0;
     transition: 1s;
     &.is-active-center-line {
-        background-color: $color-primary;
+        background-color: $color-dark-hamburger;
     }
 
 }

@@ -10,6 +10,7 @@
     padding-top: 81px;
     @include media-mobile {
         @include font($size: 2.5rem, $height: 3.2rem);
+        
         letter-spacing: 0.06em;
         margin: auto;
         text-align: center;
@@ -21,6 +22,22 @@
 .empty {
     display: block;
 }
+
+.carousel-wrapper {
+    width: 990px;
+    overflow: hidden;
+    @include media-tablet {
+        width: 580px;
+    }
+    @include media-mobile {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        justify-self: center;
+        width: 270px;
+        order: -1;
+        //flex-basis: 100%;
+    }
+  }
 
 .friends__wrapper {
     display: flex;
@@ -34,12 +51,26 @@
         
     }
     @include media-mobile {
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        //justify-content: center;
         padding-top: 42px;
-        flex-wrap: wrap;
+        //flex-wrap: wrap;
         gap: 20px 80px;
 
     }
+}
+
+.item {
+    display: flex;
+    gap: 90px;
+    @include media-tablet {
+        gap: 40px;
+      }
+      @include media-mobile {
+        gap: 0px;
+      }
 }
 
 .pets__wrapper {
@@ -47,21 +78,29 @@
     justify-content: space-between;
     flex-grow: 1;
     max-width: 990px;
+    position: relative;
+    left: -990px;
     @include media-tablet {
         
-        max-width: 580px;
+        width: 580px;
+        left: -580px;
         
         
     }
     @include media-mobile {
-        justify-content: center;
-        order: -1;
-        flex-basis: 100%;
+        width: 270px;
+        left: -270px;
+        //justify-content: center;
+        //order: -1;
+        //flex-basis: 100%;
     }
 }
 
 .pets {
+    display: flex;
+    flex-direction: column;
     background-color: $color-light-hovered;
+    width: 270px;
     height: 435px;
     border-radius: 9px;
     cursor: pointer;
@@ -70,13 +109,13 @@
         background: $color-light;
         box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     }
-    &:hover > div.pets__button > button { 
+    &:hover > button.pets__button { 
         background: $color-primary-light;
         border-color: $color-primary-light;
     }
     @include media-tablet {
         
-      //  flex-shrink: 1;
+      //  flex-shrink: 1; #item-active > div:nth-child(1) > button
        
         
     }
@@ -92,13 +131,26 @@
     @include font($size: 2.0rem, $height: 2.272rem);
     letter-spacing: 0.06em;
     text-align: center;
-    padding-top: 22px;
+    padding-top: 30px;
     
 }
 
 .pets__button {
-    text-align: center;
-    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 188px;
+    margin-top: 30px;
+}
+
+.pets__button-circle-left {
+    @include media-mobile {
+        justify-self: end;
+    }
+}
+
+.pets__button-circle-right {
+    @include media-mobile {
+        justify-self: start;
+    }
 }
 
 .friends__button {
@@ -114,14 +166,18 @@
 
 }
 
-.woody { 
-    @include media-tablet {
-        display: none;
-    }
-}
+// .woody { 
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
 
-.jennifer {
-    @include media-mobile {
-        display: none;
-    }
-}
+// .jennifer {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
+
+// .woody, .jennifer, .sophia, .timmy, .charly, .scarlett, .freddie {
+//     display: none;
+// }

@@ -1,0 +1,83 @@
+@keyframes move-right {
+    from {left: -990px;}
+    to {left: -1980px;}
+  }
+
+  @keyframes move-right-pets {
+    from {left: -0px;}
+    to {left: -0.1px;}
+  }
+
+  @include media-tablet {
+    @keyframes move-right {
+      from {left: -580px;}
+      to {left: -1160px;}
+    }
+    @keyframes move-right-pets {
+      from {left: -0px;}
+      to {left: -0.1px;}
+    }
+  }
+
+  @include media-mobile {
+    @keyframes move-right {
+      from {left: -270px;}
+      to {left: -540px;}
+    }
+    @keyframes move-right-pets {
+      from {left: -0px;}
+      to {left: -0.1px;}
+    }
+  }
+  
+  .transition-right {
+    animation-name: move-right;
+    animation-duration: 0.5s;
+  }
+
+  .transition-left-right {
+    animation-name: move-right-pets;
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes move-left {
+    from {left: -990px;}
+    to {left: 0px;}
+  }
+
+  @keyframes move-left-pets {
+    from {left: -0.1px;}
+    to {left: 0px;}
+  }
+
+  @include media-tablet {
+    @keyframes move-left {
+      from {left: -580px;}
+      to {left: 0px;}
+    }
+    @keyframes move-left-pets {
+      from {left: -0.1px;}
+      to {left: 0px;}
+    }
+  }
+
+  @include media-mobile {
+    @keyframes move-left {
+      from {left: -270px;}
+      to {left: 0px;}
+    }
+    @keyframes move-left-pets {
+      from {left: -0.1px;}
+      to {left: 0px;}
+    }
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 0.5s;
+  }
+
+  .transition-left-pets {
+    animation-name: move-left-pets;
+    animation-duration: 0.5s;
+  }

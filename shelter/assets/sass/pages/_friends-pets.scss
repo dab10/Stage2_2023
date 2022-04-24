@@ -3,10 +3,14 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 59px;
+    margin-top: 30px;
+    overflow: hidden;
+    height: 900px;
     @include media-tablet {
         justify-content: center;
         margin: auto;
-        padding-top: 29px;
+        padding-top: 58px;
+        height: 1365px;
         
         
     }
@@ -16,6 +20,9 @@
         flex-wrap: wrap;
         gap: 20px 80px;
         max-width: 300px;
+        height: 1365px;
+        margin-top: 25px;
+
 
     }
 }
@@ -25,27 +32,46 @@
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 30px;
+    max-width: 1200px;
     @include media-tablet {
         justify-content: center;
         gap: 30px 40px;
         max-width: 708px;
     }
+    @include media-mobile {
+        position: relative;
+        top: -1420px;
+    }
 
+}
+
+.item-pets {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    max-width: 1200px;
+    @include media-tablet {
+        max-width: 580px;
+    }
+    @include media-mobile {
+        justify-content: center;
+    }
 }
 
 .buttons__wrapper {
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    padding-top: 60px;
+    padding-top: 90px;
     padding-bottom: 100px;
     @include media-tablet {
-        padding-top: 40px;
+        padding-top: 69px;
         padding-bottom: 76px;
     }
     @include media-mobile {
         column-gap: 10px;
-        padding-top: 42px;
+        padding-top: 58px;
         padding-bottom: 42px;
     }
 }
@@ -59,32 +85,32 @@
     margin-bottom: 1px;
 }
 
-.scarlett {
-    @include media-tablet {
-        display: none;
-    }
-}
+// .scarlett {
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
 
-.freddie {
-    @include media-tablet {
-        display: none;
-    }
-}
+// .freddie {
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
 
-.sophia {
-    @include media-mobile {
-        display: none;
-    }
-}
+// .sophia {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
 
-.timmy {
-    @include media-mobile {
-        display: none;
-    }
-}
+// .timmy {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
 
-.charly {
-    @include media-mobile {
-        display: none;
-    }
-}
+// .charly {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }

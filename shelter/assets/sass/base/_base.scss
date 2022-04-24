@@ -6,8 +6,21 @@ html {
 body {
     @extend %font-prim;
     @include font($size: 1.6rem, $height: 2.6rem, $weight: normal);
-    
 }
+
+
+.hidden {
+    overflow: hidden;
+    @include media-mobile {
+        overflow: hidden;
+    }
+}                               //BODY HIDDEN
+
+.hidden-pets {
+    @include media-mobile {
+        overflow: hidden;
+    }
+}          
 
 h1 {
     @extend %font-prim;

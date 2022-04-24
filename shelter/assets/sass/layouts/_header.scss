@@ -80,9 +80,9 @@
         top: 0px;
         right: -320px;
         width: 320px;
-        height: 823px;
+        height: 100vh;  //823px;
         background-color: $color-dark;
-        overflow-x: hidden;
+        overflow: scroll;
         transition: 0.5s;
 
     }
