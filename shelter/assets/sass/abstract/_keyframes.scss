@@ -12,7 +12,7 @@
     @keyframes move-right {
       from {left: -580px;}
       to {left: -1160px;}
-    }
+    };
     @keyframes move-right-pets {
       from {left: -0px;}
       to {left: -0.1px;}
@@ -23,10 +23,10 @@
     @keyframes move-right {
       from {left: -270px;}
       to {left: -540px;}
-    }
+    };
     @keyframes move-right-pets {
       from {left: -0px;}
-      to {left: -0.1px;}
+      to {left: -0.01px;}
     }
   }
   
@@ -35,7 +35,7 @@
     animation-duration: 0.5s;
   }
 
-  .transition-left-right {
+  .transition-right-pets {
     animation-name: move-right-pets;
     animation-duration: 0.5s;
   }
@@ -54,7 +54,7 @@
     @keyframes move-left {
       from {left: -580px;}
       to {left: 0px;}
-    }
+    };
     @keyframes move-left-pets {
       from {left: -0.1px;}
       to {left: 0px;}
@@ -65,9 +65,9 @@
     @keyframes move-left {
       from {left: -270px;}
       to {left: 0px;}
-    }
+    };
     @keyframes move-left-pets {
-      from {left: -0.1px;}
+      from {left: -0.01px;}
       to {left: 0px;}
     }
   }

@@ -121,7 +121,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: -0px;
     }
     to {
-      left: -0.1px;
+      left: -0.01px;
     }
   }
   @keyframes move-right-pets {
@@ -129,7 +129,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: -0px;
     }
     to {
-      left: -0.1px;
+      left: -0.01px;
     }
   }
 }
@@ -141,7 +141,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
           animation-duration: 0.5s;
 }
 
-.transition-left-right {
+.transition-right-pets {
   -webkit-animation-name: move-right-pets;
           animation-name: move-right-pets;
   -webkit-animation-duration: 0.5s;
@@ -238,7 +238,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
   @-webkit-keyframes move-left-pets {
     from {
-      left: -0.1px;
+      left: -0.01px;
     }
     to {
       left: 0px;
@@ -246,7 +246,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
   @keyframes move-left-pets {
     from {
-      left: -0.1px;
+      left: -0.01px;
     }
     to {
       left: 0px;
@@ -417,6 +417,13 @@ h5 {
     line-height: 0rem;
     letter-spacing: 0.06em;
   }
+}
+
+button:disabled,
+button[disabled] {
+  border: 2px solid #CDCDCD;
+  color: #CDCDCD;
+  background-color: #F6F6F6;
 }
 
 button:disabled,
