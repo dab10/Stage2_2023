@@ -25,13 +25,14 @@
         @include media-tablet {
             width: 630px;
             height: 350px;
+            
         }
         @include media-mobile {
             width: 240px;
             height: 341px;
             grid-column: 1/5;
             grid-row: 2/3;
-            overflow: scroll;
+            overflow-y: auto;
 
         }
     }
@@ -110,7 +111,7 @@
             padding-top: 13px;
             margin-left: 14px;
         }
-        @include media-tablet {
+        @include media-mobile {
             
             padding-top: 17px;
             

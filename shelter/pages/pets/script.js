@@ -779,7 +779,7 @@ if (currentPage > 0 && currentPage < 5) {
   // FUNCTION FOR MOVE LEFT
   
     const moveLeft = () => {
-      CAROUSEL.classList.add("transition-left");
+      CAROUSEL.classList.add("transition-left-pets");
       BTN_LEFT.removeEventListener("click", moveLeft);
       BTN_RIGHT.removeEventListener("click", moveRight);
       CURRENT_PAGE.innerHTML = (currentPage + 1) - 1;
@@ -799,7 +799,7 @@ if (currentPage > 0 && currentPage < 5) {
     // FUNCTION FOR MOVE RIGHT
     
     const moveRight = () => {
-      CAROUSEL.classList.add("transition-right");
+      CAROUSEL.classList.add("transition-right-pets");
       BTN_LEFT.removeEventListener("click", moveLeft);
       BTN_RIGHT.removeEventListener("click", moveRight);
       CURRENT_PAGE.innerHTML = (currentPage + 1) + 1;
@@ -898,12 +898,12 @@ if (currentPage > 0 && currentPage < 5) {
   
     CAROUSEL.addEventListener("animationend", (animationEvent) => {
       let changedItem;
-      if (animationEvent.animationName === "move-left") {
-        CAROUSEL.classList.remove("transition-left");
+      if (animationEvent.animationName === "move-left-pets") {
+        CAROUSEL.classList.remove("transition-left-pets");
         changedItem = ITEM_LEFT;
         document.querySelector("#item-active").innerHTML = ITEM_LEFT.innerHTML;
       } else {
-        CAROUSEL.classList.remove("transition-right");
+        CAROUSEL.classList.remove("transition-right-pets");
         changedItem = ITEM_RIGHT;
         document.querySelector("#item-active").innerHTML = ITEM_RIGHT.innerHTML;
       }

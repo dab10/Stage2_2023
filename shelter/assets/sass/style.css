@@ -121,7 +121,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: -0px;
     }
     to {
-      left: -0.1px;
+      left: -0.01px;
     }
   }
   @keyframes move-right-pets {
@@ -129,7 +129,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: -0px;
     }
     to {
-      left: -0.1px;
+      left: -0.01px;
     }
   }
 }
@@ -141,7 +141,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
           animation-duration: 0.5s;
 }
 
-.transition-left-right {
+.transition-right-pets {
   -webkit-animation-name: move-right-pets;
           animation-name: move-right-pets;
   -webkit-animation-duration: 0.5s;
@@ -238,7 +238,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
   @-webkit-keyframes move-left-pets {
     from {
-      left: -0.1px;
+      left: -0.01px;
     }
     to {
       left: 0px;
@@ -246,7 +246,7 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
   @keyframes move-left-pets {
     from {
-      left: -0.1px;
+      left: -0.01px;
     }
     to {
       left: 0px;
@@ -417,6 +417,13 @@ h5 {
     line-height: 0rem;
     letter-spacing: 0.06em;
   }
+}
+
+button:disabled,
+button[disabled] {
+  border: 2px solid #CDCDCD;
+  color: #CDCDCD;
+  background-color: #F6F6F6;
 }
 
 button:disabled,
@@ -2551,7 +2558,7 @@ template {
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
-    overflow: scroll;
+    overflow-y: auto;
   }
 }
 
@@ -2661,7 +2668,7 @@ template {
   }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 767px) {
   .popup__items {
     padding-top: 17px;
   }
@@ -3038,10 +3045,10 @@ li::marker {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 59px;
-  margin-top: 30px;
+  padding-top: 0px;
+  margin-top: 34px;
   overflow: hidden;
-  height: 900px;
+  height: 950px;
 }
 
 @media (max-width: 1279px) {
@@ -3050,8 +3057,9 @@ li::marker {
         -ms-flex-pack: center;
             justify-content: center;
     margin: auto;
-    padding-top: 58px;
-    height: 1365px;
+    padding-top: 0px;
+    height: 1420px;
+    margin-top: 2px;
   }
 }
 
@@ -3065,8 +3073,8 @@ li::marker {
         flex-wrap: wrap;
     gap: 20px 80px;
     max-width: 300px;
-    height: 1365px;
-    margin-top: 25px;
+    height: 1425px;
+    margin-top: 12px;
   }
 }
 
@@ -3096,7 +3104,7 @@ li::marker {
 @media (max-width: 767px) {
   .pets-pets__wrapper {
     position: relative;
-    top: -1420px;
+    top: -1407px;
   }
 }
 
@@ -3136,13 +3144,13 @@ li::marker {
           justify-content: center;
   -webkit-column-gap: 20px;
           column-gap: 20px;
-  padding-top: 90px;
+  padding-top: 35px;
   padding-bottom: 100px;
 }
 
 @media (max-width: 1279px) {
   .buttons__wrapper {
-    padding-top: 69px;
+    padding-top: 12px;
     padding-bottom: 76px;
   }
 }
@@ -3151,7 +3159,7 @@ li::marker {
   .buttons__wrapper {
     -webkit-column-gap: 10px;
             column-gap: 10px;
-    padding-top: 58px;
+    padding-top: 12px;
     padding-bottom: 42px;
   }
 }
