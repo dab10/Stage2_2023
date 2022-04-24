@@ -28,10 +28,10 @@
         }
         @include media-mobile {
             width: 240px;
-            --main-bg-color: 100%;
-            height: var(--main-bg-color);
+            height: 341px;
             grid-column: 1/5;
             grid-row: 2/3;
+            overflow: scroll;
 
         }
     }
@@ -238,7 +238,7 @@
         @include media-mobile {
             grid-template-columns: 10px auto 12px 10px 30px;
             left: calc( 50% - 120px);
-            top: calc( 50% - 251px);
+            top: calc( 50% - 222.5px);
 
         }
     }

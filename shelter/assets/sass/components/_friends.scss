@@ -166,17 +166,17 @@
 
 }
 
-.woody { 
-    @include media-tablet {
-        display: none;
-    }
-}
+// .woody { 
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
 
-.jennifer {
-    @include media-mobile {
-        display: none;
-    }
-}
+// .jennifer {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
 
 // .woody, .jennifer, .sophia, .timmy, .charly, .scarlett, .freddie {
 //     display: none;

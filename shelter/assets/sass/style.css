@@ -46,6 +46,24 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
 }
 
+@-webkit-keyframes move-right-pets {
+  from {
+    left: -0px;
+  }
+  to {
+    left: -0.1px;
+  }
+}
+
+@keyframes move-right-pets {
+  from {
+    left: -0px;
+  }
+  to {
+    left: -0.1px;
+  }
+}
+
 @media (max-width: 1279px) {
   @-webkit-keyframes move-right {
     from {
@@ -61,6 +79,22 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
     }
     to {
       left: -1160px;
+    }
+  }
+  @-webkit-keyframes move-right-pets {
+    from {
+      left: -0px;
+    }
+    to {
+      left: -0.1px;
+    }
+  }
+  @keyframes move-right-pets {
+    from {
+      left: -0px;
+    }
+    to {
+      left: -0.1px;
     }
   }
 }
@@ -82,13 +116,36 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: -540px;
     }
   }
+  @-webkit-keyframes move-right-pets {
+    from {
+      left: -0px;
+    }
+    to {
+      left: -0.1px;
+    }
+  }
+  @keyframes move-right-pets {
+    from {
+      left: -0px;
+    }
+    to {
+      left: -0.1px;
+    }
+  }
 }
 
 .transition-right {
   -webkit-animation-name: move-right;
           animation-name: move-right;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.transition-left-right {
+  -webkit-animation-name: move-right-pets;
+          animation-name: move-right-pets;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 @-webkit-keyframes move-left {
@@ -109,6 +166,24 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   }
 }
 
+@-webkit-keyframes move-left-pets {
+  from {
+    left: -0.1px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes move-left-pets {
+  from {
+    left: -0.1px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
 @media (max-width: 1279px) {
   @-webkit-keyframes move-left {
     from {
@@ -121,6 +196,22 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
   @keyframes move-left {
     from {
       left: -580px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  @-webkit-keyframes move-left-pets {
+    from {
+      left: -0.1px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  @keyframes move-left-pets {
+    from {
+      left: -0.1px;
     }
     to {
       left: 0px;
@@ -145,13 +236,36 @@ body, h1, h2, h3, h4, h5, .button, .button-circle, .button-circleX, .pets__name,
       left: 0px;
     }
   }
+  @-webkit-keyframes move-left-pets {
+    from {
+      left: -0.1px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  @keyframes move-left-pets {
+    from {
+      left: -0.1px;
+    }
+    to {
+      left: 0px;
+    }
+  }
 }
 
 .transition-left {
   -webkit-animation-name: move-left;
           animation-name: move-left;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.transition-left-pets {
+  -webkit-animation-name: move-left-pets;
+          animation-name: move-left-pets;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 html {
@@ -1909,18 +2023,6 @@ template {
   }
 }
 
-@media (max-width: 1279px) {
-  .woody {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .jennifer {
-    display: none;
-  }
-}
-
 .help__title {
   max-width: 310px;
   color: #545454;
@@ -2442,14 +2544,14 @@ template {
 @media (max-width: 767px) {
   .popup-wrapper {
     width: 240px;
-    --main-bg-color: 100%;
-    height: var(--main-bg-color);
+    height: 341px;
     -ms-grid-column: 1;
     -ms-grid-column-span: 4;
     grid-column: 1/5;
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
+    overflow: scroll;
   }
 }
 
@@ -2735,7 +2837,7 @@ li::marker {
     -ms-grid-columns: 10px auto 12px 10px 30px;
         grid-template-columns: 10px auto 12px 10px 30px;
     left: calc( 50% - 120px);
-    top: calc( 50% - 251px);
+    top: calc( 50% - 222.5px);
   }
 }
 
@@ -2948,7 +3050,8 @@ li::marker {
         -ms-flex-pack: center;
             justify-content: center;
     margin: auto;
-    padding-top: 29px;
+    padding-top: 58px;
+    height: 1365px;
   }
 }
 
@@ -2962,6 +3065,8 @@ li::marker {
         flex-wrap: wrap;
     gap: 20px 80px;
     max-width: 300px;
+    height: 1365px;
+    margin-top: 25px;
   }
 }
 
@@ -2988,6 +3093,13 @@ li::marker {
   }
 }
 
+@media (max-width: 767px) {
+  .pets-pets__wrapper {
+    position: relative;
+    top: -1420px;
+  }
+}
+
 .item-pets {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2999,6 +3111,20 @@ li::marker {
       flex-wrap: wrap;
   row-gap: 30px;
   max-width: 1200px;
+}
+
+@media (max-width: 1279px) {
+  .item-pets {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 767px) {
+  .item-pets {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .buttons__wrapper {
@@ -3016,7 +3142,7 @@ li::marker {
 
 @media (max-width: 1279px) {
   .buttons__wrapper {
-    padding-top: 40px;
+    padding-top: 69px;
     padding-bottom: 76px;
   }
 }
@@ -3025,7 +3151,7 @@ li::marker {
   .buttons__wrapper {
     -webkit-column-gap: 10px;
             column-gap: 10px;
-    padding-top: 42px;
+    padding-top: 58px;
     padding-bottom: 42px;
   }
 }
@@ -3039,35 +3165,5 @@ li::marker {
   letter-spacing: 0.06em;
   margin: auto;
   margin-bottom: 1px;
-}
-
-@media (max-width: 1279px) {
-  .scarlett {
-    display: none;
-  }
-}
-
-@media (max-width: 1279px) {
-  .freddie {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .sophia {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .timmy {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .charly {
-    display: none;
-  }
 }
 /*# sourceMappingURL=style.css.map */
