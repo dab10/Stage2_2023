@@ -79,6 +79,7 @@ function randomInteger(min, max) {
     for (let i = 0; i < 6; i++) {
         arrArrRandom.push(randomIntegerArr(petsArr.length))
     }
+    console.log(arrArrRandom)
       
 
     document.querySelector("#item-active").innerHTML = '';
