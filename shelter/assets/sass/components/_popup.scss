@@ -25,13 +25,14 @@
         @include media-tablet {
             width: 630px;
             height: 350px;
+            overflow-y: auto;
         }
         @include media-mobile {
             width: 240px;
             height: 341px;
             grid-column: 1/5;
             grid-row: 2/3;
-            overflow: scroll;
+            overflow-y: auto;
 
         }
     }

@@ -2538,6 +2538,7 @@ template {
   .popup-wrapper {
     width: 630px;
     height: 350px;
+    overflow-y: auto;
   }
 }
 
@@ -2551,7 +2552,7 @@ template {
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
-    overflow: scroll;
+    overflow-y: auto;
   }
 }
 
@@ -3038,10 +3039,10 @@ li::marker {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 59px;
-  margin-top: 30px;
+  padding-top: 0px;
+  margin-top: 34px;
   overflow: hidden;
-  height: 900px;
+  height: 950px;
 }
 
 @media (max-width: 1279px) {
@@ -3050,8 +3051,9 @@ li::marker {
         -ms-flex-pack: center;
             justify-content: center;
     margin: auto;
-    padding-top: 58px;
-    height: 1365px;
+    padding-top: 0px;
+    height: 1420px;
+    margin-top: 2px;
   }
 }
 
@@ -3065,8 +3067,8 @@ li::marker {
         flex-wrap: wrap;
     gap: 20px 80px;
     max-width: 300px;
-    height: 1365px;
-    margin-top: 25px;
+    height: 1425px;
+    margin-top: 12px;
   }
 }
 
@@ -3096,7 +3098,7 @@ li::marker {
 @media (max-width: 767px) {
   .pets-pets__wrapper {
     position: relative;
-    top: -1420px;
+    top: -1407px;
   }
 }
 
@@ -3136,13 +3138,13 @@ li::marker {
           justify-content: center;
   -webkit-column-gap: 20px;
           column-gap: 20px;
-  padding-top: 90px;
+  padding-top: 35px;
   padding-bottom: 100px;
 }
 
 @media (max-width: 1279px) {
   .buttons__wrapper {
-    padding-top: 69px;
+    padding-top: 12px;
     padding-bottom: 76px;
   }
 }
@@ -3151,7 +3153,7 @@ li::marker {
   .buttons__wrapper {
     -webkit-column-gap: 10px;
             column-gap: 10px;
-    padding-top: 58px;
+    padding-top: 12px;
     padding-bottom: 42px;
   }
 }
