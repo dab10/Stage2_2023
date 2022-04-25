@@ -426,13 +426,6 @@ button[disabled] {
   background-color: #F6F6F6;
 }
 
-button:disabled,
-button[disabled] {
-  border: 2px solid #CDCDCD;
-  color: #CDCDCD;
-  background-color: #F6F6F6;
-}
-
 .no-cursor {
   cursor: auto;
 }
@@ -2511,6 +2504,18 @@ template {
   }
 }
 
+.grey-popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .overlay-popup {
   content: '';
   position: fixed;
@@ -2551,14 +2556,13 @@ template {
 @media (max-width: 767px) {
   .popup-wrapper {
     width: 240px;
-    height: 341px;
+    height: 100%;
     -ms-grid-column: 1;
     -ms-grid-column-span: 4;
     grid-column: 1/5;
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
-    overflow-y: auto;
   }
 }
 
@@ -2843,8 +2847,10 @@ li::marker {
   .conteiner-popup {
     -ms-grid-columns: 10px auto 12px 10px 30px;
         grid-template-columns: 10px auto 12px 10px 30px;
-    left: calc( 50% - 120px);
-    top: calc( 50% - 222.5px);
+    left: auto;
+    top: auto;
+    -webkit-transform: translate(15px, -26px);
+            transform: translate(15px, -26px);
   }
 }
 
