@@ -1,3 +1,9 @@
+.grey-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .overlay-popup {
       content: '';
       position: fixed;
@@ -29,10 +35,11 @@
         }
         @include media-mobile {
             width: 240px;
-            height: 341px;
+            height: 100%;
             grid-column: 1/5;
             grid-row: 2/3;
-            overflow-y: auto;
+
+            
 
         }
     }
@@ -238,8 +245,9 @@
         }
         @include media-mobile {
             grid-template-columns: 10px auto 12px 10px 30px;
-            left: calc( 50% - 120px);
-            top: calc( 50% - 222.5px);
+            left: auto;
+            top: auto;
+            transform: translate(15px, -26px);
 
         }
     }
