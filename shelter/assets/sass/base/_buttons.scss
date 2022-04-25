@@ -37,7 +37,6 @@
     height: 52px;
     border-radius: 100px;
     cursor: pointer;
-    
     @extend %transition;
     &_bordered {
         background-color: inherit;
@@ -63,10 +62,11 @@
         color: $color-dark;
         border: 2px solid $color-primary;
         cursor: auto;
-
-        
     }
-
+    @include media-tablet {
+        @include font($size: 1.5rem, $height: 0rem);
+        letter-spacing: 0.06em;
+    }
 
 
 }
@@ -81,4 +81,46 @@ button[disabled]{
 
 .no-cursor {
     cursor: auto;
+}
+
+.button-circleX {
+    @extend %font-prim;
+    @include font($size: 1.5rem, $height: 1.5rem);
+    letter-spacing: 0.06em;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    cursor: pointer;
+    @extend %transition;
+    &_bordered {
+        background-color: inherit;
+        border: 2px solid $color-primary;
+        color: $color-dark;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+    &_colored {
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        &:hover {
+            background: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+    }
+    &_colored-numb {
+       
+        background: $color-primary;
+        color: $color-dark;
+        border: 2px solid $color-primary;
+        cursor: auto;
+    }
+    @include media-tablet {
+        @include font($size: 1.5rem, $height: 0rem);
+        letter-spacing: 0.06em;
+    }
+
+
 }

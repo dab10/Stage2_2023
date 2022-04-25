@@ -4,6 +4,12 @@
 
 %font-prim {
     font-family: 'Georgia', serif;
+    font-style: normal;
+}
+
+%font-prim-bold {
+    font-family: 'Georgia', serif;
+    font-style: normal;
 }
 
 %font-add-normal {
@@ -14,4 +20,8 @@
 %font-add-italic {
     font-family: 'Arial', sans-serif;
     font-style: italic;
+}
+
+%font-add-italic {
+    height: 100%;
 }

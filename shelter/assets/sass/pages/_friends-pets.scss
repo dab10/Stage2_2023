@@ -1,21 +1,83 @@
+.friends-pets__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0px;
+    margin-top: 34px;
+    overflow: hidden;
+    height: 950px;
+    @include media-tablet {
+        justify-content: center;
+        margin: auto;
+        padding-top: 0px;
+        height: 1420px;
+        margin-top: 2px;
+        
+        
+    }
+    @include media-mobile {
+        justify-content: center;
+        padding-top: 42px;
+        flex-wrap: wrap;
+        gap: 20px 80px;
+        max-width: 300px;
+        height: 1425px;
+        margin-top: 12px;
+
+
+    }
+}
+
 .pets-pets__wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 30px;
+    max-width: 1200px;
+    @include media-tablet {
+        justify-content: center;
+        gap: 30px 40px;
+        max-width: 708px;
+    }
+    @include media-mobile {
+        position: relative;
+        top: -1407px;
+    }
+
+}
+
+.item-pets {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    max-width: 1200px;
+    @include media-tablet {
+        max-width: 580px;
+    }
+    @include media-mobile {
+        justify-content: center;
+    }
 }
 
 .buttons__wrapper {
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    padding-top: 60px;
+    padding-top: 35px;
     padding-bottom: 100px;
-
+    @include media-tablet {
+        padding-top: 12px;
+        padding-bottom: 76px;
+    }
+    @include media-mobile {
+        column-gap: 10px;
+        padding-top: 12px;
+        padding-bottom: 42px;
+    }
 }
 
 .button-numb__text {
-    
     @extend %font-prim;
     @include font($size: 2.0rem, $height: 2.3rem);
     display: inline-block;
@@ -23,3 +85,33 @@
     margin: auto;
     margin-bottom: 1px;
 }
+
+// .scarlett {
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
+
+// .freddie {
+//     @include media-tablet {
+//         display: none;
+//     }
+// }
+
+// .sophia {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
+
+// .timmy {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
+
+// .charly {
+//     @include media-mobile {
+//         display: none;
+//     }
+// }
