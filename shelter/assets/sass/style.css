@@ -1165,7 +1165,7 @@ template {
     width: 320px;
     height: 100vh;
     background-color: #292929;
-    overflow: scroll;
+    overflow-y: scroll;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
@@ -2937,7 +2937,7 @@ li::marker {
     width: 320px;
     height: 100vh;
     background-color: #FFFFFF;
-    overflow: scroll;
+    overflow-y: scroll;
     -webkit-transition: 0.5s;
     transition: 0.5s;
   }
