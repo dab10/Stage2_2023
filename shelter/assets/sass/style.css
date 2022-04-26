@@ -2538,6 +2538,11 @@ template {
   cursor: pointer;
 }
 
+.grey-popup:hover .button-popup {
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
 .popup-wrapper {
   display: none;
   -ms-grid-column: 1;
@@ -2860,6 +2865,11 @@ li::marker {
     -webkit-transform: translate(15px, -26px);
             transform: translate(15px, -26px);
   }
+}
+
+.conteiner-popup:hover .button-popup {
+  border: 2px solid #F1CDB3;
+  background-color: inherit;
 }
 
 .header-pets {
