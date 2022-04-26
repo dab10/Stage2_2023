@@ -5,7 +5,7 @@
 }
 
 .overlay-popup {
-      content: '';
+
       position: fixed;
       z-index: 3;
       left: 0;
@@ -18,10 +18,11 @@
       cursor: pointer;
     }
 
-    .grey-popup:hover .button-popup {
+        .overlay-popup:hover .button-popup {
         background: $color-primary-light;
         border-color: $color-primary-light;
     }
+
 
     .popup-wrapper {
         display: none;
@@ -31,7 +32,7 @@
         width: 900px;
         height: 500px;
         background-color: $color-light-hovered;
-        z-index: 4;
+        z-index: 5;
         cursor: auto;
         @include media-tablet {
             width: 630px;
@@ -213,6 +214,7 @@
 
     .open-popup {
         display: flex;
+        z-index: 4;
     }
 
 
@@ -229,7 +231,7 @@
 
         font-size: 3rem;
         transform: rotate(45deg);
-        z-index: 4;
+        z-index: 5;
         @include media-mobile {
             grid-column: 3/6;
             grid-row: 1/2;
@@ -238,6 +240,7 @@
 
     .conteiner-popup {
         display: grid;
+        z-index: 4;
         grid-template-columns: auto 10px auto;
         grid-template-rows: repeat(2, auto);
         position: fixed;
@@ -257,7 +260,11 @@
         }
     }
 
-    .conteiner-popup:hover .button-popup {
-        border: 2px solid $color-primary;
+
+
+    .open-popup:hover ~ .button-popup{
         background-color: inherit;
+        border: 2px solid $color-primary;
+        color: $color-dark;
     }
+

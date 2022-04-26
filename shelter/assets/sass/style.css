@@ -2525,7 +2525,6 @@ template {
 }
 
 .overlay-popup {
-  content: '';
   position: fixed;
   z-index: 3;
   left: 0;
@@ -2538,7 +2537,7 @@ template {
   cursor: pointer;
 }
 
-.grey-popup:hover .button-popup {
+.overlay-popup:hover .button-popup {
   background: #FDDCC4;
   border-color: #FDDCC4;
 }
@@ -2555,7 +2554,7 @@ template {
   width: 900px;
   height: 500px;
   background-color: #FAFAFA;
-  z-index: 4;
+  z-index: 5;
   cursor: auto;
 }
 
@@ -2799,6 +2798,7 @@ li::marker {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 4;
 }
 
 .button-popup {
@@ -2821,7 +2821,7 @@ li::marker {
   font-size: 3rem;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
-  z-index: 4;
+  z-index: 5;
 }
 
 @media (max-width: 767px) {
@@ -2838,6 +2838,7 @@ li::marker {
 .conteiner-popup {
   display: -ms-grid;
   display: grid;
+  z-index: 4;
   -ms-grid-columns: auto 10px auto;
       grid-template-columns: auto 10px auto;
   -ms-grid-rows: (auto)[2];
@@ -2867,9 +2868,10 @@ li::marker {
   }
 }
 
-.conteiner-popup:hover .button-popup {
-  border: 2px solid #F1CDB3;
+.open-popup:hover ~ .button-popup {
   background-color: inherit;
+  border: 2px solid #F1CDB3;
+  color: #292929;
 }
 
 .header-pets {
