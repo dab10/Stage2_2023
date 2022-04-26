@@ -99,7 +99,7 @@
         align-items: center;
         @include font($size: 3.2rem, $height: 5.1rem);
         padding-left: 0px;
-        padding-top: 249px;
+        
         margin: 0;
         row-gap: 40px;
     }
@@ -110,6 +110,9 @@
 .open {
     @include media-mobile {
         right: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     } 
 }
 
@@ -150,3 +153,4 @@
 .link-light {
     color: $color-light-hovered;
 }
+
