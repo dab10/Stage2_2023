@@ -520,7 +520,7 @@ function petsNumb(event) {
 
 function closePopup(event) {
   console.log(event.target)
-  if (event.target.classList.contains('overlay-popup') || event.target.classList.contains('button-popup')) {
+  if (event.target.classList.contains('overlay-popup') || event.target.classList.contains('button-popup')  || event.target.classList.contains('conteiner-popup')) {
     backgroundGreyPopup.classList.remove('overlay-popup');
     popupTable.classList.remove('open-popup')
     popupBtn.style.display = 'none';
