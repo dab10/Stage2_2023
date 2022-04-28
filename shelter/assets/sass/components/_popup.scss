@@ -69,6 +69,7 @@
         width: 500px;
         height: 500px;
         border-radius: 9px 0px 0px 9px;
+        object-fit: cover;
         @include media-tablet {
             width: 350px;
             height: 350px;
