@@ -2608,6 +2608,8 @@ template {
   width: 500px;
   height: 500px;
   border-radius: 9px 0px 0px 9px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 1279px) {
