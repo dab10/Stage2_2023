@@ -1,4 +1,4 @@
-export interface Inews {
+export interface INewsApi {
     id: string;
     name: string;
     description: string;
@@ -6,4 +6,15 @@ export interface Inews {
     category: string;
     language: string;
     country: string;
+}
+export interface INews {
+    source: {
+        name: string;
+    };
+    author: string;
+    publishedAt: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
 }
