@@ -28,3 +28,5 @@ export interface IArticles {
     publishedAt: string;
     content: string;
 }
+
+export type Callback<T> = (data: T) => void;
