@@ -1,5 +1,4 @@
-import { Callback } from '../../types/index';
-
+import { Callback, IData } from '../../types/index';
 class Loader {
     baseLink: string;
     options: { apiKey: string };
@@ -11,7 +10,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }: { endpoint: string; options?: { sources: string } | Record<string, never> },
-        callback = () => {
+        callback: Callback<Partial<IData>> = () => {
             console.error('No callback for GET response');
         }
     ) {
@@ -39,11 +38,11 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback<string>, options = {}) {
+    load(method: string, endpoint: string, callback: Callback<Partial<IData>>, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data: string) => callback(data))
+            .then((data: Partial<IData>) => callback(data))
             .catch((err: Error) => console.error(err));
     }
 }

@@ -1,7 +1,8 @@
+import { Callback, IData } from '../../types/index';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: () => void) {
+    getSources(callback: Callback<Partial<IData>>) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: () => void) {
+    getNews(e: Event, callback: Callback<Partial<IData>>) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
