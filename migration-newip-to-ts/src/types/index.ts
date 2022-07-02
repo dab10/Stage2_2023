@@ -1,26 +1,30 @@
+export interface IData {
+    status: string;
+    sources: Array<ISources>;
+    totalResults: number;
+    articles: Array<IArticles>;
+}
+
+export interface ISources {
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    category: string;
+    language: string;
+    country: string;
+}
+
 export interface IArticles {
-    source: ISource;
+    source: {
+        id: string;
+        name: string;
+    };
     author: string;
-    publishedAt: string;
     title: string;
     description: string;
     url: string;
     urlToImage: string;
-}
-
-export interface ISources {
-    sources: {
-        id: string;
-        name: string;
-        description: string;
-        url: string;
-        category: string;
-        language: string;
-        country: string;
-    };
-}
-
-export interface ISource {
-    id: string;
-    name: string;
+    publishedAt: string;
+    content: string;
 }
