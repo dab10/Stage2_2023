@@ -35,11 +35,7 @@ class Loader {
         Object.keys(urlOptions).forEach((key) => {
             url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
         });
-        console.log(this.baseLink);
-        console.log(this.options);
-        console.log(options);
-        console.log(endpoint);
-        console.log(url.slice(0, -1));
+
         return url.slice(0, -1);
     }
 
@@ -47,8 +43,8 @@ class Loader {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((data: string) => callback(data))
+            .catch((err: Error) => console.error(err));
     }
 }
 
