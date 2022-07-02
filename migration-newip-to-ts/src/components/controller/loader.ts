@@ -10,7 +10,7 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options: Record<string, never> },
+        { endpoint, options = {} }: { endpoint: string; options?: { sources: string } | Record<string, never> },
         callback = () => {
             console.error('No callback for GET response');
         }
