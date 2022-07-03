@@ -9,6 +9,9 @@ body {
     font-family: sans-serif;
 }
 .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100vh;
     max-width: 1920px;
     margin: 0 auto;
@@ -55,6 +58,7 @@ footer {
     align-items: center;
     justify-content:space-around;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 @media (max-width: 767px) {
