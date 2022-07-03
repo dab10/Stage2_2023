@@ -17,7 +17,7 @@ footer {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:space-around;
 }
 footer .copyright {
     font-size: 14px;
@@ -32,4 +32,37 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+.footer-year {
+    color: #70d6ff;
+}
+
+.footer-github {
+    text-decoration: none;
+    color: #70d6ff;
+    transition: 0.25s;
+}
+
+.footer-github:hover,
+.footer-github:focus {
+    color: #69db7e;
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+}
+
+.footer-rss-image {
+    height: 50px;
+    width: 100px;
+    background: url("./assets/images/rss.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    transition: 0.25s;
+    filter: invert(21%) sepia(56%) saturate(1534%) hue-rotate(170deg) brightness(102%) contrast(102%);
+}
+
+.footer-rss-image:hover,
+.footer-rss-image:focus {
+    filter: invert(3%) sepia(33%) saturate(1353%) hue-rotate(56deg) brightness(85%) contrast(103%);
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
 }
