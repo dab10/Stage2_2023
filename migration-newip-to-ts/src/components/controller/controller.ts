@@ -2,7 +2,7 @@ import { Callback, IData } from '../../types/index';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: Callback<Partial<IData>>) {
+    public getSources(callback: Callback<Partial<IData>>): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: Callback<Partial<IData>>) {
+    public getNews(e: Event, callback: Callback<Partial<IData>>): void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 

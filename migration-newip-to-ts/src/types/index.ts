@@ -30,3 +30,8 @@ export interface IArticles {
 }
 
 export type Callback<T> = (data: T) => void;
+
+export enum HTTPErrors {
+    Unauthorized = 401,
+    NotFound = 404,
+}

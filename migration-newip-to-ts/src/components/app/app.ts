@@ -3,15 +3,15 @@ import { AppView } from '../view/appView';
 import { IData } from '../../types/index';
 
 class App {
-    controller: AppController;
-    view: AppView;
+    private controller: AppController;
+    private view: AppView;
 
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start() {
+    public start(): void {
         (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e) =>
             this.controller.getNews(e, (data: Partial<IData>) => this.view.drawNews(data))
         );
