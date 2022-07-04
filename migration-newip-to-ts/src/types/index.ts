@@ -29,6 +29,19 @@ export interface IArticles {
     content: string;
 }
 
+export type GetRespFunctionType = {
+    endpoint: string;
+    options?: OptionalOptionsType;
+};
+
+export type OptionsType = {
+    options?: OptionalOptionsType;
+};
+
+export type OptionalOptionsType = {
+    sources?: string;
+};
+
 export type Callback<T> = (data: T) => void;
 
 export enum HTTPErrors {

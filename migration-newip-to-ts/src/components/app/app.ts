@@ -12,7 +12,7 @@ class App {
     }
 
     public start(): void {
-        (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e) =>
+        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e) =>
             this.controller.getNews(e, (data: Partial<IData>) => this.view.drawNews(data))
         );
         this.controller.getSources((data: Partial<IData>) => this.view.drawSources(data));
