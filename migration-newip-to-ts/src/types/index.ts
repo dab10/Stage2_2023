@@ -34,10 +34,6 @@ export type GetRespFunctionType = {
     options?: OptionalOptionsType;
 };
 
-export type OptionsType = {
-    options?: OptionalOptionsType;
-};
-
 export type OptionalOptionsType = {
     sources?: string;
 };
