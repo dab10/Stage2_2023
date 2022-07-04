@@ -31,10 +31,10 @@ export interface IArticles {
 
 export type GetRespFunctionType = {
     endpoint: string;
-    options?: OptionalOptionsType;
+    options?: OptionsType;
 };
 
-export type OptionalOptionsType = {
+export type OptionsType = {
     sources?: string;
 };
 
