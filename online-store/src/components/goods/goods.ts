@@ -1,37 +1,54 @@
-class News {
-    public draw(data: IArticles[]): void {
-        const news: IArticles[] = data.length >= 10 ? data.filter((_item: IArticles, idx: number) => idx < 10) : data;
+import './goods.css';
+import './goods.scss';
 
+interface IGoods {
+    model: string;
+    image: string;
+    quantity: string;
+    quantityValue: string;
+    year: string;
+    yearValue: string;
+    company: string;
+    companyValue: string;
+    color: string;
+    colorValue: string;
+    camera: string;
+    cameraValue: string;
+    popular: string;
+    popularValue: string;
+}
+
+class Goods {
+    public draw(data: IGoods[]): void {
+        console.log(data);
         const fragment = document.createDocumentFragment() as DocumentFragment;
-        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+        const goodsTemp = document.querySelector('#goodsItem') as HTMLTemplateElement;
 
-        news.forEach((item: IArticles, idx: number) => {
-            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
-            if (idx % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
+        data.forEach((item: IGoods) => {
+            const goodsClone = goodsTemp.content.cloneNode(true) as HTMLElement;
 
-            (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
-                item.urlToImage || './assets/images/news_placeholder.jpg'
-            })`;
-            (newsClone.querySelector('.news__meta-author') as HTMLLIElement).textContent =
-                item.author || item.source.name;
-            (newsClone.querySelector('.news__meta-date') as HTMLLIElement).textContent = item.publishedAt
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('-');
+            (goodsClone.querySelector('.DecorationItem__title') as HTMLHeadingElement).textContent = item.model;
+            (goodsClone.querySelector('.DecorationItem__img') as HTMLImageElement).alt = item.model;
+            (goodsClone.querySelector('.DecorationItem__img') as HTMLImageElement).src = item.image;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(1)') as HTMLLIElement).textContent =
+                item.quantity + item.quantityValue;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(2)') as HTMLLIElement).textContent =
+                item.year + item.yearValue;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(3)') as HTMLLIElement).textContent =
+                item.company + item.companyValue;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(4)') as HTMLLIElement).textContent =
+                item.color + item.colorValue;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(5)') as HTMLLIElement).textContent =
+                item.camera + item.cameraValue;
+            (goodsClone.querySelector('.DecorationItem__props li:nth-child(6)') as HTMLLIElement).textContent =
+                item.popular + item.popularValue;
 
-            (newsClone.querySelector('.news__description-title') as HTMLHeadingElement).textContent = item.title;
-            (newsClone.querySelector('.news__description-source') as HTMLHeadingElement).textContent = item.source.name;
-            (newsClone.querySelector('.news__description-content') as HTMLParagraphElement).textContent =
-                item.description;
-            (newsClone.querySelector('.news__read-more a') as HTMLAnchorElement).setAttribute('href', item.url);
-
-            fragment.append(newsClone);
+            fragment.append(goodsClone);
         });
 
-        (document.querySelector('.news') as HTMLDivElement).innerHTML = '';
-        (document.querySelector('.news') as HTMLDivElement).appendChild(fragment);
+        (document.querySelector('.DecorationListing') as HTMLDivElement).innerHTML = '';
+        (document.querySelector('.DecorationListing') as HTMLDivElement).appendChild(fragment);
     }
 }
 
-export default News;
+export default Goods;

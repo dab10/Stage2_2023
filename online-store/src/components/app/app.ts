@@ -1,12 +1,15 @@
-
+import Goods from '../goods/goods';
+import data from '../goods/goods.json';
 class App {
-    private view: AppView;
+    private view: Goods;
 
     constructor() {
-        this.view = new AppView();
+        this.view = new Goods();
     }
 
     public start(): void {
-        this.view.drawNews(data);
+        this.view.draw(data);
     }
 }
+
+export default App;

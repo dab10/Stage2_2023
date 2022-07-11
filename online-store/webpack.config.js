@@ -57,12 +57,10 @@ module.exports = {
     }),
     new CleanWebpackPlugin(), // CLEAN FOLDER DIST WHEN "NPM START"
     new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist'),
+        patterns: [{ from: 'src/assets/images', to: 'assets/images' }],
+        options: {
+            concurrency: 100,
         },
-      ],
     }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
@@ -77,7 +75,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/, // FILE EXTENSION PICTURE
-        type: 'asset/resource', // INSTEAD OF ['file-loader']?
+        use: ['file-loader'], // INSTEAD OF ['file-loader']?
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/, // FILE EXTENSION FONTS
@@ -85,7 +83,7 @@ module.exports = {
       },
       {
         test: /\.xml$/, // FILE EXTENSION .XML
-        use: ['xml-loader'], // LOADER
+                use: ['xml-loader'], // LOADER
       },
       {
         test: /\.csv$/, // FILE EXTENSION .CSV
