@@ -1,4 +1,4 @@
-.DecorationListing {
+.itemList {
     grid-gap: 20px;
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -19,7 +19,7 @@
     }
 }
 
-.DecorationItem {
+.item {
     backdrop-filter: blur(3px);
     background-color: rgba(19,20,21,.3);
     border: 2px solid #626f71;
@@ -30,7 +30,7 @@
     padding: 0;
 }
 
-.DecorationItem__title {
+.item__title {
     font-size: 20px;
     font-stretch: condensed;
     margin: 15px 0;
@@ -39,21 +39,21 @@
     text-align: center;
 }
 
-.DecorationItem__img-container {
+.item__img-container {
     background: #fff;
     border-radius: 20px;
     display: flex;
     justify-content: center;
 }
 
-.DecorationItem__img {
+.item__img {
     height: 100px;
     object-fit: contain;
     pointer-events: none;
     width: auto;
 }
 
-.DecorationItem__props {
+.item__props {
     flex-grow: 1;
     line-height: 1;
     line-height: 24px;

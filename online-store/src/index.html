@@ -8,30 +8,44 @@
         <title>Online-store</title>
     </head>
     <body>
-        <main>
-            <div class="DecorationFilters_container__fvNdr"></div>
-            <div class="DecorationListing"></div>
-        </main>
-
-        <template id="filterButton">
-            <div class="DecorationFilterGroup">
-                <h4 class="title"></h4>
-                <div class="FilterByShape"></div>
-                <ul class="list">
-                    <button class="button type-ball"></button>
-                    <button class="button type-bell"></button>
-                    <button class="button type-cone"></button>
-                </ul>
-            </div>
-        </template>
-
-        <template id="goodsItem">
-            <div class="DecorationItem">
-                <h4 class="DecorationItem__title"></h4>
-                <div class="DecorationItem__img-container">
-                    <img class="DecorationItem__img">
+        <div class = "wrapper">
+            <header>
+                <div class="container">
+                
                 </div>
-                <ul class="DecorationItem__props">
+            </header>
+            <main>
+                <div class="container">
+                    <div class="filters">
+                        <div class="filterByValue">
+                            <h4 class="filterByValue__title">
+                                Фильтры по значению
+                            </h4>
+                            <div class="filterByName">
+                                Производитель:
+                                <ul class="filterByName__company">
+                                    <li><button class="button apple">Apple</button></li>
+                                    <li><button class="button samsung">Samsung</button></li>
+                                    <li><button class="button xiaomi">Xiaomi</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="itemList"></div>
+                </div>
+            </main>
+            <footer>
+
+            </footer>
+        </div>
+
+        <template id="items">
+            <div class="item">
+                <h4 class="item__title"></h4>
+                <div class="item__img-container">
+                    <img class="item__img">
+                </div>
+                <ul class="item__props">
                     <li><li>
                     <li><li>
                     <li><li>
