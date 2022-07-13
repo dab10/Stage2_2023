@@ -1,26 +1,8 @@
 import './goods.css';
 import './goods.scss';
-
-interface IGoods {
-    model: string;
-    image: string;
-    quantity: string;
-    quantityValue: string;
-    year: string;
-    yearValue: string;
-    company: string;
-    companyValue: string;
-    color: string;
-    colorValue: string;
-    camera: string;
-    cameraValue: string;
-    popular: string;
-    popularValue: string;
-}
-
+import { IGoods } from '../../types';
 class Goods {
     public draw(data: IGoods[]): void {
-        console.log(data);
         const fragment = document.createDocumentFragment() as DocumentFragment;
         const goodsTemp = document.querySelector('#goodsItem') as HTMLTemplateElement;
 
