@@ -2,16 +2,19 @@ import { IGoods } from '../../types';
 import Goods from '../goods/goods';
 import data from '../goods/goods.json';
 import FilterByName from '../filter/filterByName';
+import Range from '../view/range';
 
 class App {
     private view: Goods;
     private data: IGoods[];
     private FilterByName: FilterByName;
+    private viewRange: Range;
 
     constructor() {
         this.view = new Goods();
         this.data = data;
         this.FilterByName = new FilterByName();
+        this.viewRange = new Range();
     }
 
     // private toggleMenu(company: string): void {
@@ -40,6 +43,8 @@ class App {
 
     public start(): void {
         this.view.draw(this.data);
+        this.viewRange.rangeSliderByCount();
+        this.viewRange.rangeSliderByYear();
         (document.querySelector('.filterByValue') as HTMLDivElement).addEventListener('click', (e) =>
             this.FilterByName.filter(e, data)
         );
