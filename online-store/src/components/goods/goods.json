@@ -9,11 +9,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "да"
+        "popularValue": "Да"
     },
     {
         "model": "Apple iPhone 12",
@@ -25,11 +25,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Apple iPhone 13",
@@ -41,11 +41,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "красный",
+        "colorValue": "Красный",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Apple iPhone SE",
@@ -57,11 +57,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy A03",
@@ -73,11 +73,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "красный",
+        "colorValue": "Красный",
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy S20",
@@ -89,11 +89,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy S21",
@@ -105,11 +105,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi Poco X4 pro",
@@ -121,11 +121,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi Redmi 9C",
@@ -137,11 +137,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "красный",
+        "colorValue": "Красный",
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi Redmi Note 11",
@@ -153,11 +153,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "да"
+        "popularValue": "Да"
     },
     {
         "model": "Xiaomi Redmi Note 10S",
@@ -169,11 +169,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi Redmi Note 10",
@@ -185,11 +185,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi Poco M3 Pro",
@@ -201,11 +201,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Xiaomi 12 Lite",
@@ -217,11 +217,11 @@
         "company": "Производитель: ",
         "companyValue": "Xiaomi",
         "color": "Цвет: ",
-        "colorValue": "красный",
+        "colorValue": "Красный",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "да"
+        "popularValue": "Да"
     },
     {
         "model": "Samsung Galaxy A73",
@@ -233,11 +233,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy A53",
@@ -249,11 +249,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy A23",
@@ -265,11 +265,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy S22",
@@ -281,11 +281,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "красный",
+        "colorValue": "Красный",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Samsung Galaxy A52",
@@ -297,11 +297,11 @@
         "company": "Производитель: ",
         "companyValue": "Samsung",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Apple iPhone Xs",
@@ -313,11 +313,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "белый",
+        "colorValue": "Белый",
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "нет"
+        "popularValue": "Нет"
     },
     {
         "model": "Apple iPhone 13 Pro Max",
@@ -329,11 +329,11 @@
         "company": "Производитель: ",
         "companyValue": "Apple",
         "color": "Цвет: ",
-        "colorValue": "желтый",
+        "colorValue": "Желтый",
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "да"
+        "popularValue": "Да"
     }
     
 

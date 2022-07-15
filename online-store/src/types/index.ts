@@ -1,4 +1,7 @@
-export interface IGoods {
+interface setTypeIGoods {
+    [key: string]: string;
+}
+export interface IGoods extends setTypeIGoods {
     model: string;
     image: string;
     quantity: string;
@@ -13,4 +16,14 @@ export interface IGoods {
     cameraValue: string;
     popular: string;
     popularValue: string;
+}
+
+interface setTypeIFilter {
+    [key: string]: string[] | string;
+}
+export interface IFilter extends setTypeIFilter {
+    companyValue: string[];
+    cameraValue: string[];
+    colorValue: string[];
+    popularValue: string[];
 }
