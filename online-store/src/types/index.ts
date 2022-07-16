@@ -1,3 +1,4 @@
+import { API } from 'nouislider';
 interface setTypeIGoods {
     [key: string]: string;
 }
@@ -26,4 +27,10 @@ export interface IFilter extends setTypeIFilter {
     cameraValue: string[];
     colorValue: string[];
     popularValue: string[];
+    quantityValue: string[];
+    yearValue: string[];
+}
+
+export interface TargetElement extends HTMLElement {
+    noUiSlider: API;
 }
