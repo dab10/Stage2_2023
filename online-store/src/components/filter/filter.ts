@@ -49,7 +49,9 @@ class Filter {
         const isCamera = (target.parentNode as HTMLElement).classList.contains('filter-by-size__camera');
         const isColor = (target.parentNode as HTMLElement).classList.contains('filter-by-color__color');
         const isPopular = (target.parentNode as HTMLElement).classList.contains('filter-by-popular__popular');
-        target.classList.toggle('alt');
+        if (isCompany || isCamera || isColor || isPopular) {
+            target.classList.toggle('alt');
+        }
         const hasClassAlt = target.classList.contains('alt');
 
         if (isCompany && hasClassAlt) {

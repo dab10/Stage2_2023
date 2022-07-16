@@ -1,19 +1,36 @@
 import noUiSlider from 'nouislider';
-import { ITargetElement } from '../../types';
+import { ITargetElement, IGoods } from '../../types';
 import 'nouislider/dist/nouislider.css';
+import data from '../goods/goods.json';
 //import FilterByName from '../filter/filterByName';
 
 class Range {
+    private data: IGoods[];
+
+    constructor() {
+        this.data = data;
+    }
+
     public rangeSliderByCount(): void {
         const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
+
+        const filteredByCount = data.map((item) => {
+            return {
+                quantityValue: +item.quantityValue,
+            };
+        });
+
+        const minCount = filteredByCount.reduce((acc, curr) => (acc.quantityValue < curr.quantityValue ? acc : curr));
+        const maxCount = filteredByCount.reduce((acc, curr) => (acc.quantityValue > curr.quantityValue ? acc : curr));
 
         noUiSlider.create(countSlider, {
             start: [1, 12],
             connect: true,
+            tooltips: [true, true],
             step: 1,
             range: {
-                min: 1,
-                max: 12,
+                min: minCount.quantityValue,
+                max: maxCount.quantityValue,
             },
             format: {
                 to: (value) => Math.floor(value),
@@ -34,13 +51,23 @@ class Range {
     public rangeSliderByYear(): void {
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
 
+        const filteredByYear = data.map((item) => {
+            return {
+                yearValue: +item.yearValue,
+            };
+        });
+
+        const minYear = filteredByYear.reduce((acc, curr) => (acc.yearValue < curr.yearValue ? acc : curr));
+        const maxYear = filteredByYear.reduce((acc, curr) => (acc.yearValue > curr.yearValue ? acc : curr));
+
         noUiSlider.create(yearSlider, {
-            start: [2004, 2021],
+            start: [2000, 2022],
             connect: true,
+            tooltips: [true, true],
             step: 1,
             range: {
-                min: 2004,
-                max: 2021,
+                min: minYear.yearValue,
+                max: maxYear.yearValue,
             },
             format: {
                 to: (value) => Math.floor(value),
