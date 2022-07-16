@@ -22,6 +22,7 @@ export interface IGoods extends ISetTypeIGoods {
 interface ISetTypeIFilter {
     [key: string]: string[] | string;
 }
+
 export interface IFilter extends ISetTypeIFilter {
     companyValue: string[];
     cameraValue: string[];
@@ -29,6 +30,7 @@ export interface IFilter extends ISetTypeIFilter {
     popularValue: string[];
     quantityValue: string[];
     yearValue: string[];
+    model: string;
 }
 
 export interface ITargetElement extends HTMLElement {

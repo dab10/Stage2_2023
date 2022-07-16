@@ -17,6 +17,7 @@ class Filter {
             popularValue: [],
             quantityValue: [],
             yearValue: [],
+            model: '',
         };
     }
 
@@ -185,6 +186,42 @@ class Filter {
         // });
     }
 
+    public filterSearch(data: IGoods[]): void {
+        // const searchInput = (document.querySelector('.search__input') as HTMLInputElement).value;
+        // const elements = document.querySelectorAll<HTMLElement>('.item__title');
+        // const cards = document.querySelectorAll<HTMLElement>('.item');
+        // //loop through all elements
+        // elements.forEach((element, index) => {
+        //     //check if text includes the search value
+        //     if (element.innerText.includes(searchInput.toUpperCase())) {
+        //         //display matching card
+        //         cards[index].classList.remove('hide');
+        //     } else {
+        //         //hide others
+        //         cards[index].classList.add('hide');
+        //     }
+        // });
+
+        // this.filterWords.model = input.value;
+        // this.filterItems(this.filterWords, data);
+
+        const input = document.querySelector('.search__input') as HTMLInputElement;
+
+        this.filterWords.model = input.value.toLowerCase();
+        console.log(this.filterWords.model);
+        this.filterItems(this.filterWords, data);
+        //if (data.innerHTML.toLowerCase().indexOf(filter) > -1) {
+
+        //}
+        // filterItems.forEach((item) => {
+        //     if (item.innerHTML.toLowerCase().indexOf(filter) > -1) {
+        //         item.style.display = '';
+        //     } else {
+        //         item.style.display = 'none';
+        //     }
+        // });
+    }
+
     private filterItems(filterWords: IFilter, data: IGoods[]): void {
         console.log(filterWords);
         const filterWordsWithoutEmpty = Object.keys(filterWords).filter((key) => filterWords[key].length !== 0);
@@ -196,7 +233,7 @@ class Filter {
                 if (Array.isArray(filterWords[key])) {
                     return filterWords[key].includes(el[key]);
                 }
-                return el[key] === filterWords[key];
+                return el[key].toLowerCase().includes(filterWords[key] as string);
             });
         });
         console.log(data);

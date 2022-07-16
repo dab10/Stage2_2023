@@ -18,21 +18,18 @@ class App {
     }
 
     public start(): void {
+        const filterByValue = document.querySelector('.filter-by-value') as HTMLDivElement;
         const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
+        const input = document.querySelector('.search__input') as HTMLInputElement;
 
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
         this.viewRange.rangeSliderByYear();
-        (document.querySelector('.filter-by-value') as HTMLDivElement).addEventListener('click', (e) =>
-            this.Filter.filterByValue(e, data)
-        );
-        countSlider.noUiSlider.on('set', () => {
-            this.Filter.rangeByCount(data);
-        });
-        yearSlider.noUiSlider.on('set', () => {
-            this.Filter.rangeByYear(data);
-        });
+        filterByValue.addEventListener('click', (e) => this.Filter.filterByValue(e, data));
+        countSlider.noUiSlider.on('set', () => this.Filter.rangeByCount(data));
+        yearSlider.noUiSlider.on('set', () => this.Filter.rangeByYear(data));
+        input.addEventListener('input', () => this.Filter.filterSearch(data));
     }
 }
 
