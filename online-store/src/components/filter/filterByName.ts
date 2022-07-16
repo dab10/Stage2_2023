@@ -18,10 +18,10 @@ class FilterByName {
     public filter(e: Event, data: IGoods[]): void {
         const target = e.target as HTMLElement;
         //const currentTarget = e.currentTarget as HTMLElement;
-        const isCompany = (target.parentNode as HTMLElement).classList.contains('filterByName__company');
-        const isCamera = (target.parentNode as HTMLElement).classList.contains('filterBySize__camera');
-        const isColor = (target.parentNode as HTMLElement).classList.contains('filterByColor__color');
-        const isPopular = (target.parentNode as HTMLElement).classList.contains('filterByPopular__popular');
+        const isCompany = (target.parentNode as HTMLElement).classList.contains('filter-by-name__company');
+        const isCamera = (target.parentNode as HTMLElement).classList.contains('filter-by-size__camera');
+        const isColor = (target.parentNode as HTMLElement).classList.contains('filter-by-color__color');
+        const isPopular = (target.parentNode as HTMLElement).classList.contains('filter-by-popular__popular');
         target.classList.toggle('alt');
         const hasClassAlt = target.classList.contains('alt');
 

@@ -45,7 +45,7 @@ class App {
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
         this.viewRange.rangeSliderByYear();
-        (document.querySelector('.filterByValue') as HTMLDivElement).addEventListener('click', (e) =>
+        (document.querySelector('.filter-by-value') as HTMLDivElement).addEventListener('click', (e) =>
             this.FilterByName.filter(e, data)
         );
     }

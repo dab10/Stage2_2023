@@ -28,8 +28,8 @@ class Goods {
             fragment.append(goodsClone);
         });
 
-        (document.querySelector('.itemList') as HTMLDivElement).innerHTML = '';
-        (document.querySelector('.itemList') as HTMLDivElement).appendChild(fragment);
+        (document.querySelector('.item-list') as HTMLDivElement).innerHTML = '';
+        (document.querySelector('.item-list') as HTMLDivElement).appendChild(fragment);
     }
 }
 
