@@ -1,37 +1,37 @@
-import { IGoods } from '../../types';
+import { IGoods, ITargetElement } from '../../types';
 import Goods from '../goods/goods';
 import data from '../goods/goods.json';
-import FilterByName from '../filter/filterByName';
+import Filter from '../filter/filter';
 import Range from '../view/range';
-import { TargetElement } from '../../types';
 
 class App {
     private view: Goods;
     private data: IGoods[];
-    private FilterByName: FilterByName;
+    private Filter: Filter;
     private viewRange: Range;
 
     constructor() {
         this.view = new Goods();
         this.data = data;
-        this.FilterByName = new FilterByName();
+        this.Filter = new Filter();
         this.viewRange = new Range();
     }
 
     public start(): void {
-        const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
-        const yearSlider = document.querySelector('.range-slider-by-year') as TargetElement;
+        const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
+        const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
+
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
         this.viewRange.rangeSliderByYear();
         (document.querySelector('.filter-by-value') as HTMLDivElement).addEventListener('click', (e) =>
-            this.FilterByName.filter(e, data)
+            this.Filter.filterByValue(e, data)
         );
         countSlider.noUiSlider.on('set', () => {
-            this.FilterByName.count(data);
+            this.Filter.rangeByCount(data);
         });
         yearSlider.noUiSlider.on('set', () => {
-            this.FilterByName.year(data);
+            this.Filter.rangeByYear(data);
         });
     }
 }

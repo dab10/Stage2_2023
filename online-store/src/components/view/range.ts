@@ -1,11 +1,11 @@
 import noUiSlider from 'nouislider';
-import { TargetElement } from '../../types';
+import { ITargetElement } from '../../types';
 import 'nouislider/dist/nouislider.css';
 //import FilterByName from '../filter/filterByName';
 
 class Range {
     public rangeSliderByCount(): void {
-        const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
+        const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
 
         noUiSlider.create(countSlider, {
             start: [1, 12],
@@ -22,8 +22,8 @@ class Range {
         });
 
         const countValues = [
-            document.querySelector('.slider-count-snap-value-lower') as TargetElement,
-            document.querySelector('.slider-count-snap-value-upper') as TargetElement,
+            document.querySelector('.slider-count-snap-value-lower') as ITargetElement,
+            document.querySelector('.slider-count-snap-value-upper') as ITargetElement,
         ];
 
         countSlider.noUiSlider.on('update', function (values, handle) {
@@ -32,7 +32,7 @@ class Range {
     }
 
     public rangeSliderByYear(): void {
-        const yearSlider = document.querySelector('.range-slider-by-year') as TargetElement;
+        const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
 
         noUiSlider.create(yearSlider, {
             start: [2004, 2021],
@@ -49,8 +49,8 @@ class Range {
         });
 
         const snapValues = [
-            document.querySelector('.slider-year-snap-value-lower') as TargetElement,
-            document.querySelector('.slider-year-snap-value-upper') as TargetElement,
+            document.querySelector('.slider-year-snap-value-lower') as ITargetElement,
+            document.querySelector('.slider-year-snap-value-upper') as ITargetElement,
         ];
 
         yearSlider.noUiSlider.on('update', function (values, handle) {

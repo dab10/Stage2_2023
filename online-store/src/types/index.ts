@@ -1,8 +1,8 @@
 import { API } from 'nouislider';
-interface setTypeIGoods {
+interface ISetTypeIGoods {
     [key: string]: string;
 }
-export interface IGoods extends setTypeIGoods {
+export interface IGoods extends ISetTypeIGoods {
     model: string;
     image: string;
     quantity: string;
@@ -19,10 +19,10 @@ export interface IGoods extends setTypeIGoods {
     popularValue: string;
 }
 
-interface setTypeIFilter {
+interface ISetTypeIFilter {
     [key: string]: string[] | string;
 }
-export interface IFilter extends setTypeIFilter {
+export interface IFilter extends ISetTypeIFilter {
     companyValue: string[];
     cameraValue: string[];
     colorValue: string[];
@@ -31,6 +31,6 @@ export interface IFilter extends setTypeIFilter {
     yearValue: string[];
 }
 
-export interface TargetElement extends HTMLElement {
+export interface ITargetElement extends HTMLElement {
     noUiSlider: API;
 }

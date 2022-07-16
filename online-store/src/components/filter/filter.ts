@@ -1,94 +1,205 @@
-// function fnSearch(array: string[], pattern: string, wholeWord: string) {
-//     const parts = pattern.trim().toLowerCase().split(/\s+/);
+import Goods from '../goods/goods';
+import { IGoods, IFilter, ITargetElement } from '../../types';
+class Filter {
+    private view: Goods;
+    private filterWords: IFilter;
+    private countArr: string[];
+    private sliderValues: string[];
 
-//     return array.filter(function ({ product }: string) {
-//         const description = product.toLowerCase().split(/\s+/);
+    constructor() {
+        this.view = new Goods();
+        this.countArr = [];
+        this.sliderValues = [];
+        this.filterWords = {
+            companyValue: [],
+            cameraValue: [],
+            colorValue: [],
+            popularValue: [],
+            quantityValue: [],
+            yearValue: [],
+        };
+    }
 
-//         return parts.every(function (part) {
-//             return description.some(function (word: string) {
-//                 return wholeWord ? word === part : word.startsWith(part);
-//             });
-//         });
-//     });
-// }
+    public filterByValue(e: Event, data: IGoods[]): void {
+        const target = e.target as HTMLElement;
 
-// window.pg = {};
+        // console.log(e.target);
+        // console.log(e.currentTarget);
+        // const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
 
-// (async function () {
-//     const products = await fetch('../data.json').then((response) => response.json());
+        // countSlider.noUiSlider.on('set', () => {
+        //     console.log(e.target);
+        //     console.log(e.currentTarget);
+        //     this.countArr = [];
+        //     this.sliderValues = [];
+        //     this.sliderValues = countSlider.noUiSlider.get() as string[];
+        //     console.log(this.sliderValues);
+        //     const countFrom = Number(this.sliderValues[0]);
+        //     const countTo = Number(this.sliderValues[1]);
+        //     console.log(countFrom, countTo);
+        //     for (let i = countFrom; i <= countTo; i++) {
+        //         this.countArr.push(i);
+        //     }
+        //     console.log(this.countArr);
+        //     //updateToysView();
+        // });
 
-//     (document.getElementById('search') as HTMLElement).addEventListener('input', performSearch);
-//     (document.getElementById('price-min') as HTMLElement).addEventListener('change', performSearch);
-//     (document.getElementById('price-max') as HTMLElement).addEventListener('change', performSearch);
-//     (document.getElementById('order') as HTMLElement).addEventListener('change', performSearch);
-//     (document.getElementById('results-per-page') as HTMLElement).addEventListener('change', performSearch);
-//     (document.getElementById('exact-search') as HTMLElement).addEventListener('change', performSearch);
+        //const currentTarget = e.currentTarget as HTMLElement;
+        const isCompany = (target.parentNode as HTMLElement).classList.contains('filter-by-name__company');
+        const isCamera = (target.parentNode as HTMLElement).classList.contains('filter-by-size__camera');
+        const isColor = (target.parentNode as HTMLElement).classList.contains('filter-by-color__color');
+        const isPopular = (target.parentNode as HTMLElement).classList.contains('filter-by-popular__popular');
+        target.classList.toggle('alt');
+        const hasClassAlt = target.classList.contains('alt');
 
-//     performSearch();
+        if (isCompany && hasClassAlt) {
+            this.filterWords.companyValue.push(target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isCompany && !hasClassAlt) {
+            this.filterWords.companyValue = this.filterWords.companyValue.filter((item) => item !== target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isCamera && hasClassAlt) {
+            this.filterWords.cameraValue.push(target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isCamera && !hasClassAlt) {
+            this.filterWords.cameraValue = this.filterWords.cameraValue.filter((item) => item !== target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isColor && hasClassAlt) {
+            this.filterWords.colorValue.push(target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isColor && !hasClassAlt) {
+            this.filterWords.colorValue = this.filterWords.colorValue.filter((item) => item !== target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isPopular && hasClassAlt) {
+            this.filterWords.popularValue.push(target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        if (isPopular && !hasClassAlt) {
+            this.filterWords.popularValue = this.filterWords.popularValue.filter((item) => item !== target.innerHTML);
+            this.filterItems(this.filterWords, data);
+        }
+        console.log(e.target);
 
-//     pg.performSearch = performSearch;
+        // const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
 
-//     function performSearch(number: number) {
-//         const page = typeof number === 'number' ? number || 1 : 1;
-//         const { value } = document.getElementById('search');
+        // countSlider.noUiSlider.on('set', () => {
+        //     this.countArr = [];
+        //     this.sliderValues = [];
+        //     this.sliderValues = countSlider.noUiSlider.get() as string[];
+        //     const countFrom = Number(this.sliderValues[0]);
+        //     const countTo = Number(this.sliderValues[1]);
+        //     console.log(countFrom, countTo);
+        //     for (let i = countFrom; i <= countTo; i++) {
+        //         this.countArr.push(String(i));
+        //     }
+        //     countSlider.noUiSlider.off('set');
+        //     console.log(this.countArr);
+        //     this.filterWords.quantityValue = this.countArr;
+        //     console.log(this.filterWords);
+        //     this.filterByValue(this.filterWords, data);
+        // });
+        //countSlider.noUiSlider.off('set');
 
-// 		function comparator(order) {
-// 			return [
-// 				(a, b) => (a.product > b.product ? 1 : -1),
-// 				(a, b) => (Number(a.price) > Number(b.price) ? 1 : -1),
-// 				(a, b) => (Number(a.price) < Number(b.price) ? 1 : -1)
-// 			][order];
-// 		}
+        //this.count();
+    }
 
-// 		const [min, max] = ((a, b) => (a > b ? [b, a] : [a, b]))(
-// 			Number(document.getElementById("price-min").value),
-// 			Number(document.getElementById("price-max").value)
-// 		);
+    public rangeByCount(data: IGoods[]): void {
+        const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
+        this.countArr = [];
+        this.sliderValues = [];
+        this.sliderValues = countSlider.noUiSlider.get() as string[];
+        const countFrom = Number(this.sliderValues[0]);
+        const countTo = Number(this.sliderValues[1]);
+        for (let i = countFrom; i <= countTo; i++) {
+            this.countArr.push(String(i));
+        }
+        //countSlider.noUiSlider.off('set');
+        console.log(this.countArr);
+        this.filterWords.quantityValue = this.countArr;
+        console.log(this.filterWords);
+        this.filterItems(this.filterWords, data);
 
-// 		document.getElementById(
-// 			"range-display"
-// 		).childNodes[0].textContent = `Price (${min}...${max})`;
+        //console.log(e.target);
 
-// 		const result = fnSearch(
-// 			products,
-// 			value,
-// 			document.getElementById("exact-search").checked
-// 		).filter(({ price }) => {
-// 			price = Number(price);
-// 			return min <= price && price <= max;
-// 		});
+        // const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
 
-// 		result.sort(comparator(document.getElementById("order").value));
+        // countSlider.noUiSlider.on('set', () => {
+        //     this.countArr = [];
+        //     this.sliderValues = [];
+        //     this.sliderValues = countSlider.noUiSlider.get() as string[];
+        //     const countFrom = Number(this.sliderValues[0]);
+        //     const countTo = Number(this.sliderValues[1]);
+        //     for (let i = countFrom; i <= countTo; i++) {
+        //         this.countArr.push(String(i));
+        //     }
+        //     //countSlider.noUiSlider.off('set');
+        //     console.log(this.countArr);
+        //     this.filterWords.quantityValue = this.countArr;
+        //     console.log(this.filterWords);
+        //     this.filterByValue(this.filterWords, data);
+        // });
+    }
 
-// 		let html = result
-// 			.map(({ image, product, price }, index) => {
-// 				if (
-// 					index >=
-// 					page * document.getElementById("results-per-page").value
-// 				)
-// 					return ``;
+    public rangeByYear(data: IGoods[]): void {
+        const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
+        this.countArr = [];
+        this.sliderValues = [];
+        this.sliderValues = yearSlider.noUiSlider.get() as string[];
+        const countFrom = Number(this.sliderValues[0]);
+        const countTo = Number(this.sliderValues[1]);
+        for (let i = countFrom; i <= countTo; i++) {
+            this.countArr.push(String(i));
+        }
+        //countSlider.noUiSlider.off('set');
+        console.log(this.countArr);
+        this.filterWords.yearValue = this.countArr;
+        console.log(this.filterWords);
+        this.filterItems(this.filterWords, data);
 
-// 				const [, integer, decimal] = price.match(/^(\d+\.?\-?)(\d*)/);
-// 				return `
-// 						<article>
-// 							<img src="${image}">
-// 							<p>${product}</p>
-// 							<span class="price">${integer}${decimal ? "" : ".-"}<span class="cents">${
-// 					decimal ? (decimal + "0").slice(0, 2) : ""
-// 				}</span></span>
-// 						</article>
-// 					`;
-// 			})
-// 			.join("");
+        //console.log(e.target);
 
-// 		if (
-// 			result.length >
-// 			page * document.getElementById("results-per-page").value
-// 		)
-// 			html += `
-// 					<button type="button" onclick="pg.performSearch(${page + 1})">Load more</button>
-// 				`;
+        // const countSlider = document.querySelector('.range-slider-by-count') as TargetElement;
 
-// 		document.getElementById("products").innerHTML = html;
-// 	}
-// })();
+        // countSlider.noUiSlider.on('set', () => {
+        //     this.countArr = [];
+        //     this.sliderValues = [];
+        //     this.sliderValues = countSlider.noUiSlider.get() as string[];
+        //     const countFrom = Number(this.sliderValues[0]);
+        //     const countTo = Number(this.sliderValues[1]);
+        //     for (let i = countFrom; i <= countTo; i++) {
+        //         this.countArr.push(String(i));
+        //     }
+        //     //countSlider.noUiSlider.off('set');
+        //     console.log(this.countArr);
+        //     this.filterWords.quantityValue = this.countArr;
+        //     console.log(this.filterWords);
+        //     this.filterByValue(this.filterWords, data);
+        // });
+    }
+
+    private filterItems(filterWords: IFilter, data: IGoods[]): void {
+        console.log(filterWords);
+        const filterWordsWithoutEmpty = Object.keys(filterWords).filter((key) => filterWords[key].length !== 0);
+        console.log(filterWordsWithoutEmpty);
+        console.log(data);
+
+        data = data.filter((el) => {
+            return filterWordsWithoutEmpty.every((key) => {
+                if (Array.isArray(filterWords[key])) {
+                    return filterWords[key].includes(el[key]);
+                }
+                return el[key] === filterWords[key];
+            });
+        });
+        console.log(data);
+        this.view.draw(data);
+    }
+}
+
+export default Filter;
