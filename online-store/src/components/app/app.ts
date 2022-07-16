@@ -22,14 +22,17 @@ class App {
         const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
         const input = document.querySelector('.search__input') as HTMLInputElement;
+        const select = document.querySelector('.sort-list') as HTMLSelectElement;
 
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
         this.viewRange.rangeSliderByYear();
+
         filterByValue.addEventListener('click', (e) => this.Filter.filterByValue(e, data));
         countSlider.noUiSlider.on('set', () => this.Filter.rangeByCount(data));
         yearSlider.noUiSlider.on('set', () => this.Filter.rangeByYear(data));
         input.addEventListener('input', () => this.Filter.filterSearch(data));
+        select.addEventListener('change', (e) => this.Filter.filterSort(e, data));
     }
 }
 

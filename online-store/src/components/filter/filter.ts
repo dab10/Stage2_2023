@@ -222,6 +222,53 @@ class Filter {
         // });
     }
 
+    public filterSort(e: Event, data: IGoods[]): void {
+        if ((e.target as HTMLSelectElement).value == 'sortByNameAscending') {
+            data = data.sort((current, next) => {
+                return current.model.localeCompare(next.model);
+            });
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+        if ((e.target as HTMLSelectElement).value == 'sortByNameDescending') {
+            data = data.sort((current, next) => {
+                return next.model.localeCompare(current.model);
+            });
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+        if ((e.target as HTMLSelectElement).value == 'sortByYearAscending') {
+            data = data.sort((current, next) => {
+                return current.yearValue.localeCompare(next.yearValue);
+            });
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+        if ((e.target as HTMLSelectElement).value == 'sortByYearDescending') {
+            data = data.sort((current, next) => {
+                return next.yearValue.localeCompare(current.yearValue);
+            });
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+        if ((e.target as HTMLSelectElement).value == 'sortByCountAscending') {
+            data = data.sort((a, b) => parseFloat(a.quantityValue) - parseFloat(b.quantityValue));
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+        if ((e.target as HTMLSelectElement).value == 'sortByCountDescending') {
+            data = data.sort((a, b) => parseFloat(b.quantityValue) - parseFloat(a.quantityValue));
+            console.log(data);
+            console.log(this.filterWords);
+            this.filterItems(this.filterWords, data);
+        }
+    }
+
     private filterItems(filterWords: IFilter, data: IGoods[]): void {
         console.log(filterWords);
         const filterWordsWithoutEmpty = Object.keys(filterWords).filter((key) => filterWords[key].length !== 0);
