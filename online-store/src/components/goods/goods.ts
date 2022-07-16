@@ -5,6 +5,8 @@ class Goods {
     public draw(data: IGoods[]): void {
         const fragment = document.createDocumentFragment() as DocumentFragment;
         const goodsTemp = document.querySelector('#items') as HTMLTemplateElement;
+        const containerData = document.querySelector('.item-list') as HTMLDivElement;
+        const containerNoResult = document.querySelector('.no-result') as HTMLDivElement;
 
         data.forEach((item: IGoods) => {
             const goodsClone = goodsTemp.content.cloneNode(true) as HTMLElement;
@@ -28,8 +30,14 @@ class Goods {
             fragment.append(goodsClone);
         });
 
-        (document.querySelector('.item-list') as HTMLDivElement).innerHTML = '';
-        (document.querySelector('.item-list') as HTMLDivElement).appendChild(fragment);
+        containerData.innerHTML = '';
+        containerData.appendChild(fragment);
+        if (containerData.innerHTML === '') {
+            const noResult = document.createElement('h2');
+            noResult.classList.add('no-result__title');
+            noResult.textContent = 'Извините, совпадений не обнаружено';
+            containerNoResult.append(noResult);
+        }
     }
 }
 
