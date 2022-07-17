@@ -1,7 +1,7 @@
 [
     {
         "model": "Apple iPhone 11",
-        "image": "../../assets/images/1.jpg",
+        "image": "./assets/images/1.jpg",
         "quantity": "Количество: ",
         "quantityValue": "12",
         "year": "Год выхода: ",
@@ -13,11 +13,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Да"
+        "popularValue": "Да",
+        "ribbon": "false"
     },
     {
         "model": "Apple iPhone 12",
-        "image": "../../assets/images/2.jpg",
+        "image": "./assets/images/2.jpg",
         "quantity": "Количество: ",
         "quantityValue": "2",
         "year": "Год выхода: ",
@@ -29,11 +30,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Apple iPhone 13",
-        "image": "../../assets/images/3.jpg",
+        "image": "./assets/images/3.jpg",
         "quantity": "Количество: ",
         "quantityValue": "10",
         "year": "Год выхода: ",
@@ -45,11 +47,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Apple iPhone SE",
-        "image": "../../assets/images/4.jpg",
+        "image": "./assets/images/4.jpg",
         "quantity": "Количество: ",
         "quantityValue": "7",
         "year": "Год выхода: ",
@@ -61,11 +64,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy A03",
-        "image": "../../assets/images/5.jpg",
+        "image": "./assets/images/5.jpg",
         "quantity": "Количество: ",
         "quantityValue": "5",
         "year": "Год выхода: ",
@@ -77,11 +81,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy S20",
-        "image": "../../assets/images/6.jpg",
+        "image": "./assets/images/6.jpg",
         "quantity": "Количество: ",
         "quantityValue": "3",
         "year": "Год выхода: ",
@@ -93,11 +98,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy S21",
-        "image": "../../assets/images/7.jpg",
+        "image": "./assets/images/7.jpg",
         "quantity": "Количество: ",
         "quantityValue": "2",
         "year": "Год выхода: ",
@@ -109,11 +115,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Poco X4 pro",
-        "image": "../../assets/images/8.jpg",
+        "image": "./assets/images/8.jpg",
         "quantity": "Количество: ",
         "quantityValue": "1",
         "year": "Год выхода: ",
@@ -125,11 +132,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Redmi 9C",
-        "image": "../../assets/images/9.jpg",
+        "image": "./assets/images/9.jpg",
         "quantity": "Количество: ",
         "quantityValue": "6",
         "year": "Год выхода: ",
@@ -141,11 +149,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 11",
-        "image": "../../assets/images/10.jpg",
+        "image": "./assets/images/10.jpg",
         "quantity": "Количество: ",
         "quantityValue": "4",
         "year": "Год выхода: ",
@@ -157,11 +166,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "1",
         "popular": "Популярный: ",
-        "popularValue": "Да"
+        "popularValue": "Да",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 10S",
-        "image": "../../assets/images/11.jpg",
+        "image": "./assets/images/11.jpg",
         "quantity": "Количество: ",
         "quantityValue": "6",
         "year": "Год выхода: ",
@@ -173,11 +183,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 10",
-        "image": "../../assets/images/12.jpg",
+        "image": "./assets/images/12.jpg",
         "quantity": "Количество: ",
         "quantityValue": "7",
         "year": "Год выхода: ",
@@ -189,11 +200,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi Poco M3 Pro",
-        "image": "../../assets/images/13.jpg",
+        "image": "./assets/images/13.jpg",
         "quantity": "Количество: ",
         "quantityValue": "9",
         "year": "Год выхода: ",
@@ -205,11 +217,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Xiaomi 12 Lite",
-        "image": "../../assets/images/14.jpg",
+        "image": "./assets/images/14.jpg",
         "quantity": "Количество: ",
         "quantityValue": "10",
         "year": "Год выхода: ",
@@ -221,11 +234,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Да"
+        "popularValue": "Да",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy A73",
-        "image": "../../assets/images/15.jpg",
+        "image": "./assets/images/15.jpg",
         "quantity": "Количество: ",
         "quantityValue": "9",
         "year": "Год выхода: ",
@@ -237,11 +251,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy A53",
-        "image": "../../assets/images/16.jpg",
+        "image": "./assets/images/16.jpg",
         "quantity": "Количество: ",
         "quantityValue": "8",
         "year": "Год выхода: ",
@@ -253,11 +268,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy A23",
-        "image": "../../assets/images/17.jpg",
+        "image": "./assets/images/17.jpg",
         "quantity": "Количество: ",
         "quantityValue": "7",
         "year": "Год выхода: ",
@@ -269,11 +285,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy S22",
-        "image": "../../assets/images/18.jpg",
+        "image": "./assets/images/18.jpg",
         "quantity": "Количество: ",
         "quantityValue": "6",
         "year": "Год выхода: ",
@@ -285,11 +302,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Samsung Galaxy A52",
-        "image": "../../assets/images/19.jpg",
+        "image": "./assets/images/19.jpg",
         "quantity": "Количество: ",
         "quantityValue": "5",
         "year": "Год выхода: ",
@@ -301,11 +319,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "4",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Apple iPhone Xs",
-        "image": "../../assets/images/20.jpg",
+        "image": "./assets/images/20.jpg",
         "quantity": "Количество: ",
         "quantityValue": "4",
         "year": "Год выхода: ",
@@ -317,11 +336,12 @@
         "camera": "Количество камер: ",
         "cameraValue": "2",
         "popular": "Популярный: ",
-        "popularValue": "Нет"
+        "popularValue": "Нет",
+        "ribbon": "false"
     },
     {
         "model": "Apple iPhone 13 Pro Max",
-        "image": "../../assets/images/21.jpg",
+        "image": "./assets/images/21.jpg",
         "quantity": "Количество: ",
         "quantityValue": "3",
         "year": "Год выхода: ",
@@ -333,8 +353,7 @@
         "camera": "Количество камер: ",
         "cameraValue": "3",
         "popular": "Популярный: ",
-        "popularValue": "Да"
+        "popularValue": "Да",
+        "ribbon": "false"
     }
-    
-
 ]

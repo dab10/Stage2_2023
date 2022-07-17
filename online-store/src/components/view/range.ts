@@ -16,7 +16,7 @@ class Range {
 
         const filteredByCount = data.map((item) => {
             return {
-                quantityValue: +item.quantityValue,
+                quantityValue: Number(item.quantityValue),
             };
         });
 

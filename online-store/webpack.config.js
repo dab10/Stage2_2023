@@ -75,7 +75,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/, // FILE EXTENSION PICTURE
-        use: ['file-loader'], // INSTEAD OF ['file-loader']?
+        type: 'asset/resource', // INSTEAD OF ['file-loader']?
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/, // FILE EXTENSION FONTS
@@ -83,7 +83,7 @@ module.exports = {
       },
       {
         test: /\.xml$/, // FILE EXTENSION .XML
-                use: ['xml-loader'], // LOADER
+        use: ['xml-loader'], // LOADER
       },
       {
         test: /\.csv$/, // FILE EXTENSION .CSV

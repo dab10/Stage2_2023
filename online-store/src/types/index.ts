@@ -31,6 +31,7 @@ export interface IFilter extends ISetTypeIFilter {
     quantityValue: string[];
     yearValue: string[];
     model: string;
+    ribbon: string;
 }
 
 export interface ITargetElement extends HTMLElement {

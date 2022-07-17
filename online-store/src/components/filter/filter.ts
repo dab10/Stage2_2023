@@ -5,6 +5,7 @@ class Filter {
     private filterWords: IFilter;
     private countArr: string[];
     private sliderValues: string[];
+    private count: number;
 
     constructor() {
         this.view = new Goods();
@@ -18,7 +19,9 @@ class Filter {
             quantityValue: [],
             yearValue: [],
             model: '',
+            ribbon: 'false',
         };
+        this.count = 0;
     }
 
     public filterByValue(e: Event, data: IGoods[]): void {
@@ -266,6 +269,50 @@ class Filter {
             console.log(data);
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
+        }
+    }
+
+    public chooseFavorite(e: Event) {
+        const target = e.target as HTMLElement;
+        console.log(target);
+        //const arr = (e.currentTarget as HTMLElement).querySelectorAll('.item');
+        //const itemContainer = (target.parentNode as HTMLElement).querySelector('.item') as HTMLElement;
+
+        const isItem = target.classList.contains('item');
+        const isItemTitle = target.classList.contains('item__title');
+        const isItemImg = target.classList.contains('item__img-container');
+        // //const isItemContainer = (target.parentNode as HTMLElement).classList.contains('item');
+        const hasRibbonInner = Boolean(target.querySelector('.ribbon'));
+        const hasRibbonOuter = Boolean((target.parentNode as HTMLElement).querySelector('.ribbon'));
+        const counter = document.querySelector('.counter') as HTMLSpanElement;
+
+        // console.log(e.target);
+        // console.log(arr);
+        if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
+            const ribbon = document.createElement('div');
+            ribbon.classList.add('ribbon');
+            ribbon.title = 'Добавлено в избранное';
+            (target.parentNode as HTMLElement).append(ribbon);
+            this.count++;
+            counter.textContent = String(this.count);
+        }
+        if (isItem && !hasRibbonInner) {
+            const ribbon = document.createElement('div');
+            ribbon.classList.add('ribbon');
+            ribbon.title = 'Добавлено в избранное';
+            target.append(ribbon);
+            this.count++;
+            counter.textContent = String(this.count);
+        }
+        if ((isItemTitle || isItemImg) && hasRibbonOuter) {
+            ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).remove();
+            this.count--;
+            counter.textContent = String(this.count);
+        }
+        if (isItem && hasRibbonInner) {
+            (target.querySelector('.ribbon') as HTMLElement).remove();
+            this.count--;
+            counter.textContent = String(this.count);
         }
     }
 
