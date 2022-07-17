@@ -4,6 +4,7 @@ import data from '../goods/goods.json';
 import Filter from '../filter/filter';
 import Range from '../view/range';
 import Favorite from '../favorite/favorite';
+import resetFilter from '../filter/reset-filter';
 
 class App {
     private view: Goods;
@@ -11,6 +12,7 @@ class App {
     private filter: Filter;
     private viewRange: Range;
     private favoriteItem: Favorite;
+    private resetFilter: resetFilter;
 
     constructor() {
         this.view = new Goods();
@@ -18,6 +20,7 @@ class App {
         this.filter = new Filter();
         this.viewRange = new Range();
         this.favoriteItem = new Favorite();
+        this.resetFilter = new resetFilter();
     }
 
     public start(): void {
@@ -27,6 +30,7 @@ class App {
         const input = document.querySelector('.search__input') as HTMLInputElement;
         const select = document.querySelector('.sort-list') as HTMLSelectElement;
         const favoriteItems = document.querySelector('.item-list') as HTMLDivElement;
+        const resetFilter = document.querySelector('.reset-filter') as HTMLButtonElement;
 
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
@@ -43,6 +47,12 @@ class App {
         // favoriteItems.forEach((tab) => {
         //     tab.addEventListener('click', (e) => this.favoriteItem.chooseFavorite(e));
         // });
+
+        resetFilter.addEventListener('click', () => {
+            const filterWords = this.filter.getFilterWords();
+            const countAndYear = this.viewRange.getCountAndYear();
+            this.resetFilter.resetFilter(filterWords, countAndYear, data);
+        });
     }
 }
 

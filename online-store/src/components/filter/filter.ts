@@ -25,6 +25,10 @@ class Filter {
         this.count = 0;
     }
 
+    public getFilterWords(): IFilter {
+        return this.filterWords;
+    }
+
     public filterByValue(e: Event, data: IGoods[]): void {
         const target = e.target as HTMLElement;
 
@@ -164,9 +168,9 @@ class Filter {
             this.countArr.push(String(i));
         }
         //countSlider.noUiSlider.off('set');
-        console.log(this.countArr);
+        //console.log(this.countArr);
         this.filterWords.yearValue = this.countArr;
-        console.log(this.filterWords);
+        //console.log(this.filterWords);
         this.filterItems(this.filterWords, data);
 
         //console.log(e.target);
@@ -369,7 +373,7 @@ class Filter {
         console.log(this.count);
     }
 
-    private filterItems(filterWords: IFilter, data: IGoods[]): void {
+    public filterItems(filterWords: IFilter, data: IGoods[]): void {
         console.log(filterWords);
         const filterWordsWithoutEmpty = Object.keys(filterWords).filter((key) => filterWords[key].length !== 0);
         console.log(filterWordsWithoutEmpty);

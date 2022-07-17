@@ -6,22 +6,38 @@ import data from '../goods/goods.json';
 
 class Range {
     private data: IGoods[];
+    private minCount: number;
+    private maxCount: number;
+    private minYear: number;
+    private maxYear: number;
 
     constructor() {
         this.data = data;
+        this.minCount = 0;
+        this.maxCount = 0;
+        this.minYear = 0;
+        this.maxYear = 0;
+    }
+
+    public getCountAndYear(): number[] {
+        return [this.minCount, this.maxCount, this.minYear, this.maxYear];
     }
 
     public rangeSliderByCount(): void {
         const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
 
-        const filteredByCount = data.map((item) => {
+        const filteredByCount = this.data.map((item) => {
             return {
                 quantityValue: Number(item.quantityValue),
             };
         });
 
-        const minCount = filteredByCount.reduce((acc, curr) => (acc.quantityValue < curr.quantityValue ? acc : curr));
-        const maxCount = filteredByCount.reduce((acc, curr) => (acc.quantityValue > curr.quantityValue ? acc : curr));
+        this.minCount = filteredByCount.reduce((acc, curr) =>
+            acc.quantityValue < curr.quantityValue ? acc : curr
+        ).quantityValue;
+        this.maxCount = filteredByCount.reduce((acc, curr) =>
+            acc.quantityValue > curr.quantityValue ? acc : curr
+        ).quantityValue;
 
         noUiSlider.create(countSlider, {
             start: [1, 12],
@@ -29,8 +45,8 @@ class Range {
             tooltips: [true, true],
             step: 1,
             range: {
-                min: minCount.quantityValue,
-                max: maxCount.quantityValue,
+                min: this.minCount,
+                max: this.maxCount,
             },
             format: {
                 to: (value) => Math.floor(value),
@@ -51,14 +67,14 @@ class Range {
     public rangeSliderByYear(): void {
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
 
-        const filteredByYear = data.map((item) => {
+        const filteredByYear = this.data.map((item) => {
             return {
-                yearValue: +item.yearValue,
+                yearValue: Number(item.yearValue),
             };
         });
 
-        const minYear = filteredByYear.reduce((acc, curr) => (acc.yearValue < curr.yearValue ? acc : curr));
-        const maxYear = filteredByYear.reduce((acc, curr) => (acc.yearValue > curr.yearValue ? acc : curr));
+        this.minYear = filteredByYear.reduce((acc, curr) => (acc.yearValue < curr.yearValue ? acc : curr)).yearValue;
+        this.maxYear = filteredByYear.reduce((acc, curr) => (acc.yearValue > curr.yearValue ? acc : curr)).yearValue;
 
         noUiSlider.create(yearSlider, {
             start: [2000, 2022],
@@ -66,8 +82,8 @@ class Range {
             tooltips: [true, true],
             step: 1,
             range: {
-                min: minYear.yearValue,
-                max: maxYear.yearValue,
+                min: this.minYear,
+                max: this.maxYear,
             },
             format: {
                 to: (value) => Math.floor(value),
