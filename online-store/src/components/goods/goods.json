@@ -14,7 +14,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Да",
-        "ribbon": "false"
+        "id": "1",
+        "classRibbon": "false"
     },
     {
         "model": "Apple iPhone 12",
@@ -31,7 +32,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "2",
+        "classRibbon": "false"
     },
     {
         "model": "Apple iPhone 13",
@@ -48,7 +50,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "3",
+        "classRibbon": "false"
     },
     {
         "model": "Apple iPhone SE",
@@ -65,7 +68,8 @@
         "cameraValue": "1",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "4",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy A03",
@@ -82,7 +86,8 @@
         "cameraValue": "2",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "5",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy S20",
@@ -99,7 +104,8 @@
         "cameraValue": "1",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "6",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy S21",
@@ -116,7 +122,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "7",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Poco X4 pro",
@@ -133,7 +140,8 @@
         "cameraValue": "2",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "8",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Redmi 9C",
@@ -150,7 +158,8 @@
         "cameraValue": "2",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "9",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 11",
@@ -167,7 +176,8 @@
         "cameraValue": "1",
         "popular": "Популярный: ",
         "popularValue": "Да",
-        "ribbon": "false"
+        "id": "10",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 10S",
@@ -184,7 +194,8 @@
         "cameraValue": "4",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "11",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Redmi Note 10",
@@ -201,7 +212,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "12",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi Poco M3 Pro",
@@ -218,7 +230,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "13",
+        "classRibbon": "false"
     },
     {
         "model": "Xiaomi 12 Lite",
@@ -235,7 +248,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Да",
-        "ribbon": "false"
+        "id": "14",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy A73",
@@ -252,7 +266,8 @@
         "cameraValue": "4",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "15",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy A53",
@@ -269,7 +284,8 @@
         "cameraValue": "4",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "16",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy A23",
@@ -286,7 +302,8 @@
         "cameraValue": "4",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "17",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy S22",
@@ -303,7 +320,8 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "18",
+        "classRibbon": "false"
     },
     {
         "model": "Samsung Galaxy A52",
@@ -320,7 +338,8 @@
         "cameraValue": "4",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "19",
+        "classRibbon": "false"
     },
     {
         "model": "Apple iPhone Xs",
@@ -337,7 +356,8 @@
         "cameraValue": "2",
         "popular": "Популярный: ",
         "popularValue": "Нет",
-        "ribbon": "false"
+        "id": "20",
+        "classRibbon": "false"
     },
     {
         "model": "Apple iPhone 13 Pro Max",
@@ -354,6 +374,7 @@
         "cameraValue": "3",
         "popular": "Популярный: ",
         "popularValue": "Да",
-        "ribbon": "false"
+        "id": "21",
+        "classRibbon": "false"
     }
 ]

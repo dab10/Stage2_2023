@@ -19,7 +19,8 @@ class Filter {
             quantityValue: [],
             yearValue: [],
             model: '',
-            ribbon: 'false',
+            id: [],
+            classRibbon: '',
         };
         this.count = 0;
     }
@@ -273,6 +274,7 @@ class Filter {
     }
 
     public chooseFavorite(e: Event) {
+        const maxItemInBasket = 3;
         const target = e.target as HTMLElement;
         console.log(target);
         //const arr = (e.currentTarget as HTMLElement).querySelectorAll('.item');
@@ -288,32 +290,85 @@ class Filter {
 
         // console.log(e.target);
         // console.log(arr);
-        if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
-            const ribbon = document.createElement('div');
-            ribbon.classList.add('ribbon');
-            ribbon.title = 'Добавлено в избранное';
-            (target.parentNode as HTMLElement).append(ribbon);
-            this.count++;
-            counter.textContent = String(this.count);
+        if (this.count === maxItemInBasket) {
+            if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
+                this.count = maxItemInBasket;
+                alert('Извините, все слоты заполнены');
+            }
+            if (isItem && !hasRibbonInner) {
+                this.count = maxItemInBasket;
+                alert('Извините, все слоты заполнены');
+            }
         }
-        if (isItem && !hasRibbonInner) {
-            const ribbon = document.createElement('div');
-            ribbon.classList.add('ribbon');
-            ribbon.title = 'Добавлено в избранное';
-            target.append(ribbon);
-            this.count++;
-            counter.textContent = String(this.count);
+        if (this.count < maxItemInBasket) {
+            if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
+                ((target.parentNode as HTMLElement).querySelector('.ribbonClass') as HTMLElement).classList.add(
+                    'ribbon'
+                );
+                ((target.parentNode as HTMLElement).querySelector('.ribbonClass') as HTMLElement).title =
+                    'Добавлено в избранное';
+                //(target.parentNode as HTMLElement).append(ribbon);
+                this.count++;
+                counter.textContent = String(this.count);
+                this.filterWords.id.push((target.parentNode as HTMLElement).dataset.id as string);
+            }
+            if (isItem && !hasRibbonInner) {
+                // const ribbon = document.createElement('div');
+                // ribbon.classList.add('ribbon');
+                // ribbon.title = 'Добавлено в избранное';
+                // target.append(ribbon);
+                //const ribbon = document.createElement('div');
+                (target.querySelector('.ribbonClass') as HTMLElement).classList.add('ribbon');
+                (target.querySelector('.ribbonClass') as HTMLElement).title = 'Добавлено в избранное';
+                //target.append(ribbon);
+                this.count++;
+                counter.textContent = String(this.count);
+                this.filterWords.id.push(target.dataset.id as string);
+            }
+
+            if ((isItemTitle || isItemImg) && hasRibbonOuter) {
+                ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
+                this.count--;
+                counter.textContent = String(this.count);
+                this.filterWords.id = this.filterWords.id.filter(
+                    (item) => item !== (target.parentNode as HTMLElement).dataset.id
+                );
+            }
+            if (isItem && hasRibbonInner) {
+                (target.querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
+                this.count--;
+                counter.textContent = String(this.count);
+                this.filterWords.id = this.filterWords.id.filter((item) => item !== target.dataset.id);
+            }
         }
-        if ((isItemTitle || isItemImg) && hasRibbonOuter) {
-            ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).remove();
-            this.count--;
-            counter.textContent = String(this.count);
+        if (this.count === maxItemInBasket) {
+            if ((isItemTitle || isItemImg) && hasRibbonOuter) {
+                ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
+                this.count--;
+                counter.textContent = String(this.count);
+                this.filterWords.id = this.filterWords.id.filter(
+                    (item) => item !== (target.parentNode as HTMLElement).dataset.id
+                );
+            }
+            if (isItem && hasRibbonInner) {
+                (target.querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
+                this.count--;
+                counter.textContent = String(this.count);
+                this.filterWords.id = this.filterWords.id.filter((item) => item !== target.dataset.id);
+            }
         }
-        if (isItem && hasRibbonInner) {
-            (target.querySelector('.ribbon') as HTMLElement).remove();
-            this.count--;
-            counter.textContent = String(this.count);
-        }
+
+        // if (this.count > maxItemInBasket) {
+        //     if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
+        //         this.count--;
+        //         alert('Извините, все слоты заполнены');
+        //     }
+        //     if (isItem && !hasRibbonInner) {
+        //         this.count--;
+        //         alert('Извините, все слоты заполнены');
+        //     }
+        // }
+        console.log(this.count);
     }
 
     private filterItems(filterWords: IFilter, data: IGoods[]): void {
@@ -322,16 +377,31 @@ class Filter {
         console.log(filterWordsWithoutEmpty);
         console.log(data);
 
-        data = data.filter((el) => {
+        const filtered = data.filter((el) => {
             return filterWordsWithoutEmpty.every((key) => {
-                if (Array.isArray(filterWords[key])) {
-                    return filterWords[key].includes(el[key]);
+                if (key !== 'id') {
+                    if (Array.isArray(filterWords[key])) {
+                        return filterWords[key].includes(el[key]);
+                    }
                 }
-                return el[key].toLowerCase().includes(filterWords[key] as string);
+                return el.model.toLowerCase().includes(filterWords.model as string);
             });
         });
-        console.log(data);
-        this.view.draw(data);
+        console.log(filtered);
+        for (let i = 0; i < filtered.length; i++) {
+            for (let j = 0; j < filterWords.id.length; j++) {
+                if (filterWords.id[j] === filtered[i].id) {
+                    filtered[i].classRibbon = 'true';
+                }
+            }
+        }
+        // const filtered1 = filtered.forEach((el) => {
+        //     if (filterWords.id[0] === el.id) {
+        //         return (el.classRibbon = 'true');
+        //     }
+        // });
+        console.log(filtered);
+        this.view.draw(filtered);
     }
 }
 

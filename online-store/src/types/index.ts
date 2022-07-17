@@ -17,6 +17,8 @@ export interface IGoods extends ISetTypeIGoods {
     cameraValue: string;
     popular: string;
     popularValue: string;
+    id: string;
+    classRibbon: string;
 }
 
 interface ISetTypeIFilter {
@@ -31,7 +33,8 @@ export interface IFilter extends ISetTypeIFilter {
     quantityValue: string[];
     yearValue: string[];
     model: string;
-    ribbon: string;
+    id: string[];
+    classRibbon: string;
 }
 
 export interface ITargetElement extends HTMLElement {
