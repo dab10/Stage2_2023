@@ -24,8 +24,6 @@ class resetFilter {
         input.value = '';
 
         const countSlider = document.querySelector('.range-slider-by-count') as ITargetElement;
-        console.log(countAndYear);
-
         countSlider.noUiSlider.set([countAndYear[0], countAndYear[1]]);
 
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;

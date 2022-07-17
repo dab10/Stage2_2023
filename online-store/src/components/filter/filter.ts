@@ -1,5 +1,7 @@
 import Goods from '../goods/goods';
 import { IGoods, IFilter, ITargetElement } from '../../types';
+import './ribbon.css';
+import './ribbon.scss';
 class Filter {
     private view: Goods;
     private filterWords: IFilter;

@@ -3,7 +3,6 @@ import Goods from '../goods/goods';
 import data from '../goods/goods.json';
 import Filter from '../filter/filter';
 import Range from '../view/range';
-import Favorite from '../favorite/favorite';
 import resetFilter from '../filter/reset-filter';
 
 class App {
@@ -11,7 +10,6 @@ class App {
     private data: IGoods[];
     private filter: Filter;
     private viewRange: Range;
-    private favoriteItem: Favorite;
     private resetFilter: resetFilter;
 
     constructor() {
@@ -19,7 +17,6 @@ class App {
         this.data = data;
         this.filter = new Filter();
         this.viewRange = new Range();
-        this.favoriteItem = new Favorite();
         this.resetFilter = new resetFilter();
     }
 
