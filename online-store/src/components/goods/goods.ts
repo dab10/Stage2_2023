@@ -33,7 +33,7 @@ class Goods {
             (goodsClone.querySelector('.item__props li:nth-child(6)') as HTMLLIElement).textContent =
                 item.popular + item.popularValue;
             if (item.classRibbon === 'true')
-                (goodsClone.querySelector('.ribbonClass') as HTMLHeadingElement).classList.add('ribbon');
+                (goodsClone.querySelector('.ribbon-class') as HTMLHeadingElement).classList.add('ribbon');
 
             fragment.append(goodsClone);
         });

@@ -283,13 +283,12 @@ class Filter {
         const isItem = target.classList.contains('item');
         const isItemTitle = target.classList.contains('item__title');
         const isItemImg = target.classList.contains('item__img-container');
+        const isItemRibbon = target.classList.contains('ribbon-class');
         // //const isItemContainer = (target.parentNode as HTMLElement).classList.contains('item');
         const hasRibbonInner = Boolean(target.querySelector('.ribbon'));
         const hasRibbonOuter = Boolean((target.parentNode as HTMLElement).querySelector('.ribbon'));
         const counter = document.querySelector('.counter') as HTMLSpanElement;
 
-        // console.log(e.target);
-        // console.log(arr);
         if (this.count === maxItemInBasket) {
             if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
                 this.count = maxItemInBasket;
@@ -302,12 +301,11 @@ class Filter {
         }
         if (this.count < maxItemInBasket) {
             if ((isItemTitle || isItemImg) && !hasRibbonOuter) {
-                ((target.parentNode as HTMLElement).querySelector('.ribbonClass') as HTMLElement).classList.add(
+                ((target.parentNode as HTMLElement).querySelector('.ribbon-class') as HTMLElement).classList.add(
                     'ribbon'
                 );
-                ((target.parentNode as HTMLElement).querySelector('.ribbonClass') as HTMLElement).title =
+                ((target.parentNode as HTMLElement).querySelector('.ribbon-class') as HTMLElement).title =
                     'Добавлено в избранное';
-                //(target.parentNode as HTMLElement).append(ribbon);
                 this.count++;
                 counter.textContent = String(this.count);
                 this.filterWords.id.push((target.parentNode as HTMLElement).dataset.id as string);
@@ -318,15 +316,15 @@ class Filter {
                 // ribbon.title = 'Добавлено в избранное';
                 // target.append(ribbon);
                 //const ribbon = document.createElement('div');
-                (target.querySelector('.ribbonClass') as HTMLElement).classList.add('ribbon');
-                (target.querySelector('.ribbonClass') as HTMLElement).title = 'Добавлено в избранное';
+                (target.querySelector('.ribbon-class') as HTMLElement).classList.add('ribbon');
+                (target.querySelector('.ribbon-class') as HTMLElement).title = 'Добавлено в избранное';
                 //target.append(ribbon);
                 this.count++;
                 counter.textContent = String(this.count);
                 this.filterWords.id.push(target.dataset.id as string);
             }
 
-            if ((isItemTitle || isItemImg) && hasRibbonOuter) {
+            if ((isItemTitle || isItemImg || isItemRibbon) && hasRibbonOuter) {
                 ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
                 this.count--;
                 counter.textContent = String(this.count);
@@ -342,7 +340,7 @@ class Filter {
             }
         }
         if (this.count === maxItemInBasket) {
-            if ((isItemTitle || isItemImg) && hasRibbonOuter) {
+            if ((isItemTitle || isItemImg || isItemRibbon) && hasRibbonOuter) {
                 ((target.parentNode as HTMLElement).querySelector('.ribbon') as HTMLElement).classList.remove('ribbon');
                 this.count--;
                 counter.textContent = String(this.count);
