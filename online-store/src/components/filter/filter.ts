@@ -31,6 +31,12 @@ class Filter {
         return this.filterWords;
     }
 
+    public setFilterWords(filterWords: IFilter, data: IGoods[]) {
+        this.filterWords = filterWords;
+        console.log(this.filterWords);
+        //console.log(this.filterWords);
+        this.filterItems(this.filterWords, data);
+    }
     // public getCountRibbon(): number {
     //     return this.count;
     // }
@@ -39,11 +45,6 @@ class Filter {
         const counter = document.querySelector('.counter') as HTMLSpanElement;
         this.count = n;
         counter.textContent = String(this.count);
-    }
-
-    public setFilterWords(filterWords: IFilter, data: IGoods[]): void {
-        this.filterWords = filterWords;
-        this.filterItems(this.filterWords, data);
     }
 
     public filterByValue(e: Event, data: IGoods[]): void {
@@ -254,16 +255,16 @@ class Filter {
             data = data.sort((current, next) => {
                 return current.model.localeCompare(next.model);
             });
-            console.log(data);
-            console.log(this.filterWords);
+            //console.log(data);
+            //console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
         if (selected === 'sortByNameDescending') {
             data = data.sort((current, next) => {
                 return next.model.localeCompare(current.model);
             });
-            console.log(data);
-            console.log(this.filterWords);
+            //console.log(data);
+            //console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
         if (selected === 'sortByYearAscending') {
@@ -396,7 +397,7 @@ class Filter {
         console.log(filterWords);
         const filterWordsWithoutEmpty = Object.keys(filterWords).filter((key) => filterWords[key].length !== 0);
         console.log(filterWordsWithoutEmpty);
-        console.log(data);
+        //console.log(data);
 
         const filtered = data.filter((el) => {
             return filterWordsWithoutEmpty.every((key) => {
@@ -410,6 +411,9 @@ class Filter {
         });
         console.log(filtered);
         for (let i = 0; i < filtered.length; i++) {
+            if (filterWords.id.length === 0) {
+                filtered[i].classRibbon = 'false';
+            }
             for (let j = 0; j < filterWords.id.length; j++) {
                 if (filterWords.id[j] === filtered[i].id) {
                     filtered[i].classRibbon = 'true';
@@ -421,6 +425,7 @@ class Filter {
         //         return (el.classRibbon = 'true');
         //     }
         // });
+
         console.log(filtered);
         this.view.draw(filtered);
     }

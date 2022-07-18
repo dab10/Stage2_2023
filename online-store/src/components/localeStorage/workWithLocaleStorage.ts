@@ -65,6 +65,7 @@ class WorkWithLocaleStorage {
                 this.filterWords.yearValue[0],
                 this.filterWords.yearValue[this.filterWords.yearValue.length - 1],
             ]);
+
             const input = document.querySelector('.search__input') as HTMLInputElement;
             input.value = this.filterWords.model;
 

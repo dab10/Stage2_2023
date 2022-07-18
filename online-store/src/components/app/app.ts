@@ -5,6 +5,7 @@ import Filter from '../filter/filter';
 import Range from '../view/range';
 import ResetFilter from '../filter/reset-filter';
 import WorkWithLocaleStorage from '../localeStorage/workWithLocaleStorage';
+import ResetAll from '../filter/reset-all';
 
 class App {
     private view: Goods;
@@ -13,6 +14,7 @@ class App {
     private viewRange: Range;
     private resetFilter: ResetFilter;
     private workWithLocaleStorage: WorkWithLocaleStorage;
+    private resetAll: ResetAll;
 
     constructor() {
         this.view = new Goods();
@@ -21,6 +23,7 @@ class App {
         this.viewRange = new Range();
         this.resetFilter = new ResetFilter();
         this.workWithLocaleStorage = new WorkWithLocaleStorage();
+        this.resetAll = new ResetAll();
     }
 
     public start(): void {
@@ -31,7 +34,7 @@ class App {
         const select = document.querySelector('.sort-list') as HTMLSelectElement;
         const favoriteItems = document.querySelector('.item-list') as HTMLDivElement;
         const resetFilter = document.querySelector('.reset-filter') as HTMLButtonElement;
-        //const resetAll = document.querySelector('.reset-all') as HTMLButtonElement;
+        const resetAll = document.querySelector('.reset-all') as HTMLButtonElement;
 
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
@@ -52,9 +55,14 @@ class App {
 
         resetFilter.addEventListener('click', () => {
             const filterWords = this.filter.getFilterWords();
+            //console.log(filterWords);
             const countAndYear = this.viewRange.getCountAndYear();
-            this.resetFilter.resetFilter(filterWords, countAndYear, data);
+            this.resetFilter.resetFilter(filterWords, countAndYear);
+            const filterWordsFromResetFilter = this.resetFilter.getResetFilterFilterWords();
+            //console.log(filterWordsFromResetFilter);
+            this.filter.setFilterWords(filterWordsFromResetFilter, data);
         });
+
         window.addEventListener('beforeunload', () => {
             const filterWords = this.filter.getFilterWords();
             // const count = countSlider.noUiSlider.get();
@@ -76,10 +84,19 @@ class App {
                 this.filter.filterSort(data);
             }
         });
-        // resetAll.addEventListener('click', () => {
-        //     localStorage.clear();
-        //     location.reload();
-        // });
+
+        resetAll.addEventListener('click', () => {
+            //const filterWords = this.filter.getFilterWords();
+            const countAndYear = this.viewRange.getCountAndYear();
+            this.resetAll.resetAll(countAndYear, data);
+            const resetAllFilterWords = this.resetAll.getResetAllFilterWords();
+            console.log(resetAllFilterWords);
+            this.filter.setFilterWords(resetAllFilterWords, data);
+            //this.resetFilter.setResetFilterFilterWords(resetAllFilterWords);
+            const countRibbonFromResetAll = this.resetAll.getCountRibbonFromResetAll();
+            this.filter.setCountRibbon(countRibbonFromResetAll);
+            document.querySelectorAll('.ribbon').forEach((el) => el.classList.remove('ribbon'));
+        });
     }
 }
 

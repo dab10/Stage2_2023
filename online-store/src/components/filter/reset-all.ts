@@ -1,12 +1,14 @@
 import Filter from './filter';
-import { IFilter, ITargetElement } from '../../types';
+import { IGoods, IFilter, ITargetElement } from '../../types';
 
-class ResetFilter {
+class ResetAll {
     private filter: Filter;
     private filterWords: IFilter;
+    private countRibbonFromResetAll: number;
 
     constructor() {
         this.filter = new Filter();
+        this.countRibbonFromResetAll = 0;
         this.filterWords = {
             companyValue: [],
             cameraValue: [],
@@ -20,22 +22,16 @@ class ResetFilter {
         };
     }
 
-    public getResetFilterFilterWords(): IFilter {
+    public getCountRibbonFromResetAll(): number {
+        return this.countRibbonFromResetAll;
+    }
+
+    public getResetAllFilterWords(): IFilter {
         return this.filterWords;
     }
 
-    public setResetFilterFilterWords(filterWords: IFilter): void {
-        this.filterWords = filterWords;
-    }
-
-    public resetFilter(filterWords: IFilter, countAndYear: number[]): void {
-        filterWords.companyValue = [];
-        filterWords.cameraValue = [];
-        filterWords.colorValue = [];
-        filterWords.popularValue = [];
-        filterWords.popularValue = [];
-        filterWords.yearValue = [];
-        filterWords.model = '';
+    public resetAll(countAndYear: number[], data: IGoods[]): void {
+        //this.filterWords.id = [];
 
         const resetFilterByValue = document.querySelectorAll('.alt');
         resetFilterByValue.forEach((el) => el.classList.remove('alt'));
@@ -48,9 +44,13 @@ class ResetFilter {
 
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
         yearSlider.noUiSlider.set([countAndYear[2], countAndYear[3]]);
-        this.filterWords = filterWords;
-        //this.filter.filterItems(filterWords, data);
+
+        const select = document.querySelector('.sort-list') as HTMLSelectElement;
+        select.value = 'sortByNameAscending';
+        this.filter.filterSort(data);
+
+        localStorage.clear();
     }
 }
 
-export default ResetFilter;
+export default ResetAll;
