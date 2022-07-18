@@ -3,7 +3,6 @@
     display: grid;
     grid-template-columns: repeat(5,1fr);
     margin: auto;
-    width: 100%;
     width: 96%;
 
     @media screen and (max-width: 1422px) {

@@ -23,93 +23,95 @@
             <main>
                 <div class="container">
                     <div class="filters">
-                        <div class="filter-by-value">
-                            <h4 class="filter-by-value__title">
-                                Фильтры по значению
-                            </h4>
-                            <div class="filter-by-name">
-                                Производитель:
-                                <div class="filter-by-name__company">
-                                    <button class="button apple">Apple</button>
-                                    <button class="button samsung">Samsung</button>
-                                    <button class="button xiaomi">Xiaomi</button>
+                        <div class="container-filters">
+                            <div class="filter-by-value">
+                                <h4 class="filter-by-value__title">
+                                    Фильтры по значению
+                                </h4>
+                                <div class="filter-by-name">
+                                    Производитель:
+                                    <div class="filter-by-name__company">
+                                        <button class="button apple">Apple</button>
+                                        <button class="button samsung">Samsung</button>
+                                        <button class="button xiaomi">Xiaomi</button>
+                                    </div>
+                                </div>
+                                <div class="filter-by-size">
+                                    Количество камер:
+                                    <div class="filter-by-size__camera">
+                                        <button class="button type-xlarge">4</button>
+                                        <button class="button type-large">3</button>
+                                        <button class="button type-medium">2</button>
+                                        <button class="button type-small">1</button>
+                                    </div>
+                                </div>
+                                <div class="filter-by-color">
+                                    Цвет:
+                                    <div class="filter-by-color__color">
+                                        <button class="button-white white">Белый</button>
+                                        <button class="button-yellow yellow">Желтый</button>
+                                        <button class="button-red red">Красный</button>
+                                    </div>
+                                </div>
+                                <div class="filter-by-popular">
+                                    Только популярные:
+                                    <div class="filter-by-popular__popular">
+                                        <button class="button popular">Да</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="filter-by-size">
-                                Количество камер:
-                                <div class="filter-by-size__camera">
-                                    <button class="button type-xlarge">4</button>
-                                    <button class="button type-large">3</button>
-                                    <button class="button type-medium">2</button>
-                                    <button class="button type-small">1</button>
+                            <div class="filter-by-range">
+                                <h4 class="filter-by-range__title">
+                                    Фильтры по диапазону
+                                </h4>
+                                <div class="range-by-count">
+                                    <h5 class="range-by-count__title">
+                                        Количество на складе:
+                                    </h5>
+                                    <div class="slider-count">
+                                        <div class="slider-count-snap-value-lower"></div>
+                                        <div class="range-slider-by-count"></div>
+                                        <div class="slider-count-snap-value-upper"></div>
+                                    </div>
+                                </div>
+                                <div class="range-by-year">
+                                    <h5 class="range-by-year__title">
+                                        Год выхода на рынок:
+                                    </h5>
+                                    <div class="slider-year">
+                                        <div class="slider-year-snap-value-lower"></div>
+                                        <div class="range-slider-by-year"></div>
+                                        <div class="slider-year-snap-value-upper"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="filter-by-color">
-                                Цвет:
-                                <div class="filter-by-color__color">
-                                    <button class="button white">Белый</button>
-                                    <button class="button yellow">Желтый</button>
-                                    <button class="button red">Красный</button>
+                            <div class="filter-by-search">
+                                <div class="search">
+                                    <h5 class="search__title">
+                                        Поиск
+                                    </h5>
+                                    <div class="search-wrapper">
+                                        <input type="search" placeholder="Введите текст" class="search__input" autofocus>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="filter-by-popular">
-                                Только популярные:
-                                <div class="filter-by-popular__popular">
-                                    <button class="button popular">Да</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-by-range">
-                            <h4 class="filter-by-range__title">
-                                Фильтры по диапазону
-                            </h4>
-                            <div class="range-by-count">
-                                <h5 class="range-by-count__title">
-                                    Количество на складе:
-                                </h5>
-                                <div class="slider-count">
-                                    <div class="slider-count-snap-value-lower"></div>
-                                    <div class="range-slider-by-count"></div>
-                                    <div class="slider-count-snap-value-upper"></div>
-                                </div>
-                            </div>
-                            <div class="range-by-year">
-                                <h5 class="range-by-year__title">
-                                    Год выхода на рынок:
-                                </h5>
-                                <div class="slider-year">
-                                    <div class="slider-year-snap-value-lower"></div>
-                                    <div class="range-slider-by-year"></div>
-                                    <div class="slider-year-snap-value-upper"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-by-name">
-                            <div class="search">
-                                <h5 class="search__title">
-                                    Поиск
-                                </h5>
-                                <div class="search-wrapper">
-                                    <input type="text" placeholder="Введите текст" class="search__input">
-                                </div>
-                            </div>
-                            <div class="sort">
-                                <h5 class="sort__title">
-                                    Сортировка
-                                </h5>
-                                <div class="sort-wrapper">
-                                    <select class="sort-list">
-                                        <option value="sortByNameAscending">По названию, от А до Я</option>
-                                        <option value="sortByNameDescending">По названию, от Я до А</option>
-                                        <option value="sortByYearAscending">По году, по возрастанию</option>
-                                        <option value="sortByYearDescending">По году, по убыванию</option>
-                                        <option value="sortByCountAscending">По количеству, по возрастанию</option>
-                                        <option value="sortByCountDescending">По количеству, по убыванию</option>
-                                      </select>
-                                </div>
-                                <div class="reset">
-                                    <button class="reset-filter">Сброс фильтров</button>
-                                    <button class="reset-all">Сброс настроек</button>
+                                <div class="sort">
+                                    <h5 class="sort__title">
+                                        Сортировка
+                                    </h5>
+                                    <div class="sort-wrapper">
+                                        <select class="sort-list">
+                                            <option value="sortByNameAscending" class="option">По названию, от А до Я</option>
+                                            <option value="sortByNameDescending" class="option">По названию, от Я до А</option>
+                                            <option value="sortByYearAscending" class="option">По году, по возрастанию</option>
+                                            <option value="sortByYearDescending" class="option">По году, по убыванию</option>
+                                            <option value="sortByCountAscending" class="option">По количеству, по возрастанию</option>
+                                            <option value="sortByCountDescending" class="option">По количеству, по убыванию</option>
+                                        </select>
+                                    </div>
+                                    <div class="reset">
+                                        <button class="reset-filter">Сброс фильтров</button>
+                                        <button class="reset-all">Сброс настроек</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +121,13 @@
                 </div>
             </main>
             <footer>
-
+                <div class="footer-year">2022</div>
+                <div>
+                    <a class="footer-github" href="https://github.com/dab10">github</a>
+                </div>
+                <a href="https://rs.school/js/">
+                    <div class="footer-rss-image"></div>
+                </a>
             </footer>
         </div>
 
