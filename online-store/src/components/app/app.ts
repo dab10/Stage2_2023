@@ -31,6 +31,7 @@ class App {
         const select = document.querySelector('.sort-list') as HTMLSelectElement;
         const favoriteItems = document.querySelector('.item-list') as HTMLDivElement;
         const resetFilter = document.querySelector('.reset-filter') as HTMLButtonElement;
+        //const resetAll = document.querySelector('.reset-all') as HTMLButtonElement;
 
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
@@ -75,6 +76,10 @@ class App {
                 this.filter.filterSort(data);
             }
         });
+        // resetAll.addEventListener('click', () => {
+        //     localStorage.clear();
+        //     location.reload();
+        // });
     }
 }
 

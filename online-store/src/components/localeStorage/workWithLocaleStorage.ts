@@ -70,6 +70,36 @@ class WorkWithLocaleStorage {
 
             this.countRibbonFromLocaleStorage = this.filterWords.id.length;
 
+            const filterByNameWithClassAlt = document.querySelectorAll('.apple, .samsung, .xiaomi');
+            filterByNameWithClassAlt.forEach((el) =>
+                this.filterWords.companyValue.forEach((item) => {
+                    if (el.textContent === item) {
+                        el.classList.add('alt');
+                    }
+                })
+            );
+            const filterBySizeWithClassAlt = document.querySelectorAll(
+                '.type-xlarge, .type-large, .type-medium, .type-small'
+            );
+            filterBySizeWithClassAlt.forEach((el) =>
+                this.filterWords.cameraValue.forEach((item) => {
+                    if (el.textContent === item) {
+                        el.classList.add('alt');
+                    }
+                })
+            );
+            const filterByColorWithClassAlt = document.querySelectorAll('.white, .yellow, .red');
+            filterByColorWithClassAlt.forEach((el) =>
+                this.filterWords.colorValue.forEach((item) => {
+                    if (el.textContent === item) {
+                        el.classList.add('alt');
+                    }
+                })
+            );
+            const filterByPopularWithClassAlt = document.querySelector('.popular') as HTMLElement;
+            if (filterByPopularWithClassAlt.textContent === this.filterWords.popularValue[0])
+                filterByPopularWithClassAlt.classList.add('alt');
+
             //this.filter.filterItems(filterWords, data);
         }
 
