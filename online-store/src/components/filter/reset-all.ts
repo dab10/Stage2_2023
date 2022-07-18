@@ -31,8 +31,6 @@ class ResetAll {
     }
 
     public resetAll(countAndYear: number[], data: IGoods[]): void {
-        //this.filterWords.id = [];
-
         const resetFilterByValue = document.querySelectorAll('.alt');
         resetFilterByValue.forEach((el) => el.classList.remove('alt'));
 

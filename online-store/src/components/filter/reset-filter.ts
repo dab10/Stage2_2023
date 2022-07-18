@@ -49,7 +49,6 @@ class ResetFilter {
         const yearSlider = document.querySelector('.range-slider-by-year') as ITargetElement;
         yearSlider.noUiSlider.set([countAndYear[2], countAndYear[3]]);
         this.filterWords = filterWords;
-        //this.filter.filterItems(filterWords, data);
     }
 }
 

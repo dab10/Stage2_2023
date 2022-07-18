@@ -44,34 +44,23 @@ class App {
         countSlider.noUiSlider.on('set', () => this.filter.rangeByCount(data));
         yearSlider.noUiSlider.on('set', () => this.filter.rangeByYear(data));
         input.addEventListener('input', () => this.filter.filterSearch(data));
-        //select.addEventListener('change', (e) => this.filter.filterSort(e, data));
         select.addEventListener('change', () => this.filter.filterSort(data));
-        //const favoriteItems = document.querySelectorAll<HTMLDivElement>('.item');
-        //console.log(favoriteItems);
         favoriteItems.addEventListener('click', (e) => this.filter.chooseFavorite(e));
-        // favoriteItems.forEach((tab) => {
-        //     tab.addEventListener('click', (e) => this.favoriteItem.chooseFavorite(e));
-        // });
 
         resetFilter.addEventListener('click', () => {
             const filterWords = this.filter.getFilterWords();
-            //console.log(filterWords);
             const countAndYear = this.viewRange.getCountAndYear();
             this.resetFilter.resetFilter(filterWords, countAndYear);
             const filterWordsFromResetFilter = this.resetFilter.getResetFilterFilterWords();
-            //console.log(filterWordsFromResetFilter);
             this.filter.setFilterWords(filterWordsFromResetFilter, data);
         });
 
         window.addEventListener('beforeunload', () => {
             const filterWords = this.filter.getFilterWords();
-            // const count = countSlider.noUiSlider.get();
-            // const year = yearSlider.noUiSlider.get();
-            //const countRibbon = this.filter.getCountRibbon();
-            //console.log(countRibbon);
             const valueSelect = select.options[select.selectedIndex].value;
             this.workWithLocaleStorage.setLocalStorage(filterWords, valueSelect);
         });
+
         window.addEventListener('load', () => {
             this.workWithLocaleStorage.getLocaleStorage();
             const countRibbonFromLocaleStorage = this.workWithLocaleStorage.getCountRibbonFromLocaleStorage();
@@ -86,13 +75,10 @@ class App {
         });
 
         resetAll.addEventListener('click', () => {
-            //const filterWords = this.filter.getFilterWords();
             const countAndYear = this.viewRange.getCountAndYear();
             this.resetAll.resetAll(countAndYear, data);
             const resetAllFilterWords = this.resetAll.getResetAllFilterWords();
-            console.log(resetAllFilterWords);
             this.filter.setFilterWords(resetAllFilterWords, data);
-            //this.resetFilter.setResetFilterFilterWords(resetAllFilterWords);
             const countRibbonFromResetAll = this.resetAll.getCountRibbonFromResetAll();
             this.filter.setCountRibbon(countRibbonFromResetAll);
             document.querySelectorAll('.ribbon').forEach((el) => el.classList.remove('ribbon'));

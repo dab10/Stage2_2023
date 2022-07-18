@@ -2,7 +2,6 @@ import noUiSlider from 'nouislider';
 import { ITargetElement, IGoods } from '../../types';
 import 'nouislider/dist/nouislider.css';
 import data from '../goods/goods.json';
-//import FilterByName from '../filter/filterByName';
 
 class Range {
     private data: IGoods[];

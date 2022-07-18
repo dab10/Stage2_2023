@@ -1,10 +1,9 @@
 import './goods.css';
 import './goods.scss';
 import { IGoods } from '../../types';
+
 class Goods {
     public draw(data: IGoods[]): void {
-        //const ribbon = document.querySelectorAll<HTMLElement>('.ribbon');
-        //console.log(ribbon);
         const fragment = document.createDocumentFragment() as DocumentFragment;
         const goodsTemp = document.querySelector('#items') as HTMLTemplateElement;
         const containerData = document.querySelector('.item-list') as HTMLDivElement;
