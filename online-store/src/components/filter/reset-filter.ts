@@ -1,7 +1,7 @@
 import Filter from './filter';
 import { IGoods, IFilter, ITargetElement } from '../../types';
 
-class resetFilter {
+class ResetFilter {
     private filter: Filter;
 
     constructor() {
@@ -33,4 +33,4 @@ class resetFilter {
     }
 }
 
-export default resetFilter;
+export default ResetFilter;

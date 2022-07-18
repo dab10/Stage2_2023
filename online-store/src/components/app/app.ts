@@ -3,21 +3,24 @@ import Goods from '../goods/goods';
 import data from '../goods/goods.json';
 import Filter from '../filter/filter';
 import Range from '../view/range';
-import resetFilter from '../filter/reset-filter';
+import ResetFilter from '../filter/reset-filter';
+import WorkWithLocaleStorage from '../localeStorage/workWithLocaleStorage';
 
 class App {
     private view: Goods;
     private data: IGoods[];
     private filter: Filter;
     private viewRange: Range;
-    private resetFilter: resetFilter;
+    private resetFilter: ResetFilter;
+    private workWithLocaleStorage: WorkWithLocaleStorage;
 
     constructor() {
         this.view = new Goods();
         this.data = data;
         this.filter = new Filter();
         this.viewRange = new Range();
-        this.resetFilter = new resetFilter();
+        this.resetFilter = new ResetFilter();
+        this.workWithLocaleStorage = new WorkWithLocaleStorage();
     }
 
     public start(): void {
@@ -37,7 +40,8 @@ class App {
         countSlider.noUiSlider.on('set', () => this.filter.rangeByCount(data));
         yearSlider.noUiSlider.on('set', () => this.filter.rangeByYear(data));
         input.addEventListener('input', () => this.filter.filterSearch(data));
-        select.addEventListener('change', (e) => this.filter.filterSort(e, data));
+        //select.addEventListener('change', (e) => this.filter.filterSort(e, data));
+        select.addEventListener('change', () => this.filter.filterSort(data));
         //const favoriteItems = document.querySelectorAll<HTMLDivElement>('.item');
         //console.log(favoriteItems);
         favoriteItems.addEventListener('click', (e) => this.filter.chooseFavorite(e));
@@ -49,6 +53,27 @@ class App {
             const filterWords = this.filter.getFilterWords();
             const countAndYear = this.viewRange.getCountAndYear();
             this.resetFilter.resetFilter(filterWords, countAndYear, data);
+        });
+        window.addEventListener('beforeunload', () => {
+            const filterWords = this.filter.getFilterWords();
+            // const count = countSlider.noUiSlider.get();
+            // const year = yearSlider.noUiSlider.get();
+            //const countRibbon = this.filter.getCountRibbon();
+            //console.log(countRibbon);
+            const valueSelect = select.options[select.selectedIndex].value;
+            this.workWithLocaleStorage.setLocalStorage(filterWords, valueSelect);
+        });
+        window.addEventListener('load', () => {
+            this.workWithLocaleStorage.getLocaleStorage();
+            const countRibbonFromLocaleStorage = this.workWithLocaleStorage.getCountRibbonFromLocaleStorage();
+            this.filter.setCountRibbon(countRibbonFromLocaleStorage);
+            const filterWordsFromLocaleStorage = this.workWithLocaleStorage.getFilterWordsFromLocaleStorage();
+            this.filter.setFilterWords(filterWordsFromLocaleStorage, data);
+            if (localStorage.getItem('sort')) {
+                const item = localStorage.getItem('sort') as string;
+                select.value = item;
+                this.filter.filterSort(data);
+            }
         });
     }
 }

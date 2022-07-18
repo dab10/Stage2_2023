@@ -31,6 +31,19 @@ class Filter {
         return this.filterWords;
     }
 
+    // public getCountRibbon(): number {
+    //     return this.count;
+    // }
+
+    public setCountRibbon(n: number) {
+        this.count = n;
+    }
+
+    public setFilterWords(filterWords: IFilter, data: IGoods[]): void {
+        this.filterWords = filterWords;
+        this.filterItems(this.filterWords, data);
+    }
+
     public filterByValue(e: Event, data: IGoods[]): void {
         const target = e.target as HTMLElement;
 
@@ -133,9 +146,9 @@ class Filter {
             this.countArr.push(String(i));
         }
         //countSlider.noUiSlider.off('set');
-        console.log(this.countArr);
+        //console.log(this.countArr);
         this.filterWords.quantityValue = this.countArr;
-        console.log(this.filterWords);
+        //console.log(this.filterWords);
         this.filterItems(this.filterWords, data);
 
         //console.log(e.target);
@@ -232,8 +245,10 @@ class Filter {
         // });
     }
 
-    public filterSort(e: Event, data: IGoods[]): void {
-        if ((e.target as HTMLSelectElement).value == 'sortByNameAscending') {
+    public filterSort(data: IGoods[]): void {
+        const select = document.querySelector('.sort-list') as HTMLSelectElement;
+        const selected = select.options[select.selectedIndex].value;
+        if (selected === 'sortByNameAscending') {
             data = data.sort((current, next) => {
                 return current.model.localeCompare(next.model);
             });
@@ -241,7 +256,7 @@ class Filter {
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
-        if ((e.target as HTMLSelectElement).value == 'sortByNameDescending') {
+        if (selected === 'sortByNameDescending') {
             data = data.sort((current, next) => {
                 return next.model.localeCompare(current.model);
             });
@@ -249,7 +264,7 @@ class Filter {
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
-        if ((e.target as HTMLSelectElement).value == 'sortByYearAscending') {
+        if (selected === 'sortByYearAscending') {
             data = data.sort((current, next) => {
                 return current.yearValue.localeCompare(next.yearValue);
             });
@@ -257,7 +272,7 @@ class Filter {
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
-        if ((e.target as HTMLSelectElement).value == 'sortByYearDescending') {
+        if (selected === 'sortByYearDescending') {
             data = data.sort((current, next) => {
                 return next.yearValue.localeCompare(current.yearValue);
             });
@@ -265,13 +280,13 @@ class Filter {
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
-        if ((e.target as HTMLSelectElement).value == 'sortByCountAscending') {
+        if (selected === 'sortByCountAscending') {
             data = data.sort((a, b) => parseFloat(a.quantityValue) - parseFloat(b.quantityValue));
             console.log(data);
             console.log(this.filterWords);
             this.filterItems(this.filterWords, data);
         }
-        if ((e.target as HTMLSelectElement).value == 'sortByCountDescending') {
+        if (selected === 'sortByCountDescending') {
             data = data.sort((a, b) => parseFloat(b.quantityValue) - parseFloat(a.quantityValue));
             console.log(data);
             console.log(this.filterWords);
