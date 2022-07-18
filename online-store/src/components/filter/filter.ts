@@ -36,7 +36,9 @@ class Filter {
     // }
 
     public setCountRibbon(n: number) {
+        const counter = document.querySelector('.counter') as HTMLSpanElement;
         this.count = n;
+        counter.textContent = String(this.count);
     }
 
     public setFilterWords(filterWords: IFilter, data: IGoods[]): void {
