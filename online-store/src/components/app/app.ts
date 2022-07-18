@@ -6,6 +6,7 @@ import Range from '../view/range';
 import ResetFilter from '../filter/reset-filter';
 import WorkWithLocaleStorage from '../localeStorage/workWithLocaleStorage';
 import ResetAll from '../filter/reset-all';
+import selfCheck from '../view/selfCheck';
 
 class App {
     private view: Goods;
@@ -15,6 +16,7 @@ class App {
     private resetFilter: ResetFilter;
     private workWithLocaleStorage: WorkWithLocaleStorage;
     private resetAll: ResetAll;
+    private selfCheck: selfCheck;
 
     constructor() {
         this.view = new Goods();
@@ -24,6 +26,7 @@ class App {
         this.resetFilter = new ResetFilter();
         this.workWithLocaleStorage = new WorkWithLocaleStorage();
         this.resetAll = new ResetAll();
+        this.selfCheck = new selfCheck();
     }
 
     public start(): void {
@@ -39,6 +42,7 @@ class App {
         this.view.draw(this.data);
         this.viewRange.rangeSliderByCount();
         this.viewRange.rangeSliderByYear();
+        this.selfCheck.selfCheck();
 
         filterByValue.addEventListener('click', (e) => this.filter.filterByValue(e, data));
         countSlider.noUiSlider.on('set', () => this.filter.rangeByCount(data));

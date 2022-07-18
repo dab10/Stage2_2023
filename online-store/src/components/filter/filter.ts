@@ -163,7 +163,7 @@ class Filter {
     }
 
     public chooseFavorite(e: Event) {
-        const maxItemInBasket = 3;
+        const maxItemInBasket = 20;
         const target = e.target as HTMLElement;
         const isItem = target.classList.contains('item');
         const isItemTitle = target.classList.contains('item__title');
