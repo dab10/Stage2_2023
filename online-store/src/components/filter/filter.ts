@@ -22,12 +22,12 @@ class Filter {
         return this.filterWords;
     }
 
-    public setFilterWords(filterWords: IFilter, data: IGoods[]) {
+    public setFilterWords(filterWords: IFilter, data: IGoods[]): void {
         this.filterWords = filterWords;
         this.filterItems(this.filterWords, data);
     }
 
-    public setCountRibbon(n: number) {
+    public setCountRibbon(n: number): void {
         const counter = document.querySelector('.counter') as HTMLSpanElement;
         this.count = n;
         counter.textContent = String(this.count);

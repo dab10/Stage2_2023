@@ -1,13 +1,10 @@
 import { IFilter, ITargetElement, filterWordsEmpty } from '../../types';
-import Filter from '../filter/filter';
 
 class WorkWithLocaleStorage {
-    private filter: Filter;
     private countRibbonFromLocaleStorage: number;
     private filterWords: IFilter;
 
     constructor() {
-        this.filter = new Filter();
         this.countRibbonFromLocaleStorage = 0;
         this.filterWords = filterWordsEmpty;
     }

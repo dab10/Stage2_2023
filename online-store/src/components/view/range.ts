@@ -39,7 +39,7 @@ class Range {
         ).quantityValue;
 
         noUiSlider.create(countSlider, {
-            start: [this.minCount, this.maxCount],
+            start: [this.minCount, 12],
             connect: true,
             tooltips: [true, true],
             step: 1,
