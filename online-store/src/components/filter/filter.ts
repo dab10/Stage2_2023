@@ -1,5 +1,5 @@
 import Goods from '../goods/goods';
-import { IGoods, IFilter, ITargetElement } from '../../types';
+import { IGoods, IFilter, ITargetElement, filterWordsEmpty } from '../../types';
 import './ribbon.css';
 import './ribbon.scss';
 
@@ -14,17 +14,7 @@ class Filter {
         this.view = new Goods();
         this.countArr = [];
         this.sliderValues = [];
-        this.filterWords = {
-            companyValue: [],
-            cameraValue: [],
-            colorValue: [],
-            popularValue: [],
-            quantityValue: [],
-            yearValue: [],
-            model: '',
-            id: [],
-            classRibbon: '',
-        };
+        this.filterWords = filterWordsEmpty;
         this.count = 0;
     }
 

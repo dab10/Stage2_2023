@@ -40,3 +40,15 @@ export interface IFilter extends ISetTypeIFilter {
 export interface ITargetElement extends HTMLElement {
     noUiSlider: API;
 }
+
+export const filterWordsEmpty: IFilter = {
+    companyValue: [],
+    cameraValue: [],
+    colorValue: [],
+    popularValue: [],
+    quantityValue: [],
+    yearValue: [],
+    model: '',
+    id: [],
+    classRibbon: '',
+};

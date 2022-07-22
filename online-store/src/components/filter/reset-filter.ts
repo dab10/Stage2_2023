@@ -1,5 +1,5 @@
 import Filter from './filter';
-import { IFilter, ITargetElement } from '../../types';
+import { IFilter, ITargetElement, filterWordsEmpty } from '../../types';
 
 class ResetFilter {
     private filter: Filter;
@@ -7,17 +7,7 @@ class ResetFilter {
 
     constructor() {
         this.filter = new Filter();
-        this.filterWords = {
-            companyValue: [],
-            cameraValue: [],
-            colorValue: [],
-            popularValue: [],
-            quantityValue: [],
-            yearValue: [],
-            model: '',
-            id: [],
-            classRibbon: '',
-        };
+        this.filterWords = filterWordsEmpty;
     }
 
     public getResetFilterFilterWords(): IFilter {

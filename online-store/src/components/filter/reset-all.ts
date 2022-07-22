@@ -1,5 +1,5 @@
 import Filter from './filter';
-import { IGoods, IFilter, ITargetElement } from '../../types';
+import { IGoods, IFilter, ITargetElement, filterWordsEmpty } from '../../types';
 
 class ResetAll {
     private filter: Filter;
@@ -9,17 +9,7 @@ class ResetAll {
     constructor() {
         this.filter = new Filter();
         this.countRibbonFromResetAll = 0;
-        this.filterWords = {
-            companyValue: [],
-            cameraValue: [],
-            colorValue: [],
-            popularValue: [],
-            quantityValue: [],
-            yearValue: [],
-            model: '',
-            id: [],
-            classRibbon: '',
-        };
+        this.filterWords = filterWordsEmpty;
     }
 
     public getCountRibbonFromResetAll(): number {

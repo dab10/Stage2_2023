@@ -1,5 +1,4 @@
-import { IFilter } from '../../types';
-import { ITargetElement } from '../../types';
+import { IFilter, ITargetElement, filterWordsEmpty } from '../../types';
 import Filter from '../filter/filter';
 
 class WorkWithLocaleStorage {
@@ -10,17 +9,7 @@ class WorkWithLocaleStorage {
     constructor() {
         this.filter = new Filter();
         this.countRibbonFromLocaleStorage = 0;
-        this.filterWords = {
-            companyValue: [],
-            cameraValue: [],
-            colorValue: [],
-            popularValue: [],
-            quantityValue: [],
-            yearValue: [],
-            model: '',
-            id: [],
-            classRibbon: '',
-        };
+        this.filterWords = filterWordsEmpty;
     }
 
     public getCountRibbonFromLocaleStorage(): number {
