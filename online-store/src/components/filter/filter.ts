@@ -1,5 +1,5 @@
 import Goods from '../goods/goods';
-import { IGoods, IFilter, ITargetElement, filterWordsEmpty } from '../../types';
+import { IGoods, IFilter, ITargetElement, filterWordsEmpty, Sort } from '../../types';
 import './ribbon.css';
 import './ribbon.scss';
 
@@ -118,35 +118,35 @@ class Filter {
     public filterSort(data: IGoods[]): void {
         const select = document.querySelector('.sort-list') as HTMLSelectElement;
         const selected = select.options[select.selectedIndex].value;
-        if (selected === 'sortByNameAscending') {
+        if (selected === Sort.SortByNameUp) {
             data = data.sort((current, next) => {
                 return current.model.localeCompare(next.model);
             });
             this.filterItems(this.filterWords, data);
         }
-        if (selected === 'sortByNameDescending') {
+        if (selected === Sort.SortByNameDown) {
             data = data.sort((current, next) => {
                 return next.model.localeCompare(current.model);
             });
             this.filterItems(this.filterWords, data);
         }
-        if (selected === 'sortByYearAscending') {
+        if (selected === Sort.SortByYearUp) {
             data = data.sort((current, next) => {
                 return current.yearValue.localeCompare(next.yearValue);
             });
             this.filterItems(this.filterWords, data);
         }
-        if (selected === 'sortByYearDescending') {
+        if (selected === Sort.SortByYearDown) {
             data = data.sort((current, next) => {
                 return next.yearValue.localeCompare(current.yearValue);
             });
             this.filterItems(this.filterWords, data);
         }
-        if (selected === 'sortByCountAscending') {
+        if (selected === Sort.SortByCountUp) {
             data = data.sort((a, b) => parseFloat(a.quantityValue) - parseFloat(b.quantityValue));
             this.filterItems(this.filterWords, data);
         }
-        if (selected === 'sortByCountDescending') {
+        if (selected === Sort.SortByCountDown) {
             data = data.sort((a, b) => parseFloat(b.quantityValue) - parseFloat(a.quantityValue));
             this.filterItems(this.filterWords, data);
         }

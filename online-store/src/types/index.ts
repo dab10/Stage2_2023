@@ -52,3 +52,12 @@ export const filterWordsEmpty: IFilter = {
     id: [],
     classRibbon: '',
 };
+
+export enum Sort {
+    SortByNameUp = 'sortByNameAscending',
+    SortByNameDown = 'sortByNameDescending',
+    SortByYearUp = 'sortByYearAscending',
+    SortByYearDown = 'sortByYearDescending',
+    SortByCountUp = 'sortByCountAscending',
+    SortByCountDown = 'sortByCountDescending',
+}

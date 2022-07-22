@@ -1,5 +1,5 @@
 import Filter from './filter';
-import { IGoods, IFilter, ITargetElement, filterWordsEmpty } from '../../types';
+import { IGoods, IFilter, ITargetElement, filterWordsEmpty, Sort } from '../../types';
 
 class ResetAll {
     private filter: Filter;
@@ -34,7 +34,7 @@ class ResetAll {
         yearSlider.noUiSlider.set([countAndYear[2], countAndYear[3]]);
 
         const select = document.querySelector('.sort-list') as HTMLSelectElement;
-        select.value = 'sortByNameAscending';
+        select.value = Sort.SortByNameUp;
         this.filter.filterSort(data);
 
         localStorage.clear();
