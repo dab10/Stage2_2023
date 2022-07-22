@@ -66,7 +66,7 @@ class App {
         });
 
         window.addEventListener('load', () => {
-            this.workWithLocaleStorage.getLocaleStorage();
+            this.workWithLocaleStorage.setFiltersFromLocaleStorage();
             const countRibbonFromLocaleStorage = this.workWithLocaleStorage.getCountRibbonFromLocaleStorage();
             this.filter.setCountRibbon(countRibbonFromLocaleStorage);
             const filterWordsFromLocaleStorage = this.workWithLocaleStorage.getFilterWordsFromLocaleStorage();

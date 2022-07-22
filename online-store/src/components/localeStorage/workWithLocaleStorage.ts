@@ -25,7 +25,7 @@ class WorkWithLocaleStorage {
         localStorage.setItem('sort', valueSelect);
     }
 
-    public getLocaleStorage(): void {
+    public setFiltersFromLocaleStorage(): void {
         if (localStorage.getItem('filterWords')) {
             const filterWordsJSON = localStorage.getItem('filterWords');
             this.filterWords = JSON.parse(filterWordsJSON as string);
