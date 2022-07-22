@@ -39,7 +39,7 @@ class Range {
         ).quantityValue;
 
         noUiSlider.create(countSlider, {
-            start: [1, 12],
+            start: [this.minCount, this.maxCount],
             connect: true,
             tooltips: [true, true],
             step: 1,
@@ -76,7 +76,7 @@ class Range {
         this.maxYear = filteredByYear.reduce((acc, curr) => (acc.yearValue > curr.yearValue ? acc : curr)).yearValue;
 
         noUiSlider.create(yearSlider, {
-            start: [2000, 2022],
+            start: [this.minYear, this.maxYear],
             connect: true,
             tooltips: [true, true],
             step: 1,
