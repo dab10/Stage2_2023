@@ -1,12 +1,9 @@
-import Filter from './filter';
 import { IFilter, ITargetElement, filterWordsEmpty } from '../../types';
 
 class ResetFilter {
-    private filter: Filter;
     private filterWords: IFilter;
 
     constructor() {
-        this.filter = new Filter();
         this.filterWords = filterWordsEmpty;
     }
 
