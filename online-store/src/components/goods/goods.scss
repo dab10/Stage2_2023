@@ -5,15 +5,15 @@
     margin: auto;
     width: 96%;
 
-    @media screen and (max-width: 1422px) {
+    @media screen and (max-width: 1280px) {
         grid-template-columns: repeat(4,1fr);
     }
 
-    @media screen and (max-width: 1133px) {
+    @media screen and (max-width: 960px) {
         grid-template-columns: repeat(3,1fr);
     }
 
-    @media screen and (max-width: 785px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: repeat(2,1fr);
     }
 }
