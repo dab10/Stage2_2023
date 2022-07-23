@@ -52,4 +52,13 @@ describe('Class Filter', () => {
         const el = document.querySelector('.item__title') as HTMLElement;
         expect(el.innerHTML).not.toBe('Samsung');
     });
+    test('Check filterByValue', () => {
+        const filterByValue = document.querySelector('.apple') as HTMLButtonElement;
+        filterByValue.click();
+        const el = document.querySelector('.item__title') as HTMLElement;
+        expect(el.innerHTML).not.toBe('Samsung');
+    });
+    test('Check getFilterWords', () => {
+        expect(classFilter.getFilterWords()).toBeDefined();
+    });
 });
