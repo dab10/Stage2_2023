@@ -1,4 +1,6 @@
 import { Cars } from '../../types';
+import './view.scss';
+import './view.css';
 
 export const headerStart = `
   <h1>async-race</h1>
@@ -43,9 +45,8 @@ export const footerStart = `
 `;
 
 const renderCarColor = (color: string) => `
-  <div>
   <?xml version="1.0" standalone="no"?>
-  <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+  <svg class="car__image" version="1.0" xmlns="http://www.w3.org/2000/svg"
    width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
    preserveAspectRatio="xMidYMid meet">
   <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
@@ -143,13 +144,13 @@ const renderCarColor = (color: string) => `
   61 239 98 16 10 -216 242 -234 235z"/>
   </g>
   </svg>
-  </div>
 `;
 
 const renderCar = (car: Cars, isStarted: boolean) => `
   <div class="car-buttons">
     <button class="button car-buttons__select">Select</button>
     <button class="button car-buttons__remove">Remove</button>
+    <span class="car-name">${car.name}</span>
   </div>
   <div class="racetrack">
     <div class="car-controls">
@@ -165,7 +166,7 @@ const renderCar = (car: Cars, isStarted: boolean) => `
   </div>
 `;
 
-export const mainStart = (cars: Cars[], count: string | null, isStarted: boolean) => `
+export const mainStart = (cars: Cars[], count: string, isStarted: boolean) => `
   <h2>Garage (${count})</h2>
   <h3>Page #1</h3>
   <ul class="garage">

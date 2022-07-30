@@ -1,0 +1,61 @@
+.racetrack {
+  position: relative;
+}
+
+.garage {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.flag {
+  position: absolute;
+  left: calc(100% - 150px);
+  top: 20px;
+  color: red;
+  font-size: 50px;
+}
+
+.car {
+  border-bottom: 2px dashed white;
+}
+
+.car__image {
+  height: 50px;
+  width: 100px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: black;
+}
+
+.footer-github {
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.25s;
+
+  &:hover, &:focus {
+      color: #69db7e;
+      box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+  }
+}
+
+.footer-rss-image {
+  height: 50px;
+  width: 100px;
+  background: url("../../assets/images/rss.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  transition: 0.25s;
+ 
+  &:hover, &:focus {
+      filter: invert(3%) sepia(33%) saturate(1353%) hue-rotate(56deg) brightness(85%) contrast(103%);
+      box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+  }
+}

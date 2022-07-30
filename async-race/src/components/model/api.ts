@@ -31,12 +31,12 @@ class Api {
   }
 
   public getCars = async (page: number, limit = 7): Promise< {
-    items: Cars[]; count: string | null;
+    items: Cars[]; count: string;
   } > => {
     const response = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     return {
       items: await response.json(),
-      count: response.headers.get('X-Total-Count'),
+      count: response.headers.get('X-Total-Count') as string,
     };
   };
 

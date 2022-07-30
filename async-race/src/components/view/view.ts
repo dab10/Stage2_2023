@@ -23,7 +23,7 @@ class View {
     this.isStarted = false;
   }
 
-  public renderStartPage = (cars: Cars[], count: string | null) => {
+  public renderStartPage = (cars: Cars[], count: string) => {
     this.header.insertAdjacentHTML('afterbegin', headerStart);
     this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count, this.isStarted));
     this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
