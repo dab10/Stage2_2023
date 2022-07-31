@@ -66,7 +66,7 @@ class Api {
 
   public drive = async (id: number) => {
     const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
-    return res.status === 200 ? { success: true } : { success: false }; // : { ...(await res.json())
+    return res.status === 200 ? { success: true } : { success: false };
   };
 
   public getSortOrder = (sort: Sort, order: Order) => {
@@ -132,20 +132,6 @@ class Api {
       });
     }
   };
-
-  // const main = async () => {
-  //   const { velocity, distance } = await startEngine(1);
-  //   console.log(velocity);
-  //   console.log(distance);
-  // };
-
-  // const main1 = async () => {
-  //   const car2 = await drive(1);
-  //   console.log(car2);
-  // };
-
-  // main();
-  // main1();
 }
 
 export default Api;

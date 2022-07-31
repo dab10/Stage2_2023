@@ -1,3 +1,8 @@
+.edit-form__color,
+.edit-form__input {
+  pointer-events: none;
+}
+
 .racetrack {
   position: relative;
 }

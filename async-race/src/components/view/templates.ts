@@ -16,8 +16,8 @@ export const headerStart = `
     </form>
     <form class="edit-form">
       <input class="edit-form__input" name="car-name" type="text">
-      <input class="edit-form__color" name="car-color" type="color" value="#ffffff" disabled>
-      <button class="button edit-form__button type="submit">Update</button>
+      <input class="edit-form__color" name="car-color" type="color" value="#ffffff">
+      <button class="button edit-form__button type="submit" disabled>Update</button>
     </form>
     <div class="controls">
       <button class="button controls__button-race">Race</button>
@@ -45,6 +45,7 @@ export const footerStart = `
 `;
 
 const renderCarColor = (color: string) => `
+  <div class="car-animation">
   <?xml version="1.0" standalone="no"?>
   <svg class="car__image" version="1.0" xmlns="http://www.w3.org/2000/svg"
    width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
@@ -144,6 +145,7 @@ const renderCarColor = (color: string) => `
   61 239 98 16 10 -216 242 -234 235z"/>
   </g>
   </svg>
+  </div>
 `;
 
 const renderCar = (car: Cars, isStarted: boolean) => `
