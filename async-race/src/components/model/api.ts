@@ -14,7 +14,7 @@ class Api {
 
   private sortAndOrder: string;
 
-  private view: View;
+  protected view: View;
 
   constructor() {
     this.base = 'http://localhost:3000';
@@ -42,13 +42,15 @@ class Api {
 
   public getCar = async (id: number): Promise<Cars> => (await fetch(`${this.garage}/${id}`)).json();
 
-  public createCar = async (body: Pick<Cars, 'name' | 'color'>): Promise<Pick<Cars, 'name' | 'color'>> => (await fetch(this.garage, {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })).json();
+  public createCar = async (body: Cars): Promise<Cars> => (
+    await fetch(this.garage, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  ).json();
 
   public deleteCar = async (id: number): Promise<Cars> => (await fetch(`${this.garage}/${id}`, { method: 'DELETE' })).json();
 
@@ -66,7 +68,7 @@ class Api {
 
   public drive = async (id: number) => {
     const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
-    return res.status === 200 ? { success: true } : { success: false };
+    return res.status === 200 ? { success: true } : { success: false }; // : { ...(await res.json())
   };
 
   public getSortOrder = (sort: Sort, order: Order) => {

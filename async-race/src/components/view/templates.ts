@@ -12,12 +12,12 @@ export const headerStart = `
     <form class="create-form">
       <input class="create-form__input" name="car-name" type="text">
       <input class="create-form__color" name="car-color" type="color" value="#ffffff">
-      <button class="button create-form__button type="submit">Create</button>
+      <button class="button create-form__button" type="submit">Create</button>
     </form>
     <form class="edit-form">
       <input class="edit-form__input" name="car-name" type="text">
       <input class="edit-form__color" name="car-color" type="color" value="#ffffff">
-      <button class="button edit-form__button type="submit" disabled>Update</button>
+      <button class="button edit-form__button" type="submit" disabled>Update</button>
     </form>
     <div class="controls">
       <button class="button controls__button-race">Race</button>
@@ -45,7 +45,6 @@ export const footerStart = `
 `;
 
 const renderCarColor = (color: string) => `
-  <div class="car-animation">
   <?xml version="1.0" standalone="no"?>
   <svg class="car__image" version="1.0" xmlns="http://www.w3.org/2000/svg"
    width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
@@ -145,23 +144,24 @@ const renderCarColor = (color: string) => `
   61 239 98 16 10 -216 242 -234 235z"/>
   </g>
   </svg>
-  </div>
 `;
 
-const renderCar = (car: Cars, isStarted: boolean) => `
+export const renderCar = (car: Cars, isStarted: boolean) => `
   <div class="car-buttons">
-    <button class="button car-buttons__select">Select</button>
-    <button class="button car-buttons__remove">Remove</button>
+    <button class="button car-buttons__select" data-select-id=${car.id}>Select</button>
+    <button class="button car-buttons__remove" data-remove-id=${car.id}>Remove</button>
     <span class="car-name">${car.name}</span>
   </div>
   <div class="racetrack">
     <div class="car-controls">
       <div class="start-stop-car">
-        <button class="button start-stop-car__start-button" ${isStarted ? 'disabled' : ''}>A</button>
-        <button class="button start-stop-car__stop-button" ${!isStarted ? 'disabled' : ''}>B</button>
+        <button class="button start-stop-car__start-button" data-start-id=${car.id} ${isStarted ? 'disabled' : ''}>A</button>
+        <button class="button start-stop-car__stop-button" data-stop-id=${car.id} ${!isStarted ? 'disabled' : ''}>B</button>
       </div>
       <div class="car">
-        ${renderCarColor(car.color)}
+        <div class="car-animation" data-car-animation-id=${car.id}>
+          ${renderCarColor(car.color)}
+        </div>
       </div>
     </div>
     <div class="flag">⚑</div>
@@ -173,7 +173,7 @@ export const mainStart = (cars: Cars[], count: string, isStarted: boolean) => `
   <h3>Page #1</h3>
   <ul class="garage">
     ${cars.map((car) => `
-      <li>${renderCar(car, isStarted)}</li>
+      <li class="garage__car" data-car-id="${car.id}">${renderCar(car, isStarted)}</li>
     `).join('')}
   </ul>
 `;
