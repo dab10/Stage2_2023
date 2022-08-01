@@ -169,7 +169,7 @@ export const renderCar = (car: Cars, isStarted: boolean) => `
 `;
 
 export const mainStart = (cars: Cars[], count: string, isStarted: boolean) => `
-  <h2>Garage (${count})</h2>
+  <h2 class="count-car">Garage (${count})</h2>
   <h3>Page #1</h3>
   <ul class="garage">
     ${cars.map((car) => `

@@ -42,6 +42,14 @@ class View {
     this.main.append(renderCar(car, this.isStarted));
   };
 
+  static deleteCar = (id: number, count: string) => {
+    const countCar = document.querySelector('.count-car') as HTMLElement;
+    const carDelete = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
+    countCar.innerHTML = '';
+    countCar.innerHTML = `Garage (${count})`;
+    carDelete.remove();
+  };
+
   public renderNewCar = (cars: Cars[], count: string) => {
     const main = document.querySelector('.main') as HTMLElement;
     main.innerHTML = '';
