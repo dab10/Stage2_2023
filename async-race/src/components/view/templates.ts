@@ -168,9 +168,9 @@ export const renderCar = (car: Cars, isStarted: boolean) => `
   </div>
 `;
 
-export const mainStart = (cars: Cars[], count: string, isStarted: boolean) => `
+export const mainStart = (cars: Cars[], count: string, isStarted: boolean, page: number = 1) => `
   <h2 class="count-car">Garage (${count})</h2>
-  <h3>Page #1</h3>
+  <h3 class="page" data-page-id=${page}>Page #${page}</h3>
   <ul class="garage">
     ${cars.map((car) => `
       <li class="garage__car" data-car-id="${car.id}">${renderCar(car, isStarted)}</li>

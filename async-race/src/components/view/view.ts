@@ -31,6 +31,8 @@ class View {
     this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
     this.footer.insertAdjacentHTML('afterbegin', footerStart);
     document.body.append(this.header, this.main, this.paginationGarage, this.footer);
+    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    if (Number(count) > 7) buttonNext.disabled = false;
   };
 
   public renderCar = (car: Cars, id: number) => {
@@ -50,10 +52,16 @@ class View {
     carDelete.remove();
   };
 
-  public renderNewCar = (cars: Cars[], count: string) => {
+  public renderNewCars = (cars: Cars[], count: string, page: number) => {
     const main = document.querySelector('.main') as HTMLElement;
     main.innerHTML = '';
-    main.innerHTML = mainStart(cars, count, this.isStarted);
+    main.innerHTML = mainStart(cars, count, this.isStarted, page);
+  };
+
+  static renderPageNumber = (count: number) => {
+    const pageNumber = document.querySelector('.page') as HTMLElement;
+    pageNumber.innerHTML = '';
+    pageNumber.innerHTML = `Page #${count}`;
   };
 }
 

@@ -5,7 +5,6 @@ class Animation extends Api {
     const id = (e.target as HTMLElement).getAttribute('data-start-id');
     if (id) {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
-      console.log(node);
       const { velocity, distance } = await this.startEngine(Number(id));
       let currentX: number = node.offsetLeft;
       const framesCount = ((distance / velocity) / 1000) * 60;

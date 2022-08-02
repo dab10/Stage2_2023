@@ -4,10 +4,13 @@ import Api from './api';
 class EditCar extends Api {
   private id: string | null;
 
+  private currentPage: number;
+
   constructor() {
     super();
     this.view = new View();
     this.id = '';
+    this.currentPage = 1;
   }
 
   public async editCar(e: Event) {
@@ -23,27 +26,26 @@ class EditCar extends Api {
       buttonUpdate.disabled = false;
 
       const getFormValue = async (event: Event) => {
-        console.log(this.id);
         event.preventDefault();
         const name = inputName.value;
         const color = inputColor.value;
         await this.updateCar(Number(this.id), { name, color });
         const car = await this.getCar(Number(this.id));
-        console.log(car);
         this.view.renderCar(car, Number(this.id));
         inputName.style.pointerEvents = 'none';
         inputColor.style.pointerEvents = 'none';
         buttonUpdate.disabled = true;
       };
-      console.log(this.id);
       form.addEventListener('submit', (event) => getFormValue(event));
     }
   }
 
   public async createNewCar(e: Event) {
     e.preventDefault();
+    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const inputName = document.querySelector('.create-form__input') as HTMLInputElement;
     const inputColor = document.querySelector('.create-form__color') as HTMLInputElement;
+    const currentPage = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
     const name = inputName.value;
     const color = inputColor.value;
     await this.createCar({
@@ -51,27 +53,40 @@ class EditCar extends Api {
       color,
       id: 0,
     });
-    const { items, count } = (await this.getCars(1));
-    this.view.renderNewCar(items, count);
+    const { items, count } = (await this.getCars(Number(currentPage)));
+    this.view.renderNewCars(items, count, Number(currentPage));
+    if (Number(count) % 7 === 1 && Number(count) !== 1) buttonNext.disabled = false;
   }
 
   public async removeCar(e: Event) {
-    // const form = document.querySelector('.edit-form') as HTMLFormElement;
+    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
     const inputColor = document.querySelector('.edit-form__color') as HTMLInputElement;
     const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
-    console.log(e.target);
+    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    let currentPage = Number(currentPageString);
     const id = (e.target as HTMLElement).getAttribute('data-remove-id');
     if (id) {
       await this.deleteCar(Number(id));
-      const { count } = (await this.getCars(1));
-      View.deleteCar(Number(id), count);
+      const { count } = (await this.getCars(currentPage));
+
+      if (Number(count) % 7 === 0) {
+        currentPage -= 1;
+      }
+
+      const { items } = (await this.getCars(currentPage));
+      this.view.renderNewCars(items, count, currentPage);
+
+      if (Number(count) === 7) {
+        buttonNext.disabled = true;
+        buttonPrev.disabled = true;
+      }
     }
     if (buttonUpdate.disabled === false) {
       inputName.style.pointerEvents = 'none';
       inputColor.style.pointerEvents = 'none';
       buttonUpdate.disabled = true;
-      // form.removeEventListener('submit', getFormValue);
     }
   }
 }
