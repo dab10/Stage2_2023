@@ -35,11 +35,13 @@ class View {
     if (Number(count) > 7) buttonNext.disabled = false;
   };
 
-  public renderCar = (car: Cars, id: number) => {
+  public renderCurrentCar = (car: Cars, id: number) => {
     if (id) {
       const carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
-      carUpdate.innerHTML = '';
-      carUpdate.innerHTML = renderCar(car, this.isStarted);
+      if (carUpdate) {
+        carUpdate.innerHTML = '';
+        carUpdate.innerHTML = renderCar(car, this.isStarted);
+      }
     }
     this.main.append(renderCar(car, this.isStarted));
   };

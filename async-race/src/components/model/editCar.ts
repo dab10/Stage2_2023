@@ -27,11 +27,12 @@ class EditCar extends Api {
 
       const getFormValue = async (event: Event) => {
         event.preventDefault();
+        console.log(inputName, inputColor);
         const name = inputName.value;
         const color = inputColor.value;
         await this.updateCar(Number(this.id), { name, color });
         const car = await this.getCar(Number(this.id));
-        this.view.renderCar(car, Number(this.id));
+        this.view.renderCurrentCar(car, Number(this.id));
         inputName.style.pointerEvents = 'none';
         inputColor.style.pointerEvents = 'none';
         buttonUpdate.disabled = true;
