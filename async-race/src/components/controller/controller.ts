@@ -26,16 +26,19 @@ class Controller {
     const createButton = document.querySelector('.create-form__button') as HTMLButtonElement;
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
+    const toggleGarageWinners = document.querySelector('.main-button__garage') as HTMLButtonElement;
 
     main.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
-      if ((e.target as HTMLElement).classList.contains('car-buttons__select')) this.editCar.editCar(e);
-      if ((e.target as HTMLElement).classList.contains('car-buttons__remove')) this.editCar.removeCar(e);
+      if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
+      if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__stop-button')) this.animation.animateStop(e);
+      if ((e.target as HTMLButtonElement).classList.contains('car-buttons__select')) this.editCar.editCar(e);
+      if ((e.target as HTMLButtonElement).classList.contains('car-buttons__remove')) this.editCar.removeCar(e);
     });
 
     createButton.addEventListener('click', (e) => this.editCar.createNewCar(e));
     buttonNext.addEventListener('click', this.pagination.moveNext);
     buttonPrev.addEventListener('click', this.pagination.movePrev);
+    toggleGarageWinners.addEventListener('click', () => main.classList.toggle('hidden'));
   }
 }
 

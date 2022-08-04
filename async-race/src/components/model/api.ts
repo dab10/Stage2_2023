@@ -16,6 +16,8 @@ class Api {
 
   protected view: View;
 
+  protected controller: AbortController;
+
   constructor() {
     this.base = 'http://localhost:3000';
     this.garage = `${this.base}/garage`;
@@ -23,6 +25,7 @@ class Api {
     this.winners = `${this.base}/winners`;
     this.sortAndOrder = '';
     this.view = new View();
+    this.controller = new AbortController();
   }
 
   public async carsForStartPage() {
@@ -67,9 +70,14 @@ class Api {
   public stopEngine = async (id: number) => (await fetch(`${this.engine}?id=${id}&status=stopped`, { method: 'PATCH' })).json();
 
   public drive = async (id: number) => {
-    const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
-    return res.status === 200 ? { success: true } : { success: false }; // : { ...(await res.json())
-  };
+    try {
+      const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH', signal: this.controller.signal });
+      // return res;
+      return res.status === 200 ? { success: true } : { success: false };
+    } catch {
+      return { success: true };
+    }
+  }; // { ...(await res.json()) { success: false }
 
   public getSortOrder = (sort: Sort, order: Order) => {
     if (sort && order) {

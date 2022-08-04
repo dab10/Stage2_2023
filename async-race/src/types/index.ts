@@ -20,3 +20,7 @@ export interface Winner {
   wins: number,
   time: number
 }
+
+export interface NumberCarAnimate {
+  [key: string]: number;
+}
