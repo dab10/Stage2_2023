@@ -24,3 +24,9 @@ export interface Winner {
 export interface NumberCarAnimate {
   [key: string]: number;
 }
+
+export interface WinnerCar {
+  time: number;
+  id: number;
+  isSuccess: boolean;
+}

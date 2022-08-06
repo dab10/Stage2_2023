@@ -1,5 +1,5 @@
 import {
-  Cars, Sort, Order, Winners, Winner,
+  Cars, Sort, Order, Winners, Winner, WinnerCar,
 } from '../../types';
 import View from '../view/view';
 
@@ -70,11 +70,24 @@ class Api {
   public stopEngine = async (id: number) => (await fetch(`${this.engine}?id=${id}&status=stopped`, { method: 'PATCH' })).json();
 
   public drive = async (id: number) => {
+    // if (res.status === 200) {
+    //   return res.status === 200 ? { success: true } : { success: false };
+    // }
+    // throw new Error();
+
     try {
       const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH', signal: this.controller.signal });
+      // const resultResponse: { [key: string]: boolean } = {};
+      // const res = await fetch(
+      // `${this.engine}?id=${id}&status=drive`,
+      // { method: 'PATCH', signal: this.controller.signal });
       // return res;
+      // if (res.status === 200) resultResponse.success = true;
+      // return resultResponse;
+      console.log('1', res.status);
       return res.status === 200 ? { success: true } : { success: false };
     } catch {
+      // console.log('2', res.status);
       return { success: true };
     }
   }; // { ...(await res.json()) { success: false }
@@ -124,7 +137,7 @@ class Api {
     },
   })).json();
 
-  public saveWinner = async ({ id, time }: Pick<Winner, 'id' | 'time'>) => {
+  public saveWinner = async ({ id, time }: Pick<WinnerCar, 'id' | 'time'>) => {
     const winnerStatus = await this.getWinnerStatus(id);
 
     if (winnerStatus === 404) {

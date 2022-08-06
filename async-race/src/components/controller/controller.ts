@@ -26,6 +26,8 @@ class Controller {
     const createButton = document.querySelector('.create-form__button') as HTMLButtonElement;
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
+    const raceAll = document.querySelector('.controls__button-race') as HTMLButtonElement;
+    const raceReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
     const toggleGarageWinners = document.querySelector('.main-button__garage') as HTMLButtonElement;
 
     main.addEventListener('click', (e) => {
@@ -38,6 +40,9 @@ class Controller {
     createButton.addEventListener('click', (e) => this.editCar.createNewCar(e));
     buttonNext.addEventListener('click', this.pagination.moveNext);
     buttonPrev.addEventListener('click', this.pagination.movePrev);
+    raceAll.addEventListener('click', this.animation.raceAll);
+    // raceAll.addEventListener('click', this.animation.winnerRace);
+    raceReset.addEventListener('click', this.animation.raceReset);
     toggleGarageWinners.addEventListener('click', () => main.classList.toggle('hidden'));
   }
 }
