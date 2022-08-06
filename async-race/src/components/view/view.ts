@@ -71,6 +71,13 @@ class View {
     pageNumber.innerHTML = '';
     pageNumber.innerHTML = `Page #${count}`;
   };
+
+  static renderPopup = (name: string, minTime: number) => {
+    const popup = document.querySelector('.popup') as HTMLElement;
+    popup.classList.remove('hidden');
+    popup.textContent = '';
+    popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
+  };
 }
 
 export default View;

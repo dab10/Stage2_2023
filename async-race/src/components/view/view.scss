@@ -7,6 +7,19 @@
   border-spacing: 10px 3px;
 }
 
+.popup {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  z-index: 10;
+  font-family: 'Rubik One', sans-serif;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  margin: 20px auto;
+}
+
 .racetrack {
   position: relative;
 }

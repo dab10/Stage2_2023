@@ -1,5 +1,6 @@
 import Api from './api';
 import { NumberCarAnimate, WinnerCar } from '../../types/index';
+import View from '../view/view';
 
 class Animation extends Api {
   private animation: NumberCarAnimate;
@@ -111,7 +112,7 @@ class Animation extends Api {
           window.cancelAnimationFrame(this.animation[id]);
           this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
         }
-        this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
+        if (success) this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
 
         // await this.drive(Number(id))
         //   .then(({ success }) => {
@@ -156,10 +157,15 @@ class Animation extends Api {
       console.log(minTime);
 
       await this.saveWinner({ id: minTime.id, time: minTime.time });
+      const { name } = await this.getCar(minTime.id);
+      View.renderPopup(name, minTime.time);
+      await this.winnersForStartPage();
     }
   };
 
   public raceReset = async () => {
+    const popup = document.querySelector('.popup') as HTMLElement;
+    popup.classList.add('hidden');
     this.allCars.map(async (id) => {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
       const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;

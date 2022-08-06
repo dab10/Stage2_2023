@@ -24,6 +24,7 @@ export const headerStart = `
       <button class="button controls__button-reset">Reset</button>
       <button class="button controls__button-generator">Generate cars</button>
     </div>
+    <div class="popup"></p>
   </div>
 `;
 
@@ -179,28 +180,30 @@ export const mainStart = (cars: Cars[], count: string, isStarted: boolean, page:
 `;
 
 export const winnerStart = (items: TableWinnerCar[], count: string, page: number = 1) => `
-  <h2 class="count-winners">Winners (${count})</h2>
-  <h3 class="page-winners" data-page-winners-id=${page}>Page #${page}</h3>
-  <table class="table-winners">
-    <thead>
-      <th>Number</th>
-      <th>Car</th>
-      <th>Name</th>
-      <th class="sort-by-wins">Wins</th>
-      <th class="sort-by-time">Best time (seconds)</th>
-    </thead>
-    <tbody>
-      ${items.map((winner, index) => `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${renderCarColor(String(winner.car.color))}</td>
-          <td>${winner.car.name}</td>
-          <td>${winner.wins}</td>
-          <td>${Math.floor(winner.time * 100) / 100}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
+  <div class="winners">  
+    <h2 class="count-winners">Winners (${count})</h2>
+    <h3 class="page-winners" data-page-winners-id=${page}>Page #${page}</h3>
+    <table class="table-winners">
+      <thead>
+        <th>Number</th>
+        <th>Car</th>
+        <th>Name</th>
+        <th class="sort-by-wins">Wins</th>
+        <th class="sort-by-time">Best time (seconds)</th>
+      </thead>
+      <tbody>
+        ${items.map((winner, index) => `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${renderCarColor(String(winner.car.color))}</td>
+            <td>${winner.car.name}</td>
+            <td>${winner.wins}</td>
+            <td>${Math.floor(winner.time * 100) / 100}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div> 
 `;
 
 // <td>${renderCarColor(String(winner.id))}</td>
