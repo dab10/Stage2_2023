@@ -89,6 +89,8 @@ class EditCar extends Api {
       inputColor.style.pointerEvents = 'none';
       buttonUpdate.disabled = true;
     }
+    await this.deleteWinner(Number(id));
+    await this.winnersForStartPage();
   }
 }
 

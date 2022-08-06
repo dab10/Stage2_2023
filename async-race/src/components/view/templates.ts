@@ -24,7 +24,8 @@ export const headerStart = `
       <button class="button controls__button-reset">Reset</button>
       <button class="button controls__button-generator">Generate cars</button>
     </div>
-    <div class="popup"></p>
+    <div class="popup"></div>
+    <div class="winners"></div>
   </div>
 `;
 
@@ -180,7 +181,6 @@ export const mainStart = (cars: Cars[], count: string, isStarted: boolean, page:
 `;
 
 export const winnerStart = (items: TableWinnerCar[], count: string, page: number = 1) => `
-  <div class="winners">  
     <h2 class="count-winners">Winners (${count})</h2>
     <h3 class="page-winners" data-page-winners-id=${page}>Page #${page}</h3>
     <table class="table-winners">
@@ -203,7 +203,6 @@ export const winnerStart = (items: TableWinnerCar[], count: string, page: number
         `).join('')}
       </tbody>
     </table>
-  </div> 
 `;
 
 // <td>${renderCarColor(String(winner.id))}</td>

@@ -47,7 +47,7 @@ class Api {
     //   car: carWinner[i],
     // }));
     // console.log(resultWinner);
-    this.view.renderStartTableWinners(items, count);
+    View.renderStartTableWinners(items, count);
   }
 
   public getCars = async (page: number, limit = 7): Promise< {

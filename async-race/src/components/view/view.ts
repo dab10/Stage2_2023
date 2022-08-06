@@ -37,8 +37,10 @@ class View {
     if (Number(count) > 7) buttonNext.disabled = false;
   };
 
-  public renderStartTableWinners(resultWinner: TableWinnerCar[], count: string) {
-    this.main.insertAdjacentHTML('afterbegin', winnerStart(resultWinner, count, 1));
+  static renderStartTableWinners(resultWinner: TableWinnerCar[], count: string) {
+    const winnersTable = document.querySelector('.winners') as HTMLElement;
+    if (winnersTable) winnersTable.innerHTML = '';
+    winnersTable.innerHTML = winnerStart(resultWinner, count, 1);
   }
 
   public renderCurrentCar = (car: Cars, id: number) => {
