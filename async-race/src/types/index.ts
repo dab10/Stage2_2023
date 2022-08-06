@@ -4,9 +4,14 @@ export interface Cars {
   id: number;
 }
 
-export type Sort = 'id' | 'wins' | 'time';
+export interface Car {
+  name: string;
+  color: string;
+}
 
-export type Order = 'ASC' | 'DESC';
+export type Sort = 'id' | 'wins' | 'time' | '';
+
+export type Order = 'ASC' | 'DESC' | '';
 
 export interface Winners {
   page: number,
@@ -18,7 +23,14 @@ export interface Winners {
 export interface Winner {
   id: number,
   wins: number,
-  time: number
+  time: number,
+}
+
+export interface TableWinnerCar {
+  id: number,
+  wins: number,
+  time: number,
+  car: Car
 }
 
 export interface NumberCarAnimate {
@@ -29,4 +41,11 @@ export interface WinnerCar {
   time: number;
   id: number;
   isSuccess: boolean;
+}
+
+export interface TableWinner {
+  page: number;
+  limit: number;
+  sort: Sort;
+  order: Order;
 }

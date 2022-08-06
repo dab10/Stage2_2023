@@ -91,7 +91,7 @@ class Animation extends Api {
     //   }
     // };
 
-    await Promise.any(
+    await Promise.allSettled(
       this.allCars.map(async (id) => {
         const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
         const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
@@ -141,8 +141,8 @@ class Animation extends Api {
 
     console.log(this.allCars);
     console.log(this.timesFinishCar);
-
-    setTimeout(() => this.winnerResult(this.timesFinishCar), 3000);
+    this.winnerResult(this.timesFinishCar);
+    // setTimeout(() => this.winnerResult(this.timesFinishCar), 3000);
   };
 
   public winnerResult = async (timesFinishCar: WinnerCar[]) => {

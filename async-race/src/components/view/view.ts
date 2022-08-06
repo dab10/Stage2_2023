@@ -1,13 +1,15 @@
 import {
-  headerStart, footerStart, mainStart, paginationGarage, renderCar,
+  headerStart, footerStart, mainStart, paginationGarage, renderCar, winnerStart,
 } from './templates';
 
-import { Cars } from '../../types';
+import { Cars, TableWinnerCar } from '../../types';
 
 class View {
   private header: HTMLElement;
 
   private main: HTMLElement;
+
+  // private winners: HTMLElement;
 
   private paginationGarage: HTMLElement;
 
@@ -34,6 +36,10 @@ class View {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     if (Number(count) > 7) buttonNext.disabled = false;
   };
+
+  public renderStartTableWinners(resultWinner: TableWinnerCar[], count: string) {
+    this.main.insertAdjacentHTML('afterbegin', winnerStart(resultWinner, count, 1));
+  }
 
   public renderCurrentCar = (car: Cars, id: number) => {
     if (id) {

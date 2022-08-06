@@ -1,5 +1,5 @@
 import {
-  Cars, Sort, Order, Winners, Winner, WinnerCar,
+  Cars, Sort, Order, Winner, WinnerCar, TableWinner, TableWinnerCar,
 } from '../../types';
 import View from '../view/view';
 
@@ -31,6 +31,23 @@ class Api {
   public async carsForStartPage() {
     const { items, count } = (await this.getCars(1));
     this.view.renderStartPage(items, count);
+  }
+
+  public async winnersForStartPage() {
+    const { items, count } = await this.getWinners({
+      page: 1, limit: 10, sort: '', order: '',
+    });
+    console.log(items);
+    // const carWinner: Cars[] = [];
+    // items.map(async (el) => carWinner.push(await this.getCar(el.id)));
+    // console.log(carWinner);
+    // const resultWinner: WinnerCarAll[] = [];
+    // items.map(async (el, i) => resultWinner.push({
+    //   ...el,
+    //   car: carWinner[i],
+    // }));
+    // console.log(resultWinner);
+    this.view.renderStartTableWinners(items, count);
   }
 
   public getCars = async (page: number, limit = 7): Promise< {
@@ -103,7 +120,7 @@ class Api {
 
   public getWinners = async ({
     page, limit = 10, sort, order,
-  }: Winners) => {
+  }: TableWinner): Promise<{ items: TableWinnerCar[]; count: string; }> => {
     const response = await fetch(`${this.winners}?_page=${page}&_limit=${limit}${this.getSortOrder(sort, order)}`);
     const items = await response.json();
 
@@ -111,7 +128,7 @@ class Api {
       items: await Promise.all(
         items.map(async (winner: Winner) => ({ ...winner, car: await this.getCar(winner.id) })),
       ),
-      count: response.headers.get('X-Total-Count'),
+      count: response.headers.get('X-Total-Count') as string,
     };
   };
 
