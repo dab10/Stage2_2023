@@ -9,9 +9,9 @@ export interface Car {
   color: string;
 }
 
-export type Sort = 'id' | 'wins' | 'time' | '';
+export type Sort = 'wins' | 'time' | '';
 
-export type Order = 'ASC' | 'DESC' | '';
+export type Order = 'asc' | 'desc' | '';
 
 export interface Winners {
   page: number,

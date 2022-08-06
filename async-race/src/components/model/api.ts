@@ -38,15 +38,6 @@ class Api {
       page: 1, limit: 10, sort: '', order: '',
     });
     console.log(items);
-    // const carWinner: Cars[] = [];
-    // items.map(async (el) => carWinner.push(await this.getCar(el.id)));
-    // console.log(carWinner);
-    // const resultWinner: WinnerCarAll[] = [];
-    // items.map(async (el, i) => resultWinner.push({
-    //   ...el,
-    //   car: carWinner[i],
-    // }));
-    // console.log(resultWinner);
     View.renderStartTableWinners(items, count);
   }
 

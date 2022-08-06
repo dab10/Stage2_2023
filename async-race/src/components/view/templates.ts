@@ -188,8 +188,16 @@ export const winnerStart = (items: TableWinnerCar[], count: string, page: number
         <th>Number</th>
         <th>Car</th>
         <th>Name</th>
-        <th class="sort-by-wins">Wins</th>
-        <th class="sort-by-time">Best time (seconds)</th>
+        <th class="sort-by-wins">
+          <span>Wins</span>
+          <span class="sort-by-wins_asc">↑</span>
+          <span class="sort-by-wins_desc">↓</span>
+        </th>
+        <th class="sort-by-time">
+          Best time (seconds)
+          <span class="sort-by-time_asc">↑</span>
+          <span class="sort-by-time_desc">↓</span>
+        </th>
       </thead>
       <tbody>
         ${items.map((winner, index) => `

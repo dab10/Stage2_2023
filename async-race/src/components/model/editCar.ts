@@ -6,11 +6,17 @@ class EditCar extends Api {
 
   private currentPage: number;
 
+  private carBrand: string[];
+
+  private carModel: string[];
+
   constructor() {
     super();
     this.view = new View();
     this.id = '';
     this.currentPage = 1;
+    this.carBrand = ['Hyundai', 'Lada', 'Kia', 'Toyota', 'Ford', 'Tesla', 'BMW', 'Mercedes', 'Honda', 'Renault', 'Peugeot'];
+    this.carModel = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry', 'RAV4', 'F-Series', 'Model S', 'WR-V', 'Clio', '308'];
   }
 
   public async editCar(e: Event) {
@@ -92,6 +98,8 @@ class EditCar extends Api {
     await this.deleteWinner(Number(id));
     await this.winnersForStartPage();
   }
+
+
 }
 
 export default EditCar;
