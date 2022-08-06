@@ -39,6 +39,7 @@ class Controller {
     const popup = document.querySelector('.popup') as HTMLElement;
     // const sortByWinsAsc = document.querySelector('.sort-by-wins_asc') as HTMLElement;
     // const sortByWinsDesc = document.querySelector('.sort-by-wins_desc') as HTMLElement;
+    const generateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
 
     main.addEventListener('click', (e) => {
       if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
@@ -61,6 +62,7 @@ class Controller {
       if ((e.target as HTMLElement).classList.contains('sort-by-time_asc')) this.tableWinners.sorting('time', 'asc');
       if ((e.target as HTMLElement).classList.contains('sort-by-time_desc')) this.tableWinners.sorting('time', 'desc');
     });
+    generateCars.addEventListener('click', this.editCar.generateCars);
     // garage.addEventListener('click', () => main.classList.toggle('hidden'));
     // winners.addEventListener('click', () => main.classList.toggle('hidden'));
   }

@@ -10,6 +10,8 @@ class EditCar extends Api {
 
   private carModel: string[];
 
+  private letters: string;
+
   constructor() {
     super();
     this.view = new View();
@@ -17,6 +19,7 @@ class EditCar extends Api {
     this.currentPage = 1;
     this.carBrand = ['Hyundai', 'Lada', 'Kia', 'Toyota', 'Ford', 'Tesla', 'BMW', 'Mercedes', 'Honda', 'Renault', 'Peugeot'];
     this.carModel = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry', 'RAV4', 'F-Series', 'Model S', 'WR-V', 'Clio', '308'];
+    this.letters = '0123456789ABCDEF';
   }
 
   public async editCar(e: Event) {
@@ -99,7 +102,41 @@ class EditCar extends Api {
     await this.winnersForStartPage();
   }
 
+  private generateRandomName = () => {
+    const brand = this.carBrand[Math.floor(Math.random() * this.carBrand.length)];
+    const model = this.carModel[Math.floor(Math.random() * this.carModel.length)];
+    return `${brand} ${model}`;
+  };
 
+  private generateRandomColor = () => {
+    let colorRandom = '#';
+    for (let i = 0; i < 6; i += 1) {
+      colorRandom += this.letters[Math.floor(Math.random() * this.letters.length)];
+    }
+    return colorRandom;
+  };
+
+  public generateCars = async () => {
+    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const currentPage = Number(currentPageString);
+
+    const generateCarsArr = (count: number) => new Array(count).fill(1).map(() => ({
+      name: this.generateRandomName(), color: this.generateRandomColor(),
+    }));
+    const generateCarsArrResult = generateCarsArr(100);
+    console.log(generateCarsArrResult);
+    generateCarsArrResult.map(async (el) => {
+      await this.createCar({
+        name: el.name,
+        color: el.color,
+        id: 0,
+      });
+    });
+    const { items, count } = (await this.getCars(Number(currentPage)));
+    this.view.renderNewCars(items, count, Number(currentPage));
+    buttonNext.disabled = false;
+  };
 }
 
 export default EditCar;
