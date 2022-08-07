@@ -11,19 +11,27 @@ class Animation extends Api {
 
   private res: any[];
 
+  private count: number;
+
+  private countAnimation: number;
+
   constructor() {
     super();
     this.animation = {};
     this.allCars = [];
     this.timesFinishCar = [];
     this.res = [];
+    this.count = 0;
+    this.countAnimation = 0;
   }
 
   public animatePosition = async (e: Event) => {
+    this.countAnimation += 1;
     const id = (e.target as HTMLButtonElement).getAttribute('data-start-id');
     (e.target as HTMLButtonElement).disabled = true;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     stopButton.disabled = false;
+    if (this.countAnimation === 1) this.view.disableEnableButtonRace(true);
     if (id) {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
       const { velocity, distance } = await this.startEngine(Number(id));
@@ -62,6 +70,7 @@ class Animation extends Api {
   };
 
   public animateStop = async (e: Event) => {
+    this.countAnimation -= 1;
     const id = (e.target as HTMLElement).getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
@@ -71,16 +80,17 @@ class Animation extends Api {
     window.cancelAnimationFrame(this.animation[Number(id)]);
     startButton.disabled = false;
     stopButton.disabled = true;
+    if (this.countAnimation === 0) this.view.disableEnableButtonRace(false);
     this.controller.abort();
     this.controller = new AbortController();
   };
 
   public raceAll = async () => {
-    this.view.disableEnableButton(true);
     this.allCars = [];
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
     currentCarsId.forEach((el) => this.allCars.push(el.getAttribute('data-car-id') as string));
+    this.view.disableEnableButtonRace(true);
     console.log(this.allCars);
 
     // const race2 = async (id: string, time: number) => {
@@ -93,12 +103,15 @@ class Animation extends Api {
     //   }
     // };
 
-    await Promise.allSettled(
+    await Promise.race(
       this.allCars.map(async (id) => {
-        const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
-        const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
-        stopButton.disabled = false;
-        startButton.disabled = true;
+        this.count = 0;
+
+        // const startButton=document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+        // const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
+        // stopButton.disabled = true;
+        // startButton.disabled = true;
+        View.disableStartStopButtonRace(true);
         const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
         const { velocity, distance } = await this.startEngine(Number(id));
         const currentX: number = node.offsetLeft;
@@ -111,10 +124,10 @@ class Animation extends Api {
         const { success } = await this.drive(Number(id));
         if (!success) {
           window.cancelAnimationFrame(this.animation[id]);
-          this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
+          // this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
         }
         if (success) this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
-
+        this.winnerResult(this.timesFinishCar);
         // await this.drive(Number(id))
         //   .then(({ success }) => {
         //     if (success) this.timesFinishCar.push({ time1: time, id1: id, success1: success });
@@ -143,42 +156,52 @@ class Animation extends Api {
 
     console.log(this.allCars);
     console.log(this.timesFinishCar);
-    this.winnerResult(this.timesFinishCar);
     // setTimeout(() => this.winnerResult(this.timesFinishCar), 3000);
   };
 
   public winnerResult = async (timesFinishCar: WinnerCar[]) => {
-    console.log(timesFinishCar);
-    const filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
-    console.log(filteredTimesFinishCar);
-    if (filteredTimesFinishCar.length !== 0) {
-      const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
-        acc.time < curr.time ? acc : curr
-      ));
-      console.log(minTime);
+    if (timesFinishCar.length !== 0) {
+      this.count += 1;
+      console.log('!!!', this.count);
+      if (this.count === 1) {
+        // this.view.disableEnableButtonRace(true);
+        console.log(timesFinishCar);
+        const filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
+        console.log(filteredTimesFinishCar);
+        if (filteredTimesFinishCar.length !== 0) {
+          const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
+            acc.time < curr.time ? acc : curr
+          ));
+          console.log(minTime);
 
-      await this.saveWinner({ id: minTime.id, time: minTime.time });
-      const { name } = await this.getCar(minTime.id);
-      View.renderPopup(name, minTime.time);
-      await this.winnersForStartPage();
-      this.view.disableEnableButton(false);
+          await this.saveWinner({ id: minTime.id, time: minTime.time });
+          const { name } = await this.getCar(minTime.id);
+          View.renderPopup(name, minTime.time);
+          await this.winnersForStartPage();
+        }
+      }
+      (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
   };
 
   public raceReset = async () => {
-    const popup = document.querySelector('.popup') as HTMLElement;
-    popup.classList.add('hidden');
     this.allCars.map(async (id) => {
+      // this.count = 0;
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
-      const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
-      const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+      // const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
+      // const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+
       await this.stopEngine(Number(id));
       node.style.transform = 'translateX(0)';
       window.cancelAnimationFrame(this.animation[Number(id)]);
-      startButton.disabled = false;
-      stopButton.disabled = true;
+      // startButton.disabled = false;
+      // stopButton.disabled = true;
+      View.enableStartButtonRace(id);
       this.controller.abort();
       this.controller = new AbortController();
+      this.view.disableEnableButtonRace(false);
+      const popup = document.querySelector('.popup') as HTMLElement;
+      popup.classList.add('hidden');
     });
   };
 

@@ -96,15 +96,58 @@ class View {
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
   };
 
-  public disableEnableButton = (isRace: boolean) => {
+  public disableEnableButtonRace = (isRace: boolean) => {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
     (document.querySelectorAll('.car-buttons__select,  .car-buttons__remove')).forEach((el) => {
       const elButton = el;
       ((elButton as HTMLButtonElement).disabled = isRace);
     });
+
+    const buttonPrev = (document.querySelector('.pagination-garage__prev') as HTMLButtonElement);
+    const buttonNext = (document.querySelector('.pagination-garage__next') as HTMLButtonElement);
+    if (isRace) {
+      this.isRaceButtonPrev = buttonPrev.disabled;
+      this.isRaceButtonNext = buttonNext.disabled;
+    }
+    buttonPrev.disabled = isRace;
+    buttonNext.disabled = isRace;
+    if (!isRace) {
+      buttonPrev.disabled = this.isRaceButtonPrev;
+      buttonNext.disabled = this.isRaceButtonNext;
+    }
+  };
+
+  static disableStartStopButtonRace = (isRace: boolean) => {
+    (document.querySelectorAll('.start-stop-car__start-button')).forEach((el) => {
+      const elButton = el;
+      ((elButton as HTMLButtonElement).disabled = isRace);
+    });
+    (document.querySelectorAll('.start-stop-car__stop-button')).forEach((el) => {
+      const elButton = el;
+      ((elButton as HTMLButtonElement).disabled = isRace);
+    });
+  };
+
+  static enableStartButtonRace = (id: string) => {
+    const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+    startButton.disabled = false;
+  };
+
+  public disableEnableButtonCar = (isRace: boolean) => {
+    (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
+    (document.querySelectorAll('.car-buttons__select,  .car-buttons__remove')).forEach((el) => {
+      const elButton = el;
+      ((elButton as HTMLButtonElement).disabled = isRace);
+    });
+
     const buttonPrev = (document.querySelector('.pagination-garage__prev') as HTMLButtonElement);
     const buttonNext = (document.querySelector('.pagination-garage__next') as HTMLButtonElement);
     if (isRace) {
