@@ -47,6 +47,8 @@ class View {
     if (winnersTable) winnersTable.innerHTML = '';
     winnersTable.innerHTML = winnerStart(resultWinner, count, page);
     const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
+    const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
+    if (page === 1) buttonPrev.disabled = true;
     if (Number(count) > 10) buttonNext.disabled = false;
   }
 

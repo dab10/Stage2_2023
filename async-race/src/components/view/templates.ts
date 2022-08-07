@@ -209,7 +209,7 @@ export const winnerStart = (items: TableWinnerCar[], count: string, page: number
       <tbody>
         ${items.map((winner, index) => `
           <tr>
-            <td>${index + 1}</td>
+            <td>${index + (page - 1) * 10 + 1}</td>
             <td>${renderCarColor(String(winner.car.color))}</td>
             <td>${winner.car.name}</td>
             <td>${winner.wins}</td>
