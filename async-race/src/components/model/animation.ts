@@ -76,6 +76,7 @@ class Animation extends Api {
   };
 
   public raceAll = async () => {
+    this.view.disableEnableButton(true);
     this.allCars = [];
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
@@ -160,6 +161,7 @@ class Animation extends Api {
       const { name } = await this.getCar(minTime.id);
       View.renderPopup(name, minTime.time);
       await this.winnersForStartPage();
+      this.view.disableEnableButton(false);
     }
   };
 

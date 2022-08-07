@@ -9,7 +9,7 @@ class Pagination extends Api {
     let currentPage = Number(currentPageString);
     currentPage += 1;
     const { items, count } = (await this.getCars(currentPage));
-    this.view.renderNewCars(items, count, currentPage);
+    View.renderNewCars(items, count, currentPage);
     if (currentPage > 1) buttonPrev.disabled = false;
     if (currentPage === Math.ceil(Number(count) / 7)) buttonNext.disabled = true;
   };
@@ -21,7 +21,7 @@ class Pagination extends Api {
     let currentPage = Number(currentPageString);
     currentPage -= 1;
     const { items, count } = (await this.getCars(currentPage));
-    this.view.renderNewCars(items, count, currentPage);
+    View.renderNewCars(items, count, currentPage);
     if (currentPage === 1) buttonPrev.disabled = true;
     if (currentPage <= Math.floor(Number(count) / 7)) buttonNext.disabled = false;
   };

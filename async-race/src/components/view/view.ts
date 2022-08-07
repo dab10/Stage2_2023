@@ -19,6 +19,10 @@ class View {
 
   private isStarted: boolean;
 
+  private isRaceButtonPrev: boolean;
+
+  private isRaceButtonNext: boolean;
+
   constructor() {
     this.header = document.createElement('header');
     this.header.classList.add('header');
@@ -28,11 +32,13 @@ class View {
     this.paginationWinners = document.createElement('div');
     this.footer = document.createElement('footer');
     this.isStarted = false;
+    this.isRaceButtonNext = false;
+    this.isRaceButtonPrev = false;
   }
 
   public renderStartPage = (cars: Cars[], count: string) => {
     this.header.insertAdjacentHTML('afterbegin', headerStart);
-    this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count, this.isStarted));
+    this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count));
     this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
     this.paginationWinners.insertAdjacentHTML('afterbegin', paginationWinners);
     this.footer.insertAdjacentHTML('afterbegin', footerStart);
@@ -57,10 +63,10 @@ class View {
       const carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
       if (carUpdate) {
         carUpdate.innerHTML = '';
-        carUpdate.innerHTML = renderCar(car, this.isStarted);
+        carUpdate.innerHTML = renderCar(car);
       }
     }
-    this.main.append(renderCar(car, this.isStarted));
+    this.main.append(renderCar(car));
   };
 
   static deleteCar = (id: number, count: string) => {
@@ -71,10 +77,10 @@ class View {
     carDelete.remove();
   };
 
-  public renderNewCars = (cars: Cars[], count: string, page: number) => {
+  static renderNewCars = (cars: Cars[], count: string, page: number) => {
     const main = document.querySelector('.main') as HTMLElement;
     main.innerHTML = '';
-    main.innerHTML = mainStart(cars, count, this.isStarted, page);
+    main.innerHTML = mainStart(cars, count, page);
   };
 
   static renderPageNumber = (count: number) => {
@@ -88,6 +94,29 @@ class View {
     popup.classList.remove('hidden');
     popup.textContent = '';
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
+  };
+
+  public disableEnableButton = (isRace: boolean) => {
+    (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
+    (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
+    (document.querySelectorAll('.car-buttons__select,  .car-buttons__remove')).forEach((el) => {
+      const elButton = el;
+      ((elButton as HTMLButtonElement).disabled = isRace);
+    });
+    const buttonPrev = (document.querySelector('.pagination-garage__prev') as HTMLButtonElement);
+    const buttonNext = (document.querySelector('.pagination-garage__next') as HTMLButtonElement);
+    if (isRace) {
+      this.isRaceButtonPrev = buttonPrev.disabled;
+      this.isRaceButtonNext = buttonNext.disabled;
+    }
+    buttonPrev.disabled = isRace;
+    buttonNext.disabled = isRace;
+    if (!isRace) {
+      buttonPrev.disabled = this.isRaceButtonPrev;
+      buttonNext.disabled = this.isRaceButtonNext;
+    }
   };
 }
 

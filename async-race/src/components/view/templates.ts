@@ -155,7 +155,7 @@ const renderCarColor = (color: string) => `
   </svg>
 `;
 
-export const renderCar = (car: Cars, isStarted: boolean) => `
+export const renderCar = (car: Cars) => `
   <div class="car-buttons">
     <button class="button car-buttons__select" data-select-id=${car.id}>Select</button>
     <button class="button car-buttons__remove" data-remove-id=${car.id}>Remove</button>
@@ -164,8 +164,8 @@ export const renderCar = (car: Cars, isStarted: boolean) => `
   <div class="racetrack">
     <div class="car-controls">
       <div class="start-stop-car">
-        <button class="button start-stop-car__start-button" data-start-id=${car.id} ${isStarted ? 'disabled' : ''}>A</button>
-        <button class="button start-stop-car__stop-button" data-stop-id=${car.id} ${!isStarted ? 'disabled' : ''}>B</button>
+        <button class="button start-stop-car__start-button" data-start-id=${car.id}>A</button>
+        <button class="button start-stop-car__stop-button" data-stop-id=${car.id} disabled>B</button>
       </div>
       <div class="car">
         <div class="car-animation" data-car-animation-id=${car.id}>
@@ -177,12 +177,12 @@ export const renderCar = (car: Cars, isStarted: boolean) => `
   </div>
 `;
 
-export const mainStart = (cars: Cars[], count: string, isStarted: boolean, page: number = 1) => `
+export const mainStart = (cars: Cars[], count: string, page: number = 1) => `
   <h2 class="count-car">Garage (${count})</h2>
   <h3 class="page" data-page-id=${page}>Page #${page}</h3>
   <ul class="garage">
     ${cars.map((car) => `
-      <li class="garage__car" data-car-id="${car.id}">${renderCar(car, isStarted)}</li>
+      <li class="garage__car" data-car-id="${car.id}">${renderCar(car)}</li>
     `).join('')}
   </ul>
 `;

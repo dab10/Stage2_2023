@@ -64,7 +64,7 @@ class EditCar extends Api {
       id: 0,
     });
     const { items, count } = (await this.getCars(Number(currentPage)));
-    this.view.renderNewCars(items, count, Number(currentPage));
+    View.renderNewCars(items, count, Number(currentPage));
     if (Number(count) % 7 === 1 && Number(count) !== 1) buttonNext.disabled = false;
   }
 
@@ -86,7 +86,7 @@ class EditCar extends Api {
       }
 
       const { items } = (await this.getCars(currentPage));
-      this.view.renderNewCars(items, count, currentPage);
+      View.renderNewCars(items, count, currentPage);
 
       if (Number(count) === 7) {
         buttonNext.disabled = true;
@@ -134,7 +134,7 @@ class EditCar extends Api {
       });
     });
     const { items, count } = (await this.getCars(Number(currentPage)));
-    this.view.renderNewCars(items, count, Number(currentPage));
+    View.renderNewCars(items, count, Number(currentPage));
     buttonNext.disabled = false;
   };
 }
