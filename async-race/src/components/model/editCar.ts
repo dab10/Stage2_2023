@@ -81,7 +81,7 @@ class EditCar extends Api {
       await this.deleteCar(Number(id));
       const { count } = (await this.getCars(currentPage));
 
-      if (Number(count) % 7 === 0) {
+      if ((Number(count) / 7 + 1) === currentPage) {
         currentPage -= 1;
       }
 
