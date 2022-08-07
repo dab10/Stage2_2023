@@ -34,14 +34,16 @@ class Controller {
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const raceAll = document.querySelector('.controls__button-race') as HTMLButtonElement;
     const raceReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
-    // const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
+    const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
     const winners = document.querySelector('.main-button__winners') as HTMLButtonElement;
     const popup = document.querySelector('.popup') as HTMLElement;
     // const sortByWinsAsc = document.querySelector('.sort-by-wins_asc') as HTMLElement;
     // const sortByWinsDesc = document.querySelector('.sort-by-wins_desc') as HTMLElement;
-    const generateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
+    const generateCars = document.querySelector('.controls__button-generator') as HTMLDivElement;
+    const paginationGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
     const buttonNextWinners = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrevWinners = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
+    const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
 
     main.addEventListener('click', (e) => {
       if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
@@ -58,7 +60,19 @@ class Controller {
     raceAll.addEventListener('click', this.animation.raceAll);
     // raceAll.addEventListener('click', this.animation.winnerRace);
     raceReset.addEventListener('click', this.animation.raceReset);
-    winners.addEventListener('click', () => winnersTable.classList.toggle('hidden'));
+    winners.addEventListener('click', () => {
+      // winnersTable.classList.toggle('hidden');
+      main.classList.add('hidden');
+      paginationGarage.classList.add('hidden');
+      editForm.classList.add('hidden');
+      winnersTable.classList.remove('hidden');
+    });
+    garage.addEventListener('click', () => {
+      main.classList.remove('hidden');
+      paginationGarage.classList.remove('hidden');
+      editForm.classList.remove('hidden');
+      winnersTable.classList.add('hidden');
+    });
     popup.addEventListener('click', () => popup.classList.add('hidden'));
     winnersTable.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).classList.contains('sort-by-wins_asc')) this.tableWinners.sorting('wins', 'asc');

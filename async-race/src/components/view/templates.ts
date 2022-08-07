@@ -8,6 +8,8 @@ export const headerStart = `
     <button class="button main-button__garage">To garage</button>
     <button class="button main-button__winners">To winners</button>
   </div>
+  <div class="winners hidden"></div>
+  <div class="popup"></div>
   <div class="create-edit-form">
     <form class="create-form">
       <input class="create-form__input" name="car-name" type="text">
@@ -24,8 +26,6 @@ export const headerStart = `
       <button class="button controls__button-reset">Reset</button>
       <button class="button controls__button-generator">Generate cars</button>
     </div>
-    <div class="popup"></div>
-    <div class="winners"></div>
   </div>
 `;
 
