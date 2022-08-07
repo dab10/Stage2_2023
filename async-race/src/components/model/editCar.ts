@@ -45,6 +45,7 @@ class EditCar extends Api {
         inputName.style.pointerEvents = 'none';
         inputColor.style.pointerEvents = 'none';
         buttonUpdate.disabled = true;
+        this.winnersForStartPage();
       };
       form.addEventListener('submit', (event) => getFormValue(event));
     }

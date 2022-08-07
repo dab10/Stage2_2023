@@ -180,7 +180,7 @@ class Animation extends Api {
           await this.winnersForStartPage();
         }
       }
-      if (this.count === 0) console.log('!!!! broke');
+      // if (timesFinishCar.length === 0) console.log('!!!! broke');
       (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
   };
