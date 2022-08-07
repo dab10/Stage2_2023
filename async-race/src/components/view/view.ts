@@ -96,7 +96,7 @@ class View {
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
   };
 
-  public disableEnableButtonRace = (isRace: boolean) => {
+  public disableButtonRace = (isRace: boolean) => {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;

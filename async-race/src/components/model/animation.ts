@@ -31,7 +31,7 @@ class Animation extends Api {
     (e.target as HTMLButtonElement).disabled = true;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     stopButton.disabled = false;
-    if (this.countAnimation === 1) this.view.disableEnableButtonRace(true);
+    if (this.countAnimation === 1) this.view.disableButtonRace(true);
     if (id) {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
       const { velocity, distance } = await this.startEngine(Number(id));
@@ -80,7 +80,7 @@ class Animation extends Api {
     window.cancelAnimationFrame(this.animation[Number(id)]);
     startButton.disabled = false;
     stopButton.disabled = true;
-    if (this.countAnimation === 0) this.view.disableEnableButtonRace(false);
+    if (this.countAnimation === 0) this.view.disableButtonRace(false);
     this.controller.abort();
     this.controller = new AbortController();
   };
@@ -90,7 +90,7 @@ class Animation extends Api {
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
     currentCarsId.forEach((el) => this.allCars.push(el.getAttribute('data-car-id') as string));
-    this.view.disableEnableButtonRace(true);
+    this.view.disableButtonRace(true);
     console.log(this.allCars);
 
     // const race2 = async (id: string, time: number) => {
@@ -180,6 +180,7 @@ class Animation extends Api {
           await this.winnersForStartPage();
         }
       }
+      if (this.count === 0) console.log('!!!! broke');
       (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
   };
@@ -199,7 +200,7 @@ class Animation extends Api {
       View.enableStartButtonRace(id);
       this.controller.abort();
       this.controller = new AbortController();
-      this.view.disableEnableButtonRace(false);
+      this.view.disableButtonRace(false);
       const popup = document.querySelector('.popup') as HTMLElement;
       popup.classList.add('hidden');
     });
