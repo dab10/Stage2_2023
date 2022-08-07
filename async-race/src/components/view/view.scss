@@ -11,6 +11,15 @@
   border-spacing: 10px 3px;
 }
 
+.sort-by-wins_asc,
+.sort-by-wins_desc,
+.sort-by-time_asc,
+.sort-by-time_desc {
+  cursor: pointer;
+  padding: 0 7px;
+}
+
+
 .popup {
   position: absolute;
   width: 100%;
