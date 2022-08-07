@@ -40,6 +40,8 @@ class Controller {
     // const sortByWinsAsc = document.querySelector('.sort-by-wins_asc') as HTMLElement;
     // const sortByWinsDesc = document.querySelector('.sort-by-wins_desc') as HTMLElement;
     const generateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
+    const buttonNextWinners = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
+    const buttonPrevWinners = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
 
     main.addEventListener('click', (e) => {
       if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
@@ -51,6 +53,8 @@ class Controller {
     createButton.addEventListener('click', (e) => this.editCar.createNewCar(e));
     buttonNext.addEventListener('click', this.pagination.moveNext);
     buttonPrev.addEventListener('click', this.pagination.movePrev);
+    buttonNextWinners.addEventListener('click', this.pagination.moveNextWinners);
+    buttonPrevWinners.addEventListener('click', this.pagination.movePrevWinners);
     raceAll.addEventListener('click', this.animation.raceAll);
     // raceAll.addEventListener('click', this.animation.winnerRace);
     raceReset.addEventListener('click', this.animation.raceReset);

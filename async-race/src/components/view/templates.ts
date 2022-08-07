@@ -36,6 +36,13 @@ export const paginationGarage = `
 </div>
 `;
 
+export const paginationWinners = `
+<div class="pagination-winners">
+  <button class="button pagination-winners__prev" disabled>Prev</button>
+  <button class="button pagination-winners__next" disabled>Next</button>
+</div>
+`;
+
 export const footerStart = `
 <div class="footer-year">2022</div>
 <div>

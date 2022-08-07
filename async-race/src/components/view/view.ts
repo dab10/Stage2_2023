@@ -1,5 +1,5 @@
 import {
-  headerStart, footerStart, mainStart, paginationGarage, renderCar, winnerStart,
+  headerStart, footerStart, mainStart, paginationGarage, renderCar, winnerStart, paginationWinners,
 } from './templates';
 
 import { Cars, TableWinnerCar } from '../../types';
@@ -13,6 +13,8 @@ class View {
 
   private paginationGarage: HTMLElement;
 
+  private paginationWinners: HTMLElement;
+
   private footer: HTMLElement;
 
   private isStarted: boolean;
@@ -23,6 +25,7 @@ class View {
     this.main = document.createElement('main');
     this.main.classList.add('main');
     this.paginationGarage = document.createElement('div');
+    this.paginationWinners = document.createElement('div');
     this.footer = document.createElement('footer');
     this.isStarted = false;
   }
@@ -31,16 +34,20 @@ class View {
     this.header.insertAdjacentHTML('afterbegin', headerStart);
     this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count, this.isStarted));
     this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
+    this.paginationWinners.insertAdjacentHTML('afterbegin', paginationWinners);
     this.footer.insertAdjacentHTML('afterbegin', footerStart);
-    document.body.append(this.header, this.main, this.paginationGarage, this.footer);
+    document.body.append(this.header, this.paginationWinners, this.main, this.paginationGarage);
+    document.body.append(this.footer);
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     if (Number(count) > 7) buttonNext.disabled = false;
   };
 
-  static renderStartTableWinners(resultWinner: TableWinnerCar[], count: string) {
+  static renderStartTableWinners(resultWinner: TableWinnerCar[], count: string, page: number = 1) {
     const winnersTable = document.querySelector('.winners') as HTMLElement;
     if (winnersTable) winnersTable.innerHTML = '';
-    winnersTable.innerHTML = winnerStart(resultWinner, count, 1);
+    winnersTable.innerHTML = winnerStart(resultWinner, count, page);
+    const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
+    if (Number(count) > 10) buttonNext.disabled = false;
   }
 
   public renderCurrentCar = (car: Cars, id: number) => {
