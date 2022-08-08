@@ -52,7 +52,7 @@ class Controller {
     raceReset.addEventListener('click', this.animation.raceReset);
     winners.addEventListener('click', (e) => View.changePage(e));
     garage.addEventListener('click', (e) => View.changePage(e));
-    popup.addEventListener('click', () => popup.classList.add('hidden'));
+    popup.addEventListener('click', View.popupHidden);
     winnersTable.addEventListener('click', (e) => this.listenButtonsSortingTable(e));
     generateCars.addEventListener('click', this.editCar.generateCars);
   }

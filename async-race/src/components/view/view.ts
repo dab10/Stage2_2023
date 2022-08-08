@@ -189,6 +189,11 @@ class View {
       winnersTable.classList.remove('hidden');
     }
   }
+
+  static popupHidden() {
+    const popup = document.querySelector('.popup') as HTMLElement;
+    popup.classList.add('hidden');
+  }
 }
 
 export default View;
