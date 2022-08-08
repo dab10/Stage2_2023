@@ -49,3 +49,20 @@ export interface TableWinner {
   sort: Sort;
   order: Order;
 }
+
+export interface OptionsRace {
+  'velocity': number;
+  'distance': number;
+}
+
+export interface WinnersFromAPI {
+  'id': number;
+  'wins': number;
+  'time': number;
+  'query': string;
+}
+
+export enum HTTPErrors {
+  Success = 200,
+  NotFound = 404,
+}
