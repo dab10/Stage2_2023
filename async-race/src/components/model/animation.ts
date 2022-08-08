@@ -184,7 +184,11 @@ class Animation extends Api {
         (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
       }
     }
-    if (this.count === 0 && timesFinishCar.length === 0 && allCars.length === 1) {
+    // if (this.count === 0 && allCars.length === 1) {
+    //   console.log('!!!!!! broke', allCars);
+    //   (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
+    // }
+    if (this.count === 0 && allCars.length === 2) {
       console.log('!!!!!! broke');
       (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
