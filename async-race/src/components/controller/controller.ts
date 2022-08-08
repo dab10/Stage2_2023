@@ -4,6 +4,7 @@ import Pagination from '../model/pagination';
 import Animation from '../model/animation';
 import TableWinners from '../model/tableWinners';
 import View from '../view/view';
+import SelfCheck from '../view/selfCheck';
 
 class Controller {
   private animation: Animation;
@@ -27,6 +28,7 @@ class Controller {
   public async start(): Promise<void> {
     await this.api.carsForStartPage();
     await this.api.winnersForStartPage();
+    SelfCheck.selfCheck();
 
     const main = document.querySelector('.main') as HTMLElement;
     const winnersTable = document.querySelector('.winners') as HTMLElement;
