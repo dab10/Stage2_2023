@@ -3,6 +3,7 @@ import EditCar from '../model/editCar';
 import Pagination from '../model/pagination';
 import Animation from '../model/animation';
 import TableWinners from '../model/tableWinners';
+import View from '../view/view';
 
 class Controller {
   private animation: Animation;
@@ -23,7 +24,7 @@ class Controller {
     this.tableWinners = new TableWinners();
   }
 
-  public async start() {
+  public async start(): Promise<void> {
     await this.api.carsForStartPage();
     await this.api.winnersForStartPage();
 
@@ -37,55 +38,37 @@ class Controller {
     const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
     const winners = document.querySelector('.main-button__winners') as HTMLButtonElement;
     const popup = document.querySelector('.popup') as HTMLElement;
-    // const sortByWinsAsc = document.querySelector('.sort-by-wins_asc') as HTMLElement;
-    // const sortByWinsDesc = document.querySelector('.sort-by-wins_desc') as HTMLElement;
     const generateCars = document.querySelector('.controls__button-generator') as HTMLDivElement;
-    const paginationGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
-    const paginationButtons = document.querySelector('.pagination-winners') as HTMLDivElement;
     const buttonNextWinners = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrevWinners = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
-    const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
 
-    main.addEventListener('click', (e) => {
-      if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
-      if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__stop-button')) this.animation.animateStop(e);
-      if ((e.target as HTMLButtonElement).classList.contains('car-buttons__select')) this.editCar.editCar(e);
-      if ((e.target as HTMLButtonElement).classList.contains('car-buttons__remove')) this.editCar.removeCar(e);
-    });
-
+    main.addEventListener('click', (e) => this.listenButtonsCar(e));
     createButton.addEventListener('click', (e) => this.editCar.createNewCar(e));
     buttonNext.addEventListener('click', this.pagination.moveNext);
     buttonPrev.addEventListener('click', this.pagination.movePrev);
     buttonNextWinners.addEventListener('click', this.pagination.moveNextWinners);
     buttonPrevWinners.addEventListener('click', this.pagination.movePrevWinners);
     raceAll.addEventListener('click', this.animation.raceAll);
-    // raceAll.addEventListener('click', this.animation.winnerRace);
     raceReset.addEventListener('click', this.animation.raceReset);
-    winners.addEventListener('click', () => {
-      // winnersTable.classList.toggle('hidden');
-      main.classList.add('hidden');
-      paginationGarage.classList.add('hidden');
-      editForm.classList.add('hidden');
-      paginationButtons.classList.remove('hidden');
-      winnersTable.classList.remove('hidden');
-    });
-    garage.addEventListener('click', () => {
-      main.classList.remove('hidden');
-      paginationGarage.classList.remove('hidden');
-      editForm.classList.remove('hidden');
-      paginationButtons.classList.add('hidden');
-      winnersTable.classList.add('hidden');
-    });
+    winners.addEventListener('click', (e) => View.changePage(e));
+    garage.addEventListener('click', (e) => View.changePage(e));
     popup.addEventListener('click', () => popup.classList.add('hidden'));
-    winnersTable.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).classList.contains('sort-by-wins_asc')) this.tableWinners.sorting('wins', 'asc');
-      if ((e.target as HTMLElement).classList.contains('sort-by-wins_desc')) this.tableWinners.sorting('wins', 'desc');
-      if ((e.target as HTMLElement).classList.contains('sort-by-time_asc')) this.tableWinners.sorting('time', 'asc');
-      if ((e.target as HTMLElement).classList.contains('sort-by-time_desc')) this.tableWinners.sorting('time', 'desc');
-    });
+    winnersTable.addEventListener('click', (e) => this.listenButtonsSortingTable(e));
     generateCars.addEventListener('click', this.editCar.generateCars);
-    // garage.addEventListener('click', () => main.classList.toggle('hidden'));
-    // winners.addEventListener('click', () => main.classList.toggle('hidden'));
+  }
+
+  private listenButtonsCar(e: Event): void {
+    if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) this.animation.animatePosition(e);
+    if ((e.target as HTMLButtonElement).classList.contains('start-stop-car__stop-button')) this.animation.animateStop(e);
+    if ((e.target as HTMLButtonElement).classList.contains('car-buttons__select')) this.editCar.editCar(e);
+    if ((e.target as HTMLButtonElement).classList.contains('car-buttons__remove')) this.editCar.removeCar(e);
+  }
+
+  private listenButtonsSortingTable(e: Event): void {
+    if ((e.target as HTMLElement).classList.contains('sort-by-wins_asc')) this.tableWinners.sorting('wins', 'asc');
+    if ((e.target as HTMLElement).classList.contains('sort-by-wins_desc')) this.tableWinners.sorting('wins', 'desc');
+    if ((e.target as HTMLElement).classList.contains('sort-by-time_asc')) this.tableWinners.sorting('time', 'asc');
+    if ((e.target as HTMLElement).classList.contains('sort-by-time_desc')) this.tableWinners.sorting('time', 'desc');
   }
 }
 

@@ -168,6 +168,27 @@ class View {
       buttonNext.disabled = this.isRaceButtonNext;
     }
   };
+
+  static changePage(e: Event) {
+    const main = document.querySelector('.main') as HTMLElement;
+    const paginationButtonsGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
+    const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
+    const paginationButtonsWinners = document.querySelector('.pagination-winners') as HTMLDivElement;
+    const winnersTable = document.querySelector('.winners') as HTMLElement;
+    if ((e.target as HTMLButtonElement).classList.contains('main-button__garage')) {
+      main.classList.remove('hidden');
+      paginationButtonsGarage.classList.remove('hidden');
+      editForm.classList.remove('hidden');
+      paginationButtonsWinners.classList.add('hidden');
+      winnersTable.classList.add('hidden');
+    } else {
+      main.classList.add('hidden');
+      paginationButtonsGarage.classList.add('hidden');
+      editForm.classList.add('hidden');
+      paginationButtonsWinners.classList.remove('hidden');
+      winnersTable.classList.remove('hidden');
+    }
+  }
 }
 
 export default View;
