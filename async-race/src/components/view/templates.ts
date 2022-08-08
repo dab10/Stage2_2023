@@ -10,6 +10,7 @@ export const headerStart = `
   </div>
   <div class="winners hidden"></div>
   <div class="popup"></div>
+  <div class="popup-broken-car"></div>
   <div class="create-edit-form">
     <form class="create-form">
       <input class="create-form__input" name="car-name" type="text">

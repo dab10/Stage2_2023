@@ -102,6 +102,13 @@ class View {
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
   };
 
+  static renderAllBrokenPopup = () => {
+    const allBrokenPopup = document.querySelector('.popup-broken-car') as HTMLElement;
+    allBrokenPopup.classList.remove('hidden');
+    allBrokenPopup.textContent = '';
+    allBrokenPopup.textContent = 'All cars were broken!';
+  };
+
   public disableButtonRace = (isRace: boolean) => {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
     // (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
@@ -199,6 +206,8 @@ class View {
   static popupHidden() {
     const popup = document.querySelector('.popup') as HTMLElement;
     popup.classList.add('hidden');
+    const popupBrokenCar = document.querySelector('.popup-broken-car') as HTMLElement;
+    popupBrokenCar.classList.add('hidden');
   }
 
   static enableStartButton(isRace: boolean) {

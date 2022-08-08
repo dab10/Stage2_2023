@@ -15,6 +15,8 @@ class Animation extends Api {
 
   private countAnimation: number;
 
+  private countBrokenCar: number;
+
   constructor() {
     super();
     this.animation = {};
@@ -23,6 +25,7 @@ class Animation extends Api {
     this.res = [];
     this.count = 0;
     this.countAnimation = 0;
+    this.countBrokenCar = 0;
   }
 
   public animatePosition = async (e: Event) => {
@@ -182,15 +185,22 @@ class Animation extends Api {
           await this.winnersForStartPage();
         }
         (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
+        this.countBrokenCar = 0;
       }
     }
     // if (this.count === 0 && allCars.length === 1) {
     //   console.log('!!!!!! broke', allCars);
     //   (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     // }
-    if (this.count === 0 && allCars.length === 2) {
-      console.log('!!!!!! broke');
-      (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
+    if (this.count === 0) {
+      this.countBrokenCar += 1;
+      console.log('!!!!!! broke', this.countBrokenCar);
+      if (allCars.length === this.countBrokenCar) {
+        console.log('!!!!!! broke');
+        (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
+        View.renderAllBrokenPopup();
+        this.countBrokenCar = 0;
+      }
     }
   };
 
@@ -209,8 +219,9 @@ class Animation extends Api {
       // setTimeout(() => View.enableStartButtonRace(id), 500);
       this.controller.abort();
       this.controller = new AbortController();
-      const popup = document.querySelector('.popup') as HTMLElement;
-      popup.classList.add('hidden');
+      View.popupHidden();
+      // const popup = document.querySelector('.popup') as HTMLElement;
+      // popup.classList.add('hidden');
     });
     (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = true;
     setTimeout(() => this.view.disableButtonRace(false), 3000);
