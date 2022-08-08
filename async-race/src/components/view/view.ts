@@ -9,15 +9,11 @@ class View {
 
   private main: HTMLElement;
 
-  // private winners: HTMLElement;
-
   private paginationGarage: HTMLElement;
 
   private paginationWinners: HTMLElement;
 
   private footer: HTMLElement;
-
-  private isStarted: boolean;
 
   private isRaceButtonPrev: boolean;
 
@@ -35,7 +31,6 @@ class View {
     this.paginationGarage = document.createElement('div');
     this.paginationWinners = document.createElement('div');
     this.footer = document.createElement('footer');
-    this.isStarted = false;
     this.isRaceButtonNext = false;
     this.isRaceButtonPrev = false;
     this.isRaceButtonUpdate = false;
@@ -111,9 +106,7 @@ class View {
 
   public disableButtonRace = (isRace: boolean) => {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
-    // (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
-    // (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
     (document.querySelectorAll('.car-buttons__select,  .car-buttons__remove')).forEach((el) => {
       const elButton = el;

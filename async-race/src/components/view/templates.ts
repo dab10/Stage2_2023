@@ -220,5 +220,3 @@ export const winnerStart = (items: TableWinnerCar[], count: string, page: number
       </tbody>
     </table>
 `;
-
-// <td>${renderCarColor(String(winner.id))}</td>
