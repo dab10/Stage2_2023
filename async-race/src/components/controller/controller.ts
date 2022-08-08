@@ -41,6 +41,7 @@ class Controller {
     // const sortByWinsDesc = document.querySelector('.sort-by-wins_desc') as HTMLElement;
     const generateCars = document.querySelector('.controls__button-generator') as HTMLDivElement;
     const paginationGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
+    const paginationButtons = document.querySelector('.pagination-winners') as HTMLDivElement;
     const buttonNextWinners = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrevWinners = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
     const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
@@ -65,12 +66,14 @@ class Controller {
       main.classList.add('hidden');
       paginationGarage.classList.add('hidden');
       editForm.classList.add('hidden');
+      paginationButtons.classList.remove('hidden');
       winnersTable.classList.remove('hidden');
     });
     garage.addEventListener('click', () => {
       main.classList.remove('hidden');
       paginationGarage.classList.remove('hidden');
       editForm.classList.remove('hidden');
+      paginationButtons.classList.add('hidden');
       winnersTable.classList.add('hidden');
     });
     popup.addEventListener('click', () => popup.classList.add('hidden'));

@@ -23,6 +23,8 @@ class View {
 
   private isRaceButtonNext: boolean;
 
+  private isRaceButtonUpdate: boolean;
+
   constructor() {
     this.header = document.createElement('header');
     this.header.classList.add('header');
@@ -34,6 +36,7 @@ class View {
     this.isStarted = false;
     this.isRaceButtonNext = false;
     this.isRaceButtonPrev = false;
+    this.isRaceButtonUpdate = false;
   }
 
   public renderStartPage = (cars: Cars[], count: string) => {
@@ -98,7 +101,7 @@ class View {
 
   public disableButtonRace = (isRace: boolean) => {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
-    (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
+    // (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
@@ -109,15 +112,19 @@ class View {
 
     const buttonPrev = (document.querySelector('.pagination-garage__prev') as HTMLButtonElement);
     const buttonNext = (document.querySelector('.pagination-garage__next') as HTMLButtonElement);
+    const buttonUpdate = (document.querySelector('.edit-form__button') as HTMLButtonElement);
     if (isRace) {
       this.isRaceButtonPrev = buttonPrev.disabled;
       this.isRaceButtonNext = buttonNext.disabled;
+      this.isRaceButtonUpdate = buttonUpdate.disabled;
     }
     buttonPrev.disabled = isRace;
     buttonNext.disabled = isRace;
+    buttonUpdate.disabled = isRace;
     if (!isRace) {
       buttonPrev.disabled = this.isRaceButtonPrev;
       buttonNext.disabled = this.isRaceButtonNext;
+      buttonUpdate.disabled = this.isRaceButtonUpdate;
     }
   };
 

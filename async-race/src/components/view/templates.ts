@@ -37,7 +37,7 @@ export const paginationGarage = `
 `;
 
 export const paginationWinners = `
-<div class="pagination-winners">
+<div class="pagination-winners hidden">
   <button class="button pagination-winners__prev" disabled>Prev</button>
   <button class="button pagination-winners__next" disabled>Next</button>
 </div>

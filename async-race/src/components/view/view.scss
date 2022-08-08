@@ -1,3 +1,8 @@
+.main-buttons,
+.create-edit-form {
+  padding: 10px 0;
+}
+
 .edit-form__color,
 .edit-form__input {
   pointer-events: none;
@@ -16,9 +21,15 @@
 .sort-by-time_asc,
 .sort-by-time_desc {
   cursor: pointer;
-  padding: 0 7px;
+  padding: 0 6px;
 }
 
+.main-button__garage,
+.main-button__winners,
+.controls__button-race,
+.controls__button-reset {
+  background-color: #92d993;
+}
 
 .popup {
   position: absolute;
