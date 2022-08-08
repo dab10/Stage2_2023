@@ -3,13 +3,19 @@
   padding: 10px 0;
 }
 
-.edit-form__color,
 .edit-form__input {
   pointer-events: none;
 }
 
-.create-form__color:hover,
-.edit-form__color:hover {
+.edit-form__color {
+  pointer-events: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.create-form__color:hover {
   cursor: pointer;
 }
 
