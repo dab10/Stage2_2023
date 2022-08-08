@@ -2,28 +2,25 @@ import View from '../view/view';
 import Api from './api';
 
 class EditCar extends Api {
-  private id: string | null;
-
-  private currentPage: number;
+  private id: number;
 
   private carBrand: string[];
 
   private carModel: string[];
 
-  private letters: string;
+  private lettersOfColor: string;
 
   constructor() {
     super();
     this.view = new View();
-    this.id = '';
-    this.currentPage = 1;
+    this.id = 0;
     this.carBrand = ['Hyundai', 'Lada', 'Kia', 'Toyota', 'Ford', 'Tesla', 'BMW', 'Mercedes', 'Honda', 'Renault', 'Peugeot'];
-    this.carModel = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry', 'RAV4', 'F-Series', 'Model S', 'WR-V', 'Clio', '308'];
-    this.letters = '0123456789ABCDEF';
+    this.carModel = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry', 'RAV4', 'F-Series', 'Model S', 'CR-V', 'Clio', '308'];
+    this.lettersOfColor = '0123456789ABCDEF';
   }
 
-  public async editCar(e: Event) {
-    this.id = (e.target as HTMLElement).getAttribute('data-select-id');
+  public async editCar(e: Event): Promise<void> {
+    this.id = Number((e.target as HTMLElement).getAttribute('data-select-id'));
     if (this.id) {
       const form = document.querySelector('.edit-form') as HTMLFormElement;
       const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
@@ -34,14 +31,13 @@ class EditCar extends Api {
       inputColor.style.pointerEvents = 'auto';
       buttonUpdate.disabled = false;
 
-      const getFormValue = async (event: Event) => {
+      const getFormValue = async (event: Event): Promise<void> => {
         event.preventDefault();
-        console.log(inputName, inputColor);
         const name = inputName.value;
         const color = inputColor.value;
-        await this.updateCar(Number(this.id), { name, color });
-        const car = await this.getCar(Number(this.id));
-        this.view.renderCurrentCar(car, Number(this.id));
+        await this.updateCar(this.id, { name, color });
+        const car = await this.getCar(this.id);
+        this.view.renderCurrentCar(car, this.id);
         inputName.style.pointerEvents = 'none';
         inputColor.style.pointerEvents = 'none';
         buttonUpdate.disabled = true;
@@ -51,7 +47,7 @@ class EditCar extends Api {
     }
   }
 
-  public async createNewCar(e: Event) {
+  public async createNewCar(e: Event): Promise<void> {
     e.preventDefault();
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const inputName = document.querySelector('.create-form__input') as HTMLInputElement;
@@ -66,10 +62,10 @@ class EditCar extends Api {
     });
     const { items, count } = (await this.getCars(Number(currentPage)));
     View.renderNewCars(items, count, Number(currentPage));
-    if (Number(count) % 7 === 1 && Number(count) !== 1) buttonNext.disabled = false;
+    if (Number(count) % this.carsPerPage === 1 && Number(count) !== 1) buttonNext.disabled = false;
   }
 
-  public async removeCar(e: Event) {
+  public async removeCar(e: Event): Promise<void> {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
@@ -82,14 +78,14 @@ class EditCar extends Api {
       await this.deleteCar(Number(id));
       const { count } = (await this.getCars(currentPage));
 
-      if ((Number(count) / 7 + 1) === currentPage) {
+      if ((Number(count) / this.carsPerPage + 1) === currentPage) {
         currentPage -= 1;
       }
 
       const { items } = (await this.getCars(currentPage));
       View.renderNewCars(items, count, currentPage);
 
-      if (Number(count) === 7) {
+      if (Number(count) === this.carsPerPage) {
         buttonNext.disabled = true;
         buttonPrev.disabled = true;
       }
@@ -103,21 +99,21 @@ class EditCar extends Api {
     await this.winnersForStartPage();
   }
 
-  private generateRandomName = () => {
+  private generateRandomName = (): string => {
     const brand = this.carBrand[Math.floor(Math.random() * this.carBrand.length)];
     const model = this.carModel[Math.floor(Math.random() * this.carModel.length)];
     return `${brand} ${model}`;
   };
 
-  private generateRandomColor = () => {
+  private generateRandomColor = (): string => {
     let colorRandom = '#';
     for (let i = 0; i < 6; i += 1) {
-      colorRandom += this.letters[Math.floor(Math.random() * this.letters.length)];
+      colorRandom += this.lettersOfColor[Math.floor(Math.random() * this.lettersOfColor.length)];
     }
     return colorRandom;
   };
 
-  public generateCars = async () => {
+  public generateCars = async (): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
     const currentPage = Number(currentPageString);
@@ -126,7 +122,6 @@ class EditCar extends Api {
       name: this.generateRandomName(), color: this.generateRandomColor(),
     }));
     const generateCarsArrResult = generateCarsArr(100);
-    console.log(generateCarsArrResult);
     generateCarsArrResult.map(async (el) => {
       await this.createCar({
         name: el.name,
@@ -134,8 +129,8 @@ class EditCar extends Api {
         id: 0,
       });
     });
-    const { items, count } = (await this.getCars(Number(currentPage)));
-    View.renderNewCars(items, count, Number(currentPage));
+    const { items, count } = (await this.getCars(currentPage));
+    View.renderNewCars(items, count, currentPage);
     buttonNext.disabled = false;
   };
 }

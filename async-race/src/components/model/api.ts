@@ -19,7 +19,7 @@ class Api {
 
   private startPageWinners: number;
 
-  private carsPerPage: number;
+  protected carsPerPage: number;
 
   private winnersPerPage: number;
 
