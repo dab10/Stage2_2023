@@ -23,7 +23,7 @@ export const headerStart = `
     </form>
     <div class="controls">
       <button class="button controls__button-race">Race</button>
-      <button class="button controls__button-reset">Reset</button>
+      <button class="button controls__button-reset" disabled>Reset</button>
       <button class="button controls__button-generator">Generate cars</button>
     </div>
   </div>

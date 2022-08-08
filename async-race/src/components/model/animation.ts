@@ -26,6 +26,7 @@ class Animation extends Api {
   }
 
   public animatePosition = async (e: Event) => {
+    if (this.count < 1) this.count = 0;
     this.countAnimation += 1;
     const id = (e.target as HTMLButtonElement).getAttribute('data-start-id');
     (e.target as HTMLButtonElement).disabled = true;
@@ -71,15 +72,16 @@ class Animation extends Api {
 
   public animateStop = async (e: Event) => {
     this.countAnimation -= 1;
+    if (this.count < 1) this.count = 1;
     const id = (e.target as HTMLElement).getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+    stopButton.disabled = true;
     await this.stopEngine(Number(id));
     node.style.transform = 'translateX(0)';
     window.cancelAnimationFrame(this.animation[Number(id)]);
     startButton.disabled = false;
-    stopButton.disabled = true;
     if (this.countAnimation === 0) this.view.disableButtonRace(false);
     this.controller.abort();
     this.controller = new AbortController();
@@ -179,9 +181,9 @@ class Animation extends Api {
           View.renderPopup(name, minTime.time);
           await this.winnersForStartPage();
         }
+        (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
       }
       // if (timesFinishCar.length === 0) console.log('!!!! broke');
-      (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
   };
 
@@ -197,13 +199,14 @@ class Animation extends Api {
       window.cancelAnimationFrame(this.animation[Number(id)]);
       // startButton.disabled = false;
       // stopButton.disabled = true;
-      View.enableStartButtonRace(id);
+      // setTimeout(() => View.enableStartButtonRace(id), 500);
       this.controller.abort();
       this.controller = new AbortController();
-      this.view.disableButtonRace(false);
       const popup = document.querySelector('.popup') as HTMLElement;
       popup.classList.add('hidden');
     });
+    setTimeout(() => this.view.disableButtonRace(false), 2500);
+    setTimeout(() => View.enableStartButton(false), 2500);
   };
 
   // public stopAnimation = async (dX: number, id: string) => {

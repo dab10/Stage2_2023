@@ -25,6 +25,8 @@ class View {
 
   private isRaceButtonUpdate: boolean;
 
+  private isRaceButtonReset: boolean;
+
   constructor() {
     this.header = document.createElement('header');
     this.header.classList.add('header');
@@ -37,6 +39,7 @@ class View {
     this.isRaceButtonNext = false;
     this.isRaceButtonPrev = false;
     this.isRaceButtonUpdate = false;
+    this.isRaceButtonReset = false;
   }
 
   public renderStartPage = (cars: Cars[], count: string) => {
@@ -103,7 +106,7 @@ class View {
     (document.querySelector('.create-form__button') as HTMLButtonElement).disabled = isRace;
     // (document.querySelector('.edit-form__button') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-race') as HTMLButtonElement).disabled = isRace;
-    (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
+    // (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = isRace;
     (document.querySelector('.controls__button-generator') as HTMLButtonElement).disabled = isRace;
     (document.querySelectorAll('.car-buttons__select,  .car-buttons__remove')).forEach((el) => {
       const elButton = el;
@@ -113,10 +116,12 @@ class View {
     const buttonPrev = (document.querySelector('.pagination-garage__prev') as HTMLButtonElement);
     const buttonNext = (document.querySelector('.pagination-garage__next') as HTMLButtonElement);
     const buttonUpdate = (document.querySelector('.edit-form__button') as HTMLButtonElement);
+    const buttonReset = (document.querySelector('.controls__button-reset') as HTMLButtonElement);
     if (isRace) {
       this.isRaceButtonPrev = buttonPrev.disabled;
       this.isRaceButtonNext = buttonNext.disabled;
       this.isRaceButtonUpdate = buttonUpdate.disabled;
+      this.isRaceButtonReset = buttonReset.disabled;
     }
     buttonPrev.disabled = isRace;
     buttonNext.disabled = isRace;
@@ -125,6 +130,7 @@ class View {
       buttonPrev.disabled = this.isRaceButtonPrev;
       buttonNext.disabled = this.isRaceButtonNext;
       buttonUpdate.disabled = this.isRaceButtonUpdate;
+      buttonReset.disabled = this.isRaceButtonReset;
     }
   };
 
@@ -193,6 +199,13 @@ class View {
   static popupHidden() {
     const popup = document.querySelector('.popup') as HTMLElement;
     popup.classList.add('hidden');
+  }
+
+  static enableStartButton(isRace: boolean) {
+    (document.querySelectorAll('.start-stop-car__start-button')).forEach((el) => {
+      const elButton = el;
+      ((elButton as HTMLButtonElement).disabled = isRace);
+    });
   }
 }
 
