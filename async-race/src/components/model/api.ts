@@ -21,7 +21,7 @@ class Api {
 
   protected carsPerPage: number;
 
-  private winnersPerPage: number;
+  protected winnersPerPage: number;
 
   protected view: View;
 

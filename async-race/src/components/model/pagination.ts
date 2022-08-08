@@ -11,7 +11,7 @@ class Pagination extends Api {
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
     if (currentPage > 1) buttonPrev.disabled = false;
-    if (currentPage === Math.ceil(Number(count) / 7)) buttonNext.disabled = true;
+    if (currentPage === Math.ceil(Number(count) / this.carsPerPage)) buttonNext.disabled = true;
   };
 
   public movePrev = async () => {
@@ -23,7 +23,7 @@ class Pagination extends Api {
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
     if (currentPage === 1) buttonPrev.disabled = true;
-    if (currentPage <= Math.floor(Number(count) / 7)) buttonNext.disabled = false;
+    if (currentPage <= Math.floor(Number(count) / this.carsPerPage)) buttonNext.disabled = false;
   };
 
   public moveNextWinners = async () => {
@@ -33,11 +33,11 @@ class Pagination extends Api {
     let currentPage = Number(currentPageString);
     currentPage += 1;
     const { items, count } = (await this.getWinners({
-      page: currentPage, limit: 10, sort: 'wins', order: 'asc',
+      page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
     View.renderStartTableWinners(items, count, currentPage);
     if (currentPage > 1) buttonPrev.disabled = false;
-    if (currentPage === Math.ceil(Number(count) / 10)) buttonNext.disabled = true;
+    if (currentPage === Math.ceil(Number(count) / this.winnersPerPage)) buttonNext.disabled = true;
   };
 
   public movePrevWinners = async () => {
@@ -47,11 +47,11 @@ class Pagination extends Api {
     let currentPage = Number(currentPageString);
     currentPage -= 1;
     const { items, count } = (await this.getWinners({
-      page: currentPage, limit: 10, sort: 'wins', order: 'asc',
+      page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
     View.renderStartTableWinners(items, count, currentPage);
     if (currentPage === 1) buttonPrev.disabled = true;
-    if (currentPage <= Math.floor(Number(count) / 10)) buttonNext.disabled = false;
+    if (currentPage <= Math.floor(Number(count) / this.winnersPerPage)) buttonNext.disabled = false;
   };
 }
 
