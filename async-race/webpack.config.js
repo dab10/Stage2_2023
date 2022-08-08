@@ -12,11 +12,11 @@ const isProd = !isDev;
 
 const optimization = () => {
   const config = {
-    // CREATE COMMON FILE WITH COMMON LIBRARIES INSTEAD OF EACH LIBRARY FROM EACH FILE
-    splitChunks: {
-      chunks: 'all',
-    },
-    runtimeChunk: 'single',
+    // // CREATE COMMON FILE WITH COMMON LIBRARIES INSTEAD OF EACH LIBRARY FROM EACH FILE
+    // splitChunks: {
+    //   chunks: 'all',
+    // },
+    // runtimeChunk: 'single',
   };
 
   if (isProd) { // in relation to dev or prod CREATE all or minimize CSS, JS
