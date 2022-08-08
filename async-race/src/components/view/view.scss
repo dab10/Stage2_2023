@@ -8,12 +8,18 @@
   pointer-events: none;
 }
 
-.create-form__color:hover {
+.create-form__color:hover,
+.edit-form__color:hover {
   cursor: pointer;
 }
 
 .table-winners {
   border-spacing: 10px 3px;
+}
+
+.edit-form__button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
 }
 
 .sort-by-wins_asc,
