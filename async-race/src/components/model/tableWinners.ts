@@ -8,12 +8,13 @@ class TableWinners extends Api {
     const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');
     const currentPage = Number(currentPageString);
     const { items, count } = await this.getWinners({
-      page: currentPage, limit: 10, sort, order,
+      page: currentPage, limit: this.winnersPerPage, sort, order,
     });
-    console.log(items);
     View.renderStartTableWinners(items, count, currentPage);
-    if (Number(count) % 10 === 1 && Number(count) !== 1) buttonNext.disabled = false;
-    if (Math.ceil(Number(count) / 10) === currentPage) buttonNext.disabled = true;
+    if (Number(count) % this.winnersPerPage === 1 && Number(count) !== 1) {
+      buttonNext.disabled = false;
+    }
+    if (Math.ceil(Number(count) / this.winnersPerPage) === currentPage) buttonNext.disabled = true;
   };
 }
 
