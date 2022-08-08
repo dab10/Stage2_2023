@@ -129,7 +129,7 @@ class Animation extends Api {
           // this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
         }
         if (success) this.timesFinishCar.push({ time, id: Number(id), isSuccess: success });
-        this.winnerResult(this.timesFinishCar);
+        this.winnerResult(this.timesFinishCar, this.allCars);
         // await this.drive(Number(id))
         //   .then(({ success }) => {
         //     if (success) this.timesFinishCar.push({ time1: time, id1: id, success1: success });
@@ -161,7 +161,7 @@ class Animation extends Api {
     // setTimeout(() => this.winnerResult(this.timesFinishCar), 3000);
   };
 
-  public winnerResult = async (timesFinishCar: WinnerCar[]) => {
+  public winnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
     if (timesFinishCar.length !== 0) {
       this.count += 1;
       console.log('!!!', this.count);
@@ -183,7 +183,10 @@ class Animation extends Api {
         }
         (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
       }
-      // if (timesFinishCar.length === 0) console.log('!!!! broke');
+    }
+    if (this.count === 0 && timesFinishCar.length === 0 && allCars.length === 1) {
+      console.log('!!!!!! broke');
+      (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = false;
     }
   };
 
@@ -205,8 +208,9 @@ class Animation extends Api {
       const popup = document.querySelector('.popup') as HTMLElement;
       popup.classList.add('hidden');
     });
-    setTimeout(() => this.view.disableButtonRace(false), 2500);
-    setTimeout(() => View.enableStartButton(false), 2500);
+    (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = true;
+    setTimeout(() => this.view.disableButtonRace(false), 3000);
+    setTimeout(() => View.enableStartButton(false), 3000);
   };
 
   // public stopAnimation = async (dX: number, id: string) => {
