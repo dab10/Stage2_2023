@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+					<h2>CSS Grid Layout </h2>
+				</section>
+				</section>
+				<section>
+          <h2>What is a grid?</h2>
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">Mozilla Developer Network</a></li>
+            <li><a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Grid container</h2>
+          <pre><code>
+            .container {
+              display: grid;
+            }
+
+            or
+
+            .container {
+              display: inline-grid;
+            }
+              </code></pre>
+            <a href="https://codepen.io/dab10/pen/BarqodG">Codepen</a>
+        </section>
+        <section>
+          <section>
+            <h2>Grid tracks</h2>
+            <pre><code>
+              .container {
+                display: grid;
+                grid-template-columns: 150px 150px 150px;
+                grid-template-rows: 20px 20px;
+              }
+            </code></pre>
+            <a href="https://codepen.io/dab10/pen/wvmYKqR">Codepen</a>
+          </section>
+          <section>
+            <h2>Grid tracks</h2>
+            <pre><code>
+              .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+              }
+            </code></pre>
+            <a href="https://codepen.io/dab10/pen/gOeBrdR?editors=1100">Codepen</a>
+          </section>
+          <section>
+            <h2>Grid tracks</h2>
+            <p>Mixing flexible and absolute sizes</p>
+            <pre><code>
+              .container {
+                display: grid;
+                grid-template-columns: 100px 1fr 3fr;
+              }
+            </code></pre>
+            <a href="https://codepen.io/dab10/pen/PoRyNdK">Codepen</a>
+          </section>
+          <section>
+            <h2>Grid tracks</h2>
+            <p>repeat()</p>
+            <pre><code>
+              grid-template-columns: 1fr 1fr 1fr 
+              <=> 
+              grid-template-columns: repeat(3, 1fr);
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Grid lines</h2>
+            <img data-src="./assets/gridLines.jpg">
+            <a href="https://codepen.io/dab10/pen/poLxgZw">Codepen</a>
+          </section>
+          <section>
+            <h2>Grid lines</h2>
+            <p>Short code</p>
+            <pre><code>
+              grid-column-start: 1;
+              grid-column-end: 4;
+              grid-row-start: 1;
+              grid-row-end: 3;
+
+              <=> 
+
+              grid-column: 1 / 4;
+              grid-row: 1 / 3;
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h2>Grid cells</h2>
+          <img data-src="./assets/gridCells.jpg">
+        </section>
+        <section>
+          <h2>Grid areas</h2>
+          <img data-src="./assets/gridArea.jpg">
+        </section>
+        <section>
+          <h2>Gutters</h2>
+          <img data-src="./assets/gutters.jpg">
+          <pre><code>
+            .container {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              column-gap: 5px;
+              row-gap: 20px;
+            }
+          </code></pre>
+          <a href="https://codepen.io/dab10/pen/NWYONLY">Codepen</a>
+        </section>
+        <section>
+          <h2>Nesting grids</h2>
+          <img data-src="./assets/nested.jpg">
+          <a href="https://codepen.io/dab10/pen/QWmZNoV">Codepen</a>
+        </section>
+        <section>
+          <section>
+            <h2>Conclusion</h2>
+            <p>That's it, you are up and running with Grid! Let's recap essential steps:</p>
+            <ul>
+              <li>Create a container element with display: grid;</li>
+              <li>Use the grid-template-columns and grid-template-rows properties;</li>
+              <li>Place child elements within the container;</li>
+              <li>Use the grid-gap properties;</li>
+            </section>
+            <section>
+              <li>Grid will accept flexible units in combination with fixed units;</li>
+              <li>Use the repeat() function;</li>
+              <li>Use the fraction unit.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Thank you for your attention!</h2>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
