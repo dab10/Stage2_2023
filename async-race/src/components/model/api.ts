@@ -1,6 +1,6 @@
 import {
   Cars, Sort, Order, Winner, WinnerCar, TableWinner, TableWinnerCar,
-  OptionsRace, WinnersFromAPI, HTTPErrors,
+  OptionsRace, WinnersFromAPI, HTTPStatusCode,
 } from '../../types';
 import View from '../view/view';
 
@@ -92,7 +92,7 @@ class Api {
   public drive = async (id: number): Promise<{ success: boolean }> => {
     try {
       const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH', signal: this.controller.signal });
-      return res.status === HTTPErrors.Success ? { success: true } : { success: false };
+      return res.status === HTTPStatusCode.Success ? { success: true } : { success: false };
     } catch {
       return { success: true };
     }
@@ -147,7 +147,7 @@ class Api {
   public saveWinner = async ({ id, time }: Pick<WinnerCar, 'id' | 'time'>) => {
     const winnerStatus = await this.getWinnerStatus(id);
 
-    if (winnerStatus === HTTPErrors.NotFound) {
+    if (winnerStatus === HTTPStatusCode.NotFound) {
       await this.createWinner({
         id,
         wins: 1,

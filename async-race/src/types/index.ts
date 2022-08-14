@@ -62,7 +62,7 @@ export interface WinnersFromAPI {
   'query': string;
 }
 
-export enum HTTPErrors {
+export enum HTTPStatusCode {
   Success = 200,
   NotFound = 404,
 }
