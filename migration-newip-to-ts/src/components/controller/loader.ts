@@ -1,4 +1,4 @@
-import { Callback, IData, HTTPErrors, OptionsType, GetRespFunctionType } from '../../types/index';
+import { Callback, IData, HTTPErrors, OptionsType, GetRespFunctionType, Endpoint } from '../../types/index';
 class Loader {
     readonly baseLink: string;
     readonly options: { apiKey: string };
@@ -15,6 +15,7 @@ class Loader {
         }
     ): void {
         this.load('GET', endpoint, callback, options);
+        console.log(endpoint);
     }
 
     private errorHandler(res: Response): Response {
@@ -27,7 +28,7 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: OptionsType, endpoint: string): string {
+    private makeUrl(options: OptionsType, endpoint: Endpoint): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -40,7 +41,7 @@ class Loader {
 
     private load(
         method: string,
-        endpoint: string,
+        endpoint: Endpoint,
         callback: Callback<Pick<IData, 'status' | 'sources'> | Pick<IData, 'status' | 'totalResults' | 'articles'>>,
         options: OptionsType = {}
     ): void {

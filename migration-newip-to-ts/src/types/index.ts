@@ -29,8 +29,13 @@ export interface IArticles {
     content: string;
 }
 
+export enum Endpoint {
+    sources = 'sources',
+    everything = 'everything',
+}
+
 export type GetRespFunctionType = {
-    endpoint: string;
+    endpoint: Endpoint.sources | Endpoint.everything;
     options?: OptionsType;
 };
 
