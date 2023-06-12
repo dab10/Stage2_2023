@@ -15,7 +15,6 @@ class Loader {
         }
     ): void {
         this.load('GET', endpoint, callback, options);
-        console.log(endpoint);
     }
 
     private errorHandler(res: Response): Response {
