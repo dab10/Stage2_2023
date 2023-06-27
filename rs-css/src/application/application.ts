@@ -1,4 +1,5 @@
 import Control from '../common/control';
+import { LevelsView } from './levelView';
 
 import style from './application.css';
 
@@ -19,5 +20,13 @@ export class Application extends Control {
     this.gameView = new Control(this.node, 'div', style['game_view']);
     this.gameLevel = new Control(this.node, 'div', style['game_level']);
     this.footer = new Control(this.node, 'div', style['global_footer']);
+    this.gameCycle();
+  }
+
+  private gameCycle() {
+    const levels = new LevelsView(this.gameLevel.node);
+    levels.onChooseLevel = (levelNumber) => {
+      console.log(levelNumber);
+    };
   }
 }
