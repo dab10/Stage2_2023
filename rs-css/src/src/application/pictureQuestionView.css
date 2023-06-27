@@ -1,9 +1,0 @@
-.wrapper{
-  position: relative; 
-  transition-duration: 500ms;
-  left: 0;
-}
-
-.hide {
-  left: 100%;
-}
