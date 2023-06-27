@@ -3,7 +3,7 @@
   grid-template-areas: 
   "header header header"
   "game_header game_header game_level"
-  "game_editor game_view game_level"
+  "game_editor game_HTML_Viewer game_level"
   "footer footer footer";
   width: 100vw;
   height: 100vh;
@@ -13,7 +13,7 @@
   --footer-color: #ff0;
   --game-header-color: #ccc;
   --game-editor-color: #cff;
-  --game-view-color: #cc1;
+  --game-HTML-Viewer-color: #cc1;
   --game-level-color: #cf0;
 }
 
@@ -33,9 +33,10 @@
   background-color: var(--game-editor-color);
 }
 
-.game_view {
-  grid-area: game_view;
-  background-color: var(--game-view-color);
+.game_HTML_Viewer {
+  grid-area: game_HTML_Viewer;
+  background-color: var(--game-HTML-Viewer-color);
+  white-space: pre;
 }
 
 .game_level {

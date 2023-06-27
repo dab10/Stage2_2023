@@ -3,7 +3,7 @@ import Control from '../common/control';
 export class LevelsView extends Control {
   onChooseLevel!: (index: number) => void;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, levelNumber: number) {
     super(parentNode);
 
     const questionData = {

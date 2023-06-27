@@ -1,0 +1,10 @@
+[
+  {
+    "levelNumber": "1",
+    "HTMLCode": "<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>"
+  },
+  {
+    "levelNumber": "2",
+    "HTMLCode": "<div>\r\n<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>\r\n</div>"
+  }
+]
