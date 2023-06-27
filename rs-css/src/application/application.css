@@ -1,0 +1,50 @@
+.global_wrapper {
+  display: grid;
+  grid-template-areas: 
+  "header header header"
+  "game_header game_header game_level"
+  "game_editor game_view game_level"
+  "footer footer footer";
+  width: 100vw;
+  height: 100vh;
+  gap: 10px;
+  box-shadow: 0px 0px 0px 4px blue;
+  --header-color: #f00;
+  --footer-color: #ff0;
+  --game-header-color: #ccc;
+  --game-editor-color: #cff;
+  --game-view-color: #cc1;
+  --game-level-color: #cf0;
+}
+
+.global_header{
+  grid-area: header;
+  height: 30px;
+  background-color: var(--header-color);
+}
+
+.game_header{
+  grid-area: game_header;
+  background-color: var(--game-header-color);
+}
+
+.game_editor {
+  grid-area: game_editor;
+  background-color: var(--game-editor-color);
+}
+
+.game_view {
+  grid-area: game_view;
+  background-color: var(--game-view-color);
+}
+
+.game_level {
+  grid-area: game_level;
+  background-color: var(--game-level-color);
+}
+
+.global_footer{
+  grid-area: footer;
+  background-color: var(--footer-color);
+  height: 30px;
+}
