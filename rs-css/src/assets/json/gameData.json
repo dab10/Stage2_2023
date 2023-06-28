@@ -1,10 +1,12 @@
 [
   {
     "levelNumber": "1",
-    "HTMLCode": "<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>"
+    "HTMLCode": "<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>",
+    "answer": "plate"
   },
   {
     "levelNumber": "2",
-    "HTMLCode": "<div>\r\n<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>\r\n</div>"
+    "HTMLCode": "<div>\r\n<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>\r\n</div>",
+    "answer": "plate"
   }
 ]

@@ -1,7 +1,8 @@
 import Control from '../common/control';
-import { LevelsView } from './levelView';
+import { LevelsView } from './levelsView';
 import { GameDataModel } from './gameDataModel';
 import { GameState } from './keyboardState';
+import { cssEditorView } from './cssEditorView';
 
 import style from './application.css';
 
@@ -33,7 +34,8 @@ export class Application extends Control {
   }
 
   private gameCycle() {
-    const levels = new LevelsView(this.gameLevel.node, this.state.data.startLevel);
+    const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData());
+    const cssEditor = new cssEditorView(this.gameEditor.node);
     levels.onChooseLevel = (levelNumber) => {
       const data = this.model.getCategoriesData();
       console.log(data, levelNumber);
@@ -41,6 +43,9 @@ export class Application extends Control {
       // const state = this.state;
       // state.data = { ...state.data, content: state.data.content + 10 };
       // console.log(state.data);
+    };
+    cssEditor.onGetValue = (value) => {
+      console.log(value);
     };
   }
 }

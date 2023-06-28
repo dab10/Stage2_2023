@@ -1,8 +1,9 @@
 import gameData from '../assets/json/gameData.json';
 
-interface GameData {
+export interface GameData {
   levelNumber: number;
   HTMLCode: string;
+  answer: string;
 }
 
 export class GameDataModel {

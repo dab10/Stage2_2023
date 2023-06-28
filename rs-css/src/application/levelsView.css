@@ -1,0 +1,24 @@
+.levels_view_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.levels_buttons_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.complete_level_symbol {
+  color: gray;
+}
+
+.complete_level_symbol_with_hint {
+  color: gray;
+  padding: 0 10px 0 5px;
+}
+
+.level_button {
+  width: 30px;
+}
