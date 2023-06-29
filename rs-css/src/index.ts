@@ -1,9 +1,9 @@
 import { Application } from './application/application';
-import { GameState } from './application/keyboardState';
+import { GameState } from './application/gameState';
 import './style.css';
 
 const state = new GameState({
-  startLevel: 0,
+  currentLevel: 0,
   completeLevels: [],
   completeLevelsWithHints: [],
 });

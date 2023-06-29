@@ -1,8 +1,9 @@
 import Control from '../common/control';
 import { LevelsView } from './levelsView';
 import { GameDataModel } from './gameDataModel';
-import { GameState } from './keyboardState';
+import { GameState } from './gameState';
 import { cssEditorView } from './cssEditorView';
+import { GameHTMLView1 } from './gameHTMLView';
 
 import style from './application.css';
 
@@ -27,14 +28,14 @@ export class Application extends Control {
 
     this.model = new GameDataModel();
     console.log(state.data);
-    this.model.loadJSON().then((res) => {
-      this.gameHTMLViewer.node.textContent = res.data[this.state.data.startLevel].HTMLCode;
+    this.model.loadJSON().then(() => {
       this.gameCycle();
     });
   }
 
   private gameCycle() {
-    const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData());
+    const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+    const gameHTMLViewerField = new GameHTMLView1(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new cssEditorView(this.gameEditor.node);
     levels.onChooseLevel = (levelNumber) => {
       const data = this.model.getCategoriesData();
@@ -42,10 +43,23 @@ export class Application extends Control {
       this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
       // const state = this.state;
       // state.data = { ...state.data, content: state.data.content + 10 };
-      // console.log(state.data);
+      console.log(this.state.data);
     };
     cssEditor.onGetValue = (value) => {
       console.log(value);
+      if (value === 'ok') {
+        const state = this.state;
+        state.data.completeLevels.push(state.data.currentLevel);
+        state.data = { ...state.data, currentLevel: state.data.currentLevel + 1 };
+        console.log(state);
+        // levels.destroy();
+        // const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+        levels.destroy();
+        cssEditor.destroy();
+        gameHTMLViewerField.destroy();
+        this.gameCycle();
+      }
     };
+    // this.state.onChange.add(cssEditor.onGetValue);
   }
 }

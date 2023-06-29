@@ -19,6 +19,10 @@
   padding: 0 10px 0 5px;
 }
 
+.complete_level {
+  color: green;
+}
+
 .level_button {
   width: 30px;
 }

@@ -1,5 +1,5 @@
 export interface GameDataState {
-  startLevel: number;
+  currentLevel: number;
   completeLevels: Array<number>;
   completeLevelsWithHints: Array<number>;
 }
