@@ -19,7 +19,8 @@
           },
           {
             "tagName": "plate",
-            "className": "fancyClass"
+            "className": "fancyClass",
+            "classNameAnimation": "strobe"
           },
           {
             "tagName": "plate"

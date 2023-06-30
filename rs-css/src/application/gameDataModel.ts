@@ -10,6 +10,7 @@ export interface GameData {
 export interface HTMLDom {
   tagName: string;
   className?: string;
+  classNameAnimation?: string;
   id?: string;
   child?: HTMLDom[];
 }

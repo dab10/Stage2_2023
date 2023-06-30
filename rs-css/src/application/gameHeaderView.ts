@@ -42,7 +42,11 @@ export class GameHeaderView extends Control {
       return;
     }
     arr.forEach((item) => {
-      const el = new Control(parentNode, item.tagName, item.className ? style[`${item.className}`] : '');
+      const el = new Control(
+        parentNode,
+        item.tagName,
+        item.className ? [style[`${item.className}`], style[`${item.classNameAnimation}`]].join(' ') : ''
+      );
       el.node.id = item.id ? item.id : '';
       if (item.child) {
         this.buildDom(item.child, el.node);
