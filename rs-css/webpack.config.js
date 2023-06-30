@@ -27,7 +27,7 @@ const config = {
     }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
-      patterns: [{ from: './src/assets/img', to: './public/img' }],
+      patterns: [{ from: './src/assets/img', to: './assets/img' }],
     }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
@@ -47,6 +47,7 @@ const config = {
             loader: 'css-loader',
             options: {
               modules: {
+                localIdentName: '[local]',
                 exportLocalsConvention: 'camelCase',
               },
             },

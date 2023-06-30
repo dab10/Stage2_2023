@@ -1,0 +1,29 @@
+.table {
+  display: flex;
+  justify-content: center;
+  min-height: 150px;
+  gap: 10px;
+  margin-top: 50px;
+  background-image: url('../assets/img/table.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+plate {
+  display: block;
+  width: 75px;
+  height: 50px;
+  background-image: url('../assets/img/plate.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fancyClass{
+  background-color: aqua;
+}
+
+.divExample {
+  background-color: aquamarine;
+}

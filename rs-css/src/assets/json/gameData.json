@@ -1,7 +1,32 @@
 [
   {
     "levelNumber": "1",
-    "HTMLCode": "<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>",
+    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "HTMLDom": [
+      {
+        "tagName": "div",
+        "className": "table",
+        "child": [
+          {
+            "tagName": "plate",
+            "id": "fancyId",
+            "child": [
+              {
+                "tagName": "div",
+                "className": "divExample"
+              }
+            ]
+          },
+          {
+            "tagName": "plate",
+            "className": "fancyClass"
+          },
+          {
+            "tagName": "plate"
+          }
+        ]
+      }
+    ],
     "answer": "plate"
   },
   {

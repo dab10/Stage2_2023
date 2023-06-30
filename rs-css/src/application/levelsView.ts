@@ -14,8 +14,6 @@ export class LevelsView extends Control {
       const completeLevelSymbolStyle = state.data.completeLevels.includes(i)
         ? [style['complete_level_symbol'], style['complete_level']].join(' ')
         : style['complete_level_symbol'];
-      console.log(completeLevelSymbolStyle);
-      console.log(state.data.completeLevels.includes(i));
       const levelSymbolsWrapper = new Control(this.node, 'div', style['levels_buttons_wrapper']);
       const completeLevelSymbol = new Control(levelSymbolsWrapper.node, 'div', completeLevelSymbolStyle);
       completeLevelSymbol.node.innerHTML = '&#10004;';

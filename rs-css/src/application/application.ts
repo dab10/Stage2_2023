@@ -3,7 +3,8 @@ import { LevelsView } from './levelsView';
 import { GameDataModel } from './gameDataModel';
 import { GameState } from './gameState';
 import { cssEditorView } from './cssEditorView';
-import { GameHTMLView1 } from './gameHTMLView';
+import { GameHTMLView } from './gameHTMLView';
+import { GameHeaderView } from './gameHeaderView';
 
 import style from './application.css';
 
@@ -35,15 +36,20 @@ export class Application extends Control {
 
   private gameCycle() {
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-    const gameHTMLViewerField = new GameHTMLView1(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+    let gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+    let gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new cssEditorView(this.gameEditor.node);
     levels.onChooseLevel = (levelNumber) => {
-      const data = this.model.getCategoriesData();
-      console.log(data, levelNumber);
-      this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
-      // const state = this.state;
-      // state.data = { ...state.data, content: state.data.content + 10 };
-      console.log(this.state.data);
+      // const data = this.model.getCategoriesData();
+      // console.log(data, levelNumber);
+      // this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
+      const state = this.state;
+      state.data = { ...state.data, currentLevel: levelNumber };
+      // console.log(this.state.data);
+      gameHTMLViewerField.destroy();
+      gameHeaderField.destroy();
+      gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+      gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     };
     cssEditor.onGetValue = (value) => {
       console.log(value);
@@ -57,6 +63,7 @@ export class Application extends Control {
         levels.destroy();
         cssEditor.destroy();
         gameHTMLViewerField.destroy();
+        gameHeaderField.destroy();
         this.gameCycle();
       }
     };
