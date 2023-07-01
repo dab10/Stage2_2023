@@ -39,6 +39,7 @@ export class Application extends Control {
     let gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     let gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new cssEditorView(this.gameEditor.node);
+
     levels.onChooseLevel = (levelNumber) => {
       // const data = this.model.getCategoriesData();
       // console.log(data, levelNumber);
@@ -51,6 +52,7 @@ export class Application extends Control {
       gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
       gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     };
+
     cssEditor.onGetValue = (value) => {
       console.log(value);
       if (value === 'ok') {
@@ -67,6 +69,12 @@ export class Application extends Control {
           gameHeaderField.destroy();
           this.gameCycle();
         });
+      }
+      if (value === 'no') {
+        cssEditor.removeAnimation();
+        gameHTMLViewerField.removeAnimation();
+        cssEditor.animateOut();
+        gameHTMLViewerField.animateOut();
       }
     };
     // this.state.onChange.add(cssEditor.onGetValue);

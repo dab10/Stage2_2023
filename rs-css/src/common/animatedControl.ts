@@ -13,6 +13,10 @@ export class AnimatedControl extends Control {
     this.styles = styles;
   }
 
+  removeAnimation() {
+    this.node.classList.remove(this.styles.hidden);
+  }
+
   animateOut(): Promise<null> {
     return new Promise((resolve) => {
       requestAnimationFrame(() =>

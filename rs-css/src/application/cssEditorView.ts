@@ -1,10 +1,13 @@
 import Control from '../common/control';
+import { AnimatedControl } from '../common/animatedControl';
 
-export class cssEditorView extends Control {
+import style from './cssEditorView.css';
+
+export class cssEditorView extends AnimatedControl {
   onGetValue!: (value: string) => void;
 
   constructor(parentNode: HTMLElement) {
-    super(parentNode);
+    super(parentNode, 'div', { default: '', hidden: style['shake'] });
 
     const formCSSEditor = new Control(this.node, 'form');
     const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input');
