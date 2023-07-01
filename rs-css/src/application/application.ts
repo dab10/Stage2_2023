@@ -36,38 +36,12 @@ export class Application extends Control {
   }
 
   private gameCycle() {
-    let levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-    let gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
-    let gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
-    let cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
-
-    levels.onChooseLevel = (levelNumber) => {
-      // const data = this.model.getCategoriesData();
-      // console.log(data, levelNumber);
-      // this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
-      const state = this.state;
-      state.data = { ...state.data, currentLevel: levelNumber };
-      console.log(this.state.data);
-      cssEditor.destroy();
-      gameHTMLViewerField.destroy();
-      gameHeaderField.destroy();
-      gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
-      gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
-      cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
-    };
-
-    levels.onResetLevel = () => {
-      const state = this.state;
-      state.data.currentLevel = 0;
-      state.data.completeLevels.length = 0;
-      state.data.completeLevelsWithHints.length = 0;
-      console.log(state.data);
-      levels.destroy();
-      cssEditor.destroy();
-      gameHTMLViewerField.destroy();
-      gameHeaderField.destroy();
-      this.gameCycle();
-    };
+    // let levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+    const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+    const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+    const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
+    const cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
+    this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
 
     cssEditor.onGetValue = (value) => {
       console.log(value);
@@ -94,11 +68,67 @@ export class Application extends Control {
       }
     };
 
+    // cssEditor.onHelp = () => {
+    //   levels.destroy();
+    //   levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+    //   this.gameCycle();
+    // };
+
+    // this.state.onChange.add(cssEditor.onGetValue);
+  }
+
+  // private answerCycle(
+  //   levels: LevelsView,
+  //   cssEditor: cssEditorView,
+  //   gameHTMLViewerField: GameHTMLView,
+  //   gameHeaderField: GameHeaderView
+  // ) {
+
+  // }
+
+  private helpCycle(
+    levels: LevelsView,
+    cssEditor: cssEditorView,
+    gameHTMLViewerField: GameHTMLView,
+    gameHeaderField: GameHeaderView
+  ) {
+    levels.onChooseLevel = (levelNumber: number) => {
+      // const data = this.model.getCategoriesData();
+      // console.log(data, levelNumber);
+      // this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
+      const state = this.state;
+      state.data = { ...state.data, currentLevel: levelNumber };
+      console.log(this.state.data);
+      // cssEditor.destroy();
+      // gameHTMLViewerField.destroy();
+      // gameHeaderField.destroy();
+      // gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+      // gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
+      // cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
+      levels.destroy();
+      cssEditor.destroy();
+      gameHTMLViewerField.destroy();
+      gameHeaderField.destroy();
+      this.gameCycle();
+    };
+
+    levels.onResetLevel = () => {
+      const state = this.state;
+      state.data.currentLevel = 0;
+      state.data.completeLevels.length = 0;
+      state.data.completeLevelsWithHints.length = 0;
+      console.log(state.data);
+      levels.destroy();
+      cssEditor.destroy();
+      gameHTMLViewerField.destroy();
+      gameHeaderField.destroy();
+      this.gameCycle();
+    };
+
     cssEditor.onHelp = () => {
       levels.destroy();
       levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+      this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
-
-    // this.state.onChange.add(cssEditor.onGetValue);
   }
 }
