@@ -22,6 +22,11 @@ plate {
   transition: 0.5s;
 }
 
+plate:hover {
+  border-radius: 50px;
+  background-color: white;
+}
+
 .default {
   position: relative;
   bottom: 0px;
@@ -31,13 +36,23 @@ plate {
   bottom: 500px;
 }
 
-
 .fancyClass{
   font-size: medium;
 }
 
-.divExample {
+.child {
+  display: inline;
   font-size: medium;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  z-index: 33;
+}
+
+#fancyId {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .strobe {
@@ -45,6 +60,70 @@ plate {
   animation: strobeStart .5s ease-out, strobe 1s infinite;
   animation-delay: 0s, .5s;
 }
+
+.strobe:hover {
+  border-radius: 50px;
+  background-color: white;
+}
+
+
+.tooltip,
+.tooltip0,
+.tooltip1,
+.tooltip2,
+.tooltip3 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltiptext,
+.tooltiptext0,
+.tooltiptext1,
+.tooltiptext2,
+.tooltiptext3 {
+  visibility: hidden;
+  width: 120px;
+  height: fit-content;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.tooltiptext::after,
+.tooltiptext0::after,
+.tooltiptext1::after,
+.tooltiptext2::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip0:hover .tooltiptext0,
+.tooltip1:hover .tooltiptext1,
+.tooltip2:hover .tooltiptext2 {
+  display: block;
+  visibility: visible;
+}
+
+
 
 @keyframes strobeStart {
   0% {

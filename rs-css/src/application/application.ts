@@ -59,8 +59,7 @@ export class Application extends Control {
           gameHeaderField.destroy();
           this.gameCycle();
         });
-      }
-      if (value === 'no') {
+      } else {
         cssEditor.removeAnimation();
         gameHTMLViewerField.removeAnimation();
         cssEditor.animateOut();

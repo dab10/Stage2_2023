@@ -7,13 +7,11 @@ import style from './gameHeaderView.css';
 
 export class GameHeaderView extends Control {
   el!: AnimatedControl;
+  onmouseover!: () => void;
+  onmouseout!: () => void;
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode);
 
-    // const gameHeaderWrapper = new Control(this.node, 'div');
-    // gameHeaderWrapper.node.innerHTML = gameData[state.data.currentLevel].HTMLCode;
-    // const elTable = new Control(gameHeaderWrapper.node, 'div', 'table');
-    // gameHeaderWrapper.node.append(div.style.asd);
     console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n').slice(1, -1));
     // gameData[state.data.currentLevel].HTMLDom.forEach((item) => {
     //   const el = new Control(this.node, this.findElName(item), this.findSelector(item))
@@ -36,30 +34,68 @@ export class GameHeaderView extends Control {
     //       new Control(elTable.node, this.findElName(item), this.findSelector(item));
     //     }
     //   });
-    this.buildDom(gameData[state.data.currentLevel].HTMLDom, this.node);
+    const elTable = new Control(this.node, 'div', 'table');
+    const i = 0;
+    this.buildDom(gameData[state.data.currentLevel].HTMLDom, elTable.node, i);
   }
 
-  private buildDom(arr: HTMLDom[], parentNode: HTMLElement) {
+  private buildDom(arr: HTMLDom[], parentNode: HTMLElement, i: number) {
     if (!arr) {
       return;
     }
+    i++;
     arr.forEach((item) => {
       if (item.classNameAnimation) {
         const el = new AnimatedControl(parentNode, item.tagName, {
-          default: [style[`${item.className}`], style[`${item.classNameAnimation}`], style['default']].join(' '),
+          default: [
+            style[`${item.className}`],
+            style[`${item.classNameAnimation}`],
+            style['default'],
+            style['tooltip'],
+          ].join(' '),
           hidden: style['hide'],
         });
         el.node.id = item.id ? item.id : '';
         this.el = el;
+        const className = item.className ? ` class="${item.className}"` : '';
+        const idName = item.id ? ` id="${item.id}"` : '';
+        const tooltip = new Control(
+          el.node,
+          'span',
+          style['tooltiptext'],
+          `<${item.tagName}` + className + idName + `></${item.tagName}>`
+        );
       } else {
         const el = new Control(
           parentNode,
           item.tagName,
-          item.className ? [style[`${item.className}`], style[`${item.classNameAnimation}`]].join(' ') : ''
+          [style[`${item.className}`], style[`${item.classNameAnimation}`], style[`tooltip${i}`]].join(' ')
         );
         el.node.id = item.id ? item.id : '';
+        const className = item.className ? ` class="${item.className}"` : '';
+        const idName = item.id ? ` id="${item.id}"` : '';
+        const tooltip = new Control(
+          el.node,
+          'span',
+          [style['child'], style[`tooltiptext${i}`]].join(' '),
+          `<${item.tagName}` + className + idName + `></${item.tagName}>`
+        );
+
+        if (el.node.classList.contains('child')) {
+          el.node.onmouseover = () => {
+            console.log(el.node.previousElementSibling);
+            el.node.previousElementSibling?.classList.add('displayNone');
+            el.node.previousElementSibling?.classList.remove('tooltiptext1');
+          };
+
+          el.node.onmouseout = () => {
+            el.node.previousElementSibling?.classList.remove('displayNone');
+            el.node.previousElementSibling?.classList.add('tooltiptext1');
+          };
+        }
+
         if (item.child) {
-          this.buildDom(item.child, el.node);
+          this.buildDom(item.child, el.node, i);
         }
       }
     });
