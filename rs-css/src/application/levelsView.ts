@@ -6,6 +6,7 @@ import style from './levelsView.css';
 
 export class LevelsView extends Control {
   onChooseLevel!: (index: number) => void;
+  onResetLevel!: () => void;
 
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode, 'div', style['levels_view_wrapper']);
@@ -28,5 +29,10 @@ export class LevelsView extends Control {
         this.onChooseLevel(i);
       };
     });
+
+    const resetProgressButton = new Control(this.node, 'button', style['reset_button'], 'Reset progress');
+    resetProgressButton.node.onclick = () => {
+      this.onResetLevel();
+    };
   }
 }

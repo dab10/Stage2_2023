@@ -5,6 +5,7 @@ import { GameState } from './gameState';
 import { cssEditorView } from './cssEditorView';
 import { GameHTMLView } from './gameHTMLView';
 import { GameHeaderView } from './gameHeaderView';
+import { initialState } from '../common/constants';
 
 import style from './application.css';
 
@@ -46,11 +47,24 @@ export class Application extends Control {
       // this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
-      // console.log(this.state.data);
+      console.log(this.state.data);
       gameHTMLViewerField.destroy();
       gameHeaderField.destroy();
       gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
       gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
+    };
+
+    levels.onResetLevel = () => {
+      const state = this.state;
+      state.data.currentLevel = 0;
+      state.data.completeLevels.length = 0;
+      state.data.completeLevelsWithHints.length = 0;
+      console.log(state.data);
+      levels.destroy();
+      cssEditor.destroy();
+      gameHTMLViewerField.destroy();
+      gameHeaderField.destroy();
+      this.gameCycle();
     };
 
     cssEditor.onGetValue = (value) => {
@@ -77,6 +91,7 @@ export class Application extends Control {
         gameHTMLViewerField.animateOut();
       }
     };
+
     // this.state.onChange.add(cssEditor.onGetValue);
   }
 }

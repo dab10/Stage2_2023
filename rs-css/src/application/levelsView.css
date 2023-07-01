@@ -1,6 +1,7 @@
 .levels_view_wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
@@ -25,4 +26,8 @@
 
 .level_button {
   width: 30px;
+}
+
+.reset_button {
+  max-width: 150px;
 }
