@@ -1,3 +1,4 @@
+import { AnimatedControl } from '../common/animatedControl';
 import Control from '../common/control';
 import { GameData, HTMLDom } from './gameDataModel';
 import { GameState } from './gameState';
@@ -5,6 +6,7 @@ import { GameState } from './gameState';
 import style from './gameHeaderView.css';
 
 export class GameHeaderView extends Control {
+  el!: AnimatedControl;
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode);
 
@@ -42,16 +44,29 @@ export class GameHeaderView extends Control {
       return;
     }
     arr.forEach((item) => {
-      const el = new Control(
-        parentNode,
-        item.tagName,
-        item.className ? [style[`${item.className}`], style[`${item.classNameAnimation}`]].join(' ') : ''
-      );
-      el.node.id = item.id ? item.id : '';
-      if (item.child) {
-        this.buildDom(item.child, el.node);
+      if (item.classNameAnimation) {
+        const el = new AnimatedControl(parentNode, item.tagName, {
+          default: [style[`${item.className}`], style[`${item.classNameAnimation}`], style['default']].join(' '),
+          hidden: style['hide'],
+        });
+        el.node.id = item.id ? item.id : '';
+        this.el = el;
+      } else {
+        const el = new Control(
+          parentNode,
+          item.tagName,
+          item.className ? [style[`${item.className}`], style[`${item.classNameAnimation}`]].join(' ') : ''
+        );
+        el.node.id = item.id ? item.id : '';
+        if (item.child) {
+          this.buildDom(item.child, el.node);
+        }
       }
     });
+  }
+
+  animateRightQuestion() {
+    return this.el.animateOut();
   }
 
   // private findSelector(str: string) {

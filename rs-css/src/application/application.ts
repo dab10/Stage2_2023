@@ -60,11 +60,13 @@ export class Application extends Control {
         console.log(state);
         // levels.destroy();
         // const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-        levels.destroy();
-        cssEditor.destroy();
-        gameHTMLViewerField.destroy();
-        gameHeaderField.destroy();
-        this.gameCycle();
+        gameHeaderField.animateRightQuestion().then(() => {
+          levels.destroy();
+          cssEditor.destroy();
+          gameHTMLViewerField.destroy();
+          gameHeaderField.destroy();
+          this.gameCycle();
+        });
       }
     };
     // this.state.onChange.add(cssEditor.onGetValue);
