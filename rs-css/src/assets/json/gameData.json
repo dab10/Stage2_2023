@@ -7,6 +7,9 @@
         "tagName": "plate"
       },
       {
+        "tagName": "plate"
+      },
+      {
         "tagName": "plate",
         "className": "plateParent",
         "id": "fancyId",
