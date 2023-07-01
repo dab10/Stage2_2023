@@ -36,10 +36,10 @@ export class Application extends Control {
   }
 
   private gameCycle() {
-    const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+    let levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     let gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     let gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
-    const cssEditor = new cssEditorView(this.gameEditor.node);
+    let cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
 
     levels.onChooseLevel = (levelNumber) => {
       // const data = this.model.getCategoriesData();
@@ -48,10 +48,12 @@ export class Application extends Control {
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
       console.log(this.state.data);
+      cssEditor.destroy();
       gameHTMLViewerField.destroy();
       gameHeaderField.destroy();
       gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
       gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
+      cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
     };
 
     levels.onResetLevel = () => {
@@ -90,6 +92,11 @@ export class Application extends Control {
         cssEditor.animateOut();
         gameHTMLViewerField.animateOut();
       }
+    };
+
+    cssEditor.onHelp = () => {
+      levels.destroy();
+      levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     };
 
     // this.state.onChange.add(cssEditor.onGetValue);

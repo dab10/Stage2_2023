@@ -15,15 +15,20 @@ export class LevelsView extends Control {
       const completeLevelSymbolStyle = state.data.completeLevels.includes(i)
         ? [style['complete_level_symbol'], style['complete_level']].join(' ')
         : style['complete_level_symbol'];
+
+      const completeLevelWithHintSymbolStyle = state.data.completeLevelsWithHints.includes(i)
+        ? [style['complete_level_symbol_with_hint'], style['complete_level']].join(' ')
+        : style['complete_level_symbol_with_hint'];
+
       const levelSymbolsWrapper = new Control(this.node, 'div', style['levels_buttons_wrapper']);
       const completeLevelSymbol = new Control(levelSymbolsWrapper.node, 'div', completeLevelSymbolStyle);
       completeLevelSymbol.node.innerHTML = '&#10004;';
       const completeLevelWithHintSymbol = new Control(
         levelSymbolsWrapper.node,
         'div',
-        style['complete_level_symbol_with_hint']
+        completeLevelWithHintSymbolStyle
       );
-      completeLevelWithHintSymbol.node.innerHTML = '!';
+      completeLevelWithHintSymbol.node.innerHTML = '&#9733;';
       const button = new Control(levelSymbolsWrapper.node, 'button', style['level_button'], (i + 1).toString());
       button.node.onclick = () => {
         this.onChooseLevel(i);
