@@ -12,10 +12,12 @@
 }
 
 .complete_level_symbol {
+  cursor: default;
   color: gray;
 }
 
 .complete_level_symbol_with_hint {
+  cursor: default;
   color: gray;
   padding: 0 10px 0 5px;
 }
@@ -25,9 +27,15 @@
 }
 
 .level_button {
+  cursor: pointer;
   width: 30px;
 }
 
 .reset_button {
+  cursor: pointer;
   max-width: 150px;
+}
+
+.active_level_button {
+  background-color: aqua;
 }

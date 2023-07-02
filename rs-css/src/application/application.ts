@@ -5,6 +5,7 @@ import { GameState } from './gameState';
 import { cssEditorView } from './cssEditorView';
 import { GameHTMLView } from './gameHTMLView';
 import { GameHeaderView } from './gameHeaderView';
+import { FooterView } from './footerView';
 import { initialState } from '../common/constants';
 
 import style from './application.css';
@@ -27,6 +28,7 @@ export class Application extends Control {
     this.gameHTMLViewer = new Control(this.node, 'div', style['game_HTML_Viewer']);
     this.gameLevel = new Control(this.node, 'div', style['game_level']);
     this.footer = new Control(this.node, 'div', style['global_footer']);
+    const containerFooter = new FooterView(this.footer.node);
 
     this.model = new GameDataModel();
     console.log(state.data);

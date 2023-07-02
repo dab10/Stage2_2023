@@ -30,6 +30,7 @@ export class LevelsView extends Control {
       );
       completeLevelWithHintSymbol.node.innerHTML = '&#9733;';
       const button = new Control(levelSymbolsWrapper.node, 'button', style['level_button'], (i + 1).toString());
+      if (state.data.currentLevel === i) button.node.classList.add('active_level_button');
       button.node.onclick = () => {
         this.onChooseLevel(i);
       };
