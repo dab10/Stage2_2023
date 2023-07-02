@@ -7,7 +7,9 @@
   padding-bottom: 20px;
   background-color: black;
 }
+
 .footer-year {
+  cursor: default;
   color: gray;
 }
 
@@ -15,11 +17,11 @@
   text-decoration: none;
   color: gray;
   transition: 0.25s;
+}
 
-  &:hover, &:focus {
-      color: #69db7e;
-      box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-  }
+.footer-github:hover, .footer-github:focus {
+  color: #69db7e;
+  box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
 }
 
 .footer-rss-image {
