@@ -4,19 +4,28 @@
     "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
     "HTMLDom": [
       {
-        "tagName": "plate"
-      },
-      {
-        "tagName": "plate"
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
       },
       {
         "tagName": "plate",
-        "className": "plateParent",
-        "id": "fancyId",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
         "child": [
           {
-            "tagName": "div",
-            "className": "child"
+            "tagName": "plate",
+            "className": "fancyClass",
+            "classNameAnimation": "strobe",
+            "id": "fancyId"
+          },
+          {
+            "tagName": "apple",
+            "classNameAnimation": "strobe"
           }
         ]
       },
@@ -26,14 +35,77 @@
         "classNameAnimation": "strobe"
       },
       {
-        "tagName": "plate"
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
       }
     ],
-    "answer": "okgbdsghkjhgjkbgkjbsdkjgbnsdjkghsdjkbgkjsdbagjkbdgjkbfkjgbasdfgbjkdfshga"
+    "answer": "plate"
   },
   {
     "levelNumber": "2",
-    "HTMLCode": "<div>\r\n<div class=\"table\">\r\n<plate />\r\n<plate />\r\n</div>\r\n</div>",
+    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "HTMLDom": [
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe",
+        "id": "fancyId"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      }
+    ],
+    "answer": "plate"
+  },
+  {
+    "levelNumber": "2",
+    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "HTMLDom": [
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe",
+        "id": "fancyId"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate",
+        "className": "fancyClass",
+        "classNameAnimation": "strobe"
+      }
+    ],
     "answer": "plate"
   }
 ]

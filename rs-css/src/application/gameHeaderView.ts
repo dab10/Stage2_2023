@@ -6,11 +6,12 @@ import { GameState } from './gameState';
 import style from './gameHeaderView.css';
 
 export class GameHeaderView extends Control {
-  el!: AnimatedControl;
+  el: Array<AnimatedControl>;
   onmouseover!: () => void;
   onmouseout!: () => void;
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode);
+    this.el = [];
 
     console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n').slice(1, -1));
     // gameData[state.data.currentLevel].HTMLDom.forEach((item) => {
@@ -56,7 +57,7 @@ export class GameHeaderView extends Control {
           hidden: style['hide'],
         });
         el.node.id = item.id ? item.id : '';
-        this.el = el;
+        this.el.push(el);
         const className = item.className ? ` class="${item.className}"` : '';
         const idName = item.id ? ` id="${item.id}"` : '';
         const tooltip = new Control(
@@ -65,33 +66,51 @@ export class GameHeaderView extends Control {
           style['tooltiptext'],
           `<${item.tagName}` + className + idName + `></${item.tagName}>`
         );
+
+        // if (el.node.classList.contains('child')) {
+        //   el.node.onmouseover = () => {
+        //     console.log(el.node.previousElementSibling);
+        //     el.node.previousElementSibling?.classList.add('displayNone');
+        //     el.node.previousElementSibling?.classList.remove('tooltiptext');
+        //     el.node.previousElementSibling?.classList.remove('tooltiptext1');
+        //   };
+
+        //   el.node.onmouseout = () => {
+        //     el.node.previousElementSibling?.classList.remove('displayNone');
+        //     el.node.previousElementSibling?.classList.add('tooltiptext');
+        //   };
+        // }
+
+        if (item.child) {
+          this.buildDom(item.child, el.node, i);
+        }
       } else {
-        const el = new Control(
-          parentNode,
-          item.tagName,
-          [style[`${item.className}`], style[`${item.classNameAnimation}`], style[`tooltip${i}`]].join(' ')
-        );
+        const el = new Control(parentNode, item.tagName, [style[`${item.className}`], style[`tooltip${i}`]].join(' '));
         el.node.id = item.id ? item.id : '';
         const className = item.className ? ` class="${item.className}"` : '';
         const idName = item.id ? ` id="${item.id}"` : '';
-        const tooltip = new Control(
-          el.node,
-          'span',
-          [style['child'], style[`tooltiptext${i}`]].join(' '),
-          `<${item.tagName}` + className + idName + `></${item.tagName}>`
-        );
+        if (!el.node.classList.contains('withChild')) {
+          const tooltip = new Control(
+            el.node,
+            'span',
+            [style['child'], style[`tooltiptext${i}`]].join(' '),
+            `<${item.tagName}` + className + idName + `></${item.tagName}>`
+          );
 
-        if (el.node.classList.contains('child')) {
-          el.node.onmouseover = () => {
-            console.log(el.node.previousElementSibling);
-            el.node.previousElementSibling?.classList.add('displayNone');
-            el.node.previousElementSibling?.classList.remove('tooltiptext1');
-          };
+          // if (el.node.classList.contains('child')) {
+          //   el.node.onmouseover = () => {
+          //     console.log(el.node.previousElementSibling);
+          //     el.node.previousElementSibling?.classList.add('displayNone');
+          //     el.node.previousElementSibling?.classList.remove('tooltiptext1');
+          //     el.node.previousElementSibling?.classList.remove('tooltiptext');
+          //   };
 
-          el.node.onmouseout = () => {
-            el.node.previousElementSibling?.classList.remove('displayNone');
-            el.node.previousElementSibling?.classList.add('tooltiptext1');
-          };
+          //   el.node.onmouseout = () => {
+          //     el.node.previousElementSibling?.classList.remove('displayNone');
+          //     el.node.previousElementSibling?.classList.add('tooltiptext1');
+          //     el.node.previousElementSibling?.classList.add('tooltiptext');
+          //   };
+          // }
         }
 
         if (item.child) {
@@ -102,7 +121,7 @@ export class GameHeaderView extends Control {
   }
 
   animateRightQuestion() {
-    return this.el.animateOut();
+    return Promise.all(this.el.map((item) => item.animateOut()));
   }
 
   // private findSelector(str: string) {

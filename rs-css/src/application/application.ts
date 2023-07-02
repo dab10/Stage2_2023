@@ -38,7 +38,6 @@ export class Application extends Control {
   }
 
   private gameCycle() {
-    // let levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
@@ -47,13 +46,17 @@ export class Application extends Control {
 
     cssEditor.onGetValue = (value) => {
       console.log(value);
-      if (value === 'ok') {
+      const answer = this.model.getCategoriesData()[this.state.data.currentLevel].answer;
+      // const enterAnswer = Array.from(document.querySelectorAll(`.table ${value}`));
+      // const rightAnswer = Array.from(document.querySelectorAll(`.table ${answer}`));
+      // console.log(enterAnswer, rightAnswer);
+      // const isLengthEqual = enterAnswer.length === rightAnswer.length;
+      // const isArraysEqual = enterAnswer.every((a, b) => a.innerHTML === rightAnswer[b].innerHTML);
+
+      if (value === answer) {
         const state = this.state;
         state.data.completeLevels.push(state.data.currentLevel);
         state.data = { ...state.data, currentLevel: state.data.currentLevel + 1 };
-        console.log(state);
-        // levels.destroy();
-        // const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
         gameHeaderField.animateRightQuestion().then(() => {
           levels.destroy();
           cssEditor.destroy();
@@ -68,33 +71,7 @@ export class Application extends Control {
         gameHTMLViewerField.animateOut();
       }
     };
-
-    // gameHTMLViewerField.onHover = (el) => {
-    //   document.querySelector(el.node.textContent as string)?.classList.add('hover');
-    //   el.node.classList.add('white_font');
-    // };
-
-    // gameHTMLViewerField.onHoverOut = (el) => {
-    //   el.node.classList.remove('white_font');
-    // };
-
-    // cssEditor.onHelp = () => {
-    //   levels.destroy();
-    //   levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-    //   this.gameCycle();
-    // };
-
-    // this.state.onChange.add(cssEditor.onGetValue);
   }
-
-  // private answerCycle(
-  //   levels: LevelsView,
-  //   cssEditor: cssEditorView,
-  //   gameHTMLViewerField: GameHTMLView,
-  //   gameHeaderField: GameHeaderView
-  // ) {
-
-  // }
 
   private helpCycle(
     levels: LevelsView,
@@ -103,18 +80,8 @@ export class Application extends Control {
     gameHeaderField: GameHeaderView
   ) {
     levels.onChooseLevel = (levelNumber: number) => {
-      // const data = this.model.getCategoriesData();
-      // console.log(data, levelNumber);
-      // this.gameHTMLViewer.node.textContent = data[levelNumber].HTMLCode;
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
-      console.log(this.state.data);
-      // cssEditor.destroy();
-      // gameHTMLViewerField.destroy();
-      // gameHeaderField.destroy();
-      // gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
-      // gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
-      // cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
       levels.destroy();
       cssEditor.destroy();
       gameHTMLViewerField.destroy();
@@ -141,4 +108,18 @@ export class Application extends Control {
       this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
   }
+
+  // private compareNodes(node1: NodeListOf<Element>, node2: NodeListOf<Element>) {
+  //   function objectsEqual (o1, o2) {
+  //     return typeof o1 === 'object' && Object.keys(o1).length > 0
+  //       ? Object.keys(o1).length === Object.keys(o2).length && Object.keys(o1).every((p) => objectsEqual(o1[p], o2[p]))
+  //       : o1 === o2;
+  //   }
+
+  //   function arraysEqual(a1: NodeListOf<Element>, a2: NodeListOf<Element>) {
+  //     return a1.length === a2.length && a1.every((o, idx) => objectsEqual(o, a2[idx]));
+  //   }
+
+  //   arraysEqual(node1, node2);
+  // }
 }

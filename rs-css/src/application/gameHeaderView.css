@@ -42,14 +42,24 @@ plate:hover {
 }
 
 .child {
-  display: inline;
   font-size: medium;
-  width: 10px;
-  height: 10px;
+}
+
+apple {
+  position: absolute;
+  top: -28px;
+  left: 19px;
+  font-size: medium;
+  width: 15px;
+  height: 15px;
   background-color: blue;
 }
 
-.child:hover {
+.withChild {
+  font-size: medium;
+}
+
+apple:hover {
   box-shadow: 0 0 2px 2px gray;
 }
 
@@ -65,10 +75,10 @@ plate:hover {
   animation-delay: 0s, .5s;
 }
 
-.strobe:hover {
+/* .strobe:hover {
   border-radius: 60px;
   background-color: white;
-}
+} */
 
 
 .tooltip,
@@ -78,7 +88,6 @@ plate:hover {
 .tooltip3 {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
 }
 
 .tooltiptext,
@@ -141,32 +150,32 @@ plate:hover {
 
 @keyframes strobeStart {
   0% {
-    transform: skew(0deg,0deg) scaleY(1);
+    transform: skew(0deg,0deg) scaleX(1);
     animation-timing-function: ease-in;
   }
   40% {
-    transform: skew(0deg,0deg) scaleY(.9);
+    transform: skew(0deg,0deg) scaleX(.9);
     animation-timing-function: ease-out;
   }
   100% {
-    transform: skew(4deg,0deg) scaleX(1);
+    transform: skew(0deg,4deg) scaleY(1);
   }
 }
 
 @keyframes strobe {
   0% {
-    transform: skew(4deg,0deg) scaleX(1);
+    transform: skew(0deg,4deg) scaleY(1);
   }
   10% {
-    transform: skew(1deg,0deg) scaleY(.9);
+    transform: skew(0deg,1deg) scaleX(.9);
   }
   50% {
-    transform: skew(-4deg,0deg) scaleX(1);
+    transform: skew(0deg,-4deg) scaleY(1);
   }
   60% {
-    transform: skew(-1deg,0deg) scaleY(.9);
+    transform: skew(0deg,-1deg) scaleX(.9);
   }
   100% {
-    transform: skew(4deg,0deg) scaleX(1);
+    transform: skew(0deg,4deg) scaleY(1);
   }
 }
