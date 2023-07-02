@@ -67,6 +67,15 @@ export class Application extends Control {
       }
     };
 
+    // gameHTMLViewerField.onHover = (el) => {
+    //   document.querySelector(el.node.textContent as string)?.classList.add('hover');
+    //   el.node.classList.add('white_font');
+    // };
+
+    // gameHTMLViewerField.onHoverOut = (el) => {
+    //   el.node.classList.remove('white_font');
+    // };
+
     // cssEditor.onHelp = () => {
     //   levels.destroy();
     //   levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);

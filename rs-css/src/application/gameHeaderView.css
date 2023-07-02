@@ -122,11 +122,21 @@ plate:hover {
 .tooltip:hover .tooltiptext,
 .tooltip0:hover .tooltiptext0,
 .tooltip1:hover .tooltiptext1,
-.tooltip2:hover .tooltiptext2 {
+.tooltip2:hover .tooltiptext2,
+.tooltip.hover .tooltiptext,
+.tooltip0.hover .tooltiptext0,
+.tooltip1.hover .tooltiptext1,
+.tooltip2.hover .tooltiptext2 {
   display: block;
   visibility: visible;
 }
 
+.container_HTML {
+  cursor: default;
+}
+.white_font:hover {
+  color:white;
+}
 
 
 @keyframes strobeStart {

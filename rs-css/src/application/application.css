@@ -36,7 +36,8 @@
 .game_HTML_Viewer {
   grid-area: game_HTML_Viewer;
   background-color: var(--game-HTML-Viewer-color);
-  white-space: pre;
+  cursor: default;
+  /* white-space: pre; */
 }
 
 .game_level {
