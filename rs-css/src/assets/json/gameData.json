@@ -1,16 +1,150 @@
 [
   {
     "levelNumber": "1",
-    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box />\r\n  <plate />\r\n</div>",
     "HTMLDom": [
+      
       {
-        "tagName": "plate",
-        "className": "fancyClass",
+        "tagName": "box",
         "classNameAnimation": "strobe"
       },
       {
+        "tagName": "box",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate"
+      }
+    ],
+    "answer": "box"
+  },
+  {
+    "levelNumber": "2",
+    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box class=\"targetBox\" />\r\n  <plate />\r\n</div>",
+    "HTMLDom": [
+      
+      {
+        "tagName": "box"
+      },
+      {
+        "tagName": "box",
+        "className": "targetBox",
+        "classNameAnimation": "strobe"
+      },
+      {
+        "tagName": "plate"
+      }
+    ],
+    "answer": ".targetBox"
+  },
+  {
+    "levelNumber": "3",
+    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <lime class=\"targetLime\" />\r\n  </box>\r\n  <plate />\r\n    <lime />\r\n  </plate>\r\n</div>",
+    "HTMLDom": [
+      
+      {
+        "tagName": "box"
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "box"
+          },
+          {
+            "tagName": "lime",
+            "className": "targetLime",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate"
+          },
+          {
+            "tagName": "lime"
+          }
+        ]
+      }
+    ],
+    "answer": ".targetLime"
+  },
+  {
+    "levelNumber": "4",
+    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <apple id=\"targetApple\" />\r\n  </box>\r\n  <plate />\r\n    <apple />\r\n  </plate>\r\n</div>",
+    "HTMLDom": [
+      
+      {
+        "tagName": "box"
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "box"
+          },
+          {
+            "tagName": "apple",
+            "id": "targetApple",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate"
+          },
+          {
+            "tagName": "apple"
+          }
+        ]
+      }
+    ],
+    "answer": "#targetApple"
+  },
+  {
+    "levelNumber": "5",
+    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <plate>\r\n    <apple>\r\n  </plate>\r\n  <box />\r\n</div>",
+    "HTMLDom": [
+      
+      {
+        "tagName": "box"
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate",
+            "classNameAnimation": "strobe"
+          },
+          {
+            "tagName": "apple",
+            "id": "targetApple"
+          }
+        ]
+      },
+      {
+        "tagName": "box"
+      }
+    ],
+    "answer": "plate"
+  },
+  {
+    "levelNumber": "6",
+    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <plate>\r\n    <lime />\r\n  </plate>\r\n  <plate />\r\n  <plate />\r\n</div>",
+    "HTMLDom": [
+      {
         "tagName": "plate",
-        "className": "fancyClass",
         "classNameAnimation": "strobe"
       },
       {
@@ -19,125 +153,178 @@
         "child": [
           {
             "tagName": "plate",
-            "className": "fancyClass",
-            "classNameAnimation": "strobe",
-            "id": "fancyId"
+            "classNameAnimation": "strobe"
           },
           {
-            "tagName": "apple"
+            "tagName": "lime"
           }
         ]
       },
       {
         "tagName": "plate",
-        "className": "fancyClass",
         "classNameAnimation": "strobe"
       },
       {
         "tagName": "plate",
-        "className": "fancyClass",
         "classNameAnimation": "strobe"
       }
     ],
     "answer": "plate"
   },
   {
-    "levelNumber": "2",
-    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "levelNumber": "7",
+    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <orange />\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n</div>",
     "HTMLDom": [
       {
-        "tagName": "plate",
-        "className": "fancyClass",
+        "tagName": "plate"
+      },
+      {
+        "tagName": "plate"
+      },
+      {
+        "tagName": "orange",
         "classNameAnimation": "strobe"
       },
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe",
-        "id": "fancyId"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate"
+          },
+          {
+            "tagName": "orange",
+            "classNameAnimation": "strobe"
+          }
+        ]
       }
     ],
-    "answer": "plate"
+    "answer": "orange"
   },
   {
-    "levelNumber": "2",
-    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "levelNumber": "8",
+    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box />\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
     "HTMLDom": [
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
+        "tagName": "plate"
       },
       {
         "tagName": "plate",
-        "className": "fancyClass",
+        "className": "target",
         "classNameAnimation": "strobe"
       },
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe",
-        "id": "fancyId"
+        "tagName": "box"
       },
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate"
+          },
+          {
+            "tagName": "orange",
+            "className": "target",
+            "classNameAnimation": "strobe"
+          }
+        ]
       }
     ],
-    "answer": "plate"
+    "answer": ".target"
   },
   {
-    "levelNumber": "2",
-    "HTMLCode": "<div class=\"table\">\r\n<plate id=\"fancyId\">\r\n<div />\r\n</plate>\r\n<plate class=\"fancyClass\" />\r\n<plate />\r\n</div>",
+    "levelNumber": "9",
+    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box id=\"target\"/>\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
     "HTMLDom": [
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
+        "tagName": "plate"
       },
       {
         "tagName": "plate",
-        "className": "fancyClass",
+        "className": "target"
+      },
+      {
+        "tagName": "box",
         "classNameAnimation": "strobe"
       },
       {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe",
-        "id": "fancyId"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
-      },
-      {
-        "tagName": "plate",
-        "className": "fancyClass",
-        "classNameAnimation": "strobe"
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate"
+          },
+          {
+            "tagName": "orange",
+            "className": "target"
+          }
+        ]
       }
     ],
-    "answer": "plate"
+    "answer": "#target"
+  },
+  {
+    "levelNumber": "10",
+    "HTMLCode": "<div class=\"table\">\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n  <box>\r\n    <orange />\r\n  </box>\r\n  <box>\r\n    <lime />\r\n  </box>\r\n  <plate>\r\n    <apple />\r\n  </plate>\r\n</div>",
+    "HTMLDom": [
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate",
+            "classNameAnimation": "strobe"
+          },
+          {
+            "tagName": "orange",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "box",
+            "classNameAnimation": "strobe"
+          },
+          {
+            "tagName": "orange",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "box",
+            "classNameAnimation": "strobe"
+          },
+          {
+            "tagName": "lime",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "className": "withChild",
+        "child": [
+          {
+            "tagName": "plate",
+            "classNameAnimation": "strobe"
+          },
+          {
+            "tagName": "apple",
+            "classNameAnimation": "strobe"
+          }
+        ]
+      }
+    ],
+    "answer": "*"
   }
 ]

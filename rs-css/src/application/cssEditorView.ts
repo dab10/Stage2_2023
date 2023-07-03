@@ -46,7 +46,7 @@ export class cssEditorView extends AnimatedControl {
       if (!state.data.completeLevelsWithHints.includes(state.data.currentLevel)) {
         state.data.completeLevelsWithHints.push(state.data.currentLevel);
       }
-      console.log(state.data);
+      // console.log(state.data);
       this.onHelp();
     };
   }

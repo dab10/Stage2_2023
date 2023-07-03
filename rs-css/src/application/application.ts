@@ -32,14 +32,14 @@ export class Application extends Control {
     const containerFooter = new FooterView(this.footer.node);
 
     this.model = new GameDataModel();
-    console.log(state.data);
+    // console.log(state.data);
     this.model.loadJSON().then(() => {
       this.gameCycle();
     });
   }
 
   private gameCycle() {
-    console.log('444', this.state.data);
+    // console.log('444', this.state.data);
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
@@ -47,7 +47,7 @@ export class Application extends Control {
     // this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
 
     cssEditor.onGetValue = (value) => {
-      console.log('111', this.state.data);
+      // console.log('111', this.state.data);
       const gameData = this.model.getCategoriesData();
       const answer = this.model.getCategoriesData()[this.state.data.currentLevel].answer;
       // const enterAnswer = Array.from(document.querySelectorAll(`.table ${value}`));
@@ -57,20 +57,20 @@ export class Application extends Control {
       // const isArraysEqual = enterAnswer.every((a, b) => a.innerHTML === rightAnswer[b].innerHTML);
 
       if (value === answer) {
-        console.log('222', this.state.data);
+        // console.log('222', this.state.data);
         const state = this.state;
         if (!state.data.completeLevels.includes(state.data.currentLevel)) {
           state.data.completeLevels.push(state.data.currentLevel);
         }
 
-        console.log(state.data.currentLevel);
-        console.log(gameData.length);
+        // console.log(state.data.currentLevel);
+        // console.log(gameData.length);
         const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
         state.data = {
           ...state.data,
           currentLevel: level,
         };
-        console.log('333', this.state.data);
+        // console.log('333', this.state.data);
         if (state.data.completeLevels.length === gameData.length) {
           gameHeaderField.animateRightQuestion().then(() => {
             levels.destroy();
@@ -112,7 +112,7 @@ export class Application extends Control {
       state.data.currentLevel = 0;
       state.data.completeLevels.length = 0;
       state.data.completeLevelsWithHints.length = 0;
-      console.log(state.data);
+      // console.log(state.data);
       levels.destroy();
       cssEditor.destroy();
       gameHTMLViewerField.destroy();

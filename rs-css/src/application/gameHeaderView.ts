@@ -45,6 +45,7 @@ export class GameHeaderView extends Control {
       return;
     }
     i++;
+    console.log(arr);
     arr.forEach((item) => {
       if (item.classNameAnimation) {
         const el = new AnimatedControl(parentNode, item.tagName, {
@@ -58,6 +59,7 @@ export class GameHeaderView extends Control {
         });
         el.node.id = item.id ? item.id : '';
         this.el.push(el);
+
         const className = item.className ? ` class="${item.className}"` : '';
         const idName = item.id ? ` id="${item.id}"` : '';
         const tooltip = new Control(
@@ -96,21 +98,6 @@ export class GameHeaderView extends Control {
             [style['child'], style[`tooltiptext${i}`]].join(' '),
             `<${item.tagName}` + className + idName + `></${item.tagName}>`
           );
-
-          // if (el.node.classList.contains('child')) {
-          //   el.node.onmouseover = () => {
-          //     console.log(el.node.previousElementSibling);
-          //     el.node.previousElementSibling?.classList.add('displayNone');
-          //     el.node.previousElementSibling?.classList.remove('tooltiptext1');
-          //     el.node.previousElementSibling?.classList.remove('tooltiptext');
-          //   };
-
-          //   el.node.onmouseout = () => {
-          //     el.node.previousElementSibling?.classList.remove('displayNone');
-          //     el.node.previousElementSibling?.classList.add('tooltiptext1');
-          //     el.node.previousElementSibling?.classList.add('tooltiptext');
-          //   };
-          // }
         }
 
         if (item.child) {
@@ -118,19 +105,11 @@ export class GameHeaderView extends Control {
         }
       }
     });
+    console.log(this.el);
   }
 
   animateRightQuestion() {
+    console.log('!!!!', this.el);
     return Promise.all(this.el.map((item) => item.animateOut()));
   }
-
-  // private findSelector(str: string) {
-  //   const matches = str.split('"');
-  //   return matches[1] ? matches[1] : '';
-  // }
-
-  // private findElName(str: string) {
-  //   const matches = str.slice(1, -1).split(' ');
-  //   return matches[0] ? matches[0] : '';
-  // }
 }
