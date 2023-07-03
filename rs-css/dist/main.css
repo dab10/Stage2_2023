@@ -1,0 +1,448 @@
+.levels_view_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.levels_buttons_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.complete_level_symbol {
+  cursor: default;
+  color: gray;
+}
+
+.complete_level_symbol_with_hint {
+  cursor: default;
+  color: gray;
+  padding: 0 10px 0 5px;
+}
+
+.complete_level {
+  color: green;
+}
+
+.level_button {
+  cursor: pointer;
+  width: 30px;
+}
+
+.reset_button {
+  cursor: pointer;
+  max-width: 150px;
+}
+
+.active_level_button {
+  background-color: aqua;
+}
+
+.shake {
+  animation: horizontal-shaking 0.35s;
+}
+
+@keyframes horizontal-shaking {
+  0% { transform: translateX(0) }
+  25% { transform: translateX(5px) }
+  50% { transform: translateX(-5px) }
+  75% { transform: translateX(5px) }
+  100% { transform: translateX(0) }
+ }
+
+.help_button{
+  width: 100px;
+}
+
+.input_field {
+  width: 100px;
+}
+
+.container_editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.like_button {
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.like_button:hover {
+  background-color: rgb(65, 62, 62);
+}
+
+.table {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 150px;
+  width: 290px;
+  gap: 2px;
+  margin-top: 50px;
+  background-image: url(1ebaaa0260edefa33d22.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+plate {
+  display: block;
+  width: 55px;
+  height: 40px;
+  background-image: url(55bd6e579eb9bf735412.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+plate:hover {
+  border-radius: 60px;
+  background-color: white;
+  box-shadow: inset 0 0 3px;
+}
+
+box {
+  display: flex;
+  width: 55px;
+  height: 40px;
+  border-radius: 60px;
+  background-image: url(cec02762902935410438.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+box:hover {
+  border-radius: 60px;
+  background-color: rgb(172, 95, 13);
+  box-shadow: inset 0 0 3px;
+}
+
+.default {
+  position: relative;
+  bottom: 0px;
+}
+
+.hide {
+  bottom: 500px;
+}
+
+.fancyClass{
+  font-size: medium;
+}
+
+.child {
+  font-size: medium;
+}
+
+apple {
+  grid-area: 1 / 1;
+  margin-top: 5px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
+  background-image: url(3ff2b8dc2b9c59ff8eab.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+apple:hover {
+  border-radius: 60px;
+  box-shadow: 0 0 2px 2px gray;
+}
+
+orange {
+  grid-area: 1 / 1;
+  margin-top: 5px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
+  background-image: url(67df267783dadca0b433.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+orange:hover {
+  border-radius: 60px;
+  box-shadow: 0 0 2px 2px gray;
+}
+
+lime {
+  grid-area: 1 / 1;
+  margin-top: 5px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
+  background-image: url(3d6fd772cb664405ba39.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+lime:hover {
+  border-radius: 60px;
+  box-shadow: 0 0 2px 2px gray;
+}
+
+.withChild {
+  display: grid;
+  position: relative;
+  flex-direction: column;
+}
+
+#fancyId {
+  justify-content: center;
+  align-items: center;
+}
+
+.strobe {
+  transform-origin: bottom;
+  animation: strobeStart .5s ease-out, strobe 1s infinite;
+  animation-delay: 0s, .5s;
+}
+
+.tooltip,
+.tooltip0,
+.tooltip1,
+.tooltip2,
+.tooltip3 {
+  position: relative;
+  grid-area: 1 / 1;
+}
+
+.tooltiptext,
+.tooltiptext0,
+.tooltiptext1,
+.tooltiptext2,
+.tooltiptext3 {
+  visibility: hidden;
+  width: 135px;
+  height: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -67px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.tooltiptext::after,
+.tooltiptext0::after,
+.tooltiptext1::after,
+.tooltiptext2::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip0:hover .tooltiptext0,
+.tooltip1:hover .tooltiptext1,
+.tooltip2:hover .tooltiptext2,
+.tooltip.hover .tooltiptext,
+.tooltip0.hover .tooltiptext0,
+.tooltip1.hover .tooltiptext1,
+.tooltip2.hover .tooltiptext2 {
+  display: block;
+  visibility: visible;
+}
+
+.container_HTML {
+  cursor: default;
+}
+.white_font:hover {
+  color:white;
+}
+
+
+@keyframes strobeStart {
+  0% {
+    transform: skew(0deg,0deg) scaleX(1);
+    animation-timing-function: ease-in;
+  }
+  40% {
+    transform: skew(0deg,0deg) scaleX(.9);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: skew(0deg,4deg) scaleY(1);
+  }
+}
+
+@keyframes strobe {
+  0% {
+    transform: skew(0deg,4deg) scaleY(1);
+  }
+  10% {
+    transform: skew(0deg,1deg) scaleX(.9);
+  }
+  50% {
+    transform: skew(0deg,-4deg) scaleY(1);
+  }
+  60% {
+    transform: skew(0deg,-1deg) scaleX(.9);
+  }
+  100% {
+    transform: skew(0deg,4deg) scaleY(1);
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.footer-year {
+  cursor: default;
+  color: gray;
+}
+
+.footer-github {
+  text-decoration: none;
+  color: gray;
+  transition: 0.25s;
+}
+
+.footer-github:hover, .footer-github:focus {
+  color: #69db7e;
+  box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+}
+
+.footer-rss-image {
+  height: 50px;
+  width: 100px;
+  background: url(2418248d4ccd4e7738a4.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  transition: 0.25s;
+}
+
+.footer-rss-image:hover, .footer-rss-image:focus {
+    filter: invert(3%) sepia(33%) saturate(1353%) hue-rotate(56deg) brightness(85%) contrast(103%);
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+}
+.dialog {
+  position: relative;
+  margin: 0 auto;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  width: 300px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.dialog::backdrop {
+  background: rgba(40, 38, 38, 0.7);
+}
+.global_wrapper {
+  display: grid;
+  grid-template-rows: 30px 1fr 1fr 90px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+  "header header header"
+  "game_header game_header game_level"
+  "game_editor game_HTML_Viewer game_level"
+  "footer footer footer";
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+  gap: 5px;
+  box-shadow: 0px 0px 0px 4px blue;
+  background-color: #2e2a23;
+}
+
+.global_header{
+  grid-area: header;
+  color: white;
+  margin: auto;
+}
+
+.game_header{
+  grid-area: game_header;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
+}
+
+.game_editor {
+  grid-area: game_editor;
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
+}
+
+.game_HTML_Viewer {
+  grid-area: game_HTML_Viewer;
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
+  color: burlywood;
+  cursor: default;
+  font-size: 12px;
+}
+
+.game_level {
+  grid-area: game_level;
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #221e18;
+}
+
+.global_footer{
+  grid-area: footer;
+}
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+button {
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button:hover:enabled {
+  background-color: rgb(65, 62, 62);
+}
