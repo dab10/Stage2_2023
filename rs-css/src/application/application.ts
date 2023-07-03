@@ -7,7 +7,6 @@ import { GameHTMLView } from './gameHTMLView';
 import { GameHeaderView } from './gameHeaderView';
 import { FooterView } from './footerView';
 import { ModalPage } from './modalPageView';
-import { initialState } from '../common/constants';
 
 import style from './application.css';
 

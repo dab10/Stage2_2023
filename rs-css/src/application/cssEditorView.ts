@@ -36,7 +36,7 @@ export class cssEditorView extends AnimatedControl {
     );
     hintButton.node.onclick = () => {
       const correctAnswer = gameData[state.data.currentLevel].answer;
-      let res: string;
+
       correctAnswer.split('').forEach((item, i) => {
         setTimeout(() => (inputFieldCSSEditor.node.value += item), i * 10);
         setTimeout(() => (inputButtonCSSEditor.node.disabled = false), correctAnswer.split('').length * 10);
