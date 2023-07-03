@@ -32,45 +32,32 @@ export class Application extends Control {
     const containerFooter = new FooterView(this.footer.node);
 
     this.model = new GameDataModel();
-    // console.log(state.data);
     this.model.loadJSON().then(() => {
       this.gameCycle();
     });
   }
 
   private gameCycle() {
-    // console.log('444', this.state.data);
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
-    // this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
 
     cssEditor.onGetValue = (value) => {
-      // console.log('111', this.state.data);
       const gameData = this.model.getCategoriesData();
       const answer = this.model.getCategoriesData()[this.state.data.currentLevel].answer;
-      // const enterAnswer = Array.from(document.querySelectorAll(`.table ${value}`));
-      // const rightAnswer = Array.from(document.querySelectorAll(`.table ${answer}`));
-      // console.log(enterAnswer, rightAnswer);
-      // const isLengthEqual = enterAnswer.length === rightAnswer.length;
-      // const isArraysEqual = enterAnswer.every((a, b) => a.innerHTML === rightAnswer[b].innerHTML);
 
       if (value === answer) {
-        // console.log('222', this.state.data);
         const state = this.state;
         if (!state.data.completeLevels.includes(state.data.currentLevel)) {
           state.data.completeLevels.push(state.data.currentLevel);
         }
 
-        // console.log(state.data.currentLevel);
-        // console.log(gameData.length);
         const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
         state.data = {
           ...state.data,
           currentLevel: level,
         };
-        // console.log('333', this.state.data);
         if (state.data.completeLevels.length === gameData.length) {
           gameHeaderField.animateRightQuestion().then(() => {
             levels.destroy();
@@ -112,7 +99,6 @@ export class Application extends Control {
       state.data.currentLevel = 0;
       state.data.completeLevels.length = 0;
       state.data.completeLevelsWithHints.length = 0;
-      // console.log(state.data);
       levels.destroy();
       cssEditor.destroy();
       gameHTMLViewerField.destroy();
@@ -121,31 +107,7 @@ export class Application extends Control {
     };
 
     cssEditor.onHelp = () => {
-      // levels.destroy();
-      // levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
       levels.buildLevels(this.model.getCategoriesData(), this.state);
-      // this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
   }
-
-  // private helpCycle(
-  //   levels: LevelsView,
-  //   cssEditor: cssEditorView,
-  //   gameHTMLViewerField: GameHTMLView,
-  //   gameHeaderField: GameHeaderView
-  // ) {}
-
-  // private compareNodes(node1: NodeListOf<Element>, node2: NodeListOf<Element>) {
-  //   function objectsEqual (o1, o2) {
-  //     return typeof o1 === 'object' && Object.keys(o1).length > 0
-  //       ? Object.keys(o1).length === Object.keys(o2).length && Object.keys(o1).every((p) => objectsEqual(o1[p], o2[p]))
-  //       : o1 === o2;
-  //   }
-
-  //   function arraysEqual(a1: NodeListOf<Element>, a2: NodeListOf<Element>) {
-  //     return a1.length === a2.length && a1.every((o, idx) => objectsEqual(o, a2[idx]));
-  //   }
-
-  //   arraysEqual(node1, node2);
-  // }
 }

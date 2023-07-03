@@ -13,8 +13,6 @@
   gap: 5px;
   box-shadow: 0px 0px 0px 4px blue;
   background-color: #2e2a23;
-  --game-header-color: #ccc;
-
 }
 
 .global_header{
@@ -49,7 +47,6 @@
   color: burlywood;
   cursor: default;
   font-size: 12px;
-  /* white-space: pre; */
 }
 
 .game_level {
