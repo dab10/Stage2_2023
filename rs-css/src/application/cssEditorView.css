@@ -13,3 +13,25 @@
 .help_button{
   width: 100px;
 }
+
+.input_field {
+  width: 170px;
+}
+
+.container_editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.like_button {
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.like_button:hover {
+  background-color: rgb(65, 62, 62);
+}

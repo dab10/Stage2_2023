@@ -10,20 +10,30 @@ export class cssEditorView extends AnimatedControl {
   onHelp!: () => void;
 
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
-    super(parentNode, 'div', { default: '', hidden: style['shake'] });
+    super(parentNode, 'div', { default: style['container_editor'], hidden: style['shake'] });
 
-    const formCSSEditor = new Control(this.node, 'form');
-    const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input');
+    const formCSSEditor = new Control(this.node, 'form', style['container_editor']);
+    const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input', style['input_field']);
     inputFieldCSSEditor.node.type = 'text';
-    const inputButtonCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input');
+    inputFieldCSSEditor.node.title = 'Enter answer';
+    const inputButtonCSSEditor = new Control<HTMLInputElement>(
+      formCSSEditor.node,
+      'input',
+      [style['like_button'], style['transition']].join(' ')
+    );
     inputButtonCSSEditor.node.type = 'submit';
-    inputButtonCSSEditor.node.value = 'enter';
+    inputButtonCSSEditor.node.value = 'Enter';
     formCSSEditor.node.onsubmit = (event) => {
       event.preventDefault();
       this.onGetValue(inputFieldCSSEditor.node.value);
     };
 
-    const hintButton = new Control<HTMLButtonElement>(this.node, 'button', style['help_button'], 'Help');
+    const hintButton = new Control<HTMLButtonElement>(
+      this.node,
+      'button',
+      [style['help_button'], style['transition']].join(' '),
+      'Help'
+    );
     hintButton.node.onclick = () => {
       const correctAnswer = gameData[state.data.currentLevel].answer;
       let res: string;
@@ -33,7 +43,9 @@ export class cssEditorView extends AnimatedControl {
       });
       hintButton.node.disabled = true;
       inputButtonCSSEditor.node.disabled = true;
-      state.data.completeLevelsWithHints.push(state.data.currentLevel);
+      if (!state.data.completeLevelsWithHints.includes(state.data.currentLevel)) {
+        state.data.completeLevelsWithHints.push(state.data.currentLevel);
+      }
       console.log(state.data);
       this.onHelp();
     };

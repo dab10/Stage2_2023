@@ -1,5 +1,7 @@
 .global_wrapper {
   display: grid;
+  grid-template-rows: 30px 1fr 1fr 90px;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
   "game_header game_header game_level"
@@ -7,46 +9,54 @@
   "footer footer footer";
   width: 100vw;
   height: 100vh;
-  gap: 10px;
+  padding: 5px;
+  gap: 5px;
   box-shadow: 0px 0px 0px 4px blue;
-  --header-color: #f00;
-  --footer-color: #ff0;
+  background-color: #2e2a23;
   --game-header-color: #ccc;
-  --game-editor-color: #cff;
-  --game-HTML-Viewer-color: #cc1;
-  --game-level-color: #cf0;
+
 }
 
 .global_header{
   grid-area: header;
-  height: 30px;
-  background-color: var(--header-color);
+  color: white;
+  margin: auto;
 }
 
 .game_header{
   grid-area: game_header;
-  background-color: var(--game-header-color);
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
 }
 
 .game_editor {
   grid-area: game_editor;
-  background-color: var(--game-editor-color);
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
 }
 
 .game_HTML_Viewer {
   grid-area: game_HTML_Viewer;
-  background-color: var(--game-HTML-Viewer-color);
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #555353;
+  color: burlywood;
   cursor: default;
   /* white-space: pre; */
 }
 
 .game_level {
   grid-area: game_level;
-  background-color: var(--game-level-color);
+  padding: 5px;
+  border-radius: 10px;
+  border: solid 2px brown;
+  background-color: #221e18;
 }
 
 .global_footer{
   grid-area: footer;
-  background-color: var(--footer-color);
-  height: 30px;
 }

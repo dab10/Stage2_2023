@@ -13,7 +13,7 @@ export class GameHeaderView extends Control {
     super(parentNode);
     this.el = [];
 
-    console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n').slice(1, -1));
+    // console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n').slice(1, -1));
     // gameData[state.data.currentLevel].HTMLDom.forEach((item) => {
     //   const el = new Control(this.node, this.findElName(item), this.findSelector(item))
     // })

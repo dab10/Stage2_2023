@@ -24,7 +24,6 @@ export class GameDataModel {
 
   public async loadJSON() {
     this.data = await this.loadData(gameData);
-    console.log(this.data);
     return this;
   }
 

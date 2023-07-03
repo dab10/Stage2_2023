@@ -6,6 +6,7 @@ import { cssEditorView } from './cssEditorView';
 import { GameHTMLView } from './gameHTMLView';
 import { GameHeaderView } from './gameHeaderView';
 import { FooterView } from './footerView';
+import { ModalPage } from './modalPageView';
 import { initialState } from '../common/constants';
 
 import style from './application.css';
@@ -22,7 +23,7 @@ export class Application extends Control {
   constructor(parentNode: HTMLElement, protected state: GameState) {
     super(parentNode, 'div', style['global_wrapper']);
 
-    this.header = new Control(this.node, 'div', style['global_header']);
+    this.header = new Control(this.node, 'div', style['global_header'], 'RS Selectors');
     this.gameHeader = new Control(this.node, 'div', style['game_header']);
     this.gameEditor = new Control(this.node, 'div', style['game_editor']);
     this.gameHTMLViewer = new Control(this.node, 'div', style['game_HTML_Viewer']);
@@ -38,14 +39,16 @@ export class Application extends Control {
   }
 
   private gameCycle() {
+    console.log('444', this.state.data);
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
-    this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+    // this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
 
     cssEditor.onGetValue = (value) => {
-      console.log(value);
+      console.log('111', this.state.data);
+      const gameData = this.model.getCategoriesData();
       const answer = this.model.getCategoriesData()[this.state.data.currentLevel].answer;
       // const enterAnswer = Array.from(document.querySelectorAll(`.table ${value}`));
       // const rightAnswer = Array.from(document.querySelectorAll(`.table ${answer}`));
@@ -54,16 +57,38 @@ export class Application extends Control {
       // const isArraysEqual = enterAnswer.every((a, b) => a.innerHTML === rightAnswer[b].innerHTML);
 
       if (value === answer) {
+        console.log('222', this.state.data);
         const state = this.state;
-        state.data.completeLevels.push(state.data.currentLevel);
-        state.data = { ...state.data, currentLevel: state.data.currentLevel + 1 };
-        gameHeaderField.animateRightQuestion().then(() => {
-          levels.destroy();
-          cssEditor.destroy();
-          gameHTMLViewerField.destroy();
-          gameHeaderField.destroy();
-          this.gameCycle();
-        });
+        if (!state.data.completeLevels.includes(state.data.currentLevel)) {
+          state.data.completeLevels.push(state.data.currentLevel);
+        }
+
+        console.log(state.data.currentLevel);
+        console.log(gameData.length);
+        const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
+        state.data = {
+          ...state.data,
+          currentLevel: level,
+        };
+        console.log('333', this.state.data);
+        if (state.data.completeLevels.length === gameData.length) {
+          gameHeaderField.animateRightQuestion().then(() => {
+            levels.destroy();
+            cssEditor.destroy();
+            gameHTMLViewerField.destroy();
+            gameHeaderField.destroy();
+            new ModalPage(this.node);
+            this.gameCycle();
+          });
+        } else {
+          gameHeaderField.animateRightQuestion().then(() => {
+            levels.destroy();
+            cssEditor.destroy();
+            gameHTMLViewerField.destroy();
+            gameHeaderField.destroy();
+            this.gameCycle();
+          });
+        }
       } else {
         cssEditor.removeAnimation();
         gameHTMLViewerField.removeAnimation();
@@ -71,14 +96,7 @@ export class Application extends Control {
         gameHTMLViewerField.animateOut();
       }
     };
-  }
 
-  private helpCycle(
-    levels: LevelsView,
-    cssEditor: cssEditorView,
-    gameHTMLViewerField: GameHTMLView,
-    gameHeaderField: GameHeaderView
-  ) {
     levels.onChooseLevel = (levelNumber: number) => {
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
@@ -103,11 +121,19 @@ export class Application extends Control {
     };
 
     cssEditor.onHelp = () => {
-      levels.destroy();
-      levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-      this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+      // levels.destroy();
+      // levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
+      levels.buildLevels(this.model.getCategoriesData(), this.state);
+      // this.helpCycle(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
   }
+
+  // private helpCycle(
+  //   levels: LevelsView,
+  //   cssEditor: cssEditorView,
+  //   gameHTMLViewerField: GameHTMLView,
+  //   gameHeaderField: GameHeaderView
+  // ) {}
 
   // private compareNodes(node1: NodeListOf<Element>, node2: NodeListOf<Element>) {
   //   function objectsEqual (o1, o2) {

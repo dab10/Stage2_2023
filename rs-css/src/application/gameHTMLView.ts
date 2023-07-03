@@ -22,7 +22,7 @@ export class GameHTMLView extends AnimatedControl {
 
     elTableStart.node.id = 'editor';
 
-    console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n'));
+    // console.log(gameData[state.data.currentLevel].HTMLCode.split('\r\n'));
 
     gameData[state.data.currentLevel].HTMLCode.split('\r\n')
       .slice(1, -1)
