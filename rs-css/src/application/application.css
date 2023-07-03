@@ -25,6 +25,8 @@
 
 .game_header{
   grid-area: game_header;
+  display: flex;
+  justify-content: center;
   border-radius: 10px;
   border: solid 2px brown;
   background-color: #555353;
