@@ -13,3 +13,5 @@ export const footerStart = `
     <div class="footer-rss-image"></div>
 </a>
 `;
+
+export const FIRST_LEVEL = 0;

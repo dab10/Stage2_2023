@@ -9,6 +9,7 @@ import { FooterView } from './footerView';
 import { ModalPage } from './modalPageView';
 
 import style from './application.css';
+import { FIRST_LEVEL } from '../common/constants';
 
 export class Application extends Control {
   header: Control<HTMLElement>;
@@ -56,11 +57,13 @@ export class Application extends Control {
       }
 
       const state = this.state;
-      if (!state.data.completeLevels.includes(state.data.currentLevel)) {
+      const isNewLevelCompleted = !state.data.completeLevels.includes(state.data.currentLevel);
+      if (isNewLevelCompleted) {
         state.data.completeLevels.push(state.data.currentLevel);
       }
 
-      const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
+      const isLastLevel = state.data.currentLevel + 1 >= gameData.length;
+      const level = isLastLevel ? FIRST_LEVEL : state.data.currentLevel + 1;
       state.data = {
         ...state.data,
         currentLevel: level,
