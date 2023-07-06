@@ -2,17 +2,17 @@ import gameData from '../assets/json/gameData.json';
 
 export interface GameData {
   levelNumber: number;
-  HTMLCode: string;
-  HTMLDom: HTMLDom[];
+  htmlCode: string;
+  htmlDom: HtmlDom[];
   answer: string;
 }
 
-export interface HTMLDom {
+export interface HtmlDom {
   tagName: string;
   className?: string;
   classNameAnimation?: string;
   id?: string;
-  child?: HTMLDom[];
+  child?: HtmlDom[];
 }
 
 export class GameDataModel {

@@ -1,8 +1,8 @@
 [
   {
     "levelNumber": "1",
-    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box />\r\n  <plate />\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <box />\r\n  <box />\r\n  <plate />\r\n</div>",
+    "htmlDom": [
       
       {
         "tagName": "box",
@@ -20,8 +20,8 @@
   },
   {
     "levelNumber": "2",
-    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box class=\"targetBox\" />\r\n  <plate />\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <box />\r\n  <box class=\"targetBox\" />\r\n  <plate />\r\n</div>",
+    "htmlDom": [
       
       {
         "tagName": "box"
@@ -39,8 +39,8 @@
   },
   {
     "levelNumber": "3",
-    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <lime class=\"targetLime\" />\r\n  </box>\r\n  <plate />\r\n    <lime />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <lime class=\"targetLime\" />\r\n  </box>\r\n  <plate />\r\n    <lime />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       
       {
         "tagName": "box"
@@ -76,8 +76,8 @@
   },
   {
     "levelNumber": "4",
-    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <apple id=\"targetApple\" />\r\n  </box>\r\n  <plate />\r\n    <apple />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <box />\r\n  <box>\r\n    <apple id=\"targetApple\" />\r\n  </box>\r\n  <plate />\r\n    <apple />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       
       {
         "tagName": "box"
@@ -113,8 +113,8 @@
   },
   {
     "levelNumber": "5",
-    "HTMLCode": "<div class=\"table\">\r\n  <box />\r\n  <plate>\r\n    <apple>\r\n  </plate>\r\n  <box />\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <box />\r\n  <plate>\r\n    <apple>\r\n  </plate>\r\n  <box />\r\n</div>",
+    "htmlDom": [
       
       {
         "tagName": "box"
@@ -141,8 +141,8 @@
   },
   {
     "levelNumber": "6",
-    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <plate>\r\n    <lime />\r\n  </plate>\r\n  <plate />\r\n  <plate />\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <plate>\r\n    <lime />\r\n  </plate>\r\n  <plate />\r\n  <plate />\r\n</div>",
+    "htmlDom": [
       {
         "tagName": "plate",
         "classNameAnimation": "strobe"
@@ -173,8 +173,8 @@
   },
   {
     "levelNumber": "7",
-    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <orange />\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate />\r\n  <orange />\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       {
         "tagName": "plate"
       },
@@ -203,8 +203,8 @@
   },
   {
     "levelNumber": "8",
-    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box />\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box />\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       {
         "tagName": "plate"
       },
@@ -235,8 +235,8 @@
   },
   {
     "levelNumber": "9",
-    "HTMLCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box id=\"target\"/>\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <plate />\r\n  <plate class=\"target\" />\r\n  <box id=\"target\"/>\r\n  <plate>\r\n    <orange class=\"target\" />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       {
         "tagName": "plate"
       },
@@ -266,8 +266,8 @@
   },
   {
     "levelNumber": "10",
-    "HTMLCode": "<div class=\"table\">\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n  <box>\r\n    <orange />\r\n  </box>\r\n  <box>\r\n    <lime />\r\n  </box>\r\n  <plate>\r\n    <apple />\r\n  </plate>\r\n</div>",
-    "HTMLDom": [
+    "htmlCode": "<div class=\"table\">\r\n  <plate>\r\n    <orange />\r\n  </plate>\r\n  <box>\r\n    <orange />\r\n  </box>\r\n  <box>\r\n    <lime />\r\n  </box>\r\n  <plate>\r\n    <apple />\r\n  </plate>\r\n</div>",
+    "htmlDom": [
       {
         "tagName": "div",
         "className": "withChild",

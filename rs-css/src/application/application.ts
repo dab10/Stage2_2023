@@ -3,7 +3,7 @@ import { LevelsView } from './levelsView';
 import { GameDataModel } from './gameDataModel';
 import { GameState } from './gameState';
 import { CssEditorView } from './cssEditorView';
-import { GameHTMLView } from './gameHTMLView';
+import { GameHtmlView } from './gameHtmlView';
 import { GameHeaderView } from './gameHeaderView';
 import { FooterView } from './footerView';
 import { ModalPage } from './modalPageView';
@@ -16,7 +16,7 @@ export class Application extends Control {
   footer!: Control<HTMLElement>;
   gameHeader: Control<HTMLElement>;
   gameEditor: Control<HTMLElement>;
-  gameHTMLViewer: Control<HTMLElement>;
+  gameHtmlViewer: Control<HTMLElement>;
   gameLevel: Control<HTMLElement>;
   model: GameDataModel;
 
@@ -26,7 +26,7 @@ export class Application extends Control {
     this.header = new Control(this.node, 'div', style['global-header'], 'RS Selectors');
     this.gameHeader = new Control(this.node, 'div', style['game-header']);
     this.gameEditor = new Control(this.node, 'div', style['game-editor']);
-    this.gameHTMLViewer = new Control(this.node, 'div', style['game-HTML-Viewer']);
+    this.gameHtmlViewer = new Control(this.node, 'div', style['game-html-viewer']);
     this.gameLevel = new Control(this.node, 'div', style['game-level']);
     this.footer = new Control(this.node, 'div', style['global-footer']);
     const containerFooter = new FooterView(this.footer.node);
@@ -39,7 +39,7 @@ export class Application extends Control {
 
   private gameCycle() {
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
-    const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
+    const gameHtmlViewerField = new GameHtmlView(this.gameHtmlViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
     const cssEditor = new CssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
 
@@ -50,9 +50,9 @@ export class Application extends Control {
 
       if (!isCorrectAnswer) {
         cssEditor.removeAnimation();
-        gameHTMLViewerField.removeAnimation();
+        gameHtmlViewerField.removeAnimation();
         cssEditor.animateOut();
-        gameHTMLViewerField.animateOut();
+        gameHtmlViewerField.animateOut();
         return;
       }
 
@@ -73,13 +73,13 @@ export class Application extends Control {
 
       if (!isAllLevelsComplete) {
         gameHeaderField.animateRightQuestion().then(() => {
-          this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+          this.destroyAppComponents(levels, cssEditor, gameHtmlViewerField, gameHeaderField);
         });
         return;
       }
 
       gameHeaderField.animateRightQuestion().then(() => {
-        this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+        this.destroyAppComponents(levels, cssEditor, gameHtmlViewerField, gameHeaderField);
         new ModalPage(this.node);
       });
     };
@@ -87,7 +87,7 @@ export class Application extends Control {
     levels.onChooseLevel = (levelNumber) => {
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
-      this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+      this.destroyAppComponents(levels, cssEditor, gameHtmlViewerField, gameHeaderField);
     };
 
     levels.onResetLevel = () => {
@@ -95,7 +95,7 @@ export class Application extends Control {
       state.data.currentLevel = FIRST_LEVEL;
       state.data.completeLevels = [];
       state.data.completeLevelsWithHints = [];
-      this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
+      this.destroyAppComponents(levels, cssEditor, gameHtmlViewerField, gameHeaderField);
     };
 
     cssEditor.onHelp = () => {
@@ -106,12 +106,12 @@ export class Application extends Control {
   private destroyAppComponents(
     levels: LevelsView,
     cssEditor: CssEditorView,
-    gameHTMLViewerField: GameHTMLView,
+    gameHtmlViewerField: GameHtmlView,
     gameHeaderField: GameHeaderView
   ) {
     levels.destroy();
     cssEditor.destroy();
-    gameHTMLViewerField.destroy();
+    gameHtmlViewerField.destroy();
     gameHeaderField.destroy();
     this.gameCycle();
   }

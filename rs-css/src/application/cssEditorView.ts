@@ -13,20 +13,20 @@ export class CssEditorView extends AnimatedControl {
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode, 'div', { default: style['container-editor'], hidden: style['shake'] });
 
-    const formCSSEditor = new Control(this.node, 'form', style['container-editor']);
-    const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input', style['input-field']);
-    inputFieldCSSEditor.node.type = 'text';
-    inputFieldCSSEditor.node.title = 'Enter answer';
-    const inputButtonCSSEditor = new Control<HTMLInputElement>(
-      formCSSEditor.node,
+    const formCssEditor = new Control(this.node, 'form', style['container-editor']);
+    const inputFieldCssEditor = new Control<HTMLInputElement>(formCssEditor.node, 'input', style['input-field']);
+    inputFieldCssEditor.node.type = 'text';
+    inputFieldCssEditor.node.title = 'Enter answer';
+    const inputButtonCssEditor = new Control<HTMLInputElement>(
+      formCssEditor.node,
       'input',
       [style['like-button'], style['transition']].join(' ')
     );
-    inputButtonCSSEditor.node.type = 'submit';
-    inputButtonCSSEditor.node.value = 'Enter';
-    formCSSEditor.node.onsubmit = (event) => {
+    inputButtonCssEditor.node.type = 'submit';
+    inputButtonCssEditor.node.value = 'Enter';
+    formCssEditor.node.onsubmit = (event) => {
       event.preventDefault();
-      this.onGetValue(inputFieldCSSEditor.node.value);
+      this.onGetValue(inputFieldCssEditor.node.value);
     };
 
     const hintButton = new Control<HTMLButtonElement>(
@@ -39,14 +39,14 @@ export class CssEditorView extends AnimatedControl {
       const correctAnswer = gameData[state.data.currentLevel].answer;
 
       correctAnswer.split('').forEach((item, i) => {
-        setTimeout(() => (inputFieldCSSEditor.node.value += item), i * TEXT_APPEARANCE_TIME);
+        setTimeout(() => (inputFieldCssEditor.node.value += item), i * TEXT_APPEARANCE_TIME);
         setTimeout(
-          () => (inputButtonCSSEditor.node.disabled = false),
+          () => (inputButtonCssEditor.node.disabled = false),
           correctAnswer.split('').length * TEXT_APPEARANCE_TIME
         );
       });
       hintButton.node.disabled = true;
-      inputButtonCSSEditor.node.disabled = true;
+      inputButtonCssEditor.node.disabled = true;
       const isLevelCompleteWithHint = !state.data.completeLevelsWithHints.includes(state.data.currentLevel);
       if (isLevelCompleteWithHint) {
         state.data.completeLevelsWithHints.push(state.data.currentLevel);

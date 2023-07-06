@@ -1,6 +1,6 @@
 import { AnimatedControl } from '../common/animatedControl';
 import Control from '../common/control';
-import { GameData, HTMLDom } from './gameDataModel';
+import { GameData, HtmlDom } from './gameDataModel';
 import { GameState } from './gameState';
 
 import style from './gameHeaderView.css';
@@ -15,10 +15,10 @@ export class GameHeaderView extends Control {
 
     const elTable = new Control(this.node, 'div', 'table');
     const i = 0;
-    this.buildDom(gameData[state.data.currentLevel].HTMLDom, elTable.node, i);
+    this.buildDom(gameData[state.data.currentLevel].htmlDom, elTable.node, i);
   }
 
-  private buildDom(arr: HTMLDom[], parentNode: HTMLElement, i: number) {
+  private buildDom(arr: HtmlDom[], parentNode: HTMLElement, i: number) {
     if (!arr) {
       return;
     }

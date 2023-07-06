@@ -5,7 +5,7 @@
   grid-template-areas: 
   "header header header"
   "game-header game-header game-level"
-  "game-editor game-HTML-Viewer game-level"
+  "game-editor game-html-viewer game-level"
   "footer footer footer";
   width: 100vw;
   height: 100vh;
@@ -38,8 +38,8 @@
   background-color: #555353;
 }
 
-.game-HTML-Viewer {
-  grid-area: game-HTML-Viewer;
+.game-html-viewer {
+  grid-area: game-html-viewer;
   padding: 5px;
   border-radius: 10px;
   border: solid 2px brown;
