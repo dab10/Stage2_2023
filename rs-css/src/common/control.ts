@@ -2,13 +2,13 @@ class Control<NodeType extends HTMLElement = HTMLElement> {
   public node: NodeType;
 
   constructor(parentNode: HTMLElement | null, tagName = 'div', className = '', content = '') {
-    const el = document.createElement(tagName);
-    el.className = className;
-    el.textContent = content;
+    const element = document.createElement(tagName);
+    element.className = className;
+    element.textContent = content;
     if (parentNode) {
-      parentNode.append(el);
+      parentNode.append(element);
     }
-    this.node = el as NodeType;
+    this.node = element as NodeType;
   }
 
   destroy(): void {
