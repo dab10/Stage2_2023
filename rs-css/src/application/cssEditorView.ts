@@ -2,9 +2,9 @@ import Control from '../common/control';
 import { GameData } from './gameDataModel';
 import { GameState } from './gameState';
 import { AnimatedControl } from '../common/animatedControl';
+import { TEXT_APPEARANCE_TIME } from '../common/constants';
 
 import style from './cssEditorView.css';
-import { TEXT_APPEARANCE_TIME } from '../common/constants';
 
 export class CssEditorView extends AnimatedControl {
   onGetValue!: (value: string) => void;

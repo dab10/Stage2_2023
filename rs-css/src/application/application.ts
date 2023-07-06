@@ -7,9 +7,9 @@ import { GameHtmlView } from './gameHtmlView';
 import { GameHeaderView } from './gameHeaderView';
 import { FooterView } from './footerView';
 import { ModalPage } from './modalPageView';
+import { FIRST_LEVEL } from '../common/constants';
 
 import style from './application.css';
-import { FIRST_LEVEL } from '../common/constants';
 
 export class Application extends Control {
   header: Control<HTMLElement>;
