@@ -1,5 +1,7 @@
+export const FIRST_LEVEL = 0;
+
 export const initialState = {
-  currentLevel: 0,
+  currentLevel: FIRST_LEVEL,
   completeLevels: [],
   completeLevelsWithHints: [],
 };
@@ -13,5 +15,3 @@ export const footerStart = `
     <div class="footer-rss-image"></div>
 </a>
 `;
-
-export const FIRST_LEVEL = 0;

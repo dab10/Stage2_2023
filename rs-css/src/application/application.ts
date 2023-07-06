@@ -84,7 +84,7 @@ export class Application extends Control {
       });
     };
 
-    levels.onChooseLevel = (levelNumber: number) => {
+    levels.onChooseLevel = (levelNumber) => {
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
       this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
@@ -92,9 +92,9 @@ export class Application extends Control {
 
     levels.onResetLevel = () => {
       const state = this.state;
-      state.data.currentLevel = 0;
-      state.data.completeLevels.length = 0;
-      state.data.completeLevelsWithHints.length = 0;
+      state.data.currentLevel = FIRST_LEVEL;
+      state.data.completeLevels = [];
+      state.data.completeLevelsWithHints = [];
       this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
 
