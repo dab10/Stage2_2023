@@ -45,42 +45,48 @@ export class Application extends Control {
     cssEditor.onGetValue = (value) => {
       const gameData = this.model.getCategoriesData();
       const answer = this.model.getCategoriesData()[this.state.data.currentLevel].answer;
+      const isCorrectAnswer = value === answer;
 
-      if (value === answer) {
-        const state = this.state;
-        if (!state.data.completeLevels.includes(state.data.currentLevel)) {
-          state.data.completeLevels.push(state.data.currentLevel);
-        }
-
-        const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
-        state.data = {
-          ...state.data,
-          currentLevel: level,
-        };
-        if (state.data.completeLevels.length === gameData.length) {
-          gameHeaderField.animateRightQuestion().then(() => {
-            levels.destroy();
-            cssEditor.destroy();
-            gameHTMLViewerField.destroy();
-            gameHeaderField.destroy();
-            new ModalPage(this.node);
-            this.gameCycle();
-          });
-        } else {
-          gameHeaderField.animateRightQuestion().then(() => {
-            levels.destroy();
-            cssEditor.destroy();
-            gameHTMLViewerField.destroy();
-            gameHeaderField.destroy();
-            this.gameCycle();
-          });
-        }
-      } else {
+      if (!isCorrectAnswer) {
         cssEditor.removeAnimation();
         gameHTMLViewerField.removeAnimation();
         cssEditor.animateOut();
         gameHTMLViewerField.animateOut();
+        return;
       }
+
+      const state = this.state;
+      if (!state.data.completeLevels.includes(state.data.currentLevel)) {
+        state.data.completeLevels.push(state.data.currentLevel);
+      }
+
+      const level = state.data.currentLevel + 1 >= gameData.length ? 0 : state.data.currentLevel + 1;
+      state.data = {
+        ...state.data,
+        currentLevel: level,
+      };
+
+      const isAllLevelsComplete = state.data.completeLevels.length === gameData.length;
+
+      if (!isAllLevelsComplete) {
+        gameHeaderField.animateRightQuestion().then(() => {
+          levels.destroy();
+          cssEditor.destroy();
+          gameHTMLViewerField.destroy();
+          gameHeaderField.destroy();
+          this.gameCycle();
+        });
+        return;
+      }
+
+      gameHeaderField.animateRightQuestion().then(() => {
+        levels.destroy();
+        cssEditor.destroy();
+        gameHTMLViewerField.destroy();
+        gameHeaderField.destroy();
+        new ModalPage(this.node);
+        this.gameCycle();
+      });
     };
 
     levels.onChooseLevel = (levelNumber: number) => {
