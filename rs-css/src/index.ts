@@ -1,7 +1,7 @@
 import { Application } from './application/application';
 import { GameState } from './application/gameState';
 import { InitialData } from './common/initialData';
-import { initialState } from './common/constants';
+import { INITIAL_STATE } from './common/constants';
 
 import './style.css';
 
@@ -9,7 +9,7 @@ let data: InitialData;
 try {
   data = InitialData.load();
 } catch (e) {
-  data = new InitialData(initialState);
+  data = new InitialData(INITIAL_STATE);
 }
 
 const state = new GameState(data);

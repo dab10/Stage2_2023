@@ -1,5 +1,5 @@
 import { GameDataState } from '../application/gameState';
-import { initialState } from './constants';
+import { INITIAL_STATE } from './constants';
 
 export class InitialData {
   currentLevel: number;
@@ -17,7 +17,7 @@ export class InitialData {
     if (loaded) {
       return new InitialData(JSON.parse(loaded));
     } else {
-      return new InitialData(initialState);
+      return new InitialData(INITIAL_STATE);
     }
   }
 

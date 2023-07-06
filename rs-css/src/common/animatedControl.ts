@@ -26,7 +26,9 @@ export class AnimatedControl extends Control {
           }
           this.node.classList.add(this.styles.hidden);
           this.node.ontransitionend = (e) => {
-            if (e.target !== this.node) return;
+            if (e.target !== this.node) {
+              return;
+            }
             this.node.ontransitionend = null;
             resolve(null);
           };
