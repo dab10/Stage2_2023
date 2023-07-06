@@ -4,6 +4,7 @@ import { GameState } from './gameState';
 import { AnimatedControl } from '../common/animatedControl';
 
 import style from './cssEditorView.css';
+import { TEXT_APPEARANCE_TIME } from '../common/constants';
 
 export class CssEditorView extends AnimatedControl {
   onGetValue!: (value: string) => void;
@@ -38,12 +39,16 @@ export class CssEditorView extends AnimatedControl {
       const correctAnswer = gameData[state.data.currentLevel].answer;
 
       correctAnswer.split('').forEach((item, i) => {
-        setTimeout(() => (inputFieldCSSEditor.node.value += item), i * 10);
-        setTimeout(() => (inputButtonCSSEditor.node.disabled = false), correctAnswer.split('').length * 10);
+        setTimeout(() => (inputFieldCSSEditor.node.value += item), i * TEXT_APPEARANCE_TIME);
+        setTimeout(
+          () => (inputButtonCSSEditor.node.disabled = false),
+          correctAnswer.split('').length * TEXT_APPEARANCE_TIME
+        );
       });
       hintButton.node.disabled = true;
       inputButtonCSSEditor.node.disabled = true;
-      if (!state.data.completeLevelsWithHints.includes(state.data.currentLevel)) {
+      const isLevelCompleteWithHint = !state.data.completeLevelsWithHints.includes(state.data.currentLevel);
+      if (isLevelCompleteWithHint) {
         state.data.completeLevelsWithHints.push(state.data.currentLevel);
       }
       this.onHelp();

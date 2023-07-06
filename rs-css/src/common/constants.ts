@@ -1,5 +1,7 @@
 export const FIRST_LEVEL = 0;
 
+export const TEXT_APPEARANCE_TIME = 10;
+
 export const initialState = {
   currentLevel: FIRST_LEVEL,
   completeLevels: [],
