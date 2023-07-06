@@ -23,10 +23,10 @@ export class GameHtmlView extends AnimatedControl {
       .split('\r\n')
       .slice(1, -1)
       .forEach((item) => {
-        const element = new Control(gameHtmlViewField.node, 'div', 'white-font', item);
+        new Control(gameHtmlViewField.node, 'div', 'white-font', item);
       });
 
-    const elementTableEnd = new Control(
+    new Control(
       gameHtmlViewField.node,
       'div',
       '',

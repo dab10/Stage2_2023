@@ -29,7 +29,7 @@ export class Application extends Control {
     this.gameHtmlViewer = new Control(this.node, 'div', style['game-html-viewer']);
     this.gameLevel = new Control(this.node, 'div', style['game-level']);
     this.footer = new Control(this.node, 'div', style['global-footer']);
-    const containerFooter = new FooterView(this.footer.node);
+    new FooterView(this.footer.node);
 
     this.model = new GameDataModel();
     this.model.loadJSON().then(() => {

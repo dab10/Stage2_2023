@@ -42,7 +42,7 @@ export class GameHeaderView extends Control {
 
         const className = item.className ? ` class="${item.className}"` : '';
         const idName = item.id ? ` id="${item.id}"` : '';
-        const tooltip = new Control(
+        new Control(
           element.node,
           'span',
           style['tooltiptext'],
@@ -61,10 +61,9 @@ export class GameHeaderView extends Control {
       el.node.id = item.id ? item.id : '';
       const className = item.className ? ` class="${item.className}"` : '';
       const idName = item.id ? ` id="${item.id}"` : '';
-      const isElementHasChild = el.node.classList.contains('withChild');
 
       if (!item.child) {
-        const tooltip = new Control(
+        new Control(
           el.node,
           'span',
           [style['child'], style[`tooltiptext${currentNestLevel}`]].join(' '),

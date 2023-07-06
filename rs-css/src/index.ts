@@ -14,7 +14,7 @@ try {
 
 const state = new GameState(data);
 
-const app = new Application(document.body, state);
+new Application(document.body, state);
 
 window.onbeforeunload = () => {
   new InitialData(state.data).save();

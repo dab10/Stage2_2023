@@ -15,7 +15,7 @@ export class LevelsView extends Control {
 
   buildLevels(gameData: GameData[], state: GameState): void {
     this.node.innerHTML = '';
-    const chooseLevelButton = gameData.map((item, i) => {
+    gameData.map((item, i) => {
       const completeLevelSymbolStyle = state.data.completeLevels.includes(i)
         ? [style['complete-level-symbol'], style['complete-level']].join(' ')
         : style['complete-level-symbol'];
