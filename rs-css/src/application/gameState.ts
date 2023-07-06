@@ -6,6 +6,7 @@ export interface GameDataState {
 
 export class GameState {
   private _data: GameDataState;
+
   get data() {
     return this._data;
   }

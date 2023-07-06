@@ -5,6 +5,7 @@ import style from './modalPageView.css';
 export class ModalPage extends Control {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div');
+
     const modalPage = new Control<HTMLDialogElement>(
       this.node,
       'dialog',
