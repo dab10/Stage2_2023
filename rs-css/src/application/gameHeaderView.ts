@@ -7,7 +7,7 @@ import { START_NEST_LEVEL } from '../common/constants';
 import style from './gameHeaderView.css';
 
 export class GameHeaderView extends Control {
-  element: Array<AnimatedControl>;
+  element: AnimatedControl[];
   onmouseover!: () => void;
   onmouseout!: () => void;
 

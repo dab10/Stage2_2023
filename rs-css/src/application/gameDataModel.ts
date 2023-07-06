@@ -16,7 +16,7 @@ export interface HtmlDom {
 }
 
 export class GameDataModel {
-  data: Array<GameData>;
+  data: GameData[];
 
   constructor() {
     this.data = [];
@@ -27,7 +27,7 @@ export class GameDataModel {
     return this;
   }
 
-  private loadData(url: string): Promise<Array<GameData>> {
+  private loadData(url: string): Promise<GameData[]> {
     return fetch(url)
       .then((res) => res.json())
       .then((res) => {

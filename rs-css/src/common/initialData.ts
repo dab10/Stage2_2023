@@ -3,8 +3,8 @@ import { INITIAL_STATE } from './constants';
 
 export class InitialData {
   currentLevel: number;
-  completeLevels: Array<number>;
-  completeLevelsWithHints: Array<number>;
+  completeLevels: number[];
+  completeLevelsWithHints: number[];
 
   constructor(data: GameDataState) {
     this.currentLevel = data.currentLevel;

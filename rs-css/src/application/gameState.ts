@@ -1,7 +1,7 @@
 export interface GameDataState {
   currentLevel: number;
-  completeLevels: Array<number>;
-  completeLevelsWithHints: Array<number>;
+  completeLevels: number[];
+  completeLevelsWithHints: number[];
 }
 
 export class GameState {
