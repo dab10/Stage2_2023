@@ -19,3 +19,5 @@ export const FOOTER_START = `
     <div class="footer-rss-image"></div>
 </a>
 `;
+
+export const LOCAL_STORAGE_KEY = 'savedState';

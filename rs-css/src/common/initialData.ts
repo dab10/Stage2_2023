@@ -1,5 +1,5 @@
 import { GameDataState } from '../application/gameState';
-import { INITIAL_STATE } from './constants';
+import { INITIAL_STATE, LOCAL_STORAGE_KEY } from './constants';
 
 export class InitialData {
   currentLevel: number;
@@ -13,7 +13,7 @@ export class InitialData {
   }
 
   static load(): InitialData {
-    const savedState = localStorage.getItem('savedState');
+    const savedState = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (!savedState) {
       return new InitialData(INITIAL_STATE);
     }
@@ -22,6 +22,6 @@ export class InitialData {
   }
 
   save(): void {
-    localStorage.setItem('savedState', JSON.stringify(this));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this));
   }
 }

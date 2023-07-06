@@ -8,7 +8,7 @@ import './style.css';
 let data: InitialData;
 try {
   data = InitialData.load();
-} catch (e) {
+} catch {
   data = new InitialData(INITIAL_STATE);
 }
 
