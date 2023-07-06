@@ -6,16 +6,18 @@ import { GameState } from './gameState';
 import style from './gameHeaderView.css';
 
 export class GameHeaderView extends Control {
-  el: Array<AnimatedControl>;
+  element: Array<AnimatedControl>;
   onmouseover!: () => void;
   onmouseout!: () => void;
+
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
     super(parentNode);
-    this.el = [];
 
-    const elTable = new Control(this.node, 'div', 'table');
+    this.element = [];
+
+    const elementTable = new Control(this.node, 'div', 'table');
     const i = 0;
-    this.buildDom(gameData[state.data.currentLevel].htmlDom, elTable.node, i);
+    this.buildDom(gameData[state.data.currentLevel].htmlDom, elementTable.node, i);
   }
 
   private buildDom(arr: HtmlDom[], parentNode: HTMLElement, i: number) {
@@ -35,7 +37,7 @@ export class GameHeaderView extends Control {
           hidden: style['hide'],
         });
         el.node.id = item.id ? item.id : '';
-        this.el.push(el);
+        this.element.push(el);
 
         const className = item.className ? ` class="${item.className}"` : '';
         const idName = item.id ? ` id="${item.id}"` : '';
@@ -71,6 +73,6 @@ export class GameHeaderView extends Control {
   }
 
   animateRightQuestion() {
-    return Promise.all(this.el.map((item) => item.animateOut()));
+    return Promise.all(this.element.map((item) => item.animateOut()));
   }
 }
