@@ -1,7 +1,7 @@
 .footer {
   display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -28,7 +28,7 @@
   background: url("../assets/img/rss.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size: contain;
   transition: 0.25s;
 }
 
