@@ -10,15 +10,15 @@
   100% { transform: translateX(0) }
  }
 
-.help_button{
+.help-button{
   width: 100px;
 }
 
-.input_field {
+.input-field {
   width: 100px;
 }
 
-.container_editor {
+.container-editor {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,12 +26,12 @@
   gap: 10px;
 }
 
-.like_button {
+.like-button {
   background-color: white;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
-.like_button:hover {
+.like-button:hover {
   background-color: rgb(65, 62, 62);
 }

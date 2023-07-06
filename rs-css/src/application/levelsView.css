@@ -1,41 +1,41 @@
-.levels_view_wrapper {
+.levels-view-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-.levels_buttons_wrapper {
+.levels-buttons-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.complete_level_symbol {
+.complete-level-symbol {
   cursor: default;
   color: gray;
 }
 
-.complete_level_symbol_with_hint {
+.complete-level-symbol-with-hint {
   cursor: default;
   color: gray;
   padding: 0 10px 0 5px;
 }
 
-.complete_level {
+.complete-level {
   color: green;
 }
 
-.level_button {
+.level-button {
   cursor: pointer;
   width: 30px;
 }
 
-.reset_button {
+.reset-button {
   cursor: pointer;
   max-width: 150px;
 }
 
-.active_level_button {
+.active-level-button {
   background-color: aqua;
 }

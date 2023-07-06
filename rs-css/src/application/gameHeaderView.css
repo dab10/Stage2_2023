@@ -194,10 +194,10 @@ lime:hover {
   visibility: visible;
 }
 
-.container_HTML {
+.container-HTML {
   cursor: default;
 }
-.white_font:hover {
+.white-font:hover {
   color:white;
 }
 

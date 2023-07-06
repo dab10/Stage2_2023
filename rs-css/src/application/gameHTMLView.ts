@@ -25,7 +25,7 @@ export class GameHTMLView extends AnimatedControl {
     gameData[state.data.currentLevel].HTMLCode.split('\r\n')
       .slice(1, -1)
       .forEach((item) => {
-        const element = new Control(gameHTMLViewField.node, 'div', 'white_font', item);
+        const element = new Control(gameHTMLViewField.node, 'div', 'white-font', item);
       });
 
     const elTableEnd = new Control(

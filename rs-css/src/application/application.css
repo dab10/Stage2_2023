@@ -1,11 +1,11 @@
-.global_wrapper {
+.global-wrapper {
   display: grid;
   grid-template-rows: 30px 1fr 1fr 90px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
-  "game_header game_header game_level"
-  "game_editor game_HTML_Viewer game_level"
+  "game-header game-header game-level"
+  "game-editor game-HTML-Viewer game-level"
   "footer footer footer";
   width: 100vw;
   height: 100vh;
@@ -15,14 +15,14 @@
   background-color: #2e2a23;
 }
 
-.global_header{
+.global-header{
   grid-area: header;
   color: white;
   margin: auto;
 }
 
-.game_header{
-  grid-area: game_header;
+.game-header{
+  grid-area: game-header;
   display: flex;
   justify-content: center;
   border-radius: 10px;
@@ -30,16 +30,16 @@
   background-color: #555353;
 }
 
-.game_editor {
-  grid-area: game_editor;
+.game-editor {
+  grid-area: game-editor;
   padding: 5px;
   border-radius: 10px;
   border: solid 2px brown;
   background-color: #555353;
 }
 
-.game_HTML_Viewer {
-  grid-area: game_HTML_Viewer;
+.game-HTML-Viewer {
+  grid-area: game-HTML-Viewer;
   padding: 5px;
   border-radius: 10px;
   border: solid 2px brown;
@@ -49,14 +49,14 @@
   font-size: 12px;
 }
 
-.game_level {
-  grid-area: game_level;
+.game-level {
+  grid-area: game-level;
   padding: 5px;
   border-radius: 10px;
   border: solid 2px brown;
   background-color: #221e18;
 }
 
-.global_footer{
+.global-footer{
   grid-area: footer;
 }

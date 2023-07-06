@@ -10,16 +10,16 @@ export class cssEditorView extends AnimatedControl {
   onHelp!: () => void;
 
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
-    super(parentNode, 'div', { default: style['container_editor'], hidden: style['shake'] });
+    super(parentNode, 'div', { default: style['container-editor'], hidden: style['shake'] });
 
-    const formCSSEditor = new Control(this.node, 'form', style['container_editor']);
-    const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input', style['input_field']);
+    const formCSSEditor = new Control(this.node, 'form', style['container-editor']);
+    const inputFieldCSSEditor = new Control<HTMLInputElement>(formCSSEditor.node, 'input', style['input-field']);
     inputFieldCSSEditor.node.type = 'text';
     inputFieldCSSEditor.node.title = 'Enter answer';
     const inputButtonCSSEditor = new Control<HTMLInputElement>(
       formCSSEditor.node,
       'input',
-      [style['like_button'], style['transition']].join(' ')
+      [style['like-button'], style['transition']].join(' ')
     );
     inputButtonCSSEditor.node.type = 'submit';
     inputButtonCSSEditor.node.value = 'Enter';
@@ -31,7 +31,7 @@ export class cssEditorView extends AnimatedControl {
     const hintButton = new Control<HTMLButtonElement>(
       this.node,
       'button',
-      [style['help_button'], style['transition']].join(' '),
+      [style['help-button'], style['transition']].join(' '),
       'Help'
     );
     hintButton.node.onclick = () => {

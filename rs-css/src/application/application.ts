@@ -20,14 +20,14 @@ export class Application extends Control {
   model: GameDataModel;
 
   constructor(parentNode: HTMLElement, protected state: GameState) {
-    super(parentNode, 'div', style['global_wrapper']);
+    super(parentNode, 'div', style['global-wrapper']);
 
-    this.header = new Control(this.node, 'div', style['global_header'], 'RS Selectors');
-    this.gameHeader = new Control(this.node, 'div', style['game_header']);
-    this.gameEditor = new Control(this.node, 'div', style['game_editor']);
-    this.gameHTMLViewer = new Control(this.node, 'div', style['game_HTML_Viewer']);
-    this.gameLevel = new Control(this.node, 'div', style['game_level']);
-    this.footer = new Control(this.node, 'div', style['global_footer']);
+    this.header = new Control(this.node, 'div', style['global-header'], 'RS Selectors');
+    this.gameHeader = new Control(this.node, 'div', style['game-header']);
+    this.gameEditor = new Control(this.node, 'div', style['game-editor']);
+    this.gameHTMLViewer = new Control(this.node, 'div', style['game-HTML-Viewer']);
+    this.gameLevel = new Control(this.node, 'div', style['game-level']);
+    this.footer = new Control(this.node, 'div', style['global-footer']);
     const containerFooter = new FooterView(this.footer.node);
 
     this.model = new GameDataModel();
