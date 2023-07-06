@@ -13,12 +13,12 @@ export class InitialData {
   }
 
   static load(): InitialData {
-    const loaded = localStorage.getItem('savedState');
-    if (loaded) {
-      return new InitialData(JSON.parse(loaded));
-    } else {
+    const savedState = localStorage.getItem('savedState');
+    if (!savedState) {
       return new InitialData(INITIAL_STATE);
     }
+
+    return new InitialData(JSON.parse(savedState));
   }
 
   save(): void {
