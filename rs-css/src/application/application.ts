@@ -73,33 +73,21 @@ export class Application extends Control {
 
       if (!isAllLevelsComplete) {
         gameHeaderField.animateRightQuestion().then(() => {
-          levels.destroy();
-          cssEditor.destroy();
-          gameHTMLViewerField.destroy();
-          gameHeaderField.destroy();
-          this.gameCycle();
+          this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
         });
         return;
       }
 
       gameHeaderField.animateRightQuestion().then(() => {
-        levels.destroy();
-        cssEditor.destroy();
-        gameHTMLViewerField.destroy();
-        gameHeaderField.destroy();
+        this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
         new ModalPage(this.node);
-        this.gameCycle();
       });
     };
 
     levels.onChooseLevel = (levelNumber: number) => {
       const state = this.state;
       state.data = { ...state.data, currentLevel: levelNumber };
-      levels.destroy();
-      cssEditor.destroy();
-      gameHTMLViewerField.destroy();
-      gameHeaderField.destroy();
-      this.gameCycle();
+      this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
 
     levels.onResetLevel = () => {
@@ -107,15 +95,24 @@ export class Application extends Control {
       state.data.currentLevel = 0;
       state.data.completeLevels.length = 0;
       state.data.completeLevelsWithHints.length = 0;
-      levels.destroy();
-      cssEditor.destroy();
-      gameHTMLViewerField.destroy();
-      gameHeaderField.destroy();
-      this.gameCycle();
+      this.destroyAppComponents(levels, cssEditor, gameHTMLViewerField, gameHeaderField);
     };
 
     cssEditor.onHelp = () => {
       levels.buildLevels(this.model.getCategoriesData(), this.state);
     };
+  }
+
+  private destroyAppComponents(
+    levels: LevelsView,
+    cssEditor: cssEditorView,
+    gameHTMLViewerField: GameHTMLView,
+    gameHeaderField: GameHeaderView
+  ) {
+    levels.destroy();
+    cssEditor.destroy();
+    gameHTMLViewerField.destroy();
+    gameHeaderField.destroy();
+    this.gameCycle();
   }
 }
