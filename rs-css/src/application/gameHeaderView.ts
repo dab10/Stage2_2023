@@ -20,13 +20,14 @@ export class GameHeaderView extends Control {
     this.buildDom(gameData[state.data.currentLevel].htmlDom, elementTable.node, START_NEST_LEVEL);
   }
 
-  private buildDom(htmlDom: HtmlDom[], parentNode: HTMLElement, nestLevel: number) {
+  private buildDom(htmlDom: HtmlDom[] | undefined, parentNode: HTMLElement, nestLevel: number) {
     if (!htmlDom) {
       return;
     }
     const currentNestLevel = nestLevel + 1;
     htmlDom.forEach((item) => {
-      if (item.classNameAnimation) {
+      const isElementContainsClassNameAnimation = item.classNameAnimation;
+      if (isElementContainsClassNameAnimation) {
         const element = new AnimatedControl(parentNode, item.tagName, {
           default: [
             style[`${item.className}`],
@@ -48,31 +49,31 @@ export class GameHeaderView extends Control {
           `<${item.tagName}` + className + idName + `></${item.tagName}>`
         );
 
-        if (item.child) {
-          this.buildDom(item.child, element.node, currentNestLevel);
-        }
-      } else {
-        const el = new Control(
-          parentNode,
-          item.tagName,
-          [style[`${item.className}`], style[`tooltip${currentNestLevel}`]].join(' ')
-        );
-        el.node.id = item.id ? item.id : '';
-        const className = item.className ? ` class="${item.className}"` : '';
-        const idName = item.id ? ` id="${item.id}"` : '';
-        if (!el.node.classList.contains('withChild')) {
-          const tooltip = new Control(
-            el.node,
-            'span',
-            [style['child'], style[`tooltiptext${currentNestLevel}`]].join(' '),
-            `<${item.tagName}` + className + idName + `></${item.tagName}>`
-          );
-        }
-
-        if (item.child) {
-          this.buildDom(item.child, el.node, currentNestLevel);
-        }
+        this.buildDom(item.child, element.node, currentNestLevel);
+        return;
       }
+
+      const el = new Control(
+        parentNode,
+        item.tagName,
+        [style[`${item.className}`], style[`tooltip${currentNestLevel}`]].join(' ')
+      );
+      el.node.id = item.id ? item.id : '';
+      const className = item.className ? ` class="${item.className}"` : '';
+      const idName = item.id ? ` id="${item.id}"` : '';
+      const isElementHasChild = el.node.classList.contains('withChild');
+
+      if (!item.child) {
+        const tooltip = new Control(
+          el.node,
+          'span',
+          [style['child'], style[`tooltiptext${currentNestLevel}`]].join(' '),
+          `<${item.tagName}` + className + idName + `></${item.tagName}>`
+        );
+        return;
+      }
+
+      this.buildDom(item.child, el.node, currentNestLevel);
     });
   }
 
