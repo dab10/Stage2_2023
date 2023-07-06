@@ -2,7 +2,7 @@ import Control from '../common/control';
 import { LevelsView } from './levelsView';
 import { GameDataModel } from './gameDataModel';
 import { GameState } from './gameState';
-import { cssEditorView } from './cssEditorView';
+import { CssEditorView } from './cssEditorView';
 import { GameHTMLView } from './gameHTMLView';
 import { GameHeaderView } from './gameHeaderView';
 import { FooterView } from './footerView';
@@ -41,7 +41,7 @@ export class Application extends Control {
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHTMLViewerField = new GameHTMLView(this.gameHTMLViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
-    const cssEditor = new cssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
+    const cssEditor = new CssEditorView(this.gameEditor.node, this.model.getCategoriesData(), this.state);
 
     cssEditor.onGetValue = (value) => {
       const gameData = this.model.getCategoriesData();
@@ -105,7 +105,7 @@ export class Application extends Control {
 
   private destroyAppComponents(
     levels: LevelsView,
-    cssEditor: cssEditorView,
+    cssEditor: CssEditorView,
     gameHTMLViewerField: GameHTMLView,
     gameHeaderField: GameHeaderView
   ) {

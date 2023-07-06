@@ -5,7 +5,7 @@ import { AnimatedControl } from '../common/animatedControl';
 
 import style from './cssEditorView.css';
 
-export class cssEditorView extends AnimatedControl {
+export class CssEditorView extends AnimatedControl {
   onGetValue!: (value: string) => void;
   onHelp!: () => void;
 
