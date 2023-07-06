@@ -12,7 +12,7 @@ export class InitialData {
     this.completeLevelsWithHints = data.completeLevelsWithHints;
   }
 
-  static load() {
+  static load(): InitialData {
     const loaded = localStorage.getItem('savedState');
     if (loaded) {
       return new InitialData(JSON.parse(loaded));
@@ -21,7 +21,7 @@ export class InitialData {
     }
   }
 
-  save() {
+  save(): void {
     localStorage.setItem('savedState', JSON.stringify(this));
   }
 }

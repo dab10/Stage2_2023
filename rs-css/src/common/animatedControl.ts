@@ -13,7 +13,7 @@ export class AnimatedControl extends Control {
     this.styles = styles;
   }
 
-  removeAnimation() {
+  removeAnimation(): void {
     this.node.classList.remove(this.styles.hidden);
   }
 

@@ -22,7 +22,7 @@ export class GameDataModel {
     this.data = [];
   }
 
-  public async loadJSON() {
+  public async loadJSON(): Promise<this> {
     this.data = await this.loadData(gameData);
     return this;
   }
@@ -35,7 +35,7 @@ export class GameDataModel {
       });
   }
 
-  public getCategoriesData() {
+  public getCategoriesData(): GameData[] {
     return this.data;
   }
 }

@@ -37,7 +37,7 @@ export class Application extends Control {
     });
   }
 
-  private gameCycle() {
+  private gameCycle(): void {
     const levels = new LevelsView(this.gameLevel.node, this.model.getCategoriesData(), this.state);
     const gameHtmlViewerField = new GameHtmlView(this.gameHtmlViewer.node, this.model.getCategoriesData(), this.state);
     const gameHeaderField = new GameHeaderView(this.gameHeader.node, this.model.getCategoriesData(), this.state);
@@ -108,7 +108,7 @@ export class Application extends Control {
     cssEditor: CssEditorView,
     gameHtmlViewerField: GameHtmlView,
     gameHeaderField: GameHeaderView
-  ) {
+  ): void {
     levels.destroy();
     cssEditor.destroy();
     gameHtmlViewerField.destroy();

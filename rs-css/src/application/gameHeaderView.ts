@@ -20,7 +20,7 @@ export class GameHeaderView extends Control {
     this.buildDom(gameData[state.data.currentLevel].htmlDom, elementTable.node, START_NEST_LEVEL);
   }
 
-  private buildDom(htmlDom: HtmlDom[] | undefined, parentNode: HTMLElement, nestLevel: number) {
+  private buildDom(htmlDom: HtmlDom[] | undefined, parentNode: HTMLElement, nestLevel: number): void {
     if (!htmlDom) {
       return;
     }
@@ -77,7 +77,7 @@ export class GameHeaderView extends Control {
     });
   }
 
-  animateRightQuestion() {
+  animateRightQuestion(): Promise<null[]> {
     return Promise.all(this.element.map((item) => item.animateOut()));
   }
 }
