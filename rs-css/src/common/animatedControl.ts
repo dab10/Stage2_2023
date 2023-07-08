@@ -1,15 +1,15 @@
 import Control from './control';
 import { ControlTag } from '../common/control';
 
-export class AnimatedControl extends Control {
-  private styles: { default: string; hidden: string };
+interface ControlStyles {
+  default: string;
+  hidden: string;
+}
 
-  constructor(
-    parentNode: HTMLElement | null,
-    tagName: ControlTag,
-    styles: { default: string; hidden: string },
-    content = ''
-  ) {
+export class AnimatedControl extends Control {
+  private styles: ControlStyles;
+
+  constructor(parentNode: HTMLElement | null, tagName: ControlTag, styles: ControlStyles, content = '') {
     super(parentNode, tagName, styles.default, content);
     this.styles = styles;
   }
