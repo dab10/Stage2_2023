@@ -53,18 +53,18 @@ export class GameHeaderView extends Control {
         return;
       }
 
-      const el = new Control(
+      const element = new Control(
         parentNode,
         item.tagName,
         [style[`${item.className}`], style[`tooltip${currentNestLevel}`]].join(' ')
       );
-      el.node.id = item.id ? item.id : '';
+      element.node.id = item.id ? item.id : '';
       const className = item.className ? ` class="${item.className}"` : '';
       const idName = item.id ? ` id="${item.id}"` : '';
 
       if (!item.child) {
         new Control(
-          el.node,
+          element.node,
           'span',
           [style['child'], style[`tooltiptext${currentNestLevel}`]].join(' '),
           `<${item.tagName}` + className + idName + `></${item.tagName}>`
@@ -72,7 +72,7 @@ export class GameHeaderView extends Control {
         return;
       }
 
-      this.buildDom(item.child, el.node, currentNestLevel);
+      this.buildDom(item.child, element.node, currentNestLevel);
     });
   }
 
