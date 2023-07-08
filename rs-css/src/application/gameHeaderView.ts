@@ -12,7 +12,7 @@ export class GameHeaderView extends Control {
   onmouseout!: () => void;
 
   constructor(parentNode: HTMLElement, gameData: GameData[], state: GameState) {
-    super(parentNode);
+    super(parentNode, 'div');
 
     this.element = [];
 

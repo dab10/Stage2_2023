@@ -1,5 +1,5 @@
 import gameData from '../assets/json/gameData.json';
-
+import { ControlTag } from '../common/control';
 export interface GameData {
   levelNumber: number;
   htmlCode: string;
@@ -8,7 +8,7 @@ export interface GameData {
 }
 
 export interface HtmlDom {
-  tagName: string;
+  tagName: ControlTag;
   className?: string;
   classNameAnimation?: string;
   id?: string;

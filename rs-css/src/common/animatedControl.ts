@@ -1,11 +1,12 @@
 import Control from './control';
+import { ControlTag } from '../common/control';
 
 export class AnimatedControl extends Control {
   private styles: { default: string; hidden: string };
 
   constructor(
     parentNode: HTMLElement | null,
-    tagName = 'div',
+    tagName: ControlTag,
     styles: { default: string; hidden: string },
     content = ''
   ) {

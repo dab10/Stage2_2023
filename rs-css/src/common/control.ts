@@ -1,7 +1,9 @@
+export type ControlTag = 'div' | 'span' | 'form' | 'input' | 'button' | 'pre' | 'code' | 'dialog';
+
 class Control<NodeType extends HTMLElement = HTMLElement> {
   public node: NodeType;
 
-  constructor(parentNode: HTMLElement | null, tagName = 'div', className = '', content = '') {
+  constructor(parentNode: HTMLElement | null, tagName: ControlTag = 'div', className = '', content = '') {
     const element = document.createElement(tagName);
     element.className = className;
     element.textContent = content;
