@@ -1,13 +1,8 @@
 import { INITIAL_STATE } from '../src/common/constants';
 import { GameState } from '../src/application/gameState';
-import { LevelsView } from '../src/application/levelsView';
-import { GameData } from '../src/application/gameDataModel';
-import { GameDataModel } from '../src/application/gameDataModel';
 import gameData from '../src/assets/json/gameData.json';
 import { Application } from '../src/application/application';
 
-// const data = JSON.parse(JSON.stringify(gameData));
-// new LevelsView(document.body, data, state);
 beforeAll((done) => {
   global.fetch = jest.fn(() =>
     Promise.resolve({
