@@ -54,13 +54,17 @@ export const footerStart = `
 </a>
 `;
 
-const renderCarColor = (color: string) => `
+const startSvgCode = `
   <?xml version="1.0" standalone="no"?>
   <svg class="car__image" version="1.0" xmlns="http://www.w3.org/2000/svg"
-   width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
-   preserveAspectRatio="xMidYMid meet">
+  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
+  preserveAspectRatio="xMidYMid meet">
   <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
-  fill="${color}" stroke="none">
+  fill="
+`;
+
+const endSvgCode = `
+  " stroke="none">
   <path d="M3565 5336 c-106 -30 -101 -26 -108 -111 -4 -42 -9 -80 -12 -85 -6
   -10 -246 -105 -590 -234 -448 -167 -1052 -415 -1173 -483 -78 -43 -193 -91
   -250 -104 -23 -5 -98 -14 -165 -19 -67 -6 -167 -19 -222 -30 -154 -31 -340
@@ -154,6 +158,12 @@ const renderCarColor = (color: string) => `
   61 239 98 16 10 -216 242 -234 235z"/>
   </g>
   </svg>
+`;
+
+const renderCarColor = (color: string) => `
+  ${startSvgCode}
+  ${color}
+  ${endSvgCode}
 `;
 
 export const renderCar = (car: Cars) => `
