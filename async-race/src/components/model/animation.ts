@@ -1,6 +1,7 @@
 import Api from './api';
 import { NumberCarAnimate, WinnerCar } from '../../types/index';
 import View from '../view/view';
+import { CAR_WIDTH, FRAMES_PER_SECOND, TIME_BETWEEN_RACE } from '../../types/constants';
 
 class Animation extends Api {
   private animation: NumberCarAnimate;
@@ -9,43 +10,39 @@ class Animation extends Api {
 
   private timesFinishCar: WinnerCar[];
 
-  private count: number;
+  private countFinishCar: number;
 
   private countAnimation: number;
 
   private countBrokenCar: number;
-
-  private carWidth: number;
-
-  private timeBetweenRAce: number;
 
   constructor() {
     super();
     this.animation = {};
     this.allCars = [];
     this.timesFinishCar = [];
-    this.count = 0;
+    this.countFinishCar = 0;
     this.countAnimation = 0;
     this.countBrokenCar = 0;
-    this.carWidth = 140;
-    this.timeBetweenRAce = 3000;
   }
 
   public animatePosition = async (e: Event) => {
-    if (this.count < 1) this.count = 0;
-    this.countAnimation += 1;
+    console.log(this.countFinishCar);
+    if (this.countFinishCar < 1) this.countFinishCar = 0;
+    const currentCarAnimation = this.countAnimation + 1;
+    console.log(this.countAnimation);
     const id = (e.target as HTMLButtonElement).getAttribute('data-start-id');
     (e.target as HTMLButtonElement).disabled = true;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     stopButton.disabled = false;
 
-    if (this.countAnimation === 1) this.view.disableButtonRace(true);
+    if (currentCarAnimation === 1) this.view.disableButtonRace(true);
     if (id) {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
       const { velocity, distance } = await this.startEngine(Number(id));
-      const currentX: number = node.offsetLeft;
-      const framesCount = ((distance / velocity) / 1000) * 60;
-      const dX = ((window.innerWidth - this.carWidth) - node.offsetLeft) / framesCount;
+      const currentX = node.offsetLeft;
+      const framesCount = ((distance / velocity) / 1000) * FRAMES_PER_SECOND;
+      const dX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
       this.animation[id] = this.animationScreenDrive(node, currentX, dX, id);
 
       const { success } = await this.drive(Number(id));
@@ -64,7 +61,7 @@ class Animation extends Api {
     const step = () => {
       currentXAnimation += dX;
       nodeAnimation.style.transform = `translateX(${currentXAnimation}px)`;
-      if (currentXAnimation < (window.innerWidth - this.carWidth)) {
+      if (currentXAnimation < (window.innerWidth - CAR_WIDTH)) {
         this.animation[id] = window.requestAnimationFrame(step);
       }
     };
@@ -74,8 +71,9 @@ class Animation extends Api {
   };
 
   public animateStop = async (e: Event) => {
+    console.log(this.countFinishCar);
     this.countAnimation -= 1;
-    if (this.count < 1) this.count = 1;
+    if (this.countFinishCar < 1) this.countFinishCar = 1;
     const id = (e.target as HTMLElement).getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
@@ -99,15 +97,16 @@ class Animation extends Api {
     this.view.disableButtonRace(true);
     await Promise.race(
       this.allCars.map(async (id) => {
-        this.count = 0;
+        console.log(this.countFinishCar);
+        this.countFinishCar = 0;
 
         View.disableStartStopButtonRace(true);
         const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
         const { velocity, distance } = await this.startEngine(Number(id));
-        const currentX: number = node.offsetLeft;
+        const currentX = node.offsetLeft;
         const time = (distance / velocity) / 1000;
-        const framesCount = ((distance / velocity) / 1000) * 60;
-        const dX = ((window.innerWidth - this.carWidth) - node.offsetLeft) / framesCount;
+        const framesCount = ((distance / velocity) / 1000) * FRAMES_PER_SECOND;
+        const dX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
         this.animation[id] = this.animationScreenDrive(node, currentX, dX, id);
 
         const { success } = await this.drive(Number(id));
@@ -124,8 +123,9 @@ class Animation extends Api {
     const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
 
     if (timesFinishCar.length !== 0) {
-      this.count += 1;
-      if (this.count === 1) {
+      console.log(this.countFinishCar);
+      this.countFinishCar += 1;
+      if (this.countFinishCar === 1) {
         const filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
         if (filteredTimesFinishCar.length !== 0) {
           const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
@@ -141,7 +141,7 @@ class Animation extends Api {
         this.countBrokenCar = 0;
       }
     }
-    if (this.count === 0) {
+    if (this.countFinishCar === 0) {
       this.countBrokenCar += 1;
       if (allCars.length === this.countBrokenCar) {
         buttonReset.disabled = false;
@@ -163,8 +163,8 @@ class Animation extends Api {
       View.popupHidden();
     });
     (document.querySelector('.controls__button-reset') as HTMLButtonElement).disabled = true;
-    setTimeout(() => this.view.disableButtonRace(false), this.timeBetweenRAce);
-    setTimeout(() => View.enableStartButton(false), this.timeBetweenRAce);
+    setTimeout(() => this.view.disableButtonRace(false), TIME_BETWEEN_RACE);
+    setTimeout(() => View.enableStartButton(false), TIME_BETWEEN_RACE);
   };
 }
 
