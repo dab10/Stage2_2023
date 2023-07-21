@@ -27,16 +27,16 @@ class Animation extends Api {
   }
 
   public animatePosition = async (e: Event) => {
-    console.log(this.countFinishCar);
     if (this.countFinishCar < 1) this.countFinishCar = 0;
-    const currentCarAnimation = this.countAnimation + 1;
-    console.log(this.countAnimation);
-    const id = (e.target as HTMLButtonElement).getAttribute('data-start-id');
-    (e.target as HTMLButtonElement).disabled = true;
+    this.countAnimation += 1;
+    const startButton = e.target as HTMLButtonElement;
+    const id = startButton.getAttribute('data-start-id');
+    startButton.disabled = true;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     stopButton.disabled = false;
 
-    if (currentCarAnimation === 1) this.view.disableButtonRace(true);
+    if (this.countAnimation === 1) this.view.disableButtonRace(true);
+    let success = true;
     if (id) {
       const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
       const { velocity, distance } = await this.startEngine(Number(id));
@@ -45,9 +45,9 @@ class Animation extends Api {
       const dX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
       this.animation[id] = this.animationScreenDrive(node, currentX, dX, id);
 
-      const { success } = await this.drive(Number(id));
-      if (!success) window.cancelAnimationFrame(this.animation[id]);
+      ({ success } = await this.drive(Number(id)));
     }
+    if (!success && id) window.cancelAnimationFrame(this.animation[id]);
   };
 
   public animationScreenDrive = (
@@ -71,7 +71,6 @@ class Animation extends Api {
   };
 
   public animateStop = async (e: Event) => {
-    console.log(this.countFinishCar);
     this.countAnimation -= 1;
     if (this.countFinishCar < 1) this.countFinishCar = 1;
     const id = (e.target as HTMLElement).getAttribute('data-stop-id');
@@ -97,7 +96,6 @@ class Animation extends Api {
     this.view.disableButtonRace(true);
     await Promise.race(
       this.allCars.map(async (id) => {
-        console.log(this.countFinishCar);
         this.countFinishCar = 0;
 
         View.disableStartStopButtonRace(true);
@@ -123,7 +121,6 @@ class Animation extends Api {
     const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
 
     if (timesFinishCar.length !== 0) {
-      console.log(this.countFinishCar);
       this.countFinishCar += 1;
       if (this.countFinishCar === 1) {
         const filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
