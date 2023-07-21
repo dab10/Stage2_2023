@@ -3,6 +3,7 @@ import {
 } from './templates';
 
 import { Cars, TableWinnerCar } from '../../types';
+import { CARS_PER_PAGE, WINNERS_PER_PAGE } from '../../types/constants';
 
 class View {
   private header: HTMLElement;
@@ -46,7 +47,7 @@ class View {
     document.body.append(this.header, this.paginationWinners, this.main, this.paginationGarage);
     document.body.append(this.footer);
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    if (Number(count) > 7) buttonNext.disabled = false;
+    if (Number(count) > CARS_PER_PAGE) buttonNext.disabled = false;
   };
 
   static renderStartTableWinners(resultWinner: TableWinnerCar[], count: string, page: number = 1) {
@@ -56,16 +57,17 @@ class View {
     const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
     if (page === 1) buttonPrev.disabled = true;
-    if (Number(count) > 10) buttonNext.disabled = false;
+    if (Number(count) > WINNERS_PER_PAGE) buttonNext.disabled = false;
   }
 
   public renderCurrentCar = (car: Cars, id: number) => {
+    let carUpdate;
     if (id) {
-      const carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
-      if (carUpdate) {
-        carUpdate.innerHTML = '';
-        carUpdate.innerHTML = renderCar(car);
-      }
+      carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
+    }
+    if (carUpdate) {
+      carUpdate.innerHTML = '';
+      carUpdate.innerHTML = renderCar(car);
     }
     this.main.append(renderCar(car));
   };
@@ -187,13 +189,13 @@ class View {
       editForm.classList.remove('hidden');
       paginationButtonsWinners.classList.add('hidden');
       winnersTable.classList.add('hidden');
-    } else {
-      main.classList.add('hidden');
-      paginationButtonsGarage.classList.add('hidden');
-      editForm.classList.add('hidden');
-      paginationButtonsWinners.classList.remove('hidden');
-      winnersTable.classList.remove('hidden');
+      return;
     }
+    main.classList.add('hidden');
+    paginationButtonsGarage.classList.add('hidden');
+    editForm.classList.add('hidden');
+    paginationButtonsWinners.classList.remove('hidden');
+    winnersTable.classList.remove('hidden');
   }
 
   static popupHidden() {
