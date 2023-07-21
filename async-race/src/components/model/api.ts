@@ -154,14 +154,14 @@ class Api {
         wins: 1,
         time,
       });
-    } else {
-      const winner = await this.getWinner(id);
-      await this.updateWinner(id, {
-        id,
-        wins: winner.wins + 1,
-        time: time < winner.time ? time : winner.time,
-      });
+      return;
     }
+    const winner = await this.getWinner(id);
+    await this.updateWinner(id, {
+      id,
+      wins: winner.wins + 1,
+      time: time < winner.time ? time : winner.time,
+    });
   };
 }
 
