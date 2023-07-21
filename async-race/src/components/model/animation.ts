@@ -119,32 +119,33 @@ class Animation extends Api {
 
   public winnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
     const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    let filteredTimesFinishCar: WinnerCar[] = [];
 
     if (timesFinishCar.length !== 0) {
       this.countFinishCar += 1;
-      if (this.countFinishCar === 1) {
-        const filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
-        if (filteredTimesFinishCar.length !== 0) {
-          const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
-            acc.time < curr.time ? acc : curr
-          ));
+    }
+    if (this.countFinishCar === 1) {
+      filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
+      buttonReset.disabled = false;
+      this.countBrokenCar = 0;
+    }
+    if (this.countFinishCar === 1 && filteredTimesFinishCar.length !== 0) {
+      const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
+        acc.time < curr.time ? acc : curr
+      ));
 
-          await this.saveWinner({ id: minTime.id, time: minTime.time });
-          const { name } = await this.getCar(minTime.id);
-          View.renderPopup(name, minTime.time);
-          await this.winnersForStartPage();
-        }
-        buttonReset.disabled = false;
-        this.countBrokenCar = 0;
-      }
+      await this.saveWinner({ id: minTime.id, time: minTime.time });
+      const { name } = await this.getCar(minTime.id);
+      View.renderPopup(name, minTime.time);
+      await this.winnersForStartPage();
     }
     if (this.countFinishCar === 0) {
       this.countBrokenCar += 1;
-      if (allCars.length === this.countBrokenCar) {
-        buttonReset.disabled = false;
-        View.renderAllBrokenPopup();
-        this.countBrokenCar = 0;
-      }
+    }
+    if (this.countFinishCar === 0 && allCars.length === this.countBrokenCar) {
+      buttonReset.disabled = false;
+      View.renderAllBrokenPopup();
+      this.countBrokenCar = 0;
     }
   };
 
