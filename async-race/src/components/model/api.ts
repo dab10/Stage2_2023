@@ -2,7 +2,9 @@ import {
   Cars, Sort, Order, Winner, WinnerCar, TableWinner, TableWinnerCar,
   OptionsRace, WinnersFromAPI, HTTPStatusCode,
 } from '../../types';
-import { CARS_PER_PAGE, WINNERS_PER_PAGE } from '../../types/constants';
+import {
+  CARS_PER_PAGE, START_PAGE_GARAGE, START_PAGE_WINNERS, WINNERS_PER_PAGE,
+} from '../../types/constants';
 import View from '../view/view';
 
 class Api {
@@ -36,8 +38,8 @@ class Api {
     this.sortAndOrder = '';
     this.view = new View();
     this.controller = new AbortController();
-    this.startPageGarage = 1;
-    this.startPageWinners = 1;
+    this.startPageGarage = START_PAGE_GARAGE;
+    this.startPageWinners = START_PAGE_WINNERS;
     this.carsPerPage = CARS_PER_PAGE;
     this.winnersPerPage = WINNERS_PER_PAGE;
   }

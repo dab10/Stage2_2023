@@ -1,4 +1,6 @@
-import { CAR_BRANDS, CAR_MODELS, LETTERS_OF_COLOR } from '../../types/constants';
+import {
+  CAR_BRANDS, CAR_MODELS, COLOR_NAME_LENGTH, LETTERS_OF_COLOR,
+} from '../../types/constants';
 import View from '../view/view';
 import Api from './api';
 
@@ -110,7 +112,7 @@ class EditCar extends Api {
 
   private generateRandomColor = (): string => {
     let colorRandom = '#';
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < COLOR_NAME_LENGTH; i += 1) {
       colorRandom += this.lettersOfColor[Math.floor(Math.random() * this.lettersOfColor.length)];
     }
     return colorRandom;
