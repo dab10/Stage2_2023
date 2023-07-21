@@ -1,3 +1,4 @@
+import { CAR_BRANDS, CAR_MODELS, LETTERS_OF_COLOR } from '../../types/constants';
 import View from '../view/view';
 import Api from './api';
 
@@ -14,13 +15,14 @@ class EditCar extends Api {
     super();
     this.view = new View();
     this.id = 0;
-    this.carBrand = ['Hyundai', 'Lada', 'Kia', 'Toyota', 'Ford', 'Tesla', 'BMW', 'Mercedes', 'Honda', 'Renault', 'Peugeot'];
-    this.carModel = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry', 'RAV4', 'F-Series', 'Model S', 'CR-V', 'Clio', '308'];
-    this.lettersOfColor = '0123456789ABCDEF';
+    this.carBrand = CAR_BRANDS;
+    this.carModel = CAR_MODELS;
+    this.lettersOfColor = LETTERS_OF_COLOR;
   }
 
   public async editCar(e: Event): Promise<void> {
-    this.id = Number((e.target as HTMLElement).getAttribute('data-select-id'));
+    const selectButton = e.target as HTMLElement;
+    this.id = Number(selectButton.getAttribute('data-select-id'));
     if (this.id) {
       const form = document.querySelector('.edit-form') as HTMLFormElement;
       const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
@@ -73,10 +75,12 @@ class EditCar extends Api {
     const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
     let currentPage = Number(currentPageString);
-    const id = (e.target as HTMLElement).getAttribute('data-remove-id');
+    const removeButton = e.target as HTMLElement;
+    const id = removeButton.getAttribute('data-remove-id');
+    let count;
     if (id) {
       await this.deleteCar(Number(id));
-      const { count } = (await this.getCars(currentPage));
+      ({ count } = (await this.getCars(currentPage)));
 
       if ((Number(count) / this.carsPerPage + 1) === currentPage) {
         currentPage -= 1;
@@ -84,11 +88,10 @@ class EditCar extends Api {
 
       const { items } = (await this.getCars(currentPage));
       View.renderNewCars(items, count, currentPage);
-
-      if (Number(count) === this.carsPerPage) {
-        buttonNext.disabled = true;
-        buttonPrev.disabled = true;
-      }
+    }
+    if (Number(count) === this.carsPerPage) {
+      buttonNext.disabled = true;
+      buttonPrev.disabled = true;
     }
     if (buttonUpdate.disabled === false) {
       inputName.style.pointerEvents = 'none';
