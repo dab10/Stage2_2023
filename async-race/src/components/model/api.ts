@@ -2,6 +2,7 @@ import {
   Cars, Sort, Order, Winner, WinnerCar, TableWinner, TableWinnerCar,
   OptionsRace, WinnersFromAPI, HTTPStatusCode,
 } from '../../types';
+import { CARS_PER_PAGE, WINNERS_PER_PAGE } from '../../types/constants';
 import View from '../view/view';
 
 class Api {
@@ -37,8 +38,8 @@ class Api {
     this.controller = new AbortController();
     this.startPageGarage = 1;
     this.startPageWinners = 1;
-    this.carsPerPage = 7;
-    this.winnersPerPage = 10;
+    this.carsPerPage = CARS_PER_PAGE;
+    this.winnersPerPage = WINNERS_PER_PAGE;
   }
 
   public async carsForStartPage(): Promise<void> {
