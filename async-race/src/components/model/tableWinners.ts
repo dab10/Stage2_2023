@@ -14,7 +14,9 @@ class TableWinners extends Api {
     if (Number(count) % this.winnersPerPage === 1 && Number(count) !== 1) {
       buttonNext.disabled = false;
     }
-    if (Math.ceil(Number(count) / this.winnersPerPage) === currentPage) buttonNext.disabled = true;
+    if (Math.ceil(Number(count) / this.winnersPerPage) === currentPage) {
+      buttonNext.disabled = true;
+    }
   };
 }
 
