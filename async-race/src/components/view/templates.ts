@@ -1,6 +1,7 @@
 import { Cars, TableWinnerCar } from '../../types';
 import './view.scss';
 import './view.css';
+import { WINNERS_PER_PAGE } from '../../types/constants';
 
 export const headerStart = `
   <h1>async-race</h1>
@@ -220,7 +221,7 @@ export const winnerStart = (items: TableWinnerCar[], count: string, page: number
       <tbody>
         ${items.map((winner, index) => `
           <tr>
-            <td>${index + (page - 1) * 10 + 1}</td>
+            <td>${(index + 1) + (page - 1) * WINNERS_PER_PAGE}</td>
             <td>${renderCarColor(String(winner.car.color))}</td>
             <td>${winner.car.name}</td>
             <td>${winner.wins}</td>
