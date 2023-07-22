@@ -4,6 +4,8 @@ export const TIME_BETWEEN_RACE = 3000;
 
 export const FRAMES_PER_SECOND = 60;
 
+export const BASE_URL = 'http://localhost:3000';
+
 export const START_PAGE_GARAGE = 1;
 
 export const START_PAGE_WINNERS = 1;

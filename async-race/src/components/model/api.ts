@@ -3,6 +3,7 @@ import {
   OptionsRace, WinnersFromAPI, HTTPStatusCode,
 } from '../../types';
 import {
+  BASE_URL,
   CARS_PER_PAGE, START_PAGE_GARAGE, START_PAGE_WINNERS, WINNERS_PER_PAGE,
 } from '../../types/constants';
 import View from '../view/view';
@@ -31,7 +32,7 @@ class Api {
   protected controller: AbortController;
 
   constructor() {
-    this.base = 'http://localhost:3000';
+    this.base = BASE_URL;
     this.garage = `${this.base}/garage`;
     this.engine = `${this.base}/engine`;
     this.winners = `${this.base}/winners`;
