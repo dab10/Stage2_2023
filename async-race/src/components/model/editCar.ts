@@ -66,7 +66,9 @@ class EditCar extends Api {
     });
     const { items, count } = (await this.getCars(Number(currentPage)));
     View.renderNewCars(items, count, Number(currentPage));
-    if (Number(count) % this.carsPerPage === 1 && Number(count) !== 1) buttonNext.disabled = false;
+    if (Number(count) % this.carsPerPage === 1 && Number(count) !== 1) {
+      buttonNext.disabled = false;
+    }
   }
 
   public async removeCar(e: Event): Promise<void> {
