@@ -27,10 +27,6 @@ class Animation extends Api {
   }
 
   public animatePosition = async (e: Event) => {
-    if (this.countFinishCar < 1) {
-      this.countFinishCar = 0;
-    }
-
     this.countAnimation += 1;
     const startButton = e.target as HTMLButtonElement;
     const id = startButton.getAttribute('data-start-id');
@@ -79,9 +75,6 @@ class Animation extends Api {
 
   public animateStop = async (e: Event) => {
     this.countAnimation -= 1;
-    if (this.countFinishCar < 1) {
-      this.countFinishCar = 1;
-    }
     const id = (e.target as HTMLElement).getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
