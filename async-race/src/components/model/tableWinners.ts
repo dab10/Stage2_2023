@@ -11,10 +11,13 @@ class TableWinners extends Api {
       page: currentPage, limit: this.winnersPerPage, sort, order,
     });
     View.renderStartTableWinners(items, count, currentPage);
-    if (Number(count) % this.winnersPerPage === 1 && Number(count) !== 1) {
+    const isCarsMoreThanWinnersPerPage = Number(count) % this.winnersPerPage === 1;
+    const isOneWinnerCar = Number(count) === 1;
+    if (isCarsMoreThanWinnersPerPage && !isOneWinnerCar) {
       buttonNext.disabled = false;
     }
-    if (Math.ceil(Number(count) / this.winnersPerPage) === currentPage) {
+    const isLastPage = Math.ceil(Number(count) / this.winnersPerPage) === currentPage;
+    if (isLastPage) {
       buttonNext.disabled = true;
     }
   };
