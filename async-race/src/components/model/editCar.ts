@@ -66,7 +66,9 @@ class EditCar extends Api {
     });
     const { items, count } = (await this.getCars(Number(currentPage)));
     View.renderNewCars(items, count, Number(currentPage));
-    if (Number(count) % this.carsPerPage === 1 && Number(count) !== 1) {
+    const isCarsMoreThanCarsPerPage = Number(count) % this.carsPerPage === 1;
+    const isOneCar = Number(count) === 1;
+    if (isCarsMoreThanCarsPerPage && !isOneCar) {
       buttonNext.disabled = false;
     }
   }
@@ -86,18 +88,21 @@ class EditCar extends Api {
       await this.deleteCar(Number(id));
       ({ count } = (await this.getCars(currentPage)));
 
-      if ((Number(count) / this.carsPerPage + 1) === currentPage) {
+      const isHasCarOnPage = (Number(count) / this.carsPerPage + 1) === currentPage;
+      if (isHasCarOnPage) {
         currentPage -= 1;
       }
 
       const { items } = (await this.getCars(currentPage));
       View.renderNewCars(items, count, currentPage);
     }
-    if (Number(count) === this.carsPerPage) {
+    const isNumbersOfCarsCarsPerPage = Number(count) === this.carsPerPage;
+    if (isNumbersOfCarsCarsPerPage) {
       buttonNext.disabled = true;
       buttonPrev.disabled = true;
     }
-    if (buttonUpdate.disabled === false) {
+    const isButtonUpdateDisabled = buttonUpdate.disabled === true;
+    if (!isButtonUpdateDisabled) {
       inputName.style.pointerEvents = 'none';
       inputColor.style.pointerEvents = 'none';
       buttonUpdate.disabled = true;
