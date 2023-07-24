@@ -10,10 +10,12 @@ class Pagination extends Api {
     currentPage += 1;
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
-    if (currentPage > 1) {
+    const isPageAnotherThanFirst = currentPage > 1;
+    if (isPageAnotherThanFirst) {
       buttonPrev.disabled = false;
     }
-    if (currentPage === Math.ceil(Number(count) / this.carsPerPage)) {
+    const isLastPage = currentPage === Math.ceil(Number(count) / this.carsPerPage);
+    if (isLastPage) {
       buttonNext.disabled = true;
     }
   };
@@ -26,10 +28,12 @@ class Pagination extends Api {
     currentPage -= 1;
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
-    if (currentPage === 1) {
+    const isFirstPage = currentPage === 1;
+    if (isFirstPage) {
       buttonPrev.disabled = true;
     }
-    if (currentPage <= Math.floor(Number(count) / this.carsPerPage)) {
+    const isLastPage = currentPage <= Math.floor(Number(count) / this.carsPerPage);
+    if (isLastPage) {
       buttonNext.disabled = false;
     }
   };
@@ -44,10 +48,12 @@ class Pagination extends Api {
       page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
     View.renderStartTableWinners(items, count, currentPage);
-    if (currentPage > 1) {
+    const isPageAnotherThanFirst = currentPage > 1;
+    if (isPageAnotherThanFirst) {
       buttonPrev.disabled = false;
     }
-    if (currentPage === Math.ceil(Number(count) / this.winnersPerPage)) {
+    const isLastPage = currentPage === Math.ceil(Number(count) / this.winnersPerPage);
+    if (isLastPage) {
       buttonNext.disabled = true;
     }
   };
@@ -62,10 +68,12 @@ class Pagination extends Api {
       page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
     View.renderStartTableWinners(items, count, currentPage);
-    if (currentPage === 1) {
+    const isFirstPage = currentPage === 1;
+    if (isFirstPage) {
       buttonPrev.disabled = true;
     }
-    if (currentPage <= Math.floor(Number(count) / this.winnersPerPage)) {
+    const isLastPage = currentPage <= Math.floor(Number(count) / this.winnersPerPage);
+    if (isLastPage) {
       buttonNext.disabled = false;
     }
   };
