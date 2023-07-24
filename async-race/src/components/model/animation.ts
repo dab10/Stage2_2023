@@ -34,8 +34,8 @@ class Animation extends Api {
     const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
     stopButton.disabled = false;
     let isCarWork = true;
-
-    if (this.countAnimation === 1) {
+    const isHasAnimation = this.countAnimation === 1;
+    if (isHasAnimation) {
       this.view.disableButtonRace(true);
     }
 
@@ -50,7 +50,10 @@ class Animation extends Api {
       ({ success: isCarWork } = await this.drive(Number(id)));
     }
 
-    if (!isCarWork && id) window.cancelAnimationFrame(this.animation[id]);
+    const isCarBroken = !isCarWork && id;
+    if (isCarBroken) {
+      window.cancelAnimationFrame(this.animation[id]);
+    }
   };
 
   public animationScreenDrive = (
@@ -64,7 +67,8 @@ class Animation extends Api {
     const step = () => {
       currentXAnimation += dX;
       nodeAnimation.style.transform = `translateX(${currentXAnimation}px)`;
-      if (currentXAnimation < (window.innerWidth - CAR_WIDTH)) {
+      const isCarBeforeEndWindowWidth = currentXAnimation < (window.innerWidth - CAR_WIDTH);
+      if (isCarBeforeEndWindowWidth) {
         this.animation[id] = window.requestAnimationFrame(step);
       }
     };
@@ -75,17 +79,19 @@ class Animation extends Api {
 
   public animateStop = async (e: Event) => {
     this.countAnimation -= 1;
-    const id = (e.target as HTMLElement).getAttribute('data-stop-id');
+    const stopButton = e.target as HTMLElement;
+    const id = stopButton.getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
-    const stopButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
-    const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
-    stopButton.disabled = true;
+    const stopCarButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
+    const startCarButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+    stopCarButton.disabled = true;
 
     await this.stopEngine(Number(id));
     node.style.transform = 'translateX(0)';
     window.cancelAnimationFrame(this.animation[Number(id)]);
-    startButton.disabled = false;
-    if (this.countAnimation === 0) {
+    startCarButton.disabled = false;
+    const isAllCarStop = this.countAnimation === 0;
+    if (isAllCarStop) {
       this.view.disableButtonRace(false);
     }
     this.controller.abort();
@@ -127,28 +133,37 @@ class Animation extends Api {
     const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
     let filteredTimesFinishCar: WinnerCar[] = [];
 
-    if (timesFinishCar.length !== 0) {
+    const isHasFinishCar = timesFinishCar.length !== 0;
+    if (isHasFinishCar) {
       this.countFinishCar += 1;
     }
-    if (this.countFinishCar === 1) {
+    const isCarFinishFirst = this.countFinishCar === 1;
+    if (isCarFinishFirst) {
       filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
       buttonReset.disabled = false;
       this.countBrokenCar = 0;
     }
-    if (this.countFinishCar === 1 && filteredTimesFinishCar.length !== 0) {
-      const minTime = filteredTimesFinishCar.reduce((acc, curr) => (
-        acc.time < curr.time ? acc : curr
-      ));
+    const isHasResultRace = filteredTimesFinishCar.length !== 0;
+    if (isCarFinishFirst && isHasResultRace) {
+      const minTime = filteredTimesFinishCar.reduce(
+        (previousResultWinnerCar, currentResultWinnerCar) => (
+          previousResultWinnerCar.time < currentResultWinnerCar.time
+            ? previousResultWinnerCar
+            : currentResultWinnerCar
+        ),
+      );
 
       await this.saveWinner({ id: minTime.id, time: minTime.time });
       const { name } = await this.getCar(minTime.id);
       View.renderPopup(name, minTime.time);
       await this.winnersForStartPage();
     }
-    if (this.countFinishCar === 0) {
+    const isCarBroken = this.countFinishCar === 0;
+    if (isCarBroken) {
       this.countBrokenCar += 1;
     }
-    if (this.countFinishCar === 0 && allCars.length === this.countBrokenCar) {
+    const isAllCarBroken = allCars.length === this.countBrokenCar;
+    if (isCarBroken && isAllCarBroken) {
       buttonReset.disabled = false;
       View.renderAllBrokenPopup();
       this.countBrokenCar = 0;
