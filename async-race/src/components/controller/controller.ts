@@ -5,6 +5,7 @@ import Animation from '../model/animation';
 import TableWinners from '../model/tableWinners';
 import View from '../view/view';
 import SelfCheck from '../view/selfCheck';
+import isElementHasClassName from '../../common/utils';
 
 class Controller {
   private animation: Animation;
@@ -60,31 +61,31 @@ class Controller {
   }
 
   private listenButtonsCar(event: Event): void {
-    if ((event.target as HTMLButtonElement).classList.contains('start-stop-car__start-button')) {
+    if (isElementHasClassName(event.target as HTMLButtonElement, 'start-stop-car__start-button')) {
       this.animation.animatePosition(event);
     }
-    if ((event.target as HTMLButtonElement).classList.contains('start-stop-car__stop-button')) {
+    if (isElementHasClassName(event.target as HTMLButtonElement, 'start-stop-car__stop-button')) {
       this.animation.animateStop(event);
     }
-    if ((event.target as HTMLButtonElement).classList.contains('car-buttons__select')) {
+    if (isElementHasClassName(event.target as HTMLButtonElement, 'car-buttons__select')) {
       this.editCar.editCar(event);
     }
-    if ((event.target as HTMLButtonElement).classList.contains('car-buttons__remove')) {
+    if (isElementHasClassName(event.target as HTMLButtonElement, 'car-buttons__remove')) {
       this.editCar.removeCar(event);
     }
   }
 
   private listenButtonsSortingTable(event: Event): void {
-    if ((event.target as HTMLElement).classList.contains('sort-by-wins_asc')) {
+    if (isElementHasClassName(event.target as HTMLElement, 'sort-by-wins_asc')) {
       this.tableWinners.sorting('wins', 'asc');
     }
-    if ((event.target as HTMLElement).classList.contains('sort-by-wins_desc')) {
+    if (isElementHasClassName(event.target as HTMLElement, 'sort-by-wins_desc')) {
       this.tableWinners.sorting('wins', 'desc');
     }
-    if ((event.target as HTMLElement).classList.contains('sort-by-time_asc')) {
+    if (isElementHasClassName(event.target as HTMLElement, 'sort-by-time_asc')) {
       this.tableWinners.sorting('time', 'asc');
     }
-    if ((event.target as HTMLElement).classList.contains('sort-by-time_desc')) {
+    if (isElementHasClassName(event.target as HTMLElement, 'sort-by-time_desc')) {
       this.tableWinners.sorting('time', 'desc');
     }
   }
