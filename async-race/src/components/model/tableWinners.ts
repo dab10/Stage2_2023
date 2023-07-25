@@ -3,7 +3,7 @@ import View from '../view/view';
 import { Order, Sort } from '../../types';
 
 class TableWinners extends Api {
-  public sorting = async (sort: Sort, order: Order) => {
+  public sorting = async (sort: Sort, order: Order): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');
     const currentPage = Number(currentPageString);

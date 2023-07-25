@@ -2,7 +2,7 @@ import Api from './api';
 import View from '../view/view';
 
 class Pagination extends Api {
-  public moveNext = async () => {
+  public moveNext = async (): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
@@ -20,7 +20,7 @@ class Pagination extends Api {
     }
   };
 
-  public movePrev = async () => {
+  public movePrev = async (): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
@@ -38,7 +38,7 @@ class Pagination extends Api {
     }
   };
 
-  public moveNextWinners = async () => {
+  public moveNextWinners = async (): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');
@@ -58,7 +58,7 @@ class Pagination extends Api {
     }
   };
 
-  public movePrevWinners = async () => {
+  public movePrevWinners = async (): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
     const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');

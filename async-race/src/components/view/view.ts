@@ -38,7 +38,7 @@ class View {
     this.isRaceButtonReset = false;
   }
 
-  public renderStartPage = (cars: Cars[], count: string) => {
+  public renderStartPage = (cars: Cars[], count: string): void => {
     this.header.insertAdjacentHTML('afterbegin', headerStart);
     this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count));
     this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
@@ -53,7 +53,11 @@ class View {
     }
   };
 
-  static renderStartTableWinners(resultWinner: TableWinnerCar[], count: string, page: number = 1) {
+  static renderStartTableWinners(
+    resultWinner: TableWinnerCar[],
+    count: string,
+    page: number = 1,
+  ): void {
     const winnersTable = document.querySelector('.winners') as HTMLElement;
     if (winnersTable) {
       winnersTable.innerHTML = '';
@@ -71,7 +75,7 @@ class View {
     }
   }
 
-  public renderCurrentCar = (car: Cars, id: number) => {
+  public renderCurrentCar = (car: Cars, id: number): void => {
     let carUpdate;
     if (id) {
       carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
@@ -83,7 +87,7 @@ class View {
     this.main.append(renderCar(car));
   };
 
-  static deleteCar = (id: number, count: string) => {
+  static deleteCar = (id: number, count: string): void => {
     const countCar = document.querySelector('.count-car') as HTMLElement;
     const carDelete = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
     countCar.innerHTML = '';
@@ -91,33 +95,33 @@ class View {
     carDelete.remove();
   };
 
-  static renderNewCars = (cars: Cars[], count: string, page: number) => {
+  static renderNewCars = (cars: Cars[], count: string, page: number): void => {
     const main = document.querySelector('.main') as HTMLElement;
     main.innerHTML = '';
     main.innerHTML = mainStart(cars, count, page);
   };
 
-  static renderPageNumber = (count: number) => {
+  static renderPageNumber = (count: number): void => {
     const pageNumber = document.querySelector('.page') as HTMLElement;
     pageNumber.innerHTML = '';
     pageNumber.innerHTML = `Page #${count}`;
   };
 
-  static renderPopup = (name: string, minTime: number) => {
+  static renderPopup = (name: string, minTime: number): void => {
     const popup = document.querySelector('.popup') as HTMLElement;
     popup.classList.remove('hidden');
     popup.textContent = '';
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
   };
 
-  static renderAllBrokenPopup = () => {
+  static renderAllBrokenPopup = (): void => {
     const allBrokenPopup = document.querySelector('.popup-broken-car') as HTMLElement;
     allBrokenPopup.classList.remove('hidden');
     allBrokenPopup.textContent = '';
     allBrokenPopup.textContent = 'All cars were broken!';
   };
 
-  public disableButtonRace = (isRace: boolean) => {
+  public disableButtonRace = (isRace: boolean): void => {
     const buttonCreate = document.querySelector('.create-form__button') as HTMLButtonElement;
     const buttonRace = document.querySelector('.controls__button-race') as HTMLButtonElement;
     const buttonGenerateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
@@ -152,7 +156,7 @@ class View {
     }
   };
 
-  static disableStartStopButtonRace = (isRace: boolean) => {
+  static disableStartStopButtonRace = (isRace: boolean): void => {
     const buttonsStartCar = document.querySelectorAll('.start-stop-car__start-button');
     const buttonsStopCar = document.querySelectorAll('.start-stop-car__stop-button');
     buttonsStartCar.forEach((element) => {
@@ -165,12 +169,12 @@ class View {
     });
   };
 
-  static enableStartButtonRace = (id: string) => {
+  static enableStartButtonRace = (id: string): void => {
     const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
     startButton.disabled = false;
   };
 
-  public disableEnableButtonCar = (isRace: boolean) => {
+  public disableEnableButtonCar = (isRace: boolean): void => {
     const buttonCreate = document.querySelector('.create-form__button') as HTMLButtonElement;
     const buttonRace = document.querySelector('.controls__button-race') as HTMLButtonElement;
     const buttonEdit = document.querySelector('.edit-form__button') as HTMLButtonElement;
@@ -202,7 +206,7 @@ class View {
     }
   };
 
-  static changePage(e: Event) {
+  static changePage(e: Event): void {
     const main = document.querySelector('.main') as HTMLElement;
     const paginationButtonsGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
     const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
@@ -225,14 +229,14 @@ class View {
     winnersTable.classList.remove('hidden');
   }
 
-  static popupHidden() {
+  static popupHidden(): void {
     const popup = document.querySelector('.popup') as HTMLElement;
     popup.classList.add('hidden');
     const popupBrokenCar = document.querySelector('.popup-broken-car') as HTMLElement;
     popupBrokenCar.classList.add('hidden');
   }
 
-  static enableStartButton(isRace: boolean) {
+  static enableStartButton(isRace: boolean): void {
     const buttonStart = document.querySelectorAll('.start-stop-car__start-button');
     buttonStart.forEach((element) => {
       const elementButton = element;

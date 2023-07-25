@@ -31,7 +31,7 @@ class Animation extends Api {
     this.countBrokenCar = 0;
   }
 
-  public animatePosition = async (event: Event) => {
+  public animatePosition = async (event: Event): Promise<void> => {
     this.countAnimation += 1;
     const startButton = event.target as HTMLButtonElement;
     const idAnimateCar = startButton.getAttribute(BUTTON_CLASSNAMES.startButton) as string;
@@ -84,7 +84,7 @@ class Animation extends Api {
     return this.animation[id];
   };
 
-  public animateStop = async (event: Event) => {
+  public animateStop = async (event: Event): Promise<void> => {
     this.countAnimation -= 1;
     const stopButton = event.target as HTMLElement;
     const idAnimateCar = stopButton.getAttribute(BUTTON_CLASSNAMES.stopButton) as string;
@@ -109,7 +109,7 @@ class Animation extends Api {
     this.controller = new AbortController();
   };
 
-  public raceAll = async () => {
+  public raceAll = async (): Promise<void> => {
     this.allCars = [];
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
@@ -136,15 +136,14 @@ class Animation extends Api {
         } else {
           window.cancelAnimationFrame(this.animation[id]);
         }
-        this.createWinnerResult(this.timesFinishCar, this.allCars);
+        this.createWinResult(this.timesFinishCar, this.allCars);
       }),
     );
   };
 
-  public createWinnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
+  public createWinResult = async (timesFinishCar: WinnerCar[], allCars: string[]):Promise<void> => {
     const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     let filteredTimesFinishCar: WinnerCar[] = [];
-
     const isCarFinish = timesFinishCar.length !== 0;
     if (isCarFinish) {
       this.countFinishCar += 1;
@@ -182,7 +181,7 @@ class Animation extends Api {
     }
   };
 
-  public resetRace = async () => {
+  public resetRace = async (): Promise<void> => {
     this.allCars.map(async (id) => {
       const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
 
