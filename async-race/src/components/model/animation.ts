@@ -46,7 +46,7 @@ class Animation extends Api {
     const currentX = node.offsetLeft;
     const framesCount = ((distance / velocity) / MILLISECOND_TO_SECOND_RATIO) * FRAMES_PER_SECOND;
     const deltaX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
-    this.animation[idAnimateCar] = this.animationScreenDrive(node, currentX, deltaX, idAnimateCar);
+    this.animation[idAnimateCar] = this.animateScreenDrive(node, currentX, deltaX, idAnimateCar);
 
     ({ success: isCarWork } = await this.drive(Number(idAnimateCar)));
 
@@ -56,16 +56,17 @@ class Animation extends Api {
     }
   };
 
-  public animationScreenDrive = (
+  public animateScreenDrive = (
     node: HTMLElement,
     currentX: number,
-    dX: number,
+    deltaX: number,
     id: string,
   ): number => {
     let currentXAnimation = currentX;
     const nodeAnimation = node;
+
     const step = () => {
-      currentXAnimation += dX;
+      currentXAnimation += deltaX;
       nodeAnimation.style.transform = `translateX(${currentXAnimation}px)`;
       const isCarBeforeEndWindowWidth = currentXAnimation < (window.innerWidth - CAR_WIDTH);
       if (isCarBeforeEndWindowWidth) {
@@ -74,12 +75,13 @@ class Animation extends Api {
     };
 
     this.animation[id] = window.requestAnimationFrame(step);
+
     return this.animation[id];
   };
 
-  public animateStop = async (e: Event) => {
+  public animateStop = async (event: Event) => {
     this.countAnimation -= 1;
-    const stopButton = e.target as HTMLElement;
+    const stopButton = event.target as HTMLElement;
     const id = stopButton.getAttribute('data-stop-id');
     const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
     const stopCarButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
@@ -115,7 +117,7 @@ class Animation extends Api {
         const time = (distance / velocity) / 1000;
         const framesCount = ((distance / velocity) / 1000) * FRAMES_PER_SECOND;
         const dX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
-        this.animation[id] = this.animationScreenDrive(node, currentX, dX, id);
+        this.animation[id] = this.animateScreenDrive(node, currentX, dX, id);
 
         const { success: isCarWork } = await this.drive(Number(id));
         if (!isCarWork) {
