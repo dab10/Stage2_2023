@@ -2,6 +2,9 @@ import Api from './api';
 import { NumberCarAnimate, WinnerCar } from '../../types/index';
 import View from '../view/view';
 import {
+  BUTTON_CLASSNAMES,
+  BUTTON_RESET_CLASS_NAME,
+  CAR_CLASS_NAME,
   CAR_WIDTH, FRAMES_PER_SECOND, MILLISECOND_TO_SECOND_RATIO, TIME_BETWEEN_RACE,
 } from '../../types/constants';
 
@@ -28,12 +31,14 @@ class Animation extends Api {
     this.countBrokenCar = 0;
   }
 
-  public animatePosition = async (e: Event) => {
+  public animatePosition = async (event: Event) => {
     this.countAnimation += 1;
-    const startButton = e.target as HTMLButtonElement;
-    const idAnimateCar = startButton.getAttribute('data-start-id') as string;
+    const startButton = event.target as HTMLButtonElement;
+    const idAnimateCar = startButton.getAttribute(BUTTON_CLASSNAMES.startButton) as string;
     startButton.disabled = true;
-    const stopButton = document.querySelector(`[data-stop-id="${idAnimateCar}"]`) as HTMLButtonElement;
+    const stopButton = document.querySelector(
+      BUTTON_CLASSNAMES.getStopButtonId(idAnimateCar),
+    ) as HTMLButtonElement;
     stopButton.disabled = false;
     let isCarWork = true;
     const isAnimated = this.countAnimation === 1;
@@ -41,7 +46,7 @@ class Animation extends Api {
       this.view.disableButtonRace(true);
     }
 
-    const node = document.querySelector(`[data-car-animation-id="${idAnimateCar}"]`) as HTMLElement;
+    const node = document.querySelector(CAR_CLASS_NAME.getCarId(idAnimateCar)) as HTMLElement;
     const { velocity, distance } = await this.startEngine(Number(idAnimateCar));
     const currentX = node.offsetLeft;
     const framesCount = ((distance / velocity) / MILLISECOND_TO_SECOND_RATIO) * FRAMES_PER_SECOND;
@@ -82,18 +87,22 @@ class Animation extends Api {
   public animateStop = async (event: Event) => {
     this.countAnimation -= 1;
     const stopButton = event.target as HTMLElement;
-    const id = stopButton.getAttribute('data-stop-id');
-    const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
-    const stopCarButton = document.querySelector(`[data-stop-id="${id}"]`) as HTMLButtonElement;
-    const startCarButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+    const idAnimateCar = stopButton.getAttribute(BUTTON_CLASSNAMES.stopButton) as string;
+    const node = document.querySelector(CAR_CLASS_NAME.getCarId(idAnimateCar)) as HTMLElement;
+    const stopCarButton = document.querySelector(
+      BUTTON_CLASSNAMES.getStopButtonId(idAnimateCar),
+    ) as HTMLButtonElement;
+    const startCarButton = document.querySelector(
+      BUTTON_CLASSNAMES.getStartButtonId(idAnimateCar),
+    ) as HTMLButtonElement;
     stopCarButton.disabled = true;
 
-    await this.stopEngine(Number(id));
+    await this.stopEngine(Number(idAnimateCar));
     node.style.transform = 'translateX(0)';
-    window.cancelAnimationFrame(this.animation[Number(id)]);
+    window.cancelAnimationFrame(this.animation[Number(idAnimateCar)]);
     startCarButton.disabled = false;
-    const isAllCarStop = this.countAnimation === 0;
-    if (isAllCarStop) {
+    const isAllCarsStop = this.countAnimation === 0;
+    if (isAllCarsStop) {
       this.view.disableButtonRace(false);
     }
     this.controller.abort();
@@ -111,7 +120,7 @@ class Animation extends Api {
         this.countFinishCar = 0;
 
         View.disableStartStopButtonRace(true);
-        const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
+        const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
         const { velocity, distance } = await this.startEngine(Number(id));
         const currentX = node.offsetLeft;
         const time = (distance / velocity) / 1000;
@@ -132,7 +141,7 @@ class Animation extends Api {
   };
 
   public winnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
-    const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     let filteredTimesFinishCar: WinnerCar[] = [];
 
     const isHasFinishCar = timesFinishCar.length !== 0;
@@ -174,7 +183,7 @@ class Animation extends Api {
 
   public raceReset = async () => {
     this.allCars.map(async (id) => {
-      const node = document.querySelector(`[data-car-animation-id="${id}"]`) as HTMLElement;
+      const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
 
       await this.stopEngine(Number(id));
       node.style.transform = 'translateX(0)';
@@ -183,7 +192,7 @@ class Animation extends Api {
       this.controller = new AbortController();
       View.popupHidden();
     });
-    const resetButton = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    const resetButton = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     resetButton.disabled = true;
     setTimeout(() => this.view.disableButtonRace(false), TIME_BETWEEN_RACE);
     setTimeout(() => View.enableStartButton(false), TIME_BETWEEN_RACE);

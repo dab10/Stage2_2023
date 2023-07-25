@@ -23,3 +23,25 @@ export const CAR_MODELS = ['Solaris', 'Granta', 'Rio', 'Vesta', 'Creta', 'Camry'
 export const LETTERS_OF_COLOR = '0123456789ABCDEF';
 
 export const COLOR_NAME_LENGTH = 6;
+
+export const BUTTON_CLASSNAMES = {
+  startButton: 'data-start-id',
+  stopButton: 'data-stop-id',
+
+  getStartButtonId(id: string) {
+    return `[${this.startButton}="${id}"]`;
+  },
+
+  getStopButtonId(id: string) {
+    return `[${this.stopButton}="${id}"]`;
+  },
+};
+
+export const CAR_CLASS_NAME = {
+  car: 'data-car-animation-id',
+  getCarId(id: string) {
+    return `[${this.car}="${id}"]`;
+  },
+};
+
+export const BUTTON_RESET_CLASS_NAME = '.controls__button-reset';
