@@ -113,7 +113,7 @@ class Animation extends Api {
     this.allCars = [];
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
-    currentCarsId.forEach((el) => this.allCars.push(el.getAttribute('data-car-id') as string));
+    currentCarsId.forEach((element) => this.allCars.push(element.getAttribute('data-car-id') as string));
     this.view.disableButtonRace(true);
     await Promise.race(
       this.allCars.map(async (id) => {
@@ -123,29 +123,30 @@ class Animation extends Api {
         const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
         const { velocity, distance } = await this.startEngine(Number(id));
         const currentX = node.offsetLeft;
-        const time = (distance / velocity) / 1000;
-        const framesCount = ((distance / velocity) / 1000) * FRAMES_PER_SECOND;
-        const dX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
-        this.animation[id] = this.animateScreenDrive(node, currentX, dX, id);
+        const time = (distance / velocity) / MILLISECOND_TO_SECOND_RATIO;
+        const framesCount = (
+          (distance / velocity) / MILLISECOND_TO_SECOND_RATIO
+        ) * FRAMES_PER_SECOND;
+        const deltaX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
+        this.animation[id] = this.animateScreenDrive(node, currentX, deltaX, id);
 
         const { success: isCarWork } = await this.drive(Number(id));
-        if (!isCarWork) {
-          window.cancelAnimationFrame(this.animation[id]);
-        }
         if (isCarWork) {
           this.timesFinishCar.push({ time, id: Number(id), isSuccess: isCarWork });
+        } else {
+          window.cancelAnimationFrame(this.animation[id]);
         }
-        this.winnerResult(this.timesFinishCar, this.allCars);
+        this.createWinnerResult(this.timesFinishCar, this.allCars);
       }),
     );
   };
 
-  public winnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
+  public createWinnerResult = async (timesFinishCar: WinnerCar[], allCars: string[]) => {
     const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     let filteredTimesFinishCar: WinnerCar[] = [];
 
-    const isHasFinishCar = timesFinishCar.length !== 0;
-    if (isHasFinishCar) {
+    const isCarFinish = timesFinishCar.length !== 0;
+    if (isCarFinish) {
       this.countFinishCar += 1;
     }
     const isCarFinishFirst = this.countFinishCar === 1;
@@ -154,8 +155,8 @@ class Animation extends Api {
       buttonReset.disabled = false;
       this.countBrokenCar = 0;
     }
-    const isHasResultRace = filteredTimesFinishCar.length !== 0;
-    if (isCarFinishFirst && isHasResultRace) {
+    const hasResultRace = filteredTimesFinishCar.length !== 0;
+    if (isCarFinishFirst && hasResultRace) {
       const minTime = filteredTimesFinishCar.reduce(
         (previousResultWinnerCar, currentResultWinnerCar) => (
           previousResultWinnerCar.time < currentResultWinnerCar.time
@@ -173,15 +174,15 @@ class Animation extends Api {
     if (isCarBroken) {
       this.countBrokenCar += 1;
     }
-    const isAllCarBroken = allCars.length === this.countBrokenCar;
-    if (isCarBroken && isAllCarBroken) {
+    const isAllCarsBroken = allCars.length === this.countBrokenCar;
+    if (isCarBroken && isAllCarsBroken) {
       buttonReset.disabled = false;
       View.renderAllBrokenPopup();
       this.countBrokenCar = 0;
     }
   };
 
-  public raceReset = async () => {
+  public resetRace = async () => {
     this.allCars.map(async (id) => {
       const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
 

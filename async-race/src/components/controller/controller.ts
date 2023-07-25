@@ -52,7 +52,7 @@ class Controller {
     buttonNextWinners.addEventListener('click', this.pagination.moveNextWinners);
     buttonPrevWinners.addEventListener('click', this.pagination.movePrevWinners);
     raceAll.addEventListener('click', this.animation.raceAll);
-    raceReset.addEventListener('click', this.animation.raceReset);
+    raceReset.addEventListener('click', this.animation.resetRace);
     winners.addEventListener('click', View.changePage);
     garage.addEventListener('click', View.changePage);
     popup.addEventListener('click', View.popupHidden);
