@@ -1,13 +1,12 @@
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0;
-  position: relative;
-  background-color: black;
-  color: #ffffff;
   height: 100vh;
   padding: 0px 10px;
+  background-color: black;
+  color: #ffffff;
 }
 
 .hidden {

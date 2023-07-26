@@ -24,16 +24,16 @@
 }
 
 .edit-form__button:disabled {
-  cursor: not-allowed;
   pointer-events: all !important;
+  cursor: not-allowed;
 }
 
 .sort-by-wins_asc,
 .sort-by-wins_desc,
 .sort-by-time_asc,
 .sort-by-time_desc {
-  cursor: pointer;
   padding: 0 6px;
+  cursor: pointer;
 }
 
 .main-button__garage,
@@ -44,15 +44,16 @@
 .popup,
 .popup-broken-car {
   position: absolute;
-  width: 98%;
-  text-align: center;
-  top: 50%;
   z-index: 10;
-  font-family: 'Rubik One', sans-serif;
-  font-size: 50px;
-  color: white;
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  top: 50%;
   margin: 20px auto;
+  width: 98%;
+  font-size: 50px;
+  font-family: 'Rubik One', sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  color: white;
+
 }
 
 .racetrack {
@@ -66,10 +67,10 @@
 
 .flag {
   position: absolute;
-  left: calc(100% - 160px);
   top: 20px;
-  color: red;
+  left: calc(100% - 160px);
   font-size: 50px;
+  color: red;
 }
 
 .car {
@@ -81,8 +82,8 @@
 }
 
 .car__image {
-  height: 50px;
   width: 100px;
+  height: 50px;
 }
 
 footer {
@@ -96,24 +97,24 @@ footer {
 }
 
 .footer-github {
+  transition: 0.25s;
   text-decoration: none;
   color: #ffffff;
-  transition: 0.25s;
 
   &:hover, &:focus {
-      color: #69db7e;
-      box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+    color: #69db7e;
   }
 }
 
 .footer-rss-image {
-  height: 50px;
+  transition: 0.25s;
   width: 100px;
+  height: 50px;
   background: url("../../assets/images/rss.svg");
   background-position: center;
-  background-repeat: no-repeat;
   background-size:contain;
-  transition: 0.25s;
+  background-repeat: no-repeat;
  
   &:hover, &:focus {
       filter: invert(3%) sepia(33%) saturate(1353%) hue-rotate(56deg) brightness(85%) contrast(103%);
