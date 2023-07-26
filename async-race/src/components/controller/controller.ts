@@ -26,7 +26,7 @@ class Controller {
     this.tableWinners = new TableWinners();
   }
 
-  public async start(): Promise<void> {
+  public start = async (): Promise<void> => {
     await this.api.carsForStartPage();
     await this.api.winnersForStartPage();
     SelfCheck.selfCheck();
@@ -58,9 +58,9 @@ class Controller {
     popup.addEventListener('click', View.popupHidden);
     winnersTable.addEventListener('click', (event) => this.listenButtonsSortingTable(event));
     generateCars.addEventListener('click', this.editCar.generateCars);
-  }
+  };
 
-  private listenButtonsCar(event: Event): void {
+  private listenButtonsCar = (event: Event): void => {
     if (isElementHasClassName(event.target as HTMLButtonElement, 'start-stop-car__start-button')) {
       this.animation.animatePosition(event);
     }
@@ -73,9 +73,9 @@ class Controller {
     if (isElementHasClassName(event.target as HTMLButtonElement, 'car-buttons__remove')) {
       this.editCar.removeCar(event);
     }
-  }
+  };
 
-  private listenButtonsSortingTable(event: Event): void {
+  private listenButtonsSortingTable = (event: Event): void => {
     if (isElementHasClassName(event.target as HTMLElement, 'sort-by-wins_asc')) {
       this.tableWinners.sorting('wins', 'asc');
     }
@@ -88,7 +88,7 @@ class Controller {
     if (isElementHasClassName(event.target as HTMLElement, 'sort-by-time_desc')) {
       this.tableWinners.sorting('time', 'desc');
     }
-  }
+  };
 }
 
 export default Controller;

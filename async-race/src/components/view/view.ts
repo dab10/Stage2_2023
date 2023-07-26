@@ -53,11 +53,11 @@ class View {
     }
   };
 
-  static renderStartTableWinners(
+  static renderStartTableWinners = (
     resultWinner: TableWinnerCar[],
     count: string,
     page: number = 1,
-  ): void {
+  ): void => {
     const winnersTable = document.querySelector('.winners') as HTMLElement;
     if (winnersTable) {
       winnersTable.innerHTML = '';
@@ -73,7 +73,7 @@ class View {
     if (isCarsMoreThanWinnersPerPage) {
       buttonNext.disabled = false;
     }
-  }
+  };
 
   public renderCurrentCar = (car: Cars, id: number): void => {
     let carUpdate;
@@ -206,7 +206,7 @@ class View {
     }
   };
 
-  static changePage(e: Event): void {
+  static changePage = (e: Event): void => {
     const main = document.querySelector('.main') as HTMLElement;
     const paginationButtonsGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
     const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
@@ -227,22 +227,22 @@ class View {
     editForm.classList.add('hidden');
     paginationButtonsWinners.classList.remove('hidden');
     winnersTable.classList.remove('hidden');
-  }
+  };
 
-  static popupHidden(): void {
+  static popupHidden = (): void => {
     const popup = document.querySelector('.popup') as HTMLElement;
     popup.classList.add('hidden');
     const popupBrokenCar = document.querySelector('.popup-broken-car') as HTMLElement;
     popupBrokenCar.classList.add('hidden');
-  }
+  };
 
-  static enableStartButton(isRace: boolean): void {
+  static enableStartButton = (isRace: boolean): void => {
     const buttonStart = document.querySelectorAll('.start-stop-car__start-button');
     buttonStart.forEach((element) => {
       const elementButton = element;
       ((elementButton as HTMLButtonElement).disabled = isRace);
     });
-  }
+  };
 }
 
 export default View;

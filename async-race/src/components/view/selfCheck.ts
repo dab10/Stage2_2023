@@ -1,5 +1,5 @@
 class SelfCheck {
-  static selfCheck(): void {
+  static selfCheck = (): void => {
     console.log('%casync-race', 'font-weight: bold; font-size: 18px');
     console.log('https://github.com/rolling-scopes-school/tasks/blob/master/tasks/async-race.md\n\n');
     console.log('%cСамооценка:', 'font-weight: bold;');
@@ -32,6 +32,6 @@ class SelfCheck {
           - [X] +10: Columns: "№", "Image of the car", "Name of the car", "Wins number", "Best time in seconds" (names can differ)
           - [X] +10: Sort cars by wins number and by best time (ASC, DESC)
         `);
-  }
+  };
 }
 export default SelfCheck;

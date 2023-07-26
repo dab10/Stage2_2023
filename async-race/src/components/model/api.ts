@@ -45,17 +45,17 @@ class Api {
     this.winnersPerPage = WINNERS_PER_PAGE;
   }
 
-  public async carsForStartPage(): Promise<void> {
+  public carsForStartPage = async (): Promise<void> => {
     const { items, count } = (await this.getCars(this.startPageGarage));
     this.view.renderStartPage(items, count);
-  }
+  };
 
-  public async winnersForStartPage(): Promise<void> {
+  public winnersForStartPage = async (): Promise<void> => {
     const { items, count } = await this.getWinners({
       page: this.startPageWinners, limit: this.winnersPerPage, sort: '', order: '',
     });
     View.renderStartTableWinners(items, count);
-  }
+  };
 
   public getCars = async (page: number, limit = this.carsPerPage): Promise< {
     items: Cars[]; count: string;

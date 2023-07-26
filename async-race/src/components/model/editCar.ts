@@ -22,7 +22,7 @@ class EditCar extends Api {
     this.lettersOfColor = LETTERS_OF_COLOR;
   }
 
-  public async editCar(e: Event): Promise<void> {
+  public editCar = async (e: Event): Promise<void> => {
     const selectButton = e.target as HTMLElement;
     this.id = Number(selectButton.getAttribute('data-select-id'));
     if (this.id) {
@@ -49,9 +49,9 @@ class EditCar extends Api {
       };
       form.addEventListener('submit', (event) => getFormValue(event));
     }
-  }
+  };
 
-  public async createNewCar(e: Event): Promise<void> {
+  public createNewCar = async (e: Event): Promise<void> => {
     e.preventDefault();
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const inputName = document.querySelector('.create-form__input') as HTMLInputElement;
@@ -71,9 +71,9 @@ class EditCar extends Api {
     if (isCarsMoreThanCarsPerPage && !isOneCar) {
       buttonNext.disabled = false;
     }
-  }
+  };
 
-  public async removeCar(e: Event): Promise<void> {
+  public removeCar = async (e: Event): Promise<void> => {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
@@ -109,7 +109,7 @@ class EditCar extends Api {
     }
     await this.deleteWinner(Number(id));
     await this.winnersForStartPage();
-  }
+  };
 
   private generateRandomName = (): string => {
     const brand = this.carBrand[Math.floor(Math.random() * this.carBrand.length)];
