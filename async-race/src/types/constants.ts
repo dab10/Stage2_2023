@@ -41,8 +41,14 @@ export const BUTTON_CLASSNAMES = {
 
 export const CAR_CLASS_NAME = {
   car: 'data-car-animation-id',
+  carContainer: 'data-car-id',
+
   getCarId(id: string) {
     return `[${this.car}="${id}"]`;
+  },
+
+  getIdFromCarContainer(id: string) {
+    return `[${this.carContainer}="${id}"]`;
   },
 };
 

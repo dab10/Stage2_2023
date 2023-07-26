@@ -113,7 +113,9 @@ class Animation extends Api {
     this.allCars = [];
     this.timesFinishCar = [];
     const currentCarsId = document.querySelectorAll('.garage__car');
-    currentCarsId.forEach((element) => this.allCars.push(element.getAttribute('data-car-id') as string));
+    currentCarsId.forEach(
+      (element) => this.allCars.push(element.getAttribute(CAR_CLASS_NAME.carContainer) as string),
+    );
     this.view.disableButtonRace(true);
     await Promise.race(
       this.allCars.map(async (id) => {

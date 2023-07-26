@@ -4,7 +4,9 @@ import {
 } from './templates';
 
 import { Cars, TableWinnerCar } from '../../types';
-import { CARS_PER_PAGE, WINNERS_PER_PAGE } from '../../types/constants';
+import {
+  BUTTON_RESET_CLASS_NAME, CARS_PER_PAGE, CAR_CLASS_NAME, WINNERS_PER_PAGE,
+} from '../../types/constants';
 
 class View {
   private header: HTMLElement;
@@ -79,7 +81,9 @@ class View {
   public renderCurrentCar = (car: Cars, id: number): void => {
     let carUpdate;
     if (id) {
-      carUpdate = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
+      carUpdate = document.querySelector(
+        CAR_CLASS_NAME.getIdFromCarContainer(String(id)),
+      ) as HTMLLIElement;
     }
     if (carUpdate) {
       carUpdate.innerHTML = '';
@@ -90,7 +94,9 @@ class View {
 
   static deleteCar = (id: number, count: string): void => {
     const countCar = document.querySelector('.count-car') as HTMLElement;
-    const carDelete = document.querySelector(`[data-car-id="${id}"]`) as HTMLLIElement;
+    const carDelete = document.querySelector(
+      CAR_CLASS_NAME.getIdFromCarContainer(String(id)),
+    ) as HTMLLIElement;
     countCar.innerHTML = '';
     countCar.innerHTML = `Garage (${count})`;
     carDelete.remove();
@@ -139,7 +145,7 @@ class View {
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
-    const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     if (isRace) {
       this.isRaceButtonPrev = buttonPrev.disabled;
       this.isRaceButtonNext = buttonNext.disabled;
@@ -179,7 +185,7 @@ class View {
     const buttonCreate = document.querySelector('.create-form__button') as HTMLButtonElement;
     const buttonRace = document.querySelector('.controls__button-race') as HTMLButtonElement;
     const buttonEdit = document.querySelector('.edit-form__button') as HTMLButtonElement;
-    const buttonReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     const buttonGenerateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
     const buttonsSelectAndRemove = document.querySelectorAll('.car-buttons__select,  .car-buttons__remove');
 

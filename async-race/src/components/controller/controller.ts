@@ -6,6 +6,7 @@ import TableWinners from '../model/tableWinners';
 import View from '../view/view';
 import SelfCheck from '../view/selfCheck';
 import isElementHasClassName from '../../common/utils';
+import { BUTTON_RESET_CLASS_NAME } from '../../types/constants';
 
 class Controller {
   private animation: Animation;
@@ -37,7 +38,7 @@ class Controller {
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
     const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
     const raceAll = document.querySelector('.controls__button-race') as HTMLButtonElement;
-    const raceReset = document.querySelector('.controls__button-reset') as HTMLButtonElement;
+    const raceReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
     const winners = document.querySelector('.main-button__winners') as HTMLButtonElement;
     const popup = document.querySelector('.popup') as HTMLElement;
