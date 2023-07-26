@@ -1,7 +1,7 @@
 export interface Cars {
   name: string;
   color: string;
-  id: number;
+  id?: number;
 }
 
 export interface Car {
@@ -40,7 +40,7 @@ export interface NumberCarAnimate {
 export interface WinnerCar {
   time: number;
   id: number;
-  isSuccess: boolean;
+  isSuccess?: boolean;
 }
 
 export interface TableWinner {
@@ -62,7 +62,28 @@ export interface WinnersFromAPI {
   'query': string;
 }
 
+export interface AllCars {
+  items: Cars[];
+  count: string;
+}
+
+export interface SuccessStatus {
+  success: boolean;
+}
+
+export interface AllWinners {
+  items: TableWinnerCar[];
+  count: string;
+}
+
 export enum HTTPStatusCode {
   Success = 200,
   NotFound = 404,
+}
+
+export enum HTTPMethods {
+  Post = 'POST',
+  Put = 'PUT',
+  Patch = 'PATCH',
+  Delete = 'DELETE',
 }

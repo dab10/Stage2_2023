@@ -1,6 +1,6 @@
 import {
-  Cars, Sort, Order, Winner, WinnerCar, TableWinner, TableWinnerCar,
-  OptionsRace, WinnersFromAPI, HTTPStatusCode,
+  Cars, Sort, Order, Winner, WinnerCar, TableWinner,
+  OptionsRace, WinnersFromAPI, HTTPStatusCode, AllCars, HTTPMethods, SuccessStatus, AllWinners,
 } from '../../types';
 import {
   BASE_URL,
@@ -57,9 +57,7 @@ class Api {
     View.renderStartTableWinners(items, count);
   };
 
-  public getCars = async (page: number, limit = this.carsPerPage): Promise< {
-    items: Cars[]; count: string;
-  } > => {
+  public getCars = async (page: number, limit = this.carsPerPage): Promise<AllCars> => {
     const response = await fetch(`${this.garage}?_page=${page}&_limit=${limit}`);
     return {
       items: await response.json(),
@@ -71,7 +69,7 @@ class Api {
 
   public createCar = async (body: Cars): Promise<Cars> => (
     await fetch(this.garage, {
-      method: 'POST',
+      method: HTTPMethods.Post,
       body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
@@ -79,23 +77,23 @@ class Api {
     })
   ).json();
 
-  public deleteCar = async (id: number): Promise<Cars> => (await fetch(`${this.garage}/${id}`, { method: 'DELETE' })).json();
+  public deleteCar = async (id: number): Promise<Cars> => (await fetch(`${this.garage}/${id}`, { method: HTTPMethods.Delete })).json();
 
-  public updateCar = async (id: number, body: Pick<Cars, 'name' | 'color'>): Promise<Cars> => (await fetch(`${this.garage}/${id}`, {
-    method: 'PUT',
+  public updateCar = async (id: number, body: Cars): Promise<Cars> => (await fetch(`${this.garage}/${id}`, {
+    method: HTTPMethods.Put,
     body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
     },
   })).json();
 
-  public startEngine = async (id: number): Promise<OptionsRace> => (await fetch(`${this.engine}?id=${id}&status=started`, { method: 'PATCH' })).json();
+  public startEngine = async (id: number): Promise<OptionsRace> => (await fetch(`${this.engine}?id=${id}&status=started`, { method: HTTPMethods.Patch })).json();
 
-  public stopEngine = async (id: number): Promise<OptionsRace> => (await fetch(`${this.engine}?id=${id}&status=stopped`, { method: 'PATCH' })).json();
+  public stopEngine = async (id: number): Promise<OptionsRace> => (await fetch(`${this.engine}?id=${id}&status=stopped`, { method: HTTPMethods.Patch })).json();
 
-  public drive = async (id: number): Promise<{ success: boolean }> => {
+  public drive = async (id: number): Promise<SuccessStatus> => {
     try {
-      const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: 'PATCH', signal: this.controller.signal });
+      const res = await fetch(`${this.engine}?id=${id}&status=drive`, { method: HTTPMethods.Patch, signal: this.controller.signal });
       return res.status === HTTPStatusCode.Success ? { success: true } : { success: false };
     } catch {
       return { success: true };
@@ -113,7 +111,7 @@ class Api {
 
   public getWinners = async ({
     page, limit = this.winnersPerPage, sort, order,
-  }: TableWinner): Promise<{ items: TableWinnerCar[]; count: string; }> => {
+  }: TableWinner): Promise<AllWinners> => {
     const response = await fetch(`${this.winners}?_page=${page}&_limit=${limit}${this.getSortOrder(sort, order)}`);
     const items = await response.json();
     return {
@@ -128,11 +126,11 @@ class Api {
 
   public getWinnerStatus = async (id: number): Promise<number> => (await fetch(`${this.winners}/${id}`)).status;
 
-  public deleteWinner = async (id: number): Promise<WinnersFromAPI> => (await fetch(`${this.winners}/${id}`, { method: 'DELETE' })).json();
+  public deleteWinner = async (id: number): Promise<WinnersFromAPI> => (await fetch(`${this.winners}/${id}`, { method: HTTPMethods.Delete })).json();
 
   public createWinner = async (body: Winner): Promise<WinnersFromAPI> => (
     await fetch(this.winners, {
-      method: 'POST',
+      method: HTTPMethods.Post,
       body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
@@ -141,14 +139,14 @@ class Api {
   ).json();
 
   public updateWinner = async (id: number, body: Winner): Promise<WinnersFromAPI> => (await fetch(`${this.winners}/${id}`, {
-    method: 'PUT',
+    method: HTTPMethods.Put,
     body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
     },
   })).json();
 
-  public saveWinner = async ({ id, time }: Pick<WinnerCar, 'id' | 'time'>) => {
+  public saveWinner = async ({ id, time }: WinnerCar) => {
     const winnerStatus = await this.getWinnerStatus(id);
 
     if (winnerStatus === HTTPStatusCode.NotFound) {
