@@ -24,6 +24,8 @@ export const LETTERS_OF_COLOR = '0123456789ABCDEF';
 
 export const COLOR_NAME_LENGTH = 6;
 
+export const NUMBER_RANDOM_CARS = 100;
+
 export const BUTTON_CLASSNAMES = {
   startButton: 'data-start-id',
   stopButton: 'data-stop-id',

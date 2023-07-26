@@ -1,5 +1,5 @@
 import {
-  CAR_BRANDS, CAR_MODELS, COLOR_NAME_LENGTH, LETTERS_OF_COLOR,
+  CAR_BRANDS, CAR_MODELS, COLOR_NAME_LENGTH, LETTERS_OF_COLOR, NUMBER_RANDOM_CARS,
 } from '../../types/constants';
 import View from '../view/view';
 import Api from './api';
@@ -130,14 +130,14 @@ class EditCar extends Api {
     const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
     const currentPage = Number(currentPageString);
 
-    const generateCarsArr = (count: number) => new Array(count).fill(1).map(() => ({
+    const generateCarsArray = (count: number) => new Array(count).fill(1).map(() => ({
       name: this.generateRandomName(), color: this.generateRandomColor(),
     }));
-    const generateCarsArrResult = generateCarsArr(100);
-    generateCarsArrResult.map(async (el) => {
+    const generateCarsArrayResult = generateCarsArray(NUMBER_RANDOM_CARS);
+    generateCarsArrayResult.map(async (element) => {
       await this.createCar({
-        name: el.name,
-        color: el.color,
+        name: element.name,
+        color: element.color,
         id: 0,
       });
     });
