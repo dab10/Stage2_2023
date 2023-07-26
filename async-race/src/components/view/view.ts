@@ -1,5 +1,6 @@
 import {
-  headerStart, footerStart, mainStart, paginationGarage, renderCar, winnerStart, paginationWinners,
+  HEADER_START, FOOTER_START, mainStart,
+  PAGINATION_GARAGE, renderCar, winnerStart, PAGINATION_WINNERS,
 } from './templates';
 
 import { Cars, TableWinnerCar } from '../../types';
@@ -39,11 +40,11 @@ class View {
   }
 
   public renderStartPage = (cars: Cars[], count: string): void => {
-    this.header.insertAdjacentHTML('afterbegin', headerStart);
+    this.header.insertAdjacentHTML('afterbegin', HEADER_START);
     this.main.insertAdjacentHTML('afterbegin', mainStart(cars, count));
-    this.paginationGarage.insertAdjacentHTML('afterbegin', paginationGarage);
-    this.paginationWinners.insertAdjacentHTML('afterbegin', paginationWinners);
-    this.footer.insertAdjacentHTML('afterbegin', footerStart);
+    this.paginationGarage.insertAdjacentHTML('afterbegin', PAGINATION_GARAGE);
+    this.paginationWinners.insertAdjacentHTML('afterbegin', PAGINATION_WINNERS);
+    this.footer.insertAdjacentHTML('afterbegin', FOOTER_START);
     document.body.append(this.header, this.paginationWinners, this.main, this.paginationGarage);
     document.body.append(this.footer);
     const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;

@@ -3,7 +3,7 @@ import './view.scss';
 import './view.css';
 import { WINNERS_PER_PAGE } from '../../types/constants';
 
-export const headerStart = `
+export const HEADER_START = `
   <h1>async-race</h1>
   <div class="main-buttons">
     <button class="button main-button__garage">To garage</button>
@@ -31,21 +31,21 @@ export const headerStart = `
   </div>
 `;
 
-export const paginationGarage = `
+export const PAGINATION_GARAGE = `
 <div class="pagination-garage">
   <button class="button pagination-garage__prev" disabled>Prev</button>
   <button class="button pagination-garage__next" disabled>Next</button>
 </div>
 `;
 
-export const paginationWinners = `
+export const PAGINATION_WINNERS = `
 <div class="pagination-winners hidden">
   <button class="button pagination-winners__prev" disabled>Prev</button>
   <button class="button pagination-winners__next" disabled>Next</button>
 </div>
 `;
 
-export const footerStart = `
+export const FOOTER_START = `
 <div class="footer-year">2022</div>
 <div>
     <a class="footer-github" href="https://github.com/dab10">github</a>
@@ -55,7 +55,7 @@ export const footerStart = `
 </a>
 `;
 
-const startSvgCode = `
+const START_SVG_CODE = `
   <?xml version="1.0" standalone="no"?>
   <svg class="car__image" version="1.0" xmlns="http://www.w3.org/2000/svg"
   width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
@@ -64,7 +64,7 @@ const startSvgCode = `
   fill="
 `;
 
-const endSvgCode = `
+const END_SVG_CODE = `
   " stroke="none">
   <path d="M3565 5336 c-106 -30 -101 -26 -108 -111 -4 -42 -9 -80 -12 -85 -6
   -10 -246 -105 -590 -234 -448 -167 -1052 -415 -1173 -483 -78 -43 -193 -91
@@ -162,9 +162,9 @@ const endSvgCode = `
 `;
 
 const renderCarColor = (color: string) => `
-  ${startSvgCode}
+  ${START_SVG_CODE}
   ${color}
-  ${endSvgCode}
+  ${END_SVG_CODE}
 `;
 
 export const renderCar = (car: Cars) => `
