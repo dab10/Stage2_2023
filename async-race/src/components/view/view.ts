@@ -5,7 +5,26 @@ import {
 
 import { Cars, TableWinnerCar } from '../../types';
 import {
-  BUTTON_RESET_CLASS_NAME, CARS_PER_PAGE, CAR_CLASS_NAME, WINNERS_PER_PAGE,
+  BUTTON_CLASSNAMES,
+  BUTTON_CREATE_CLASS_NAME,
+  BUTTON_EDIT_CLASS_NAME,
+  BUTTON_GENERATOR_CLASS_NAME,
+  BUTTON_NEXT_CLASS_NAME,
+  BUTTON_NEXT_WINNERS_CLASS_NAME,
+  BUTTON_PREV_CLASS_NAME,
+  BUTTON_PREV_WINNERS_CLASS_NAME,
+  BUTTON_RACE_CLASS_NAME,
+  BUTTON_REMOVE_CLASS_NAME,
+  BUTTON_RESET_CLASS_NAME,
+  BUTTON_SELECT_CLASS_NAME,
+  BUTTON_START_CLASS_NAME,
+  CARS_PER_PAGE,
+  CAR_CLASS_NAME,
+  HIDDEN_CLASS_NAME,
+  PAGE_NUMBER_DISPLAY_CLASS_NAME,
+  POPUP_BROKEN_CLASS_NAME,
+  POPUP_CLASS_NAME,
+  WINNERS_PER_PAGE,
 } from '../../types/constants';
 
 class View {
@@ -49,7 +68,7 @@ class View {
     this.footer.insertAdjacentHTML('afterbegin', FOOTER_START);
     document.body.append(this.header, this.paginationWinners, this.main, this.paginationGarage);
     document.body.append(this.footer);
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
     const isCarsMoreThanCarsPerPage = Number(count) > CARS_PER_PAGE;
     if (isCarsMoreThanCarsPerPage) {
       buttonNext.disabled = false;
@@ -66,8 +85,8 @@ class View {
       winnersTable.innerHTML = '';
     }
     winnersTable.innerHTML = winnerStart(resultWinner, count, page);
-    const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_WINNERS_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_WINNERS_CLASS_NAME) as HTMLButtonElement;
     const isFirstPage = page === 1;
     if (isFirstPage) {
       buttonPrev.disabled = true;
@@ -109,30 +128,32 @@ class View {
   };
 
   static renderPageNumber = (count: number): void => {
-    const pageNumber = document.querySelector('.page') as HTMLElement;
+    const pageNumber = document.querySelector(PAGE_NUMBER_DISPLAY_CLASS_NAME) as HTMLElement;
     pageNumber.innerHTML = '';
     pageNumber.innerHTML = `Page #${count}`;
   };
 
   static renderPopup = (name: string, minTime: number): void => {
-    const popup = document.querySelector('.popup') as HTMLElement;
-    popup.classList.remove('hidden');
+    const popup = document.querySelector(POPUP_CLASS_NAME) as HTMLElement;
+    popup.classList.remove(HIDDEN_CLASS_NAME);
     popup.textContent = '';
     popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
   };
 
   static renderAllBrokenPopup = (): void => {
-    const allBrokenPopup = document.querySelector('.popup-broken-car') as HTMLElement;
-    allBrokenPopup.classList.remove('hidden');
+    const allBrokenPopup = document.querySelector(POPUP_BROKEN_CLASS_NAME) as HTMLElement;
+    allBrokenPopup.classList.remove(HIDDEN_CLASS_NAME);
     allBrokenPopup.textContent = '';
     allBrokenPopup.textContent = 'All cars were broken!';
   };
 
   public disableButtonRace = (isRace: boolean): void => {
-    const buttonCreate = document.querySelector('.create-form__button') as HTMLButtonElement;
-    const buttonRace = document.querySelector('.controls__button-race') as HTMLButtonElement;
-    const buttonGenerateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
-    const buttonsSelectAndRemove = document.querySelectorAll('.car-buttons__select,  .car-buttons__remove');
+    const buttonCreate = document.querySelector(BUTTON_CREATE_CLASS_NAME) as HTMLButtonElement;
+    const buttonRace = document.querySelector(BUTTON_RACE_CLASS_NAME) as HTMLButtonElement;
+    const buttonGenerateCars = document.querySelector(
+      BUTTON_GENERATOR_CLASS_NAME,
+    ) as HTMLButtonElement;
+    const buttonsSelectAndRemove = document.querySelectorAll(`${BUTTON_SELECT_CLASS_NAME},  ${BUTTON_REMOVE_CLASS_NAME}`);
 
     buttonCreate.disabled = isRace;
     buttonRace.disabled = isRace;
@@ -142,9 +163,9 @@ class View {
       ((elementButton as HTMLButtonElement).disabled = isRace);
     });
 
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const buttonUpdate = document.querySelector(BUTTON_EDIT_CLASS_NAME) as HTMLButtonElement;
     const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     if (isRace) {
       this.isRaceButtonPrev = buttonPrev.disabled;
@@ -164,7 +185,7 @@ class View {
   };
 
   static disableStartStopButtonRace = (isRace: boolean): void => {
-    const buttonsStartCar = document.querySelectorAll('.start-stop-car__start-button');
+    const buttonsStartCar = document.querySelectorAll(BUTTON_START_CLASS_NAME);
     const buttonsStopCar = document.querySelectorAll('.start-stop-car__stop-button');
     buttonsStartCar.forEach((element) => {
       const elementButton = element;
@@ -177,17 +198,21 @@ class View {
   };
 
   static enableStartButtonRace = (id: string): void => {
-    const startButton = document.querySelector(`[data-start-id="${id}"]`) as HTMLButtonElement;
+    const startButton = document.querySelector(
+      BUTTON_CLASSNAMES.getStartButtonId(id),
+    ) as HTMLButtonElement;
     startButton.disabled = false;
   };
 
   public disableEnableButtonCar = (isRace: boolean): void => {
-    const buttonCreate = document.querySelector('.create-form__button') as HTMLButtonElement;
-    const buttonRace = document.querySelector('.controls__button-race') as HTMLButtonElement;
-    const buttonEdit = document.querySelector('.edit-form__button') as HTMLButtonElement;
+    const buttonCreate = document.querySelector(BUTTON_CREATE_CLASS_NAME) as HTMLButtonElement;
+    const buttonRace = document.querySelector(BUTTON_RACE_CLASS_NAME) as HTMLButtonElement;
+    const buttonEdit = document.querySelector(BUTTON_EDIT_CLASS_NAME) as HTMLButtonElement;
     const buttonReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
-    const buttonGenerateCars = document.querySelector('.controls__button-generator') as HTMLButtonElement;
-    const buttonsSelectAndRemove = document.querySelectorAll('.car-buttons__select,  .car-buttons__remove');
+    const buttonGenerateCars = document.querySelector(
+      BUTTON_GENERATOR_CLASS_NAME,
+    ) as HTMLButtonElement;
+    const buttonsSelectAndRemove = document.querySelectorAll(`${BUTTON_SELECT_CLASS_NAME},  ${BUTTON_REMOVE_CLASS_NAME}`);
 
     buttonCreate.disabled = isRace;
     buttonEdit.disabled = isRace;
@@ -199,8 +224,8 @@ class View {
       ((elementButton as HTMLButtonElement).disabled = isRace);
     });
 
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
     if (isRace) {
       this.isRaceButtonPrev = buttonPrev.disabled;
       this.isRaceButtonNext = buttonNext.disabled;
@@ -222,29 +247,29 @@ class View {
     const buttonToGarage = e.target as HTMLButtonElement;
     const isClickButtonToGarage = buttonToGarage.classList.contains('main-button__garage');
     if (isClickButtonToGarage) {
-      main.classList.remove('hidden');
-      paginationButtonsGarage.classList.remove('hidden');
-      editForm.classList.remove('hidden');
-      paginationButtonsWinners.classList.add('hidden');
-      winnersTable.classList.add('hidden');
+      main.classList.remove(HIDDEN_CLASS_NAME);
+      paginationButtonsGarage.classList.remove(HIDDEN_CLASS_NAME);
+      editForm.classList.remove(HIDDEN_CLASS_NAME);
+      paginationButtonsWinners.classList.add(HIDDEN_CLASS_NAME);
+      winnersTable.classList.add(HIDDEN_CLASS_NAME);
       return;
     }
-    main.classList.add('hidden');
-    paginationButtonsGarage.classList.add('hidden');
-    editForm.classList.add('hidden');
-    paginationButtonsWinners.classList.remove('hidden');
-    winnersTable.classList.remove('hidden');
+    main.classList.add(HIDDEN_CLASS_NAME);
+    paginationButtonsGarage.classList.add(HIDDEN_CLASS_NAME);
+    editForm.classList.add(HIDDEN_CLASS_NAME);
+    paginationButtonsWinners.classList.remove(HIDDEN_CLASS_NAME);
+    winnersTable.classList.remove(HIDDEN_CLASS_NAME);
   };
 
   static popupHidden = (): void => {
-    const popup = document.querySelector('.popup') as HTMLElement;
-    popup.classList.add('hidden');
-    const popupBrokenCar = document.querySelector('.popup-broken-car') as HTMLElement;
-    popupBrokenCar.classList.add('hidden');
+    const popup = document.querySelector(POPUP_CLASS_NAME) as HTMLElement;
+    popup.classList.add(HIDDEN_CLASS_NAME);
+    const popupBrokenCar = document.querySelector(POPUP_BROKEN_CLASS_NAME) as HTMLElement;
+    popupBrokenCar.classList.add(HIDDEN_CLASS_NAME);
   };
 
   static enableStartButton = (isRace: boolean): void => {
-    const buttonStart = document.querySelectorAll('.start-stop-car__start-button');
+    const buttonStart = document.querySelectorAll(BUTTON_START_CLASS_NAME);
     buttonStart.forEach((element) => {
       const elementButton = element;
       ((elementButton as HTMLButtonElement).disabled = isRace);

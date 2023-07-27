@@ -1,5 +1,15 @@
 import {
-  CAR_BRANDS, CAR_MODELS, COLOR_NAME_LENGTH, LETTERS_OF_COLOR, NUMBER_RANDOM_CARS,
+  BUTTON_EDIT_CLASS_NAME,
+  BUTTON_NEXT_CLASS_NAME,
+  BUTTON_PREV_CLASS_NAME,
+  CAR_BRANDS, CAR_MODELS,
+  COLOR_EDIT_CLASS_NAME,
+  COLOR_NAME_LENGTH,
+  CURRENT_PAGE,
+  INPUT_EDIT_CLASS_NAME,
+  LETTERS_OF_COLOR,
+  NUMBER_RANDOM_CARS,
+  PAGE_NUMBER_DISPLAY_CLASS_NAME,
 } from '../../types/constants';
 import View from '../view/view';
 import Api from './api';
@@ -27,9 +37,9 @@ class EditCar extends Api {
     this.id = Number(selectButton.getAttribute('data-select-id'));
     if (this.id) {
       const form = document.querySelector('.edit-form') as HTMLFormElement;
-      const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
-      const inputColor = document.querySelector('.edit-form__color') as HTMLInputElement;
-      const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
+      const inputName = document.querySelector(INPUT_EDIT_CLASS_NAME) as HTMLInputElement;
+      const inputColor = document.querySelector(COLOR_EDIT_CLASS_NAME) as HTMLInputElement;
+      const buttonUpdate = document.querySelector(BUTTON_EDIT_CLASS_NAME) as HTMLButtonElement;
 
       inputName.style.pointerEvents = 'auto';
       inputColor.style.pointerEvents = 'auto';
@@ -53,10 +63,12 @@ class EditCar extends Api {
 
   public createNewCar = async (e: Event): Promise<void> => {
     e.preventDefault();
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
     const inputName = document.querySelector('.create-form__input') as HTMLInputElement;
     const inputColor = document.querySelector('.create-form__color') as HTMLInputElement;
-    const currentPage = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const currentPage = (document.querySelector(
+      PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_PAGE);
     const name = inputName.value;
     const color = inputColor.value;
     await this.createCar({
@@ -74,12 +86,14 @@ class EditCar extends Api {
   };
 
   public removeCar = async (e: Event): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const inputName = document.querySelector('.edit-form__input') as HTMLInputElement;
-    const inputColor = document.querySelector('.edit-form__color') as HTMLInputElement;
-    const buttonUpdate = document.querySelector('.edit-form__button') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const inputName = document.querySelector(INPUT_EDIT_CLASS_NAME) as HTMLInputElement;
+    const inputColor = document.querySelector(COLOR_EDIT_CLASS_NAME) as HTMLInputElement;
+    const buttonUpdate = document.querySelector(BUTTON_EDIT_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector(
+      PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_PAGE);
     let currentPage = Number(currentPageString);
     const removeButton = e.target as HTMLElement;
     const id = removeButton.getAttribute('data-remove-id');
@@ -126,8 +140,10 @@ class EditCar extends Api {
   };
 
   public generateCars = async (): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector(
+      PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_PAGE);
     const currentPage = Number(currentPageString);
 
     const generateCarsArray = (count: number) => new Array(count).fill(1).map(() => ({

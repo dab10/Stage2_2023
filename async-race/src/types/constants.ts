@@ -52,4 +52,44 @@ export const CAR_CLASS_NAME = {
   },
 };
 
+export const CURRENT_PAGE = 'data-page-id';
+
+export const CURRENT_WINNERS_PAGE = 'data-page-winners-id';
+
 export const BUTTON_RESET_CLASS_NAME = '.controls__button-reset';
+
+export const BUTTON_NEXT_CLASS_NAME = '.pagination-garage__next';
+
+export const BUTTON_PREV_CLASS_NAME = '.pagination-garage__prev';
+
+export const BUTTON_NEXT_WINNERS_CLASS_NAME = '.pagination-winners__next';
+
+export const BUTTON_PREV_WINNERS_CLASS_NAME = '.pagination-winners__prev';
+
+export const BUTTON_CREATE_CLASS_NAME = '.create-form__button';
+
+export const BUTTON_RACE_CLASS_NAME = '.controls__button-race';
+
+export const BUTTON_GENERATOR_CLASS_NAME = '.controls__button-generator';
+
+export const BUTTON_SELECT_CLASS_NAME = '.car-buttons__select';
+
+export const BUTTON_REMOVE_CLASS_NAME = '.car-buttons__remove';
+
+export const BUTTON_START_CLASS_NAME = '.start-stop-car__start-button';
+
+export const BUTTON_EDIT_CLASS_NAME = '.edit-form__button';
+
+export const INPUT_EDIT_CLASS_NAME = '.edit-form__input';
+
+export const COLOR_EDIT_CLASS_NAME = '.edit-form__color';
+
+export const HIDDEN_CLASS_NAME = 'hidden';
+
+export const POPUP_CLASS_NAME = '.popup';
+
+export const POPUP_BROKEN_CLASS_NAME = '.popup-broken-car';
+
+export const WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME = '.page-winners';
+
+export const PAGE_NUMBER_DISPLAY_CLASS_NAME = '.page';

@@ -6,7 +6,17 @@ import TableWinners from '../model/tableWinners';
 import View from '../view/view';
 import SelfCheck from '../view/selfCheck';
 import isElementHasClassName from '../../common/utils';
-import { BUTTON_RESET_CLASS_NAME } from '../../types/constants';
+import {
+  BUTTON_CREATE_CLASS_NAME,
+  BUTTON_GENERATOR_CLASS_NAME,
+  BUTTON_NEXT_CLASS_NAME,
+  BUTTON_NEXT_WINNERS_CLASS_NAME,
+  BUTTON_PREV_CLASS_NAME,
+  BUTTON_PREV_WINNERS_CLASS_NAME,
+  BUTTON_RACE_CLASS_NAME,
+  BUTTON_RESET_CLASS_NAME,
+  POPUP_CLASS_NAME,
+} from '../../types/constants';
 
 class Controller {
   private animation: Animation;
@@ -34,17 +44,21 @@ class Controller {
 
     const main = document.querySelector('.main') as HTMLElement;
     const winnersTable = document.querySelector('.winners') as HTMLElement;
-    const createButton = document.querySelector('.create-form__button') as HTMLButtonElement;
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const raceAll = document.querySelector('.controls__button-race') as HTMLButtonElement;
+    const createButton = document.querySelector(BUTTON_CREATE_CLASS_NAME) as HTMLButtonElement;
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const raceAll = document.querySelector(BUTTON_RACE_CLASS_NAME) as HTMLButtonElement;
     const raceReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
     const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
     const winners = document.querySelector('.main-button__winners') as HTMLButtonElement;
-    const popup = document.querySelector('.popup') as HTMLElement;
-    const generateCars = document.querySelector('.controls__button-generator') as HTMLDivElement;
-    const buttonNextWinners = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
-    const buttonPrevWinners = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
+    const popup = document.querySelector(POPUP_CLASS_NAME) as HTMLElement;
+    const generateCars = document.querySelector(BUTTON_GENERATOR_CLASS_NAME) as HTMLDivElement;
+    const buttonNextWinners = document.querySelector(
+      BUTTON_NEXT_WINNERS_CLASS_NAME,
+    ) as HTMLButtonElement;
+    const buttonPrevWinners = document.querySelector(
+      BUTTON_PREV_WINNERS_CLASS_NAME,
+    ) as HTMLButtonElement;
 
     main.addEventListener('click', (event) => this.listenButtonsCar(event));
     createButton.addEventListener('click', (event) => this.editCar.createNewCar(event));

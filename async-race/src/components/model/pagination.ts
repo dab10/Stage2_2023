@@ -1,11 +1,23 @@
 import Api from './api';
 import View from '../view/view';
+import {
+  BUTTON_NEXT_CLASS_NAME,
+  BUTTON_NEXT_WINNERS_CLASS_NAME,
+  BUTTON_PREV_CLASS_NAME,
+  BUTTON_PREV_WINNERS_CLASS_NAME,
+  CURRENT_PAGE,
+  CURRENT_WINNERS_PAGE,
+  PAGE_NUMBER_DISPLAY_CLASS_NAME,
+  WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME,
+} from '../../types/constants';
 
 class Pagination extends Api {
   public moveNext = async (): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector(
+      PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_PAGE);
     let currentPage = Number(currentPageString);
     currentPage += 1;
     const { items, count } = (await this.getCars(currentPage));
@@ -21,9 +33,11 @@ class Pagination extends Api {
   };
 
   public movePrev = async (): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-garage__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-garage__prev') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page') as HTMLElement).getAttribute('data-page-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector(
+      PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_PAGE);
     let currentPage = Number(currentPageString);
     currentPage -= 1;
     const { items, count } = (await this.getCars(currentPage));
@@ -39,9 +53,9 @@ class Pagination extends Api {
   };
 
   public moveNextWinners = async (): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_WINNERS_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_WINNERS_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector('') as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
     let currentPage = Number(currentPageString);
     currentPage += 1;
     const { items, count } = (await this.getWinners({
@@ -59,9 +73,11 @@ class Pagination extends Api {
   };
 
   public movePrevWinners = async (): Promise<void> => {
-    const buttonNext = document.querySelector('.pagination-winners__next') as HTMLButtonElement;
-    const buttonPrev = document.querySelector('.pagination-winners__prev') as HTMLButtonElement;
-    const currentPageString = (document.querySelector('.page-winners') as HTMLElement).getAttribute('data-page-winners-id');
+    const buttonNext = document.querySelector(BUTTON_NEXT_WINNERS_CLASS_NAME) as HTMLButtonElement;
+    const buttonPrev = document.querySelector(BUTTON_PREV_WINNERS_CLASS_NAME) as HTMLButtonElement;
+    const currentPageString = (document.querySelector(
+      WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
     let currentPage = Number(currentPageString);
     currentPage -= 1;
     const { items, count } = (await this.getWinners({
