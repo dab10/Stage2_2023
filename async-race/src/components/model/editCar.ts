@@ -32,8 +32,8 @@ class EditCar extends Api {
     this.lettersOfColor = LETTERS_OF_COLOR;
   }
 
-  public editCar = async (e: Event): Promise<void> => {
-    const selectButton = e.target as HTMLElement;
+  public editCar = async (editEvent: Event): Promise<void> => {
+    const selectButton = editEvent.target as HTMLElement;
     this.id = Number(selectButton.getAttribute('data-select-id'));
     if (this.id) {
       const form = document.querySelector('.edit-form') as HTMLFormElement;
@@ -61,8 +61,8 @@ class EditCar extends Api {
     }
   };
 
-  public createNewCar = async (e: Event): Promise<void> => {
-    e.preventDefault();
+  public createNewCar = async (event: Event): Promise<void> => {
+    event.preventDefault();
     const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
     const inputName = document.querySelector('.create-form__input') as HTMLInputElement;
     const inputColor = document.querySelector('.create-form__color') as HTMLInputElement;
@@ -85,7 +85,7 @@ class EditCar extends Api {
     }
   };
 
-  public removeCar = async (e: Event): Promise<void> => {
+  public removeCar = async (event: Event): Promise<void> => {
     const buttonNext = document.querySelector(BUTTON_NEXT_CLASS_NAME) as HTMLButtonElement;
     const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
     const inputName = document.querySelector(INPUT_EDIT_CLASS_NAME) as HTMLInputElement;
@@ -95,7 +95,7 @@ class EditCar extends Api {
       PAGE_NUMBER_DISPLAY_CLASS_NAME,
     ) as HTMLElement).getAttribute(CURRENT_PAGE);
     let currentPage = Number(currentPageString);
-    const removeButton = e.target as HTMLElement;
+    const removeButton = event.target as HTMLElement;
     const id = removeButton.getAttribute('data-remove-id');
     let count;
     if (id) {

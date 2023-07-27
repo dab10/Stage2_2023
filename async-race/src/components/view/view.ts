@@ -238,13 +238,13 @@ class View {
     }
   };
 
-  static changePage = (e: Event): void => {
+  static changePage = (event: Event): void => {
     const main = document.querySelector('.main') as HTMLElement;
     const paginationButtonsGarage = document.querySelector('.pagination-garage') as HTMLButtonElement;
     const editForm = document.querySelector('.create-edit-form') as HTMLDivElement;
     const paginationButtonsWinners = document.querySelector('.pagination-winners') as HTMLDivElement;
     const winnersTable = document.querySelector('.winners') as HTMLElement;
-    const buttonToGarage = e.target as HTMLButtonElement;
+    const buttonToGarage = event.target as HTMLButtonElement;
     const isClickButtonToGarage = buttonToGarage.classList.contains('main-button__garage');
     if (isClickButtonToGarage) {
       main.classList.remove(HIDDEN_CLASS_NAME);
