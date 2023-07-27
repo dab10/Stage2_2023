@@ -34,10 +34,10 @@ class Animation extends Api {
   public animatePosition = async (event: Event): Promise<void> => {
     this.countAnimation += 1;
     const startButton = event.target as HTMLButtonElement;
-    const idAnimateCar = startButton.getAttribute(BUTTON_CLASSNAMES.startButton) as string;
+    const idAnimationCar = startButton.getAttribute(BUTTON_CLASSNAMES.startButton) as string;
     startButton.disabled = true;
     const stopButton = document.querySelector(
-      BUTTON_CLASSNAMES.getStopButtonId(idAnimateCar),
+      BUTTON_CLASSNAMES.getStopButtonId(idAnimationCar),
     ) as HTMLButtonElement;
     stopButton.disabled = false;
     let isCarWork = true;
@@ -46,18 +46,20 @@ class Animation extends Api {
       this.view.disableButtonRace(true);
     }
 
-    const node = document.querySelector(CAR_CLASS_NAME.getCarId(idAnimateCar)) as HTMLElement;
-    const { velocity, distance } = await this.startEngine(Number(idAnimateCar));
+    const node = document.querySelector(CAR_CLASS_NAME.getCarId(idAnimationCar)) as HTMLElement;
+    const { velocity, distance } = await this.startEngine(Number(idAnimationCar));
     const currentX = node.offsetLeft;
     const framesCount = ((distance / velocity) / MILLISECOND_TO_SECOND_RATIO) * FRAMES_PER_SECOND;
     const deltaX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
-    this.animation[idAnimateCar] = this.animateScreenDrive(node, currentX, deltaX, idAnimateCar);
+    this.animation[
+      idAnimationCar
+    ] = this.animateScreenDrive(node, currentX, deltaX, idAnimationCar);
 
-    ({ success: isCarWork } = await this.drive(Number(idAnimateCar)));
+    ({ success: isCarWork } = await this.drive(Number(idAnimationCar)));
 
     const isCarBroken = !isCarWork;
     if (isCarBroken) {
-      window.cancelAnimationFrame(this.animation[idAnimateCar]);
+      window.cancelAnimationFrame(this.animation[idAnimationCar]);
     }
   };
 
@@ -65,7 +67,7 @@ class Animation extends Api {
     node: HTMLElement,
     currentX: number,
     deltaX: number,
-    id: string,
+    idAnimationCar: string,
   ): number => {
     let currentXAnimation = currentX;
     const nodeAnimation = node;
@@ -75,13 +77,13 @@ class Animation extends Api {
       nodeAnimation.style.transform = `translateX(${currentXAnimation}px)`;
       const isCarBeforeEndWindowWidth = currentXAnimation < (window.innerWidth - CAR_WIDTH);
       if (isCarBeforeEndWindowWidth) {
-        this.animation[id] = window.requestAnimationFrame(step);
+        this.animation[idAnimationCar] = window.requestAnimationFrame(step);
       }
     };
 
-    this.animation[id] = window.requestAnimationFrame(step);
+    this.animation[idAnimationCar] = window.requestAnimationFrame(step);
 
-    return this.animation[id];
+    return this.animation[idAnimationCar];
   };
 
   public animateStop = async (event: Event): Promise<void> => {
@@ -118,25 +120,25 @@ class Animation extends Api {
     );
     this.view.disableButtonRace(true);
     await Promise.race(
-      this.allCars.map(async (id) => {
+      this.allCars.map(async (carId) => {
         this.countFinishCar = 0;
 
         View.disableStartStopButtonRace(true);
-        const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
-        const { velocity, distance } = await this.startEngine(Number(id));
+        const node = document.querySelector(CAR_CLASS_NAME.getCarId(carId)) as HTMLElement;
+        const { velocity, distance } = await this.startEngine(Number(carId));
         const currentX = node.offsetLeft;
         const time = (distance / velocity) / MILLISECOND_TO_SECOND_RATIO;
         const framesCount = (
           (distance / velocity) / MILLISECOND_TO_SECOND_RATIO
         ) * FRAMES_PER_SECOND;
         const deltaX = ((window.innerWidth - CAR_WIDTH) - node.offsetLeft) / framesCount;
-        this.animation[id] = this.animateScreenDrive(node, currentX, deltaX, id);
+        this.animation[carId] = this.animateScreenDrive(node, currentX, deltaX, carId);
 
-        const { success: isCarWork } = await this.drive(Number(id));
+        const { success: isCarWork } = await this.drive(Number(carId));
         if (isCarWork) {
-          this.timesFinishCar.push({ time, id: Number(id), isSuccess: isCarWork });
+          this.timesFinishCar.push({ time, id: Number(carId), isSuccess: isCarWork });
         } else {
-          window.cancelAnimationFrame(this.animation[id]);
+          window.cancelAnimationFrame(this.animation[carId]);
         }
         this.createWinResult(this.timesFinishCar, this.allCars);
       }),
@@ -184,12 +186,12 @@ class Animation extends Api {
   };
 
   public resetRace = async (): Promise<void> => {
-    this.allCars.map(async (id) => {
-      const node = document.querySelector(CAR_CLASS_NAME.getCarId(id)) as HTMLElement;
+    this.allCars.map(async (carId) => {
+      const node = document.querySelector(CAR_CLASS_NAME.getCarId(carId)) as HTMLElement;
 
-      await this.stopEngine(Number(id));
+      await this.stopEngine(Number(carId));
       node.style.transform = 'translateX(0)';
-      window.cancelAnimationFrame(this.animation[Number(id)]);
+      window.cancelAnimationFrame(this.animation[Number(carId)]);
       this.controller.abort();
       this.controller = new AbortController();
       View.popupHidden();
