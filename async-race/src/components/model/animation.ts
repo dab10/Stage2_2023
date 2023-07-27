@@ -152,7 +152,7 @@ class Animation extends Api {
     }
     const isCarFinishFirst = this.countFinishCar === 1;
     if (isCarFinishFirst) {
-      filteredTimesFinishCar = timesFinishCar.filter((el) => el.isSuccess === true);
+      filteredTimesFinishCar = timesFinishCar.filter((element) => element.isSuccess === true);
       buttonReset.disabled = false;
       this.countBrokenCar = 0;
     }
