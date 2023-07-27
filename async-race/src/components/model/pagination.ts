@@ -55,7 +55,9 @@ class Pagination extends Api {
   public moveNextWinners = async (): Promise<void> => {
     const buttonNext = document.querySelector(BUTTON_NEXT_WINNERS_CLASS_NAME) as HTMLButtonElement;
     const buttonPrev = document.querySelector(BUTTON_PREV_WINNERS_CLASS_NAME) as HTMLButtonElement;
-    const currentPageString = (document.querySelector('') as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
+    const currentPageString = (document.querySelector(
+      WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME,
+    ) as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
     let currentPage = Number(currentPageString);
     currentPage += 1;
     const { items, count } = (await this.getWinners({
