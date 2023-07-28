@@ -60,8 +60,8 @@ class Controller {
       BUTTON_PREV_WINNERS_CLASS_NAME,
     ) as HTMLButtonElement;
 
-    main.addEventListener('click', (event) => this.listenButtonsCar(event));
-    createButton.addEventListener('click', (event) => this.editCar.createNewCar(event));
+    main.addEventListener('click', this.listenButtonsCar);
+    createButton.addEventListener('click', this.editCar.createNewCar);
     buttonNext.addEventListener('click', this.pagination.moveNext);
     buttonPrev.addEventListener('click', this.pagination.movePrev);
     buttonNextWinners.addEventListener('click', this.pagination.moveNextWinners);
@@ -71,7 +71,7 @@ class Controller {
     winners.addEventListener('click', View.changePage);
     garage.addEventListener('click', View.changePage);
     popup.addEventListener('click', View.popupHidden);
-    winnersTable.addEventListener('click', (event) => this.listenButtonsSortingTable(event));
+    winnersTable.addEventListener('click', this.listenButtonsSortingTable);
     generateCars.addEventListener('click', this.editCar.generateCars);
   };
 
