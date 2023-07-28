@@ -26,6 +26,10 @@ export const COLOR_NAME_LENGTH = 6;
 
 export const NUMBER_RANDOM_CARS = 100;
 
+export const INCREASER_NUMBER_POSITION = 100;
+
+export const REDUCER_NUMBER_POSITION = 100;
+
 export const BUTTON_CLASSNAMES = {
   startButton: 'data-start-id',
   stopButton: 'data-stop-id',
@@ -93,3 +97,5 @@ export const POPUP_BROKEN_CLASS_NAME = '.popup-broken-car';
 export const WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME = '.page-winners';
 
 export const PAGE_NUMBER_DISPLAY_CLASS_NAME = '.page';
+
+export const BUTTON_GARAGE_CLASS_NAME = '.main-button__garage';

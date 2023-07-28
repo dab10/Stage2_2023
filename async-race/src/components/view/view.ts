@@ -8,6 +8,7 @@ import {
   BUTTON_CLASSNAMES,
   BUTTON_CREATE_CLASS_NAME,
   BUTTON_EDIT_CLASS_NAME,
+  BUTTON_GARAGE_CLASS_NAME,
   BUTTON_GENERATOR_CLASS_NAME,
   BUTTON_NEXT_CLASS_NAME,
   BUTTON_NEXT_WINNERS_CLASS_NAME,
@@ -21,9 +22,11 @@ import {
   CARS_PER_PAGE,
   CAR_CLASS_NAME,
   HIDDEN_CLASS_NAME,
+  INCREASER_NUMBER_POSITION,
   PAGE_NUMBER_DISPLAY_CLASS_NAME,
   POPUP_BROKEN_CLASS_NAME,
   POPUP_CLASS_NAME,
+  REDUCER_NUMBER_POSITION,
   WINNERS_PER_PAGE,
 } from '../../types/constants';
 
@@ -135,9 +138,10 @@ class View {
 
   static renderPopup = (name: string, minTime: number): void => {
     const popup = document.querySelector(POPUP_CLASS_NAME) as HTMLElement;
+    const roundMinTime = Math.floor(minTime * INCREASER_NUMBER_POSITION) / REDUCER_NUMBER_POSITION;
     popup.classList.remove(HIDDEN_CLASS_NAME);
     popup.textContent = '';
-    popup.textContent = `${name} win (${Math.floor(minTime * 100) / 100}s)! (tap to close or press reset)`;
+    popup.textContent = `${name} win (${roundMinTime}s)! (tap to close or press reset)`;
   };
 
   static renderAllBrokenPopup = (): void => {
@@ -245,7 +249,9 @@ class View {
     const paginationButtonsWinners = document.querySelector('.pagination-winners') as HTMLDivElement;
     const winnersTable = document.querySelector('.winners') as HTMLElement;
     const buttonToGarage = event.target as HTMLButtonElement;
-    const isClickButtonToGarage = buttonToGarage.classList.contains('main-button__garage');
+    const isClickButtonToGarage = buttonToGarage.classList.contains(
+      BUTTON_GARAGE_CLASS_NAME.slice(1),
+    );
     if (isClickButtonToGarage) {
       main.classList.remove(HIDDEN_CLASS_NAME);
       paginationButtonsGarage.classList.remove(HIDDEN_CLASS_NAME);

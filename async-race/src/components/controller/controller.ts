@@ -8,6 +8,7 @@ import SelfCheck from '../view/selfCheck';
 import elementHasClassName from '../../common/elementHasClassName';
 import {
   BUTTON_CREATE_CLASS_NAME,
+  BUTTON_GARAGE_CLASS_NAME,
   BUTTON_GENERATOR_CLASS_NAME,
   BUTTON_NEXT_CLASS_NAME,
   BUTTON_NEXT_WINNERS_CLASS_NAME,
@@ -49,7 +50,7 @@ class Controller {
     const buttonPrev = document.querySelector(BUTTON_PREV_CLASS_NAME) as HTMLButtonElement;
     const raceAll = document.querySelector(BUTTON_RACE_CLASS_NAME) as HTMLButtonElement;
     const raceReset = document.querySelector(BUTTON_RESET_CLASS_NAME) as HTMLButtonElement;
-    const garage = document.querySelector('.main-button__garage') as HTMLButtonElement;
+    const garage = document.querySelector(BUTTON_GARAGE_CLASS_NAME) as HTMLButtonElement;
     const winners = document.querySelector('.main-button__winners') as HTMLButtonElement;
     const popup = document.querySelector(POPUP_CLASS_NAME) as HTMLElement;
     const generateCars = document.querySelector(BUTTON_GENERATOR_CLASS_NAME) as HTMLDivElement;
