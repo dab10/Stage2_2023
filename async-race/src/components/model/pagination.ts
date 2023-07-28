@@ -18,8 +18,7 @@ class Pagination extends Api {
     const currentPageString = (document.querySelector(
       PAGE_NUMBER_DISPLAY_CLASS_NAME,
     ) as HTMLElement).getAttribute(CURRENT_PAGE);
-    let currentPage = Number(currentPageString);
-    currentPage += 1;
+    const currentPage = Number(currentPageString) + 1;
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
     const isPageAnotherThanFirst = currentPage > 1;
@@ -38,8 +37,7 @@ class Pagination extends Api {
     const currentPageString = (document.querySelector(
       PAGE_NUMBER_DISPLAY_CLASS_NAME,
     ) as HTMLElement).getAttribute(CURRENT_PAGE);
-    let currentPage = Number(currentPageString);
-    currentPage -= 1;
+    const currentPage = Number(currentPageString) - 1;
     const { items, count } = (await this.getCars(currentPage));
     View.renderNewCars(items, count, currentPage);
     const isFirstPage = currentPage === 1;
@@ -58,8 +56,7 @@ class Pagination extends Api {
     const currentPageString = (document.querySelector(
       WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME,
     ) as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
-    let currentPage = Number(currentPageString);
-    currentPage += 1;
+    const currentPage = Number(currentPageString) + 1;
     const { items, count } = (await this.getWinners({
       page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
@@ -80,8 +77,7 @@ class Pagination extends Api {
     const currentPageString = (document.querySelector(
       WINNER_PAGE_NUMBER_DISPLAY_CLASS_NAME,
     ) as HTMLElement).getAttribute(CURRENT_WINNERS_PAGE);
-    let currentPage = Number(currentPageString);
-    currentPage -= 1;
+    const currentPage = Number(currentPageString) - 1;
     const { items, count } = (await this.getWinners({
       page: currentPage, limit: this.winnersPerPage, sort: 'wins', order: 'asc',
     }));
